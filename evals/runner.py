@@ -16,7 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from claimsight.config import Settings
-from claimsight.deps import build_deps
+from claimsight.deps import Deps, build_deps
 from claimsight.graph import build_graph
 from claimsight.schemas import ClaimInput
 from evals.metrics import (
@@ -27,6 +27,7 @@ from evals.metrics import (
     safe_div,
     word_error_rate,
 )
+from evals.retrieval_eval import load_queries, score_retriever
 
 K = 5
 
@@ -41,8 +42,9 @@ def load_cases(paths: list[Path]) -> list[dict]:
     return cases
 
 
-def evaluate(cases: list[dict], settings: Settings) -> dict:
-    graph = build_graph(build_deps(settings))
+def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) -> dict:
+    deps = deps or build_deps(settings)
+    graph = build_graph(deps)
     rows = []
     for case in cases:
         claim = ClaimInput.model_validate(case["claim"])
@@ -80,8 +82,12 @@ def evaluate(cases: list[dict], settings: Settings) -> dict:
                 ),
             }
         )
+    # The claims set only needs a few clauses; the policy-QA set is what separates retrievers.
+    qa = score_retriever(deps.retriever, load_queries(), k=K)["metrics"]
+    metrics = aggregate(rows) | {f"policy_qa_{k}": v for k, v in qa.items() if k != "n"}
     return {
-        "metrics": aggregate(rows),
+        "metrics": metrics,
+        "retriever": deps.retriever.name,
         "slices": slices(rows),
         "cases": rows,
         "mode": settings.mode,

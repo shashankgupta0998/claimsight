@@ -15,11 +15,11 @@ intake ─┬─ vision ── estimator ─┐
         └─ verification ────────┘          └─ human_review ─ finalize
 ```
 
-| Node | Does | v0 (this scaffold) | Target |
+| Node | Does | Now | Target |
 |---|---|---|---|
 | intake | Transcribes the voice note | Whisper wrapper | + PII redaction (GLiNER, Presidio) |
 | vision | Finds damage, maps it to parts | Replay detector | RT-DETR on CarDD + OWLv2 parts |
-| coverage | Retrieves and cites policy clauses | BM25 + clause metadata | pgvector hybrid + ColQwen2 + reranker + LLM |
+| coverage | Retrieves and cites policy clauses | Dense (bge-small) → cross-encoder rerank, in memory or on pgvector | + ColQwen2 page lane, LLM coverage reasoning |
 | verification | Checks outside evidence | NHTSA vPIC, NOAA SPC, Open-Meteo, EXIF, photo hashes | + DINOv2 near-duplicates |
 | estimator | Repair cost range | Parts table | LightGBM |
 | critic | Cross-checks agents, decides | Rules + statement/damage consistency | + LLM consistency pass |
@@ -32,12 +32,16 @@ make install        # uv sync --group dev
 make test           # unit + graph + API tests, fully offline
 make eval           # score the graph on the golden set
 make gate           # fail if quality dropped vs evals/baseline.json
+make retrieval      # policy-QA ablation: keyword / dense / hybrid, with and without rerank
+make ingest         # load the policy corpus into Postgres + pgvector
+make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
 ```
 
 Optional local stack (Postgres + pgvector, Redis, MinIO, Langfuse): `make up`.
 
-Extras: `uv sync --extra ml` (real models), `--extra rag` (pgvector retrieval),
+Extras: `uv sync --extra ml` (real models), `--extra pg` (Postgres client),
+`--extra embed` (embedding model and reranker; pulls in torch), `--extra rag` (both),
 `--extra llm` (Anthropic judge, Langfuse tracing).
 
 ## Replay vs live
@@ -83,6 +87,7 @@ Built before the agents, per the project plan.
 | Statement-flip fraud caught | 5 / 9 | 9 / 9 |
 | Damage precision / recall | 0.98 / 0.98 | 0.98 / 0.98 |
 | Clause Recall@5 / citation precision | 1.00 / 1.00 | 1.00 / 1.00 |
+| Policy-QA hit@1 / Recall@5 (added with retrieval) | | 0.62 / 0.77 |
 
 The statement check used to miss contradictions for two reasons. A keyword list didn't
 know phrasings like "hit me from behind". And any detected part counted as damage, so one
@@ -106,6 +111,61 @@ The synthetic set's 1.00 reflects its template statements. The held-out score an
 Detector outputs are simulated, so damage scores are an upper bound until real model
 outputs are recorded on CarDD images.
 
+## Policy retrieval
+
+The corpus is 42 clauses in the structure of a personal auto policy: insuring agreements,
+definitions, every Part D exclusion, conditions, duties and endorsements. Many of them are
+near-misses for each other on purpose. `evals/golden/retrieval_queries.jsonl` holds 50
+questions phrased the way claimants and adjusters ask them, each labelled with the clauses
+that answer it. 23 are tagged `lexical_gap`: they share few words with their answer ("someone
+keyed my car" is malicious mischief, "I took it to a track day" is the racing exclusion).
+
+`make retrieval` (replay, 50 questions, k=5):
+
+| First stage | Rerank | hit@1 | Recall@5 | nDCG@5 | Lexical-gap R@5 |
+|---|---|---|---|---|---|
+| BM25 | | 0.38 | 0.44 | 0.40 | 0.20 |
+| Dense (bge-small-en-v1.5) | | 0.34 | 0.72 | 0.53 | 0.65 |
+| Hybrid (RRF of both) | | 0.42 | 0.60 | 0.49 | 0.37 |
+| BM25 | bge-reranker-v2-m3 | 0.56 | 0.58 | 0.55 | 0.28 |
+| Hybrid | bge-reranker-v2-m3 | 0.64 | 0.76 | 0.68 | 0.63 |
+| **Dense (default)** | **bge-reranker-v2-m3** | **0.62** | **0.77** | **0.68** | **0.67** |
+
+What the numbers say:
+
+- **Dense beats keyword search by a wide margin** on recall, most of all on the lexical-gap
+  slice (0.65 vs 0.20).
+- **Fusion with BM25 hurts.** RRF pulls BM25's wrong matches into the top 5. I also tried
+  weighting dense 2x and 3x in the fusion; it still did worse than dense alone.
+- **The reranker is where top-1 comes from** (0.34 → 0.62). Turning it off drops claims
+  decision accuracy from 1.00 to 0.80; the gate blocks that.
+- **The 7 remaining misses need world knowledge**, not better embeddings: "keyed" means
+  vandalism, "seized by police" means confiscation, "mice chewed the wiring" is contact with
+  an animal. Query rewriting with an LLM is the next experiment.
+
+Caveat: I chose the default from these six configurations (plus bge-base and the query-prefix
+on/off) on the same 50 questions, so treat the numbers as a dev-set score.
+
+**Coverage retrieves by peril, not by statement.** Searching with the claimant's whole
+statement let incidental details win: "the windshield is smashed" pulled glass clauses ahead
+of vandalism, "keyed both doors" matched nothing useful. Intake already gives a structured
+loss type, so the coverage agent searches with the policy's term for that peril ("malicious
+mischief or vandalism") plus a lookup for the declarations page. Scanning the statement for
+exclusions is the job of the LLM coverage step on the roadmap. A side effect: claim
+statements no longer affect retrieval, so `make data` never invalidates the cassettes.
+
+**Two backends, one interface.** In-memory lanes run in replay and CI. On Postgres, the dense
+lane is pgvector HNSW (cosine, `ef_search` 100) and the keyword lane is `tsvector`. Fusion and
+reranking sit on top of either. The CI `pgvector` job checks that ingest is idempotent, that
+HNSW returns exactly the in-memory neighbours, and that the full stack scores identically on
+both backends. Postgres's `ts_rank_cd` is weaker than BM25 (hit@1 0.28 vs 0.38), another
+reason dense is the first stage.
+
+**Cassettes.** `cassettes/embeddings.json` (base64 float16 vectors) and `cassettes/rerank.json`
+(a score for every query × clause pair) let CI run all of this without torch. Replay raises
+on anything not recorded. `make record` re-records after changing clauses, queries, the
+peril queries or either model.
+
 ## Data sources
 
 - [NHTSA vPIC](https://vpic.nhtsa.dot.gov/api/): VIN decoding
@@ -120,7 +180,8 @@ outputs are recorded on CarDD images.
 
 - [x] Weeks 1–2: schema, graph, API, eval harness, golden set v0, CI gate
 - [x] Weeks 1–2: synthetic claim generator (scenarios, LLM paraphrase, TTS voice notes) → 257 cases
-- [ ] Weeks 3–4: ingest policies into pgvector, ColQwen2 page lane, reranker, LLM coverage reasoning
+- [x] Weeks 3–4: 42-clause corpus, policy-QA eval, dense + rerank retrieval, pgvector ingest and lanes, CI integration job
+- [ ] Weeks 3–4, rest: LLM query rewriting for lexical-gap misses, LLM coverage reasoning with quote validation, ColQwen2 page lane
 - [ ] Weeks 5–6: fine-tune RT-DETR on CarDD, push to the HF Hub, record detector cassettes
 - [ ] Weeks 7–8: VLM statement/damage check, DINOv2 duplicate search, Postgres checkpointer
 - [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
@@ -133,7 +194,7 @@ src/claimsight/
   agents/        vision, coverage, verification, estimator, critic
   graph/         LangGraph state and wiring
   models/        detector (damage + parts), ASR
-  retrieval/     BM25 baseline, pgvector hybrid
+  retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, pgvector lanes + ingest
   tools/         NHTSA, weather, photo forensics, geo
   api/           FastAPI app with human review
 evals/           golden set, runner, gate, LLM judge
