@@ -2,6 +2,7 @@
 
     first stage  keyword | dense | hybrid      backend  memory | pgvector
     then         optional cross-encoder rerank of the top `rerank_pool`
+    around both  optional LLM query rewriting: replace | expand | joint | dual
 
 Models sit behind cassettes in evals/golden/cassettes/. Offline (replay, CI) reads them and
 never loads a model; live mode or `record_retrieval` fills in anything missing.
@@ -19,6 +20,13 @@ from claimsight.retrieval.dense import DenseRetriever, HybridRetriever
 from claimsight.retrieval.embed import CassetteEmbedder
 from claimsight.retrieval.keyword import BM25Retriever
 from claimsight.retrieval.rerank import CassetteReranker, RerankingRetriever
+from claimsight.retrieval.rewrite import (
+    CassetteRewriter,
+    DualQueryReranker,
+    ExpandedQueryRetriever,
+    RewrittenQueryRetriever,
+    joint_query,
+)
 
 
 @dataclass
@@ -26,9 +34,10 @@ class RetrievalStack:
     retriever: Retriever
     embedder: CassetteEmbedder | None = None
     reranker: CassetteReranker | None = None
+    rewriter: CassetteRewriter | None = None
 
     def save_cassettes(self, prune: bool = False) -> None:
-        for cassette in (self.embedder, self.reranker):
+        for cassette in (self.embedder, self.reranker, self.rewriter):
             if cassette is not None:
                 cassette.save(prune=prune)
 
@@ -51,13 +60,24 @@ def build_embedder(s: Settings, online: bool) -> CassetteEmbedder:
     return CassetteEmbedder(cassette_dir(s) / "embeddings.json", inner)
 
 
+def build_rewriter(s: Settings, online: bool) -> CassetteRewriter:
+    inner = None
+    if online:
+        from claimsight.retrieval.rewrite import ClaudeQueryRewriter
+
+        inner = ClaudeQueryRewriter(s.rewrite_model, s.rewrite_effort)
+    return CassetteRewriter(cassette_dir(s) / "rewrites.json", inner)
+
+
 def build_retrieval(
     s: Settings,
     online: bool = False,
     embedder: CassetteEmbedder | None = None,
     reranker: CassetteReranker | None = None,
+    rewriter: CassetteRewriter | None = None,
 ) -> RetrievalStack:
-    """`embedder` / `reranker` reuse existing cassettes (the recorder shares one of each)."""
+    """`embedder` / `reranker` / `rewriter` reuse existing cassettes (the recorder shares
+    one of each)."""
     online = online or s.record_retrieval
     chunks = load_chunks(Path(s.golden_dir))
     if s.retriever != "keyword" and embedder is None:
@@ -81,6 +101,16 @@ def build_retrieval(
         "hybrid": HybridRetriever([dense, sparse], pool=s.rerank_pool) if dense else sparse,
     }[s.retriever]
 
+    if s.query_rewrite == "off":
+        rewriter = None
+    elif rewriter is None:
+        rewriter = build_rewriter(s, online)
+    if s.query_rewrite in ("expand", "joint"):
+        first = ExpandedQueryRetriever(first, rewriter, pool=s.rerank_pool)
+    elif s.query_rewrite == "dual":
+        # The first stage sees only the rewrite; the reranker below sees both.
+        first = RewrittenQueryRetriever(first, rewriter)
+
     if s.rerank:
         if reranker is None:
             inner = None
@@ -89,7 +119,13 @@ def build_retrieval(
 
                 inner = CrossEncoderReranker(s.rerank_model)
             reranker = CassetteReranker(cassette_dir(s) / "rerank.json", inner)
-        first = RerankingRetriever(first, reranker, pool=s.rerank_pool)
+        rerank_query = None
+        if s.query_rewrite == "joint":
+            rerank_query = lambda q: joint_query(q, rewriter.rewrite(q))  # noqa: E731
+        scorer = DualQueryReranker(reranker, rewriter) if s.query_rewrite == "dual" else reranker
+        first = RerankingRetriever(first, scorer, pool=s.rerank_pool, rerank_query=rerank_query)
     else:
         reranker = None
-    return RetrievalStack(first, embedder, reranker)
+    if s.query_rewrite == "replace":
+        first = RewrittenQueryRetriever(first, rewriter)
+    return RetrievalStack(first, embedder, reranker, rewriter)

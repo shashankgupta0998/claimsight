@@ -30,8 +30,8 @@ data: variants
 retrieval:  # policy-QA ablation: keyword vs dense vs hybrid, with and without rerank
 	uv run python -m evals.retrieval_eval
 
-record:  # re-record embedding and rerank cassettes with the real models
-	uv run --extra embed python scripts/record_retrieval.py
+record:  # re-record embedding, rerank and query-rewrite cassettes with the real models
+	uv run --extra embed --extra llm python scripts/record_retrieval.py
 
 ingest:  # load the policy corpus into Postgres + pgvector
 	uv run --extra pg python scripts/ingest_policies.py --init-schema

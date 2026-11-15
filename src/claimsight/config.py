@@ -26,7 +26,16 @@ class Settings(BaseSettings):
     rerank: bool = True
     rerank_pool: int = 20
     vector_store: Literal["memory", "pgvector"] = "memory"
-    # Replay records missing embeddings / rerank scores instead of failing (needs `embed`).
+    # LLM query rewriting into policy vocabulary (retrieval/rewrite.py):
+    # off | replace (search with the rewrite) | expand (fuse question + rewrite, rerank on the
+    # question) | joint (fuse, rerank on question + rewrite) | dual (search with the rewrite,
+    # rerank score = question's + rewrite's). Off by default: coverage already searches in
+    # policy vocabulary (agents/coverage.py), so it would pay an LLM call per claim for nothing.
+    query_rewrite: Literal["off", "replace", "expand", "joint", "dual"] = "off"
+    rewrite_model: str = "claude-opus-5-5"
+    rewrite_effort: Literal["low", "medium", "high"] = "low"
+    # Replay records missing embeddings / rerank scores / rewrites instead of failing
+    # (needs `embed`, and `llm` plus Anthropic credentials when query_rewrite is on).
     record_retrieval: bool = False
 
     detector_model: str = "your-hf-username/rtdetr-cardd"

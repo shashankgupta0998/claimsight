@@ -25,14 +25,18 @@ from evals.metrics import ndcg_at_k, recall_at_k, safe_div
 
 QUERIES = Path(__file__).parent / "golden" / "retrieval_queries.jsonl"
 
-# (label, retriever, rerank): the configurations the ablation compares.
+# (label, retriever, rerank, query_rewrite): the configurations the ablation compares.
 CONFIGS = [
-    ("keyword", "keyword", False),
-    ("dense", "dense", False),
-    ("hybrid (RRF)", "hybrid", False),
-    ("keyword > rerank", "keyword", True),
-    ("hybrid > rerank", "hybrid", True),
-    ("dense > rerank", "dense", True),
+    ("keyword", "keyword", False, "off"),
+    ("dense", "dense", False, "off"),
+    ("hybrid (RRF)", "hybrid", False, "off"),
+    ("keyword > rerank", "keyword", True, "off"),
+    ("hybrid > rerank", "hybrid", True, "off"),
+    ("dense > rerank", "dense", True, "off"),
+    ("rewrite: replace", "dense", True, "replace"),
+    ("rewrite: expand", "dense", True, "expand"),
+    ("rewrite: joint", "dense", True, "joint"),
+    ("rewrite: dual", "dense", True, "dual"),
 ]
 
 
@@ -89,14 +93,22 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--vector-store", choices=["memory", "pgvector"], default="memory")
     ap.add_argument("--out", type=Path, default=Path("evals/reports/retrieval.json"))
     ap.add_argument("--show-misses", action="store_true")
+    ap.add_argument(
+        "--misses-for", default="dense > rerank", help="config whose misses --show-misses prints"
+    )
     args = ap.parse_args(argv)
 
     queries = load_queries()
     report = {}
     print(f"Policy-QA retrieval ({len(queries)} questions, k=5, {args.vector_store})\n")
     print(f"  {'config':<18} {'hit@1':>6} {'R@5':>6} {'nDCG@5':>7} {'MRR':>6} {'gap R@5':>8}")
-    for label, retriever, rerank in CONFIGS:
-        s = Settings(retriever=retriever, rerank=rerank, vector_store=args.vector_store)
+    for label, retriever, rerank, rewrite in CONFIGS:
+        s = Settings(
+            retriever=retriever,
+            rerank=rerank,
+            query_rewrite=rewrite,
+            vector_store=args.vector_store,
+        )
         result = score_retriever(build_retrieval(s).retriever, queries)
         report[label] = result
         m = result["metrics"]
@@ -105,8 +117,8 @@ def main(argv: list[str] | None = None) -> int:
             f"{m['ndcg_at_5']:>7.2f} {m['mrr']:>6.2f} {m['lexical_gap_recall_at_5']:>8.2f}"
         )
     if args.show_misses:
-        default = report["dense > rerank"]["rows"]
-        print("\nMisses for dense > rerank (no relevant clause in the top 5):")
+        default = report[args.misses_for]["rows"]
+        print(f"\nMisses for {args.misses_for} (no relevant clause in the top 5):")
         for r in default:
             if r["rk"] == 0:
                 q = next(x for x in queries if x["qid"] == r["qid"])

@@ -42,7 +42,7 @@ Optional local stack (Postgres + pgvector, Redis, MinIO, Langfuse): `make up`.
 
 Extras: `uv sync --extra ml` (real models), `--extra pg` (Postgres client),
 `--extra embed` (embedding model and reranker; pulls in torch), `--extra rag` (both),
-`--extra llm` (Anthropic judge, Langfuse tracing).
+`--extra llm` (Anthropic judge, query rewriting, Langfuse tracing).
 
 ## Replay vs live
 
@@ -130,6 +130,8 @@ keyed my car" is malicious mischief, "I took it to a track day" is the racing ex
 | BM25 | bge-reranker-v2-m3 | 0.56 | 0.58 | 0.55 | 0.28 |
 | Hybrid | bge-reranker-v2-m3 | 0.64 | 0.76 | 0.68 | 0.63 |
 | **Dense (default)** | **bge-reranker-v2-m3** | **0.62** | **0.77** | **0.68** | **0.67** |
+| LLM rewrite → dense | bge-reranker-v2-m3 on the rewrite | 0.60 | 0.98 | 0.82 | 1.00 |
+| **LLM rewrite → dense** | **question + rewrite scores added** | **0.64** | **0.98** | **0.82** | **1.00** |
 
 What the numbers say:
 
@@ -139,12 +141,34 @@ What the numbers say:
   weighting dense 2x and 3x in the fusion; it still did worse than dense alone.
 - **The reranker is where top-1 comes from** (0.34 → 0.62). Turning it off drops claims
   decision accuracy from 1.00 to 0.80; the gate blocks that.
-- **The 7 remaining misses need world knowledge**, not better embeddings: "keyed" means
-  vandalism, "seized by police" means confiscation, "mice chewed the wiring" is contact with
-  an animal. Query rewriting with an LLM is the next experiment.
+- **The 7 misses left after rerank needed world knowledge**, not better embeddings: "keyed"
+  means vandalism, "seized by police" means confiscation, "mice chewed the wiring" is contact
+  with an animal. An LLM knows those mappings.
 
 Caveat: I chose the default from these six configurations (plus bge-base and the query-prefix
 on/off) on the same 50 questions, so treat the numbers as a dev-set score.
+
+**LLM query rewriting** (`retrieval/rewrite.py`). Claude (Opus 5.5, low effort) restates the
+question in the policy's own vocabulary before retrieval. I wrote the prompt once, with no
+examples, without looking at the questions. `make retrieval` compares four ways to use the rewrite:
+
+- **Search with the rewrite only** finds every lexical-gap clause (R@5 0.67 → 1.00) and all 7
+  old misses. But the rewrites are long (36 words on average) and general, often mentioning
+  "physical damage coverage" or the deductible, so the declarations page took rank 1 on
+  several questions the original wording got right: hit@1 fell from 0.62 to 0.60.
+- **Searching with both and fusing, reranking on the question** barely moves recall (0.78):
+  the cross-encoder reading the question is exactly what fails on these questions.
+- **Search with the rewrite, then add the cross-encoder's score for the question to its score
+  for the rewrite** keeps the recall and wins back top-1: hit@1 0.64, R@5 0.98, nDCG@5 0.82.
+
+I tried four ways of combining the two rerank scores on the same 50 questions. The top ones
+differ by 2–3 questions, so I picked the simplest one that kept full recall and stopped there.
+
+Rewriting is **off by default** (`CLAIMSIGHT_QUERY_REWRITE=off`). The only consumer today is
+the coverage agent, and it already searches in policy vocabulary (below), so turning it on
+would add an LLM call per claim for nothing. It becomes the default for free-text policy
+questions once the LLM coverage step reads the claimant's statement. CI replays the rewrites
+from a cassette, so the comparison table is checked on every push.
 
 **Coverage retrieves by peril, not by statement.** Searching with the claimant's whole
 statement let incidental details win: "the windshield is smashed" pulled glass clauses ahead
@@ -161,10 +185,12 @@ HNSW returns exactly the in-memory neighbours, and that the full stack scores id
 both backends. Postgres's `ts_rank_cd` is weaker than BM25 (hit@1 0.28 vs 0.38), another
 reason dense is the first stage.
 
-**Cassettes.** `cassettes/embeddings.json` (base64 float16 vectors) and `cassettes/rerank.json`
-(a score for every query × clause pair) let CI run all of this without torch. Replay raises
-on anything not recorded. `make record` re-records after changing clauses, queries, the
-peril queries or either model.
+**Cassettes.** `cassettes/embeddings.json` (base64 float16 vectors), `cassettes/rerank.json`
+(a score for every query × clause pair) and `cassettes/rewrites.json` (one rewrite per
+question, tagged with the model and a hash of the prompt) let CI run all of this without
+torch or an API key. Replay raises on anything not recorded. `make record` re-records after
+changing clauses, queries, the peril queries, any model or the rewrite prompt; the rewrite
+part needs Anthropic credentials and costs a few cents.
 
 ## Data sources
 
@@ -181,7 +207,8 @@ peril queries or either model.
 - [x] Weeks 1–2: schema, graph, API, eval harness, golden set v0, CI gate
 - [x] Weeks 1–2: synthetic claim generator (scenarios, LLM paraphrase, TTS voice notes) → 257 cases
 - [x] Weeks 3–4: 42-clause corpus, policy-QA eval, dense + rerank retrieval, pgvector ingest and lanes, CI integration job
-- [ ] Weeks 3–4, rest: LLM query rewriting for lexical-gap misses, LLM coverage reasoning with quote validation, ColQwen2 page lane
+- [x] Weeks 3–4: LLM query rewriting (policy-QA R@5 0.77 → 0.98, off by default until a free-text consumer exists)
+- [ ] Weeks 3–4, rest: LLM coverage reasoning with quote validation, ColQwen2 page lane
 - [ ] Weeks 5–6: fine-tune RT-DETR on CarDD, push to the HF Hub, record detector cassettes
 - [ ] Weeks 7–8: VLM statement/damage check, DINOv2 duplicate search, Postgres checkpointer
 - [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
@@ -194,7 +221,7 @@ src/claimsight/
   agents/        vision, coverage, verification, estimator, critic
   graph/         LangGraph state and wiring
   models/        detector (damage + parts), ASR
-  retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, pgvector lanes + ingest
+  retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, LLM query rewrite, pgvector
   tools/         NHTSA, weather, photo forensics, geo
   api/           FastAPI app with human review
 evals/           golden set, runner, gate, LLM judge
