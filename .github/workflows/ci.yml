@@ -9,8 +9,8 @@ jobs:
   test-and-eval:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.3
       - run: uv sync --group dev
       - run: uv run ruff check .
       - run: uv run pytest -q
@@ -23,7 +23,7 @@ jobs:
         run: uv run python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/ci.json
       - name: Block merge on eval regression
         run: uv run python -m evals.gate --report evals/reports/ci.json --baseline evals/baseline.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: eval-report
