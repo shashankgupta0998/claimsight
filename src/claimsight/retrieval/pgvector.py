@@ -55,6 +55,9 @@ def connect(database_url: str):
     from pgvector.psycopg import register_vector
 
     conn = psycopg.connect(database_url, autocommit=True)
+    # register_vector looks up the `vector` type, which only exists once the extension does.
+    # A fresh database (CI service, `make up`) has not run the schema yet.
+    conn.execute("CREATE EXTENSION IF NOT EXISTS vector")
     register_vector(conn)
     return conn
 
