@@ -8,6 +8,7 @@ where top-1 accuracy comes from: see the ablation in `evals/retrieval_eval.py`.
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from pathlib import Path
 from typing import Protocol
 
@@ -75,14 +76,22 @@ class CassetteReranker:
 
 
 class RerankingRetriever:
-    def __init__(self, first_stage: Retriever, reranker: Reranker, pool: int = 20):
+    def __init__(
+        self,
+        first_stage: Retriever,
+        reranker: Reranker,
+        pool: int = 20,
+        rerank_query: Callable[[str], str] | None = None,
+    ):
+        """`rerank_query` maps the search query to the text the cross-encoder reads."""
         self.first_stage, self.reranker, self.pool = first_stage, reranker, pool
+        self.rerank_query = rerank_query or (lambda q: q)
         self.name = f"{first_stage.name}>rerank:{reranker.name}"
 
     def search(self, query: str, k: int = 5) -> list[RetrievedChunk]:
         candidates = self.first_stage.search(query, k=self.pool)
         if not candidates:
             return []
-        scores = self.reranker.score(query, [c.text for c in candidates])
+        scores = self.reranker.score(self.rerank_query(query), [c.text for c in candidates])
         ranked = sorted(zip(scores, candidates, strict=True), key=lambda x: (-x[0], x[1].clause_id))
         return [RetrievedChunk(**{**c.__dict__, "score": round(s, 4)}) for s, c in ranked[:k]]
