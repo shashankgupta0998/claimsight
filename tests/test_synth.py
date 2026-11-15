@@ -76,6 +76,9 @@ def test_pipeline_runs_end_to_end_on_generated_claims(tmp_path, settings):
     (golden / "cassettes").mkdir(parents=True)
     for name in ("policy_clauses.jsonl", "policies.json"):
         shutil.copy(settings.golden_dir / name, golden / name)
+    # Coverage retrieves by peril, not by statement, so fresh claims need no new recordings.
+    for name in ("embeddings.json", "rerank.json"):
+        shutil.copy(settings.golden_dir / "cassettes" / name, golden / "cassettes" / name)
     data = generate(60, seed=5)
     (golden / "cassettes" / "weather.json").write_text(json.dumps(data.weather))
     (golden / "cassettes" / "vin.json").write_text(json.dumps(data.vins))

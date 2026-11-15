@@ -9,14 +9,14 @@ CREATE TABLE policy_docs (
     ingested_at timestamptz NOT NULL DEFAULT now()
 );
 
--- Text lane: one row per clause. Dense (bge-m3, 1024-d) + sparse (tsvector) for hybrid search.
+-- Text lane: one row per clause. Dense (bge-small-en-v1.5, 384-d) + sparse (tsvector).
 CREATE TABLE policy_chunks (
     clause_id text PRIMARY KEY,
     doc_id    text NOT NULL REFERENCES policy_docs,
     page      int,
     text      text NOT NULL,
     metadata  jsonb NOT NULL DEFAULT '{}',
-    embedding vector(1024),
+    embedding vector(384),
     tsv       tsvector GENERATED ALWAYS AS (to_tsvector('english', text)) STORED
 );
 CREATE INDEX policy_chunks_embedding_idx ON policy_chunks USING hnsw (embedding vector_cosine_ops);

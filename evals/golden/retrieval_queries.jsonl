@@ -1,0 +1,50 @@
+{"qid": "R01", "query": "Golf-ball sized hail dented my roof and hood. Is that covered?", "relevant": ["PP-D-COMP"], "tags": ["claimant"]}
+{"qid": "R02", "query": "A deer jumped out and I hit it on the highway", "relevant": ["PP-D-COMP"], "tags": ["claimant", "trap"]}
+{"qid": "R03", "query": "I rear-ended someone at a red light, will my policy pay to fix my bumper?", "relevant": ["PP-D-COLL"], "tags": ["claimant"]}
+{"qid": "R04", "query": "My car rolled over into a ditch on an icy road", "relevant": ["PP-D-COLL"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R05", "query": "A tree branch fell on my car during a storm", "relevant": ["PP-D-COMP"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R06", "query": "Someone keyed the paint down the whole side of my car", "relevant": ["PP-D-COMP"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R07", "query": "My car was underwater after the hurricane storm surge", "relevant": ["PP-D-COMP"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R08", "query": "A rock kicked up by a truck cracked my windshield", "relevant": ["PP-D-GLASS", "PP-D-COMP", "END-GLASS"], "tags": ["claimant"]}
+{"qid": "R09", "query": "Do I pay a deductible to replace a chipped windshield?", "relevant": ["END-GLASS", "PP-D-GLASS", "PP-DEC-DED"], "tags": ["claimant"]}
+{"qid": "R10", "query": "My windshield shattered in the same crash where I hit a pole", "relevant": ["PP-D-GLASS", "PP-D-COLL"], "tags": ["claimant"]}
+{"qid": "R11", "query": "My car was stolen from my driveway overnight, what do I need to do?", "relevant": ["PP-E-THEFT", "PP-D-COMP"], "tags": ["claimant"]}
+{"qid": "R12", "query": "Thieves broke in and took my laptop and phone from the back seat", "relevant": ["PP-D-EXCL-ELEC"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R13", "query": "They stole the factory-installed stereo out of my dashboard", "relevant": ["PP-D-EXCL-ELEC", "PP-D-COMP"], "tags": ["claimant"]}
+{"qid": "R14", "query": "Will you pay for a rental car while mine is in the body shop?", "relevant": ["PP-D-TRANSPORT", "END-RENTAL"], "tags": ["claimant"]}
+{"qid": "R15", "query": "How soon after my car was stolen can I get a loaner vehicle paid for?", "relevant": ["PP-D-THEFT-TRANSPORT", "PP-D-TRANSPORT"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R16", "query": "How much per day do you reimburse for a rental?", "relevant": ["PP-D-TRANSPORT", "END-RENTAL"], "tags": ["claimant"]}
+{"qid": "R17", "query": "My car broke down and I had to pay a tow truck", "relevant": ["PP-D-TOWING"], "tags": ["claimant"]}
+{"qid": "R18", "query": "The engine blew a head gasket, can I claim the repair?", "relevant": ["PP-D-EXCL"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R19", "query": "A pothole destroyed two of my tires", "relevant": ["PP-D-EXCL"], "tags": ["claimant"]}
+{"qid": "R20", "query": "I was driving for Uber with a passenger when I crashed", "relevant": ["PP-D-EXCL-BUSINESS"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R21", "query": "I took my car to a track day and wrecked it", "relevant": ["PP-D-EXCL"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R22", "query": "My custom paint job and lift kit on my pickup were damaged", "relevant": ["PP-D-EXCL-CUSTOM"], "tags": ["claimant"]}
+{"qid": "R23", "query": "The insurer says my car is totaled. How do they decide how much to pay me?", "relevant": ["PP-D-PAYMENT", "PP-D-LIMIT"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R24", "query": "I still owe more on my car loan than the car is worth after the total loss", "relevant": ["END-GAP"], "tags": ["claimant"]}
+{"qid": "R25", "query": "My brand new car was totaled three months after I bought it", "relevant": ["END-NEWCAR", "PP-D-PAYMENT"], "tags": ["claimant"]}
+{"qid": "R26", "query": "I disagree with the adjuster's estimate of the damage", "relevant": ["PP-D-APPRAISAL"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R27", "query": "Why did they deduct for depreciation when they put new parts on?", "relevant": ["PP-D-BETTERMENT"], "tags": ["claimant"]}
+{"qid": "R28", "query": "A driver hit my car and drove off before I got the plate", "relevant": ["PP-C-HITRUN", "PP-E-THEFT"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R29", "query": "The other driver who hit me had no insurance, who pays for my car?", "relevant": ["PP-C-UMPD", "PP-D-COLL"], "tags": ["claimant"]}
+{"qid": "R30", "query": "I was injured in the accident and have hospital bills", "relevant": ["PP-B-MEDPAY"], "tags": ["claimant"]}
+{"qid": "R31", "query": "I backed into my neighbor's fence, who pays for the fence?", "relevant": ["PP-A-PD"], "tags": ["claimant"]}
+{"qid": "R32", "query": "I crashed my friend's car that I borrowed for the weekend", "relevant": ["PP-DEF-NONOWNED", "PP-D-OTHERINS", "PP-D-COLL"], "tags": ["claimant"]}
+{"qid": "R33", "query": "I just bought a second car last week, is it covered yet?", "relevant": ["PP-DEF-NEWAUTO"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R34", "query": "My daughter who lives with me was driving when it happened", "relevant": ["PP-DEF-FAMILY"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R35", "query": "The accident happened on vacation in Cancun", "relevant": ["PP-F-TERRITORY"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R36", "query": "How long do I have to report a claim after an accident?", "relevant": ["PP-E-DUTIES"], "tags": ["claimant"]}
+{"qid": "R37", "query": "Do I have to let the insurer inspect my car before the shop fixes it?", "relevant": ["PP-E-DUTIES"], "tags": ["claimant"]}
+{"qid": "R38", "query": "I covered my broken window with plastic to keep rain out. Can I get that reimbursed?", "relevant": ["PP-E-PROTECT"], "tags": ["claimant", "lexical_gap"]}
+{"qid": "R39", "query": "Will I get my deductible back if the other driver was at fault?", "relevant": ["PP-F-SUBRO", "PP-DEC-DED"], "tags": ["claimant"]}
+{"qid": "R40", "query": "What deductible applies to a collision claim on my policy?", "relevant": ["PP-DEC-DED", "PP-D-COLL"], "tags": ["adjuster"]}
+{"qid": "R41", "query": "Is flood damage excluded or covered under physical damage?", "relevant": ["PP-D-COMP"], "tags": ["adjuster"]}
+{"qid": "R42", "query": "Claimant misrepresented the date of loss; grounds to deny?", "relevant": ["PP-F-FRAUD"], "tags": ["adjuster", "lexical_gap"]}
+{"qid": "R43", "query": "Claimant refuses examination under oath", "relevant": ["PP-E-EXAM"], "tags": ["adjuster"]}
+{"qid": "R44", "query": "Was the vehicle a temporary substitute while the insured's car was in the shop?", "relevant": ["PP-DEF-COVAUTO"], "tags": ["adjuster"]}
+{"qid": "R45", "query": "Vehicle seized by police during a drug investigation", "relevant": ["PP-D-EXCL-GOV"], "tags": ["adjuster", "lexical_gap"]}
+{"qid": "R46", "query": "Insured intentionally rammed his ex-partner's car", "relevant": ["PP-A-EXCL"], "tags": ["adjuster", "lexical_gap"]}
+{"qid": "R47", "query": "Is the policy still in force if the premium payment bounced?", "relevant": ["PP-F-CANCEL"], "tags": ["adjuster", "lexical_gap"]}
+{"qid": "R48", "query": "Maximum we owe on a physical damage claim", "relevant": ["PP-D-LIMIT"], "tags": ["adjuster", "lexical_gap"]}
+{"qid": "R49", "query": "Insured's car was damaged while a mechanic was test-driving it", "relevant": ["PP-D-EXCL-NONOWNED"], "tags": ["adjuster", "lexical_gap"]}
+{"qid": "R50", "query": "Mice chewed through the wiring under the hood", "relevant": ["PP-D-COMP", "PP-D-EXCL"], "tags": ["claimant", "lexical_gap"]}

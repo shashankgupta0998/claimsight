@@ -16,7 +16,8 @@ from claimsight.config import Settings, get_settings
 from claimsight.interfaces import Detector, PhotoIndex, Transcriber, VinDecoder, WeatherEvidence
 from claimsight.models.detector import ReplayDetector
 from claimsight.policies import JsonPolicyStore
-from claimsight.retrieval import BM25Retriever, Retriever
+from claimsight.retrieval import Retriever
+from claimsight.retrieval.factory import RetrievalStack, build_retrieval
 from claimsight.tools.nhtsa import NHTSAVinDecoder, ReplayVinDecoder
 from claimsight.tools.photos import InMemoryPhotoIndex
 from claimsight.tools.weather import LiveWeather, ReplayWeather
@@ -33,6 +34,7 @@ class Deps:
     photo_index: PhotoIndex
     transcriber: Transcriber | None = None
     impact_classifier: ImpactClassifier = field(default_factory=RuleImpactClassifier)
+    retrieval: RetrievalStack | None = None
 
     def model_versions(self) -> dict[str, str]:
         parts = {
@@ -55,9 +57,12 @@ def _merge_json(paths) -> dict:
     return merged
 
 
-def _shared(golden: Path) -> dict:
+def _shared(s: Settings, online: bool) -> dict:
+    golden = Path(s.golden_dir)
+    stack = build_retrieval(s, online=online)
     return {
-        "retriever": BM25Retriever.from_jsonl(golden / "policy_clauses.jsonl"),
+        "retriever": stack.retriever,
+        "retrieval": stack,
         "policies": JsonPolicyStore.from_file(golden / "policies.json"),
         "photo_index": InMemoryPhotoIndex.from_files(sorted(golden.glob("prior_photos*.jsonl"))),
     }
@@ -79,7 +84,7 @@ def build_replay_deps(settings: Settings | None = None) -> Deps:
         vin_decoder=ReplayVinDecoder(_merge_json(golden.glob("cassettes/vin*.json"))),
         weather=ReplayWeather(_merge_json(golden.glob("cassettes/weather*.json"))),
         impact_classifier=_impact(s, offline=True),
-        **_shared(golden),
+        **_shared(s, online=False),
     )
 
 
@@ -88,11 +93,6 @@ def build_live_deps(settings: Settings | None = None) -> Deps:
     from claimsight.models.asr import WhisperTranscriber
     from claimsight.models.detector import HFDetector
 
-    shared = _shared(Path(s.golden_dir))
-    if s.retriever == "pgvector":
-        from claimsight.retrieval.pgvector import PgVectorRetriever
-
-        shared["retriever"] = PgVectorRetriever(s.database_url, s.embed_model)
     return Deps(
         settings=s,
         detector=HFDetector(s.detector_model, s.part_detector_model),
@@ -100,7 +100,7 @@ def build_live_deps(settings: Settings | None = None) -> Deps:
         weather=LiveWeather(timeout=s.http_timeout_s),
         transcriber=WhisperTranscriber(s.asr_model),
         impact_classifier=_impact(s, offline=False),
-        **shared,
+        **_shared(s, online=True),
     )
 
 

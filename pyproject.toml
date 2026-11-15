@@ -17,8 +17,11 @@ dependencies = [
 [project.optional-dependencies]
 # Real models (detector, part finder, ASR). Heavy: install only on machines that run inference.
 ml = ["torch>=2.4", "transformers>=4.46", "accelerate>=0.34", "timm>=1.0"]
-# Hybrid retrieval on Postgres + pgvector.
-rag = ["psycopg[binary]>=3.2", "pgvector>=0.3", "sentence-transformers>=3.2", "numpy>=1.26"]
+# Postgres + pgvector client. Light: CI's integration job installs only this.
+pg = ["psycopg[binary]>=3.2", "pgvector>=0.3", "numpy>=1.26"]
+# Embedding model for recording embedding cassettes and live mode. Pulls in torch.
+embed = ["sentence-transformers>=3.2"]
+rag = ["claimsight[pg,embed]"]
 # LLM judge and tracing.
 llm = ["anthropic>=0.40", "langfuse>=2.50"]
 
@@ -35,6 +38,7 @@ packages = ["src/claimsight"]
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]
 testpaths = ["tests"]
+markers = ["pg: needs Postgres + pgvector (set CLAIMSIGHT_TEST_DATABASE_URL)"]
 
 [tool.ruff]
 line-length = 100

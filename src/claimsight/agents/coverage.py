@@ -1,8 +1,18 @@
 """Coverage agent: retrieve policy language, decide which coverage part applies, cite it.
 
-v0 is deterministic (clause metadata + declarations). Week 3-4 upgrade: an LLM reads the
-retrieved clauses, must quote the clause it relies on, and a validator rejects any
-citation whose clause_id was not in the retrieved set.
+Retrieval runs two targeted queries instead of one search over the claimant's statement:
+
+* the peril, in the policy's own vocabulary, taken from the structured loss type that intake
+  already captured ("vandalism" -> "malicious mischief or vandalism");
+* the declarations page, which holds the deductibles.
+
+Searching with the whole statement let incidental details win: "the windshield is smashed"
+pulled the glass clauses ahead of the vandalism one, and "someone keyed both doors" matched
+nothing useful. The statement still matters for exclusions; that is the job of the LLM
+coverage step on the roadmap, which reads the retrieved clauses alongside the statement.
+
+The decision is still deterministic: clause metadata says which coverage part a clause
+grants, and the policy says whether the insured carries it.
 """
 
 from __future__ import annotations
@@ -21,15 +31,40 @@ def _cite(chunk: RetrievedChunk, max_chars: int = 180) -> Citation:
     )
 
 
+# Each loss type in the policy's own words. Paraphrased, not copied from any clause text.
+PERIL_QUERIES = {
+    "collision": "collision: impact with another vehicle or object, or upset of the auto",
+    "hail": "hail damage to the auto",
+    "flood": "water or flood damage to the auto",
+    "animal": "contact with a bird or animal",
+    "glass": "breakage of glass such as a windshield",
+    "theft": "theft or larceny of the auto",
+    "vandalism": "malicious mischief or vandalism",
+}
+DECLARATIONS_QUERY = "declarations page: deductible for each physical damage coverage"
+
+
+def _dedupe(chunks: list[RetrievedChunk]) -> list[RetrievedChunk]:
+    seen: set[str] = set()
+    return [c for c in chunks if not (c.clause_id in seen or seen.add(c.clause_id))]
+
+
 @dataclass
 class CoverageAgent:
     retriever: Retriever
     policies: JsonPolicyStore
     k: int = 5
 
+    def retrieve(self, claim: ClaimInput) -> list[RetrievedChunk]:
+        peril = PERIL_QUERIES.get(claim.loss_type.value, claim.loss_type.value)
+        peril_hits = self.retriever.search(peril, k=self.k)
+        declarations = self.retriever.search(DECLARATIONS_QUERY, k=1)
+        # The decision needs the best peril clause and the declarations (deductibles): rank
+        # those first, then the rest of the peril hits as context.
+        return _dedupe(peril_hits[:1] + declarations + peril_hits[1:])[: self.k]
+
     def run(self, claim: ClaimInput, statement: str) -> tuple[CoverageFinding, list[str]]:
-        query = f"{claim.loss_type.value} {statement} deductible"
-        chunks = self.retriever.search(query, k=self.k)
+        chunks = self.retrieve(claim)
         retrieved_ids = [c.clause_id for c in chunks]
 
         policy = self.policies.get(claim.policy_id)

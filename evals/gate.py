@@ -14,6 +14,9 @@ from pathlib import Path
 GATED = (
     "decision_accuracy",
     "retrieval_recall_at_5",
+    "policy_qa_hit_at_1",
+    "policy_qa_recall_at_5",
+    "policy_qa_ndcg_at_5",
     "citation_precision",
     "damage_precision",
     "damage_recall",

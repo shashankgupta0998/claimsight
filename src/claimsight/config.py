@@ -19,12 +19,22 @@ class Settings(BaseSettings):
 
     database_url: str = "postgresql://claimsight:claimsight@localhost:5432/claimsight"
     redis_url: str = "redis://localhost:6379/0"
-    retriever: Literal["keyword", "pgvector"] = "keyword"
+    # Policy retrieval. First stage: keyword (BM25 / tsvector), dense, or hybrid (RRF of both).
+    # Optional cross-encoder rerank of the first stage's top `rerank_pool`.
+    # Backend: in-memory (replay, CI) or Postgres + pgvector.
+    retriever: Literal["keyword", "dense", "hybrid"] = "dense"
+    rerank: bool = True
+    rerank_pool: int = 20
+    vector_store: Literal["memory", "pgvector"] = "memory"
+    # Replay records missing embeddings / rerank scores instead of failing (needs `embed`).
+    record_retrieval: bool = False
 
     detector_model: str = "your-hf-username/rtdetr-cardd"
     part_detector_model: str = "google/owlv2-base-patch16-ensemble"
     asr_model: str = "openai/whisper-large-v3-turbo"
-    embed_model: str = "BAAI/bge-m3"
+    embed_model: str = "BAAI/bge-small-en-v1.5"
+    embed_query_prefix: str = "Represent this sentence for searching relevant passages: "
+    rerank_model: str = "BAAI/bge-reranker-v2-m3"
     reasoning_model: str = "claude-sonnet-5-5"
     routing_model: str = "claude-haiku-5-5"
 
