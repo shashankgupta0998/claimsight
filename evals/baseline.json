@@ -1,0 +1,7714 @@
+{
+  "metrics": {
+    "n_cases": 257,
+    "decision_accuracy": 1.0,
+    "escalation_rate": 0.3307,
+    "retrieval_recall_at_5": 1.0,
+    "retrieval_ndcg_at_5": 0.9394,
+    "citation_precision": 1.0,
+    "damage_precision": 0.9764,
+    "damage_recall": 0.98,
+    "fraud_precision": 1.0,
+    "fraud_recall": 1.0,
+    "latency_p50_ms": 0.86,
+    "latency_p95_ms": 1.01
+  },
+  "slices": {
+    "animal": {
+      "n": 25,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "collision": {
+      "n": 107,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "deny": {
+      "n": 26,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "flood": {
+      "n": 26,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "fraud": {
+      "n": 38,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "fraud:duplicate_photo": {
+      "n": 10,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "fraud:exif_backdate": {
+      "n": 7,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "fraud:exif_location": {
+      "n": 4,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "fraud:statement_flip": {
+      "n": 9,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "fraud:weather": {
+      "n": 6,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "glass": {
+      "n": 24,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "hail": {
+      "n": 40,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "hand_curated": {
+      "n": 17,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "hard:near_duplicate": {
+      "n": 8,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "hard:photo_nearby_town": {
+      "n": 9,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "hard:photo_prev_evening": {
+      "n": 8,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "hard_negative": {
+      "n": 27,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "legit": {
+      "n": 115,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "low_evidence": {
+      "n": 15,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "major": {
+      "n": 19,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "no_exif": {
+      "n": 17,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "vandalism": {
+      "n": 18,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "zone:front": {
+      "n": 43,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "zone:rear": {
+      "n": 51,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    },
+    "zone:side": {
+      "n": 13,
+      "decision_accuracy": 1.0,
+      "flag_exact_match": 1.0
+    }
+  },
+  "cases": [
+    {
+      "claim_id": "CLM-0001",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.9,
+      "estimate_high": 2829.0,
+      "latency_ms": 3.25,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0002",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.63,
+      "estimate_high": 966.0,
+      "latency_ms": 1.28,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0003",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.88,
+      "estimate_high": 1437.5,
+      "latency_ms": 1.09,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0004",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.627,
+      "estimate_high": 3110.75,
+      "latency_ms": 1.03,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0005",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.9,
+      "estimate_high": 646.88,
+      "latency_ms": 0.89,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0006",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.93,
+      "estimate_high": 646.88,
+      "latency_ms": 0.95,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0007",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.65,
+      "estimate_high": 1681.87,
+      "latency_ms": 0.9,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0008",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.65,
+      "estimate_high": 685.69,
+      "latency_ms": 0.93,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0009",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "vin_decode"
+      ],
+      "predicted_flags": [
+        "vin_decode"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.61,
+      "estimate_high": 1342.62,
+      "latency_ms": 0.96,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0010",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.888,
+      "estimate_high": 11005.5,
+      "latency_ms": 0.88,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0001-V-EXIF",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.65,
+      "estimate_high": 2829.0,
+      "latency_ms": 0.91,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0001-V-DUP",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.65,
+      "estimate_high": 2829.0,
+      "latency_ms": 0.95,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0003-V-EXIF",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.63,
+      "estimate_high": 1437.5,
+      "latency_ms": 0.97,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0003-V-DUP",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.63,
+      "estimate_high": 1437.5,
+      "latency_ms": 0.88,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0003-V-FLIP",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.63,
+      "estimate_high": 1437.5,
+      "latency_ms": 0.92,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0006-V-EXIF",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.68,
+      "estimate_high": 646.88,
+      "latency_ms": 0.84,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "CLM-0006-V-DUP",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.68,
+      "estimate_high": 646.88,
+      "latency_ms": 0.85,
+      "tags": [
+        "hand_curated"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0001",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.883,
+      "estimate_high": 3033.12,
+      "latency_ms": 0.91,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0002",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.52,
+      "estimate_high": 522.67,
+      "latency_ms": 0.96,
+      "tags": [
+        "low_evidence",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0003",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 1620.64,
+      "latency_ms": 0.86,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0004",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.9,
+      "estimate_high": 1446.12,
+      "latency_ms": 0.93,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0005",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.8,
+      "estimate_high": 635.95,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0006",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.85,
+      "estimate_high": 787.75,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0007",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        2,
+        1
+      ],
+      "confidence": 0.67,
+      "estimate_high": 1809.81,
+      "latency_ms": 1.19,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0008",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.815,
+      "estimate_high": 2279.3,
+      "latency_ms": 0.85,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0009",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.77,
+      "estimate_high": 840.94,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0010",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.935,
+      "estimate_high": 1684.46,
+      "latency_ms": 0.89,
+      "tags": [
+        "hard_negative",
+        "vandalism",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0011",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.81,
+      "estimate_high": 1644.5,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0012",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.71,
+      "estimate_high": 943.0,
+      "latency_ms": 0.86,
+      "tags": [
+        "fraud",
+        "flood",
+        "fraud:weather"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0013",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.845,
+      "estimate_high": 1537.84,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0014",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.84,
+      "estimate_high": 1428.01,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0015",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.8,
+      "estimate_high": 1967.94,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0016",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 1274.2,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0017",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.96,
+      "estimate_high": 692.88,
+      "latency_ms": 0.79,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:side",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0018",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.605,
+      "estimate_high": 1995.82,
+      "latency_ms": 0.86,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:weather"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0019",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.84,
+      "estimate_high": 11407.42,
+      "latency_ms": 0.95,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0020",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.86,
+      "estimate_high": 925.75,
+      "latency_ms": 0.77,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0021",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.76,
+      "estimate_high": 770.5,
+      "latency_ms": 0.9,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0022",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.87,
+      "estimate_high": 539.35,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0023",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.79,
+      "estimate_high": 2373.6,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0024",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.67,
+      "estimate_high": 533.31,
+      "latency_ms": 0.83,
+      "tags": [
+        "fraud",
+        "vandalism",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0025",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.615,
+      "estimate_high": 2196.5,
+      "latency_ms": 0.94,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0026",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.89,
+      "estimate_high": 1045.35,
+      "latency_ms": 0.79,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0027",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        2
+      ],
+      "confidence": 0.56,
+      "estimate_high": 1355.85,
+      "latency_ms": 0.88,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:front",
+        "fraud:statement_flip",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0028",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.807,
+      "estimate_high": 3398.82,
+      "latency_ms": 0.86,
+      "tags": [
+        "legit",
+        "hail",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0029",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.933,
+      "estimate_high": 2089.55,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0030",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.57,
+      "estimate_high": 406.52,
+      "latency_ms": 0.83,
+      "tags": [
+        "low_evidence",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0031",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.825,
+      "estimate_high": 1183.92,
+      "latency_ms": 0.9,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0032",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.89,
+      "estimate_high": 11212.5,
+      "latency_ms": 0.9,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0033",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.82,
+      "estimate_high": 1623.8,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0034",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.83,
+      "estimate_high": 800.97,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0035",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.892,
+      "estimate_high": 4200.38,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0036",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.832,
+      "estimate_high": 10750.2,
+      "latency_ms": 0.88,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0037",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.905,
+      "estimate_high": 2461.57,
+      "latency_ms": 0.9,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0038",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.835,
+      "estimate_high": 1358.15,
+      "latency_ms": 0.8,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0039",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.85,
+      "estimate_high": 899.87,
+      "latency_ms": 0.91,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0040",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.817,
+      "estimate_high": 2966.42,
+      "latency_ms": 0.92,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0041",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.645,
+      "estimate_high": 1841.44,
+      "latency_ms": 0.88,
+      "tags": [
+        "fraud",
+        "vandalism",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0042",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.832,
+      "estimate_high": 10049.85,
+      "latency_ms": 0.89,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0043",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.873,
+      "estimate_high": 3246.16,
+      "latency_ms": 1.06,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0044",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        4,
+        3
+      ],
+      "confidence": 0.787,
+      "estimate_high": 2942.27,
+      "latency_ms": 0.85,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0045",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.917,
+      "estimate_high": 9219.55,
+      "latency_ms": 0.89,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0046",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.865,
+      "estimate_high": 2351.75,
+      "latency_ms": 0.92,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0047",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.867,
+      "estimate_high": 2855.74,
+      "latency_ms": 0.82,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0048",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.78,
+      "estimate_high": 1266.15,
+      "latency_ms": 0.86,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0049",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.52,
+      "estimate_high": 1819.3,
+      "latency_ms": 0.92,
+      "tags": [
+        "fraud",
+        "animal",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0050",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        4,
+        3
+      ],
+      "confidence": 0.532,
+      "estimate_high": 2139.57,
+      "latency_ms": 0.86,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0051",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.94,
+      "estimate_high": 1107.45,
+      "latency_ms": 0.81,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0052",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.81,
+      "estimate_high": 736.0,
+      "latency_ms": 0.87,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0053",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.885,
+      "estimate_high": 1359.88,
+      "latency_ms": 0.79,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0054",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.91,
+      "estimate_high": 3024.5,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0055",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.813,
+      "estimate_high": 2810.6,
+      "latency_ms": 0.86,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0056",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.538,
+      "estimate_high": 2994.6,
+      "latency_ms": 0.82,
+      "tags": [
+        "low_evidence",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0057",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.835,
+      "estimate_high": 2140.72,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0058",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.8,
+      "estimate_high": 639.11,
+      "latency_ms": 0.85,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0059",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.55,
+      "estimate_high": 794.36,
+      "latency_ms": 0.98,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:duplicate_photo",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0060",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.76,
+      "estimate_high": 1154.02,
+      "latency_ms": 0.94,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0061",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.915,
+      "estimate_high": 2534.02,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0062",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.83,
+      "estimate_high": 805.0,
+      "latency_ms": 0.86,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0063",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.55,
+      "estimate_high": 3241.85,
+      "latency_ms": 0.88,
+      "tags": [
+        "low_evidence",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0064",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        4,
+        3
+      ],
+      "confidence": 0.54,
+      "estimate_high": 3634.29,
+      "latency_ms": 0.93,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:exif_location"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0065",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.95,
+      "estimate_high": 670.16,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0066",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.617,
+      "estimate_high": 2923.59,
+      "latency_ms": 0.84,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0067",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.925,
+      "estimate_high": 1891.17,
+      "latency_ms": 0.9,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0068",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        3,
+        2
+      ],
+      "confidence": 0.797,
+      "estimate_high": 2667.71,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0069",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.817,
+      "estimate_high": 3073.66,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0070",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.85,
+      "estimate_high": 2228.7,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0071",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.785,
+      "estimate_high": 2125.2,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0072",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 960.25,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0073",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.9,
+      "estimate_high": 2958.66,
+      "latency_ms": 0.88,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0074",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.86,
+      "estimate_high": 382.37,
+      "latency_ms": 0.77,
+      "tags": [
+        "hard_negative",
+        "vandalism",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0075",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.76,
+      "estimate_high": 1054.55,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0076",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.903,
+      "estimate_high": 2601.88,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0077",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.876,
+      "estimate_high": 11281.5,
+      "latency_ms": 0.88,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0078",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.89,
+      "estimate_high": 1696.25,
+      "latency_ms": 0.92,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0079",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "vin_decode"
+      ],
+      "predicted_flags": [
+        "vin_decode"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.58,
+      "estimate_high": 2264.92,
+      "latency_ms": 1.22,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:front",
+        "fraud:vin_mismatch"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0080",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.857,
+      "estimate_high": 2364.4,
+      "latency_ms": 0.81,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0081",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.89,
+      "estimate_high": 771.07,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0082",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.813,
+      "estimate_high": 2885.35,
+      "latency_ms": 12.45,
+      "tags": [
+        "hard_negative",
+        "animal",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0083",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.8,
+      "estimate_high": 805.0,
+      "latency_ms": 0.96,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0084",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.885,
+      "estimate_high": 9750.27,
+      "latency_ms": 1.03,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0085",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.53,
+      "estimate_high": 1177.89,
+      "latency_ms": 0.95,
+      "tags": [
+        "low_evidence",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0086",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.88,
+      "estimate_high": 2031.19,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0087",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        3
+      ],
+      "confidence": 0.965,
+      "estimate_high": 2143.6,
+      "latency_ms": 0.89,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0088",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.88,
+      "estimate_high": 2570.25,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0089",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.83,
+      "estimate_high": 3038.3,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0090",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.96,
+      "estimate_high": 833.17,
+      "latency_ms": 0.9,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0091",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.79,
+      "estimate_high": 600.3,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0092",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.84,
+      "estimate_high": 1622.94,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0093",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.875,
+      "estimate_high": 1410.76,
+      "latency_ms": 0.9,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:side",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0094",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "vin_decode"
+      ],
+      "predicted_flags": [
+        "vin_decode"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.54,
+      "estimate_high": 592.54,
+      "latency_ms": 0.9,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:vin_mismatch"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0095",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.515,
+      "estimate_high": 1491.26,
+      "latency_ms": 0.87,
+      "tags": [
+        "fraud",
+        "vandalism",
+        "fraud:duplicate_photo",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0096",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.77,
+      "estimate_high": 1610.0,
+      "latency_ms": 0.88,
+      "tags": [
+        "legit",
+        "flood",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0097",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.577,
+      "estimate_high": 3112.19,
+      "latency_ms": 0.88,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0098",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.667,
+      "estimate_high": 2128.94,
+      "latency_ms": 0.89,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0099",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.93,
+      "estimate_high": 592.54,
+      "latency_ms": 0.91,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0100",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.795,
+      "estimate_high": 2212.02,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0101",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.84,
+      "estimate_high": 639.11,
+      "latency_ms": 0.82,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0102",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.82,
+      "estimate_high": 1802.05,
+      "latency_ms": 1.0,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0103",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.51,
+      "estimate_high": 1332.27,
+      "latency_ms": 0.86,
+      "tags": [
+        "fraud",
+        "glass",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0104",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.9,
+      "estimate_high": 779.12,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0105",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.85,
+      "estimate_high": 10774.35,
+      "latency_ms": 0.98,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0106",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.79,
+      "estimate_high": 1543.59,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0107",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.54,
+      "estimate_high": 1860.12,
+      "latency_ms": 0.86,
+      "tags": [
+        "low_evidence",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0108",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.5,
+      "estimate_high": 1635.3,
+      "latency_ms": 0.94,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0109",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.66,
+      "estimate_high": 1050.24,
+      "latency_ms": 0.88,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0110",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.87,
+      "estimate_high": 561.49,
+      "latency_ms": 0.8,
+      "tags": [
+        "hard_negative",
+        "animal",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0111",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.852,
+      "estimate_high": 10217.17,
+      "latency_ms": 0.9,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0112",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.665,
+      "estimate_high": 1587.86,
+      "latency_ms": 0.85,
+      "tags": [
+        "fraud",
+        "vandalism",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0113",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.825,
+      "estimate_high": 10241.9,
+      "latency_ms": 0.89,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0114",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.82,
+      "estimate_high": 3391.06,
+      "latency_ms": 0.9,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0115",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.855,
+      "estimate_high": 2143.02,
+      "latency_ms": 0.84,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0116",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.93,
+      "estimate_high": 522.67,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0117",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.895,
+      "estimate_high": 2699.62,
+      "latency_ms": 1.12,
+      "tags": [
+        "hard_negative",
+        "hail",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0118",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.77,
+      "estimate_high": 864.22,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0119",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.73,
+      "estimate_high": 1054.55,
+      "latency_ms": 0.77,
+      "tags": [
+        "legit",
+        "glass",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0120",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.593,
+      "estimate_high": 2671.45,
+      "latency_ms": 0.94,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0121",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.75,
+      "estimate_high": 840.94,
+      "latency_ms": 0.9,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0122",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.54,
+      "estimate_high": 436.71,
+      "latency_ms": 0.87,
+      "tags": [
+        "low_evidence",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0123",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 2127.5,
+      "latency_ms": 0.89,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0124",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.575,
+      "estimate_high": 1354.7,
+      "latency_ms": 0.84,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0125",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.91,
+      "estimate_high": 874.0,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0126",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.7,
+      "estimate_high": 771.07,
+      "latency_ms": 0.91,
+      "tags": [
+        "fraud",
+        "glass",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0127",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.828,
+      "estimate_high": 3048.07,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0128",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.84,
+      "estimate_high": 1296.05,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0129",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.865,
+      "estimate_high": 1239.12,
+      "latency_ms": 0.89,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0130",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.82,
+      "estimate_high": 794.36,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0131",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.855,
+      "estimate_high": 1334.86,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0132",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.79,
+      "estimate_high": 967.72,
+      "latency_ms": 0.91,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0133",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.897,
+      "estimate_high": 3109.89,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0134",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.85,
+      "estimate_high": 960.25,
+      "latency_ms": 0.82,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0135",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.59,
+      "estimate_high": 1066.62,
+      "latency_ms": 0.91,
+      "tags": [
+        "fraud",
+        "glass",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0136",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.597,
+      "estimate_high": 3178.02,
+      "latency_ms": 0.92,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:exif_location"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0137",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.92,
+      "estimate_high": 744.62,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0138",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.905,
+      "estimate_high": 1515.12,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0139",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.47,
+      "estimate_high": 744.62,
+      "latency_ms": 0.86,
+      "tags": [
+        "fraud",
+        "flood",
+        "fraud:weather",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0140",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.655,
+      "estimate_high": 1805.21,
+      "latency_ms": 0.97,
+      "tags": [
+        "fraud",
+        "vandalism",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0141",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.863,
+      "estimate_high": 3452.3,
+      "latency_ms": 0.87,
+      "tags": [
+        "hard_negative",
+        "hail",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0142",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.78,
+      "estimate_high": 708.97,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0143",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.85,
+      "estimate_high": 1696.25,
+      "latency_ms": 0.77,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0144",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.91,
+      "estimate_high": 1588.72,
+      "latency_ms": 0.92,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0145",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.775,
+      "estimate_high": 2040.67,
+      "latency_ms": 0.82,
+      "tags": [
+        "legit",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0146",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.84,
+      "estimate_high": 3191.25,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0147",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        3
+      ],
+      "confidence": 0.83,
+      "estimate_high": 1814.7,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0148",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.76,
+      "estimate_high": 813.62,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0149",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        3
+      ],
+      "confidence": 0.85,
+      "estimate_high": 1775.6,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0150",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.6,
+      "estimate_high": 732.26,
+      "latency_ms": 0.92,
+      "tags": [
+        "fraud",
+        "glass",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0151",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.855,
+      "estimate_high": 1159.77,
+      "latency_ms": 0.82,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0152",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.54,
+      "estimate_high": 693.45,
+      "latency_ms": 0.87,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:statement_flip",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0153",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.89,
+      "estimate_high": 1601.37,
+      "latency_ms": 1.14,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0154",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.83,
+      "estimate_high": 833.17,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0155",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.837,
+      "estimate_high": 3354.84,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0156",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.79,
+      "estimate_high": 2601.3,
+      "latency_ms": 0.85,
+      "tags": [
+        "legit",
+        "hail",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0157",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.872,
+      "estimate_high": 10734.67,
+      "latency_ms": 0.88,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0158",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.565,
+      "estimate_high": 1570.9,
+      "latency_ms": 0.94,
+      "tags": [
+        "low_evidence",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0159",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        2,
+        1
+      ],
+      "confidence": 0.45,
+      "estimate_high": 1488.96,
+      "latency_ms": 0.99,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:rear",
+        "fraud:exif_location"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0160",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.78,
+      "estimate_high": 10648.42,
+      "latency_ms": 0.89,
+      "tags": [
+        "major",
+        "animal",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0161",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.91,
+      "estimate_high": 1392.65,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0162",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.96,
+      "estimate_high": 600.3,
+      "latency_ms": 0.86,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0163",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        2,
+        1
+      ],
+      "confidence": 0.675,
+      "estimate_high": 1722.7,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0164",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "duplicate_photos"
+      ],
+      "predicted_flags": [
+        "duplicate_photos"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.52,
+      "estimate_high": 744.62,
+      "latency_ms": 0.9,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:side",
+        "fraud:duplicate_photo"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0165",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.93,
+      "estimate_high": 575.57,
+      "latency_ms": 0.9,
+      "tags": [
+        "legit",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0166",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.885,
+      "estimate_high": 2528.85,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0167",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.53,
+      "estimate_high": 1546.17,
+      "latency_ms": 0.86,
+      "tags": [
+        "low_evidence",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0168",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.85,
+      "estimate_high": 701.21,
+      "latency_ms": 0.92,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0169",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.85,
+      "estimate_high": 1990.65,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0170",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.85,
+      "estimate_high": 1610.0,
+      "latency_ms": 0.81,
+      "tags": [
+        "hard_negative",
+        "flood",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0171",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.827,
+      "estimate_high": 3146.97,
+      "latency_ms": 0.84,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0172",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 2813.47,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "hail",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0173",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.85,
+      "estimate_high": 3355.7,
+      "latency_ms": 0.81,
+      "tags": [
+        "hard_negative",
+        "hail",
+        "hard:hail_code_only"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0174",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.87,
+      "estimate_high": 994.75,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0175",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.777,
+      "estimate_high": 2742.46,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0176",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.877,
+      "estimate_high": 10790.45,
+      "latency_ms": 0.89,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0177",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        6,
+        5
+      ],
+      "confidence": 0.847,
+      "estimate_high": 10515.6,
+      "latency_ms": 0.93,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0178",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.867,
+      "estimate_high": 3067.62,
+      "latency_ms": 0.88,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0179",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.845,
+      "estimate_high": 1713.5,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0180",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.93,
+      "estimate_high": 1344.35,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0181",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.877,
+      "estimate_high": 2544.38,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0182",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.917,
+      "estimate_high": 2920.14,
+      "latency_ms": 0.81,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0183",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.965,
+      "estimate_high": 1421.4,
+      "latency_ms": 0.88,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0184",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 1894.62,
+      "latency_ms": 0.8,
+      "tags": [
+        "hard_negative",
+        "flood",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0185",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.87,
+      "estimate_high": 1344.35,
+      "latency_ms": 0.78,
+      "tags": [
+        "hard_negative",
+        "glass",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0186",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.86,
+      "estimate_high": 2012.5,
+      "latency_ms": 0.88,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0187",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        4
+      ],
+      "confidence": 0.81,
+      "estimate_high": 7657.85,
+      "latency_ms": 0.88,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0188",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.66,
+      "estimate_high": 805.0,
+      "latency_ms": 0.86,
+      "tags": [
+        "fraud",
+        "flood",
+        "fraud:weather"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0189",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.83,
+      "estimate_high": 921.15,
+      "latency_ms": 1.06,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0190",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.877,
+      "estimate_high": 3285.84,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0191",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        3
+      ],
+      "confidence": 0.925,
+      "estimate_high": 2637.52,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0192",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        3
+      ],
+      "confidence": 0.95,
+      "estimate_high": 1642.77,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0193",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.887,
+      "estimate_high": 2689.56,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0194",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.81,
+      "estimate_high": 2088.97,
+      "latency_ms": 0.8,
+      "tags": [
+        "hard_negative",
+        "hail",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0195",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        3
+      ],
+      "confidence": 0.96,
+      "estimate_high": 7774.57,
+      "latency_ms": 0.9,
+      "tags": [
+        "major",
+        "animal"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0196",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.827,
+      "estimate_high": 2946.01,
+      "latency_ms": 0.77,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0197",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.68,
+      "estimate_high": 1003.37,
+      "latency_ms": 0.97,
+      "tags": [
+        "fraud",
+        "flood",
+        "fraud:exif_location"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0198",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.55,
+      "estimate_high": 3249.61,
+      "latency_ms": 0.96,
+      "tags": [
+        "low_evidence",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0199",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "statement_consistency"
+      ],
+      "predicted_flags": [
+        "statement_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.608,
+      "estimate_high": 3762.22,
+      "latency_ms": 0.87,
+      "tags": [
+        "fraud",
+        "collision",
+        "zone:front",
+        "fraud:statement_flip"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0200",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        5,
+        5,
+        5
+      ],
+      "confidence": 0.836,
+      "estimate_high": 10853.7,
+      "latency_ms": 0.91,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0201",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.92,
+      "estimate_high": 514.91,
+      "latency_ms": 0.86,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0202",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.83,
+      "estimate_high": 1871.62,
+      "latency_ms": 0.8,
+      "tags": [
+        "hard_negative",
+        "vandalism",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0203",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.89,
+      "estimate_high": 1187.38,
+      "latency_ms": 0.78,
+      "tags": [
+        "hard_negative",
+        "glass",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0204",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.865,
+      "estimate_high": 1454.75,
+      "latency_ms": 0.89,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0205",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.8,
+      "estimate_high": 2095.01,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "vandalism",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0206",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.555,
+      "estimate_high": 1933.72,
+      "latency_ms": 0.91,
+      "tags": [
+        "low_evidence",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0207",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.81,
+      "estimate_high": 1346.94,
+      "latency_ms": 0.89,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:rear",
+        "hard:near_duplicate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0208",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.53,
+      "estimate_high": 1768.99,
+      "latency_ms": 0.86,
+      "tags": [
+        "low_evidence",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0209",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.685,
+      "estimate_high": 2363.25,
+      "latency_ms": 0.88,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0210",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.855,
+      "estimate_high": 2139.57,
+      "latency_ms": 0.86,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0211",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.87,
+      "estimate_high": 1046.5,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0212",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.92,
+      "estimate_high": 1054.55,
+      "latency_ms": 0.82,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0213",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.813,
+      "estimate_high": 3086.6,
+      "latency_ms": 0.86,
+      "tags": [
+        "hard_negative",
+        "hail",
+        "hard:hail_code_only"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0214",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.795,
+      "estimate_high": 1515.12,
+      "latency_ms": 0.8,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0215",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.905,
+      "estimate_high": 1209.51,
+      "latency_ms": 0.82,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0216",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        3,
+        2
+      ],
+      "confidence": 0.793,
+      "estimate_high": 2137.85,
+      "latency_ms": 0.92,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0217",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.575,
+      "estimate_high": 2320.7,
+      "latency_ms": 0.91,
+      "tags": [
+        "low_evidence",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0218",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.547,
+      "estimate_high": 3030.54,
+      "latency_ms": 0.9,
+      "tags": [
+        "low_evidence",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0219",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        4
+      ],
+      "confidence": 0.847,
+      "estimate_high": 7775.15,
+      "latency_ms": 0.94,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0220",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.835,
+      "estimate_high": 1446.12,
+      "latency_ms": 0.83,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:side"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0221",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.81,
+      "estimate_high": 800.97,
+      "latency_ms": 0.76,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0222",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.52,
+      "estimate_high": 994.75,
+      "latency_ms": 0.95,
+      "tags": [
+        "low_evidence",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0223",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        2
+      ],
+      "confidence": 0.87,
+      "estimate_high": 442.75,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "vandalism"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0224",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.84,
+      "estimate_high": 1278.22,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0225",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        4,
+        3
+      ],
+      "confidence": 0.807,
+      "estimate_high": 3371.51,
+      "latency_ms": 1.22,
+      "tags": [
+        "hard_negative",
+        "hail",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0226",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.865,
+      "estimate_high": 1791.12,
+      "latency_ms": 0.79,
+      "tags": [
+        "legit",
+        "flood"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0227",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        3,
+        2
+      ],
+      "confidence": 0.83,
+      "estimate_high": 2278.15,
+      "latency_ms": 0.79,
+      "tags": [
+        "hard_negative",
+        "vandalism",
+        "hard:photo_prev_evening"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0228",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        2,
+        2
+      ],
+      "confidence": 0.835,
+      "estimate_high": 2011.92,
+      "latency_ms": 0.84,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0229",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.8,
+      "estimate_high": 763.31,
+      "latency_ms": 0.78,
+      "tags": [
+        "hard_negative",
+        "glass",
+        "hard:photo_nearby_town"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0230",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        2,
+        3,
+        2
+      ],
+      "confidence": 0.74,
+      "estimate_high": 2411.55,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0231",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        4,
+        4,
+        4
+      ],
+      "confidence": 0.805,
+      "estimate_high": 9868.15,
+      "latency_ms": 0.94,
+      "tags": [
+        "major",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0232",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.877,
+      "estimate_high": 2839.64,
+      "latency_ms": 0.83,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0233",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.843,
+      "estimate_high": 3230.64,
+      "latency_ms": 0.78,
+      "tags": [
+        "legit",
+        "hail"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0234",
+      "expected": "deny",
+      "predicted": "deny",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.873,
+      "estimate_high": 2779.55,
+      "latency_ms": 0.89,
+      "tags": [
+        "deny",
+        "collision",
+        "zone:front"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0235",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "exif_consistency"
+      ],
+      "predicted_flags": [
+        "exif_consistency"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.8772153153380493,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        4,
+        3
+      ],
+      "confidence": 0.52,
+      "estimate_high": 2612.22,
+      "latency_ms": 0.9,
+      "tags": [
+        "fraud",
+        "animal",
+        "fraud:exif_backdate"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0236",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.883,
+      "estimate_high": 1976.27,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "collision",
+        "zone:rear"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0237",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 1.0,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.627,
+      "estimate_high": 2893.4,
+      "latency_ms": 0.93,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:weather"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0238",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COLL",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.8,
+      "estimate_high": 2604.75,
+      "latency_ms": 0.87,
+      "tags": [
+        "hard_negative",
+        "collision",
+        "zone:front",
+        "hard:near_duplicate",
+        "no_exif"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0239",
+      "expected": "escalate",
+      "predicted": "escalate",
+      "correct": true,
+      "expected_flags": [
+        "weather_corroboration"
+      ],
+      "predicted_flags": [
+        "weather_corroboration"
+      ],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9197207891481876,
+      "cited": [
+        "PP-D-COMP",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        3,
+        3,
+        3
+      ],
+      "confidence": 0.58,
+      "estimate_high": 3458.34,
+      "latency_ms": 0.87,
+      "tags": [
+        "fraud",
+        "hail",
+        "fraud:weather"
+      ],
+      "wer": null
+    },
+    {
+      "claim_id": "SYN-0240",
+      "expected": "approve",
+      "predicted": "approve",
+      "correct": true,
+      "expected_flags": [],
+      "predicted_flags": [],
+      "recall_at_k": 1.0,
+      "ndcg_at_k": 0.9674679834891693,
+      "cited": [
+        "PP-D-GLASS",
+        "PP-DEC-DED"
+      ],
+      "cited_relevant": 2,
+      "damage_pr": [
+        1,
+        1,
+        1
+      ],
+      "confidence": 0.91,
+      "estimate_high": 623.59,
+      "latency_ms": 0.87,
+      "tags": [
+        "legit",
+        "glass"
+      ],
+      "wer": null
+    }
+  ],
+  "mode": "replay"
+}

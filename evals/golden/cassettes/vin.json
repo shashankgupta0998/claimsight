@@ -1,0 +1,12 @@
+{
+  "4T1G11AK5MU000417": {"make": "Toyota", "model": "Camry", "year": "2021", "error_code": "0"},
+  "1HGCV1F30LA000233": {"make": "Honda", "model": "Accord", "year": "2020", "error_code": "0"},
+  "1FTFW1E50NF000318": {"make": "Ford", "model": "F-150", "year": "2022", "error_code": "0"},
+  "5YJ3E1EA7MF000921": {"make": "Tesla", "model": "Model 3", "year": "2021", "error_code": "0"},
+  "JTDKN3DU0A0000555": {"make": "Toyota", "model": "Prius", "year": "2010", "error_code": "0"},
+  "WBA8E9G50JN000666": {"make": "Bmw", "model": "3 Series", "year": "2018", "error_code": "0"},
+  "4T1G11AK5MU000777": {"make": "Toyota", "model": "Camry", "year": "2021", "error_code": "0"},
+  "KM8J3CA46MU000888": {"make": "Hyundai", "model": "Tucson", "year": "2021", "error_code": "0"},
+  "1HGCV1F30KA000999": {"make": "Honda", "model": "Accord", "year": "2019", "error_code": "0"},
+  "3GCUYDED0NG001010": {"make": "Chevrolet", "model": "Silverado 1500", "year": "2022", "error_code": "0"}
+}

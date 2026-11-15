@@ -1,0 +1,52 @@
+{
+ "decisions": {
+  "approve": 142,
+  "deny": 26,
+  "escalate": 72
+ },
+ "fraud_flags": {
+  "duplicate_photos": 10,
+  "exif_consistency": 11,
+  "statement_consistency": 9,
+  "vin_decode": 2,
+  "weather_corroboration": 6
+ },
+ "loss_types": {
+  "animal": 25,
+  "collision": 107,
+  "flood": 26,
+  "glass": 24,
+  "hail": 40,
+  "vandalism": 18
+ },
+ "n_cases": 240,
+ "prior_photos": 40,
+ "tags": {
+  "animal": 25,
+  "collision": 107,
+  "deny": 26,
+  "flood": 26,
+  "fraud": 38,
+  "fraud:duplicate_photo": 10,
+  "fraud:exif_backdate": 7,
+  "fraud:exif_location": 4,
+  "fraud:statement_flip": 9,
+  "fraud:vin_mismatch": 2,
+  "fraud:weather": 6,
+  "glass": 24,
+  "hail": 40,
+  "hard:hail_code_only": 2,
+  "hard:near_duplicate": 8,
+  "hard:photo_nearby_town": 9,
+  "hard:photo_prev_evening": 8,
+  "hard_negative": 27,
+  "legit": 115,
+  "low_evidence": 15,
+  "major": 19,
+  "no_exif": 17,
+  "vandalism": 18,
+  "zone:front": 43,
+  "zone:rear": 51,
+  "zone:side": 13
+ }
+}

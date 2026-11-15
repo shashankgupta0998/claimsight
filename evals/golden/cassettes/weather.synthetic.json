@@ -1,0 +1,1368 @@
+{
+ "25.730,-80.190,2026-04-23": {
+  "daily": {
+   "precipitation_sum_mm": 131.2,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 28.2
+  },
+  "hail_reports": []
+ },
+ "25.735,-80.213,2026-04-07": {
+  "daily": {
+   "precipitation_sum_mm": 81.5,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 88.0
+  },
+  "hail_reports": []
+ },
+ "25.741,-80.163,2026-09-11": {
+  "daily": {
+   "precipitation_sum_mm": 92.0,
+   "weather_code": 63,
+   "wind_gusts_max_kmh": 78.5
+  },
+  "hail_reports": []
+ },
+ "25.746,-80.208,2026-10-03": {
+  "daily": {
+   "precipitation_sum_mm": 137.8,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 73.9
+  },
+  "hail_reports": []
+ },
+ "25.751,-80.209,2026-03-23": {
+  "daily": {
+   "precipitation_sum_mm": 94.1,
+   "weather_code": 63,
+   "wind_gusts_max_kmh": 15.9
+  },
+  "hail_reports": []
+ },
+ "25.756,-80.199,2026-06-19": {
+  "daily": {
+   "precipitation_sum_mm": 126.2,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 65.8
+  },
+  "hail_reports": []
+ },
+ "25.761,-80.249,2026-04-21": {
+  "daily": {
+   "precipitation_sum_mm": 130.7,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 21.6
+  },
+  "hail_reports": []
+ },
+ "25.764,-80.159,2026-09-12": {
+  "daily": {
+   "precipitation_sum_mm": 114.2,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 80.0
+  },
+  "hail_reports": []
+ },
+ "25.770,-80.199,2026-07-19": {
+  "daily": {
+   "precipitation_sum_mm": 6.3,
+   "weather_code": 1,
+   "wind_gusts_max_kmh": 63.9
+  },
+  "hail_reports": []
+ },
+ "25.810,-80.185,2026-07-22": {
+  "daily": {
+   "precipitation_sum_mm": 4.2,
+   "weather_code": 1,
+   "wind_gusts_max_kmh": 31.3
+  },
+  "hail_reports": []
+ },
+ "29.722,-95.339,2026-09-29": {
+  "daily": {
+   "precipitation_sum_mm": 86.1,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 40.0
+  },
+  "hail_reports": []
+ },
+ "29.730,-95.415,2026-07-24": {
+  "daily": {
+   "precipitation_sum_mm": 5.7,
+   "weather_code": 2,
+   "wind_gusts_max_kmh": 66.2
+  },
+  "hail_reports": []
+ },
+ "29.735,-95.364,2026-04-25": {
+  "daily": {
+   "precipitation_sum_mm": 131.9,
+   "weather_code": 63,
+   "wind_gusts_max_kmh": 54.0
+  },
+  "hail_reports": []
+ },
+ "29.742,-95.372,2026-04-22": {
+  "daily": {
+   "precipitation_sum_mm": 98.8,
+   "weather_code": 63,
+   "wind_gusts_max_kmh": 45.9
+  },
+  "hail_reports": []
+ },
+ "29.760,-95.380,2026-04-08": {
+  "daily": {
+   "precipitation_sum_mm": 37.0,
+   "weather_code": 63,
+   "wind_gusts_max_kmh": 31.4
+  },
+  "hail_reports": []
+ },
+ "29.762,-95.351,2026-10-15": {
+  "daily": {
+   "precipitation_sum_mm": 55.0,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 69.3
+  },
+  "hail_reports": []
+ },
+ "29.775,-95.411,2026-07-31": {
+  "daily": {
+   "precipitation_sum_mm": 119.2,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 65.2
+  },
+  "hail_reports": []
+ },
+ "29.784,-95.317,2026-05-22": {
+  "daily": {
+   "precipitation_sum_mm": 36.0,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 45.4
+  },
+  "hail_reports": []
+ },
+ "29.785,-95.399,2026-05-05": {
+  "daily": {
+   "precipitation_sum_mm": 136.2,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 42.8
+  },
+  "hail_reports": []
+ },
+ "29.787,-95.325,2026-04-25": {
+  "daily": {
+   "precipitation_sum_mm": 35.7,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 45.1
+  },
+  "hail_reports": []
+ },
+ "29.918,-90.058,2026-07-31": {
+  "daily": {
+   "precipitation_sum_mm": 131.3,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 37.2
+  },
+  "hail_reports": []
+ },
+ "29.918,-90.087,2026-04-24": {
+  "daily": {
+   "precipitation_sum_mm": 139.5,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 16.9
+  },
+  "hail_reports": []
+ },
+ "29.961,-90.080,2026-07-19": {
+  "daily": {
+   "precipitation_sum_mm": 58.5,
+   "weather_code": 63,
+   "wind_gusts_max_kmh": 54.2
+  },
+  "hail_reports": []
+ },
+ "29.961,-90.099,2026-09-07": {
+  "daily": {
+   "precipitation_sum_mm": 105.8,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 33.4
+  },
+  "hail_reports": []
+ },
+ "29.962,-90.057,2026-08-24": {
+  "daily": {
+   "precipitation_sum_mm": 42.1,
+   "weather_code": 82,
+   "wind_gusts_max_kmh": 37.1
+  },
+  "hail_reports": []
+ },
+ "29.967,-90.125,2026-04-14": {
+  "daily": {
+   "precipitation_sum_mm": 92.1,
+   "weather_code": 65,
+   "wind_gusts_max_kmh": 71.8
+  },
+  "hail_reports": []
+ },
+ "32.753,-96.807,2026-09-04": {
+  "daily": {
+   "precipitation_sum_mm": 3.1,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 79.6
+  },
+  "hail_reports": [
+   {
+    "lat": 33.178,
+    "location": "synthetic",
+    "lon": -97.06,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "1854"
+   }
+  ]
+ },
+ "32.780,-96.801,2026-08-13": {
+  "daily": {
+   "precipitation_sum_mm": 20.5,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 20.2
+  },
+  "hail_reports": [
+   {
+    "lat": 32.87,
+    "location": "synthetic",
+    "lon": -96.758,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "1936"
+   },
+   {
+    "lat": 32.825,
+    "location": "synthetic",
+    "lon": -96.725,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "1910"
+   },
+   {
+    "lat": 32.299,
+    "location": "synthetic",
+    "lon": -97.166,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2033"
+   }
+  ]
+ },
+ "32.798,-96.798,2026-07-06": {
+  "daily": {
+   "precipitation_sum_mm": 26.4,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 87.3
+  },
+  "hail_reports": [
+   {
+    "lat": 32.701,
+    "location": "synthetic",
+    "lon": -96.799,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2335"
+   }
+  ]
+ },
+ "32.969,-96.684,2026-03-23": {
+  "daily": {
+   "precipitation_sum_mm": 2.9,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 28.7
+  },
+  "hail_reports": [
+   {
+    "lat": 33.022,
+    "location": "synthetic",
+    "lon": -96.673,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2340"
+   },
+   {
+    "lat": 32.934,
+    "location": "synthetic",
+    "lon": -96.785,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "1934"
+   },
+   {
+    "lat": 32.52,
+    "location": "synthetic",
+    "lon": -96.462,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2120"
+   }
+  ]
+ },
+ "33.017,-96.728,2026-08-04": {
+  "daily": {
+   "precipitation_sum_mm": 22.0,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 16.8
+  },
+  "hail_reports": [
+   {
+    "lat": 32.894,
+    "location": "synthetic",
+    "lon": -96.885,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2224"
+   },
+   {
+    "lat": 33.168,
+    "location": "synthetic",
+    "lon": -96.593,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2000"
+   },
+   {
+    "lat": 33.151,
+    "location": "synthetic",
+    "lon": -96.773,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2314"
+   },
+   {
+    "lat": 33.093,
+    "location": "synthetic",
+    "lon": -97.115,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "1942"
+   }
+  ]
+ },
+ "33.055,-96.703,2026-04-15": {
+  "daily": {
+   "precipitation_sum_mm": 0.6,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 38.8
+  },
+  "hail_reports": [
+   {
+    "lat": 32.941,
+    "location": "synthetic",
+    "lon": -96.683,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2246"
+   },
+   {
+    "lat": 32.878,
+    "location": "synthetic",
+    "lon": -96.661,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "1823"
+   },
+   {
+    "lat": 32.268,
+    "location": "synthetic",
+    "lon": -96.799,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2011"
+   },
+   {
+    "lat": 33.629,
+    "location": "synthetic",
+    "lon": -96.13,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "1901"
+   }
+  ]
+ },
+ "35.457,-97.501,2026-06-13": {
+  "daily": {
+   "precipitation_sum_mm": 3.7,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 56.2
+  },
+  "hail_reports": [
+   {
+    "lat": 35.374,
+    "location": "synthetic",
+    "lon": -97.46,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2341"
+   },
+   {
+    "lat": 35.549,
+    "location": "synthetic",
+    "lon": -97.585,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "1839"
+   }
+  ]
+ },
+ "35.458,-97.519,2026-07-04": {
+  "daily": {
+   "precipitation_sum_mm": 12.9,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 55.1
+  },
+  "hail_reports": [
+   {
+    "lat": 35.543,
+    "location": "synthetic",
+    "lon": -97.31,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2310"
+   },
+   {
+    "lat": 35.385,
+    "location": "synthetic",
+    "lon": -97.486,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2243"
+   },
+   {
+    "lat": 35.336,
+    "location": "synthetic",
+    "lon": -97.489,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2220"
+   },
+   {
+    "lat": 35.349,
+    "location": "synthetic",
+    "lon": -96.887,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2303"
+   },
+   {
+    "lat": 35.974,
+    "location": "synthetic",
+    "lon": -98.039,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "1828"
+   }
+  ]
+ },
+ "35.460,-97.519,2026-07-27": {
+  "daily": {
+   "precipitation_sum_mm": 18.5,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 68.4
+  },
+  "hail_reports": [
+   {
+    "lat": 35.49,
+    "location": "synthetic",
+    "lon": -97.484,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "1837"
+   },
+   {
+    "lat": 35.563,
+    "location": "synthetic",
+    "lon": -97.484,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2111"
+   },
+   {
+    "lat": 34.672,
+    "location": "synthetic",
+    "lon": -97.451,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "1813"
+   }
+  ]
+ },
+ "35.464,-97.565,2026-08-21": {
+  "daily": {
+   "precipitation_sum_mm": 28.2,
+   "weather_code": 99,
+   "wind_gusts_max_kmh": 25.1
+  },
+  "hail_reports": [
+   {
+    "lat": 35.515,
+    "location": "synthetic",
+    "lon": -97.531,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2232"
+   },
+   {
+    "lat": 35.49,
+    "location": "synthetic",
+    "lon": -96.607,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2118"
+   },
+   {
+    "lat": 35.903,
+    "location": "synthetic",
+    "lon": -96.785,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "1954"
+   }
+  ]
+ },
+ "35.474,-97.483,2026-07-11": {
+  "daily": {
+   "precipitation_sum_mm": 8.6,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 42.7
+  },
+  "hail_reports": [
+   {
+    "lat": 35.328,
+    "location": "synthetic",
+    "lon": -97.645,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2132"
+   },
+   {
+    "lat": 35.543,
+    "location": "synthetic",
+    "lon": -97.507,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2042"
+   },
+   {
+    "lat": 35.644,
+    "location": "synthetic",
+    "lon": -97.52,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2307"
+   },
+   {
+    "lat": 35.153,
+    "location": "synthetic",
+    "lon": -97.355,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "1917"
+   },
+   {
+    "lat": 35.472,
+    "location": "synthetic",
+    "lon": -97.949,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2048"
+   }
+  ]
+ },
+ "35.485,-97.526,2026-06-03": {
+  "daily": {
+   "precipitation_sum_mm": 1.8,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 53.7
+  },
+  "hail_reports": [
+   {
+    "lat": 35.385,
+    "location": "synthetic",
+    "lon": -97.479,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "1859"
+   },
+   {
+    "lat": 35.337,
+    "location": "synthetic",
+    "lon": -97.502,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "1831"
+   },
+   {
+    "lat": 35.874,
+    "location": "synthetic",
+    "lon": -97.105,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "1828"
+   }
+  ]
+ },
+ "35.511,-97.490,2026-10-21": {
+  "daily": {
+   "precipitation_sum_mm": 24.0,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 19.1
+  },
+  "hail_reports": [
+   {
+    "lat": 35.658,
+    "location": "synthetic",
+    "lon": -97.455,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2308"
+   }
+  ]
+ },
+ "35.514,-97.542,2026-08-15": {
+  "daily": {
+   "precipitation_sum_mm": 7.2,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 35.0
+  },
+  "hail_reports": [
+   {
+    "lat": 35.457,
+    "location": "synthetic",
+    "lon": -97.502,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "1928"
+   }
+  ]
+ },
+ "37.645,-97.362,2026-05-19": {
+  "daily": {
+   "precipitation_sum_mm": 11.8,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 85.5
+  },
+  "hail_reports": [
+   {
+    "lat": 37.61,
+    "location": "synthetic",
+    "lon": -97.395,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2153"
+   },
+   {
+    "lat": 37.78,
+    "location": "synthetic",
+    "lon": -97.442,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "1941"
+   },
+   {
+    "lat": 37.517,
+    "location": "synthetic",
+    "lon": -97.543,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2307"
+   },
+   {
+    "lat": 38.101,
+    "location": "synthetic",
+    "lon": -97.59,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2015"
+   }
+  ]
+ },
+ "37.677,-97.333,2026-08-01": {
+  "daily": {
+   "precipitation_sum_mm": 21.4,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 82.2
+  },
+  "hail_reports": [
+   {
+    "lat": 37.743,
+    "location": "synthetic",
+    "lon": -97.266,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2347"
+   },
+   {
+    "lat": 37.602,
+    "location": "synthetic",
+    "lon": -97.231,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2057"
+   }
+  ]
+ },
+ "37.682,-97.293,2026-08-18": {
+  "daily": {
+   "precipitation_sum_mm": 7.5,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 65.6
+  },
+  "hail_reports": [
+   {
+    "lat": 37.629,
+    "location": "synthetic",
+    "lon": -97.305,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "1817"
+   },
+   {
+    "lat": 37.691,
+    "location": "synthetic",
+    "lon": -97.488,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2324"
+   },
+   {
+    "lat": 38.111,
+    "location": "synthetic",
+    "lon": -97.287,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2024"
+   },
+   {
+    "lat": 38.117,
+    "location": "synthetic",
+    "lon": -97.133,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2027"
+   }
+  ]
+ },
+ "37.696,-97.285,2026-07-04": {
+  "daily": {
+   "precipitation_sum_mm": 11.0,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 54.3
+  },
+  "hail_reports": [
+   {
+    "lat": 37.736,
+    "location": "synthetic",
+    "lon": -97.438,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2235"
+   },
+   {
+    "lat": 37.611,
+    "location": "synthetic",
+    "lon": -97.355,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2036"
+   },
+   {
+    "lat": 37.675,
+    "location": "synthetic",
+    "lon": -97.354,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2041"
+   },
+   {
+    "lat": 37.54,
+    "location": "synthetic",
+    "lon": -96.682,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2341"
+   },
+   {
+    "lat": 38.119,
+    "location": "synthetic",
+    "lon": -96.804,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "1931"
+   }
+  ]
+ },
+ "39.088,-94.600,2026-03-15": {
+  "daily": {
+   "precipitation_sum_mm": 16.6,
+   "weather_code": 99,
+   "wind_gusts_max_kmh": 20.4
+  },
+  "hail_reports": [
+   {
+    "lat": 39.082,
+    "location": "synthetic",
+    "lon": -94.523,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2130"
+   }
+  ]
+ },
+ "39.090,-94.572,2026-10-20": {
+  "daily": {
+   "precipitation_sum_mm": 23.6,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 57.2
+  },
+  "hail_reports": [
+   {
+    "lat": 39.17,
+    "location": "synthetic",
+    "lon": -94.496,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2300"
+   }
+  ]
+ },
+ "39.097,-94.538,2026-10-11": {
+  "daily": {
+   "precipitation_sum_mm": 8.7,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 89.5
+  },
+  "hail_reports": [
+   {
+    "lat": 38.954,
+    "location": "synthetic",
+    "lon": -94.595,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2350"
+   },
+   {
+    "lat": 39.179,
+    "location": "synthetic",
+    "lon": -94.655,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "1820"
+   }
+  ]
+ },
+ "39.097,-94.544,2026-05-15": {
+  "daily": {
+   "precipitation_sum_mm": 7.4,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 37.2
+  },
+  "hail_reports": [
+   {
+    "lat": 39.261,
+    "location": "synthetic",
+    "lon": -94.611,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "1852"
+   },
+   {
+    "lat": 38.915,
+    "location": "synthetic",
+    "lon": -93.889,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2149"
+   },
+   {
+    "lat": 39.08,
+    "location": "synthetic",
+    "lon": -93.766,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "1934"
+   }
+  ]
+ },
+ "39.100,-94.578,2026-07-27": {
+  "daily": {
+   "precipitation_sum_mm": 11.2,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 60.4
+  },
+  "hail_reports": [
+   {
+    "lat": 38.931,
+    "location": "synthetic",
+    "lon": -94.711,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2124"
+   },
+   {
+    "lat": 39.051,
+    "location": "synthetic",
+    "lon": -94.536,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2102"
+   },
+   {
+    "lat": 39.226,
+    "location": "synthetic",
+    "lon": -94.586,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2118"
+   }
+  ]
+ },
+ "39.118,-94.582,2026-05-25": {
+  "daily": {
+   "precipitation_sum_mm": 6.8,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 39.6
+  },
+  "hail_reports": [
+   {
+    "lat": 39.261,
+    "location": "synthetic",
+    "lon": -94.41,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2042"
+   },
+   {
+    "lat": 39.088,
+    "location": "synthetic",
+    "lon": -94.557,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2120"
+   },
+   {
+    "lat": 39.118,
+    "location": "synthetic",
+    "lon": -94.394,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2120"
+   }
+  ]
+ },
+ "39.128,-94.587,2026-08-17": {
+  "daily": {
+   "precipitation_sum_mm": 25.6,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 76.2
+  },
+  "hail_reports": [
+   {
+    "lat": 39.193,
+    "location": "synthetic",
+    "lon": -94.693,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2102"
+   },
+   {
+    "lat": 39.048,
+    "location": "synthetic",
+    "lon": -94.679,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "1940"
+   }
+  ]
+ },
+ "39.690,-104.984,2026-07-13": {
+  "daily": {
+   "precipitation_sum_mm": 0.7,
+   "weather_code": 99,
+   "wind_gusts_max_kmh": 34.1
+  },
+  "hail_reports": []
+ },
+ "39.725,-105.057,2026-04-30": {
+  "daily": {
+   "precipitation_sum_mm": 12.4,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 34.6
+  },
+  "hail_reports": []
+ },
+ "39.732,-105.029,2026-08-03": {
+  "daily": {
+   "precipitation_sum_mm": 24.4,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 86.0
+  },
+  "hail_reports": [
+   {
+    "lat": 39.758,
+    "location": "synthetic",
+    "lon": -104.965,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "2026"
+   }
+  ]
+ },
+ "39.745,-105.034,2026-10-23": {
+  "daily": {
+   "precipitation_sum_mm": 4.4,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 40.6
+  },
+  "hail_reports": [
+   {
+    "lat": 39.609,
+    "location": "synthetic",
+    "lon": -104.95,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2003"
+   },
+   {
+    "lat": 39.598,
+    "location": "synthetic",
+    "lon": -104.996,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "1914"
+   },
+   {
+    "lat": 39.893,
+    "location": "synthetic",
+    "lon": -104.938,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "1955"
+   }
+  ]
+ },
+ "39.755,-104.984,2026-05-30": {
+  "daily": {
+   "precipitation_sum_mm": 22.9,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 57.8
+  },
+  "hail_reports": [
+   {
+    "lat": 39.845,
+    "location": "synthetic",
+    "lon": -104.865,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "1928"
+   },
+   {
+    "lat": 39.179,
+    "location": "synthetic",
+    "lon": -104.801,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2357"
+   },
+   {
+    "lat": 39.845,
+    "location": "synthetic",
+    "lon": -104.586,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2024"
+   }
+  ]
+ },
+ "41.226,-95.938,2026-07-11": {
+  "daily": {
+   "precipitation_sum_mm": 27.5,
+   "weather_code": 99,
+   "wind_gusts_max_kmh": 47.5
+  },
+  "hail_reports": [
+   {
+    "lat": 40.821,
+    "location": "synthetic",
+    "lon": -95.394,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "1937"
+   },
+   {
+    "lat": 41.287,
+    "location": "synthetic",
+    "lon": -96.532,
+    "size_in": 1.5,
+    "state": null,
+    "time_utc": "1925"
+   }
+  ]
+ },
+ "41.231,-96.020,2026-10-12": {
+  "daily": {
+   "precipitation_sum_mm": 16.4,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 27.5
+  },
+  "hail_reports": [
+   {
+    "lat": 41.115,
+    "location": "synthetic",
+    "lon": -95.812,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2222"
+   },
+   {
+    "lat": 41.175,
+    "location": "synthetic",
+    "lon": -95.834,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2251"
+   },
+   {
+    "lat": 41.389,
+    "location": "synthetic",
+    "lon": -96.008,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2207"
+   },
+   {
+    "lat": 41.656,
+    "location": "synthetic",
+    "lon": -95.348,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2134"
+   }
+  ]
+ },
+ "41.231,-96.026,2026-05-02": {
+  "daily": {
+   "precipitation_sum_mm": 26.6,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 68.4
+  },
+  "hail_reports": [
+   {
+    "lat": 41.292,
+    "location": "synthetic",
+    "lon": -96.006,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2158"
+   },
+   {
+    "lat": 41.214,
+    "location": "synthetic",
+    "lon": -95.92,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2138"
+   },
+   {
+    "lat": 41.275,
+    "location": "synthetic",
+    "lon": -95.084,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2042"
+   }
+  ]
+ },
+ "41.235,-96.039,2026-06-23": {
+  "daily": {
+   "precipitation_sum_mm": 20.7,
+   "weather_code": 96,
+   "wind_gusts_max_kmh": 27.0
+  },
+  "hail_reports": [
+   {
+    "lat": 41.254,
+    "location": "synthetic",
+    "lon": -96.144,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2209"
+   },
+   {
+    "lat": 41.205,
+    "location": "synthetic",
+    "lon": -96.061,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2306"
+   },
+   {
+    "lat": 41.162,
+    "location": "synthetic",
+    "lon": -95.832,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "2004"
+   }
+  ]
+ },
+ "41.238,-96.006,2026-07-20": {
+  "daily": {
+   "precipitation_sum_mm": 16.9,
+   "weather_code": 3,
+   "wind_gusts_max_kmh": 82.3
+  },
+  "hail_reports": [
+   {
+    "lat": 41.263,
+    "location": "synthetic",
+    "lon": -96.168,
+    "size_in": 1.75,
+    "state": null,
+    "time_utc": "2123"
+   },
+   {
+    "lat": 41.983,
+    "location": "synthetic",
+    "lon": -96.332,
+    "size_in": 1.0,
+    "state": null,
+    "time_utc": "2207"
+   }
+  ]
+ },
+ "41.255,-95.996,2026-09-23": {
+  "daily": {
+   "precipitation_sum_mm": 1.9,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 30.4
+  },
+  "hail_reports": [
+   {
+    "lat": 41.257,
+    "location": "synthetic",
+    "lon": -96.078,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2047"
+   },
+   {
+    "lat": 41.421,
+    "location": "synthetic",
+    "lon": -96.117,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "2339"
+   },
+   {
+    "lat": 41.43,
+    "location": "synthetic",
+    "lon": -96.898,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2312"
+   }
+  ]
+ },
+ "41.259,-95.996,2026-04-25": {
+  "daily": {
+   "precipitation_sum_mm": 2.0,
+   "weather_code": 1,
+   "wind_gusts_max_kmh": 41.3
+  },
+  "hail_reports": [
+   {
+    "lat": 41.43,
+    "location": "synthetic",
+    "lon": -96.561,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "1943"
+   }
+  ]
+ },
+ "41.263,-95.970,2026-05-05": {
+  "daily": {
+   "precipitation_sum_mm": 25.4,
+   "weather_code": 95,
+   "wind_gusts_max_kmh": 74.0
+  },
+  "hail_reports": [
+   {
+    "lat": 41.23,
+    "location": "synthetic",
+    "lon": -95.977,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2058"
+   },
+   {
+    "lat": 41.161,
+    "location": "synthetic",
+    "lon": -96.127,
+    "size_in": 2.0,
+    "state": null,
+    "time_utc": "1955"
+   }
+  ]
+ },
+ "41.268,-95.982,2026-06-24": {
+  "daily": {
+   "precipitation_sum_mm": 27.4,
+   "weather_code": 99,
+   "wind_gusts_max_kmh": 33.4
+  },
+  "hail_reports": [
+   {
+    "lat": 41.097,
+    "location": "synthetic",
+    "lon": -96.098,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2111"
+   },
+   {
+    "lat": 41.274,
+    "location": "synthetic",
+    "lon": -95.396,
+    "size_in": 1.25,
+    "state": null,
+    "time_utc": "1817"
+   },
+   {
+    "lat": 41.584,
+    "location": "synthetic",
+    "lon": -95.577,
+    "size_in": 0.75,
+    "state": null,
+    "time_utc": "2006"
+   }
+  ]
+ },
+ "41.288,-95.963,2026-07-15": {
+  "daily": {
+   "precipitation_sum_mm": 16.5,
+   "weather_code": 99,
+   "wind_gusts_max_kmh": 47.6
+  },
+  "hail_reports": [
+   {
+    "lat": 41.448,
+    "location": "synthetic",
+    "lon": -96.063,
+    "size_in": 2.5,
+    "state": null,
+    "time_utc": "2225"
+   }
+  ]
+ }
+}

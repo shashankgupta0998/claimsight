@@ -1,0 +1,5 @@
+{
+  "P-100": {"coverages": ["comprehensive", "collision"], "deductibles": {"comprehensive": 500, "collision": 1000}},
+  "P-200": {"coverages": ["comprehensive"], "deductibles": {"comprehensive": 250}},
+  "P-300": {"coverages": ["comprehensive", "collision"], "deductibles": {"comprehensive": 500, "collision": 500}}
+}

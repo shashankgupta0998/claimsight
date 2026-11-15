@@ -1,0 +1,13 @@
+{
+  "33.020,-96.699,2026-05-14": {
+    "hail_reports": [
+      {"time_utc": "2342", "lat": 33.05, "lon": -96.72, "size_in": 1.75, "location": "2 N Plano", "state": "TX"},
+      {"time_utc": "2351", "lat": 33.12, "lon": -96.64, "size_in": 1.25, "location": "Allen", "state": "TX"}
+    ],
+    "daily": {"weather_code": 96, "precipitation_sum_mm": 18.4, "wind_gusts_max_kmh": 71.3}
+  },
+  "39.739,-104.990,2026-06-02": {
+    "hail_reports": [],
+    "daily": {"weather_code": 1, "precipitation_sum_mm": 0.0, "wind_gusts_max_kmh": 22.3}
+  }
+}
