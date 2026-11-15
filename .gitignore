@@ -7,6 +7,6 @@ __pycache__/
 dist/
 evals/reports/*.json
 !evals/reports/.gitkeep
-data/
+/data/
 *.pt
 *.onnx
