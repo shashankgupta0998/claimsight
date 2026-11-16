@@ -26,6 +26,7 @@ import json
 from pathlib import Path
 from typing import Protocol
 
+from claimsight.agents.coverage_review import as_data
 from claimsight.schemas import SignalStatus, VerificationSignal
 
 CHECK_SYSTEM = """\
@@ -112,7 +113,7 @@ class ClaudePhotoChecker:
             }
             for p in photos
         ]
-        content.append({"type": "text", "text": f"<statement>{statement}</statement>"})
+        content.append({"type": "text", "text": f"<statement>{as_data(statement)}</statement>"})
         msg = self._client.messages.create(
             model=self.model,
             max_tokens=8000,  # thinking counts toward it

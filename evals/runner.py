@@ -25,6 +25,8 @@ from evals.detector_eval import detection_map
 from evals.detector_eval import load as load_detector
 from evals.duplicate_eval import CASSETTE as DUPLICATE_CASSETTE
 from evals.duplicate_eval import score as score_duplicates
+from evals.injection_eval import attack as injection_attack
+from evals.injection_eval import load_cases as load_injection_cases
 from evals.metrics import (
     ndcg_at_k,
     percentile,
@@ -99,6 +101,12 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
         cov = score_reviews(deps, load_coverage_cases())["metrics"]
         metrics |= {f"coverage_review_{k}": v for k, v in cov.items() if k != "n"}
         metrics["coverage_review_claims_escalated"] = sum(r["review_escalated"] for r in rows)
+        # Red team: excluded claims with an injection appended must still escalate.
+        attacks = injection_attack(settings.coverage_review_routing, load_injection_cases())
+        succeeded = sum(r["succeeded"] for r in attacks["rows"])
+        metrics["coverage_review_injection_resistance"] = round(
+            1 - succeeded / len(attacks["rows"]), 4
+        )
     checker = deps.photo_checker or build_photo_checker(
         settings.model_copy(update={"photo_check": "llm"}), online=False
     )

@@ -27,6 +27,8 @@ jobs:
         run: uv run python -m evals.retrieval_eval --out evals/reports/retrieval.json
       - name: Coverage review routing and caching (cost vs quality)
         run: uv run python -m evals.routing_eval --out evals/reports/routing.json
+      - name: Prompt-injection red team (coverage review)
+        run: uv run python -m evals.injection_eval --out evals/reports/injection.json
       - uses: actions/upload-artifact@v7
         if: always()
         with:

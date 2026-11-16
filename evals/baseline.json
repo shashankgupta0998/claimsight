@@ -10,8 +10,8 @@
     "damage_recall": 0.98,
     "fraud_precision": 1.0,
     "fraud_recall": 1.0,
-    "latency_p50_ms": 1.67,
-    "latency_p95_ms": 1.85,
+    "latency_p50_ms": 1.69,
+    "latency_p95_ms": 1.99,
     "policy_qa_hit_at_1": 0.62,
     "policy_qa_recall_at_5": 0.77,
     "policy_qa_ndcg_at_5": 0.6799,
@@ -20,10 +20,11 @@
     "coverage_review_reviewed": 35,
     "coverage_review_exclusion_recall": 1.0,
     "coverage_review_flag_recall": 1.0,
-    "coverage_review_specificity": 0.9333,
-    "coverage_review_quote_validity": 1.0,
+    "coverage_review_specificity": 0.8667,
+    "coverage_review_quote_validity": 0.9804,
     "coverage_review_unbacked_findings": 0,
     "coverage_review_claims_escalated": 0,
+    "coverage_review_injection_resistance": 1.0,
     "photo_check_flag_recall": 0.8936,
     "photo_check_specificity": 0.7979,
     "duplicate_dhash_recall": 0.2857,
@@ -184,7 +185,7 @@
       ],
       "confidence": 0.9,
       "estimate_high": 2829.0,
-      "latency_ms": 4.07,
+      "latency_ms": 4.66,
       "tags": [
         "hand_curated"
       ],
@@ -216,7 +217,7 @@
       ],
       "confidence": 0.63,
       "estimate_high": 966.0,
-      "latency_ms": 2.09,
+      "latency_ms": 2.1,
       "tags": [
         "hand_curated"
       ],
@@ -244,7 +245,7 @@
       ],
       "confidence": 0.88,
       "estimate_high": 1437.5,
-      "latency_ms": 1.81,
+      "latency_ms": 1.85,
       "tags": [
         "hand_curated"
       ],
@@ -276,7 +277,7 @@
       ],
       "confidence": 0.627,
       "estimate_high": 3110.75,
-      "latency_ms": 1.86,
+      "latency_ms": 1.81,
       "tags": [
         "hand_curated"
       ],
@@ -304,7 +305,7 @@
       ],
       "confidence": 0.9,
       "estimate_high": 646.88,
-      "latency_ms": 1.67,
+      "latency_ms": 1.9,
       "tags": [
         "hand_curated"
       ],
@@ -332,7 +333,7 @@
       ],
       "confidence": 0.93,
       "estimate_high": 646.88,
-      "latency_ms": 1.63,
+      "latency_ms": 1.68,
       "tags": [
         "hand_curated"
       ],
@@ -364,7 +365,7 @@
       ],
       "confidence": 0.65,
       "estimate_high": 1681.87,
-      "latency_ms": 1.68,
+      "latency_ms": 1.83,
       "tags": [
         "hand_curated"
       ],
@@ -396,7 +397,7 @@
       ],
       "confidence": 0.65,
       "estimate_high": 685.69,
-      "latency_ms": 1.91,
+      "latency_ms": 1.95,
       "tags": [
         "hand_curated"
       ],
@@ -456,7 +457,7 @@
       ],
       "confidence": 0.888,
       "estimate_high": 11005.5,
-      "latency_ms": 1.78,
+      "latency_ms": 1.75,
       "tags": [
         "hand_curated"
       ],
@@ -488,7 +489,7 @@
       ],
       "confidence": 0.65,
       "estimate_high": 2829.0,
-      "latency_ms": 1.84,
+      "latency_ms": 1.79,
       "tags": [
         "hand_curated"
       ],
@@ -520,7 +521,7 @@
       ],
       "confidence": 0.65,
       "estimate_high": 2829.0,
-      "latency_ms": 1.7,
+      "latency_ms": 1.78,
       "tags": [
         "hand_curated"
       ],
@@ -552,7 +553,7 @@
       ],
       "confidence": 0.63,
       "estimate_high": 1437.5,
-      "latency_ms": 1.69,
+      "latency_ms": 1.72,
       "tags": [
         "hand_curated"
       ],
@@ -584,7 +585,7 @@
       ],
       "confidence": 0.63,
       "estimate_high": 1437.5,
-      "latency_ms": 1.79,
+      "latency_ms": 1.97,
       "tags": [
         "hand_curated"
       ],
@@ -616,7 +617,7 @@
       ],
       "confidence": 0.63,
       "estimate_high": 1437.5,
-      "latency_ms": 1.64,
+      "latency_ms": 1.74,
       "tags": [
         "hand_curated"
       ],
@@ -648,7 +649,7 @@
       ],
       "confidence": 0.68,
       "estimate_high": 646.88,
-      "latency_ms": 1.67,
+      "latency_ms": 1.72,
       "tags": [
         "hand_curated"
       ],
@@ -680,7 +681,7 @@
       ],
       "confidence": 0.68,
       "estimate_high": 646.88,
-      "latency_ms": 1.76,
+      "latency_ms": 1.73,
       "tags": [
         "hand_curated"
       ],
@@ -708,7 +709,7 @@
       ],
       "confidence": 0.883,
       "estimate_high": 3033.12,
-      "latency_ms": 1.6,
+      "latency_ms": 1.75,
       "tags": [
         "legit",
         "collision",
@@ -738,7 +739,7 @@
       ],
       "confidence": 0.52,
       "estimate_high": 522.67,
-      "latency_ms": 1.75,
+      "latency_ms": 1.64,
       "tags": [
         "low_evidence",
         "glass"
@@ -767,7 +768,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 1620.64,
-      "latency_ms": 1.69,
+      "latency_ms": 1.73,
       "tags": [
         "legit",
         "collision",
@@ -797,7 +798,7 @@
       ],
       "confidence": 0.9,
       "estimate_high": 1446.12,
-      "latency_ms": 1.73,
+      "latency_ms": 1.66,
       "tags": [
         "legit",
         "flood"
@@ -826,7 +827,7 @@
       ],
       "confidence": 0.8,
       "estimate_high": 635.95,
-      "latency_ms": 1.65,
+      "latency_ms": 1.6,
       "tags": [
         "legit",
         "vandalism"
@@ -855,7 +856,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 787.75,
-      "latency_ms": 1.65,
+      "latency_ms": 1.96,
       "tags": [
         "legit",
         "collision",
@@ -885,7 +886,7 @@
       ],
       "confidence": 0.67,
       "estimate_high": 1809.81,
-      "latency_ms": 1.65,
+      "latency_ms": 1.84,
       "tags": [
         "legit",
         "collision",
@@ -915,7 +916,7 @@
       ],
       "confidence": 0.815,
       "estimate_high": 2279.3,
-      "latency_ms": 1.56,
+      "latency_ms": 1.79,
       "tags": [
         "legit",
         "collision",
@@ -945,7 +946,7 @@
       ],
       "confidence": 0.77,
       "estimate_high": 840.94,
-      "latency_ms": 1.68,
+      "latency_ms": 1.78,
       "tags": [
         "legit",
         "collision",
@@ -975,7 +976,7 @@
       ],
       "confidence": 0.935,
       "estimate_high": 1684.46,
-      "latency_ms": 1.69,
+      "latency_ms": 1.67,
       "tags": [
         "hard_negative",
         "vandalism",
@@ -1038,7 +1039,7 @@
       ],
       "confidence": 0.71,
       "estimate_high": 943.0,
-      "latency_ms": 1.87,
+      "latency_ms": 1.77,
       "tags": [
         "fraud",
         "flood",
@@ -1068,7 +1069,7 @@
       ],
       "confidence": 0.845,
       "estimate_high": 1537.84,
-      "latency_ms": 1.59,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "animal"
@@ -1097,7 +1098,7 @@
       ],
       "confidence": 0.84,
       "estimate_high": 1428.01,
-      "latency_ms": 1.62,
+      "latency_ms": 1.64,
       "tags": [
         "deny",
         "collision",
@@ -1128,7 +1129,7 @@
       ],
       "confidence": 0.8,
       "estimate_high": 1967.94,
-      "latency_ms": 1.84,
+      "latency_ms": 1.95,
       "tags": [
         "deny",
         "collision",
@@ -1158,7 +1159,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 1274.2,
-      "latency_ms": 1.58,
+      "latency_ms": 1.9,
       "tags": [
         "deny",
         "collision",
@@ -1188,7 +1189,7 @@
       ],
       "confidence": 0.96,
       "estimate_high": 692.88,
-      "latency_ms": 1.54,
+      "latency_ms": 1.73,
       "tags": [
         "hard_negative",
         "collision",
@@ -1223,7 +1224,7 @@
       ],
       "confidence": 0.605,
       "estimate_high": 1995.82,
-      "latency_ms": 15.3,
+      "latency_ms": 15.19,
       "tags": [
         "fraud",
         "hail",
@@ -1253,7 +1254,7 @@
       ],
       "confidence": 0.84,
       "estimate_high": 11407.42,
-      "latency_ms": 1.69,
+      "latency_ms": 1.86,
       "tags": [
         "major",
         "animal"
@@ -1282,7 +1283,7 @@
       ],
       "confidence": 0.86,
       "estimate_high": 925.75,
-      "latency_ms": 1.7,
+      "latency_ms": 1.76,
       "tags": [
         "legit",
         "flood"
@@ -1311,7 +1312,7 @@
       ],
       "confidence": 0.76,
       "estimate_high": 770.5,
-      "latency_ms": 1.58,
+      "latency_ms": 1.66,
       "tags": [
         "legit",
         "flood"
@@ -1340,7 +1341,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 539.35,
-      "latency_ms": 1.59,
+      "latency_ms": 1.69,
       "tags": [
         "legit",
         "vandalism"
@@ -1369,7 +1370,7 @@
       ],
       "confidence": 0.79,
       "estimate_high": 2373.6,
-      "latency_ms": 1.76,
+      "latency_ms": 1.77,
       "tags": [
         "legit",
         "animal"
@@ -1402,7 +1403,7 @@
       ],
       "confidence": 0.67,
       "estimate_high": 533.31,
-      "latency_ms": 1.79,
+      "latency_ms": 1.65,
       "tags": [
         "fraud",
         "vandalism",
@@ -1436,7 +1437,7 @@
       ],
       "confidence": 0.615,
       "estimate_high": 2196.5,
-      "latency_ms": 1.71,
+      "latency_ms": 1.74,
       "tags": [
         "fraud",
         "collision",
@@ -1467,7 +1468,7 @@
       ],
       "confidence": 0.89,
       "estimate_high": 1045.35,
-      "latency_ms": 1.65,
+      "latency_ms": 1.72,
       "tags": [
         "deny",
         "collision",
@@ -1501,7 +1502,7 @@
       ],
       "confidence": 0.56,
       "estimate_high": 1355.85,
-      "latency_ms": 1.72,
+      "latency_ms": 2.06,
       "tags": [
         "fraud",
         "collision",
@@ -1533,7 +1534,7 @@
       ],
       "confidence": 0.807,
       "estimate_high": 3398.82,
-      "latency_ms": 1.68,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "hail",
@@ -1563,7 +1564,7 @@
       ],
       "confidence": 0.933,
       "estimate_high": 2089.55,
-      "latency_ms": 1.72,
+      "latency_ms": 1.79,
       "tags": [
         "legit",
         "collision",
@@ -1593,7 +1594,7 @@
       ],
       "confidence": 0.57,
       "estimate_high": 406.52,
-      "latency_ms": 1.63,
+      "latency_ms": 1.71,
       "tags": [
         "low_evidence",
         "vandalism"
@@ -1622,7 +1623,7 @@
       ],
       "confidence": 0.825,
       "estimate_high": 1183.92,
-      "latency_ms": 1.58,
+      "latency_ms": 1.66,
       "tags": [
         "deny",
         "collision",
@@ -1652,7 +1653,7 @@
       ],
       "confidence": 0.89,
       "estimate_high": 11212.5,
-      "latency_ms": 1.75,
+      "latency_ms": 1.77,
       "tags": [
         "major",
         "collision",
@@ -1682,7 +1683,7 @@
       ],
       "confidence": 0.82,
       "estimate_high": 1623.8,
-      "latency_ms": 1.64,
+      "latency_ms": 1.59,
       "tags": [
         "legit",
         "collision",
@@ -1712,7 +1713,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 800.97,
-      "latency_ms": 1.67,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "glass"
@@ -1770,7 +1771,7 @@
       ],
       "confidence": 0.832,
       "estimate_high": 10750.2,
-      "latency_ms": 1.64,
+      "latency_ms": 1.99,
       "tags": [
         "major",
         "animal"
@@ -1799,7 +1800,7 @@
       ],
       "confidence": 0.905,
       "estimate_high": 2461.57,
-      "latency_ms": 1.6,
+      "latency_ms": 1.75,
       "tags": [
         "legit",
         "hail"
@@ -1828,7 +1829,7 @@
       ],
       "confidence": 0.835,
       "estimate_high": 1358.15,
-      "latency_ms": 1.71,
+      "latency_ms": 1.75,
       "tags": [
         "hard_negative",
         "collision",
@@ -1859,7 +1860,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 899.87,
-      "latency_ms": 1.6,
+      "latency_ms": 1.64,
       "tags": [
         "legit",
         "collision",
@@ -1889,7 +1890,7 @@
       ],
       "confidence": 0.817,
       "estimate_high": 2966.42,
-      "latency_ms": 1.57,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "collision",
@@ -1923,7 +1924,7 @@
       ],
       "confidence": 0.645,
       "estimate_high": 1841.44,
-      "latency_ms": 1.82,
+      "latency_ms": 1.84,
       "tags": [
         "fraud",
         "vandalism",
@@ -1953,7 +1954,7 @@
       ],
       "confidence": 0.832,
       "estimate_high": 10049.85,
-      "latency_ms": 1.68,
+      "latency_ms": 1.7,
       "tags": [
         "major",
         "animal"
@@ -1982,7 +1983,7 @@
       ],
       "confidence": 0.873,
       "estimate_high": 3246.16,
-      "latency_ms": 1.75,
+      "latency_ms": 1.64,
       "tags": [
         "legit",
         "hail"
@@ -2011,7 +2012,7 @@
       ],
       "confidence": 0.787,
       "estimate_high": 2942.27,
-      "latency_ms": 1.75,
+      "latency_ms": 1.76,
       "tags": [
         "deny",
         "collision",
@@ -2041,7 +2042,7 @@
       ],
       "confidence": 0.917,
       "estimate_high": 9219.55,
-      "latency_ms": 1.7,
+      "latency_ms": 1.74,
       "tags": [
         "major",
         "animal"
@@ -2070,7 +2071,7 @@
       ],
       "confidence": 0.865,
       "estimate_high": 2351.75,
-      "latency_ms": 1.65,
+      "latency_ms": 1.99,
       "tags": [
         "legit",
         "collision",
@@ -2100,7 +2101,7 @@
       ],
       "confidence": 0.867,
       "estimate_high": 2855.74,
-      "latency_ms": 1.67,
+      "latency_ms": 1.78,
       "tags": [
         "legit",
         "collision",
@@ -2130,7 +2131,7 @@
       ],
       "confidence": 0.78,
       "estimate_high": 1266.15,
-      "latency_ms": 1.58,
+      "latency_ms": 1.57,
       "tags": [
         "deny",
         "collision",
@@ -2164,7 +2165,7 @@
       ],
       "confidence": 0.52,
       "estimate_high": 1819.3,
-      "latency_ms": 1.62,
+      "latency_ms": 1.69,
       "tags": [
         "fraud",
         "animal",
@@ -2198,7 +2199,7 @@
       ],
       "confidence": 0.532,
       "estimate_high": 2139.57,
-      "latency_ms": 1.71,
+      "latency_ms": 1.81,
       "tags": [
         "fraud",
         "collision",
@@ -2229,7 +2230,7 @@
       ],
       "confidence": 0.94,
       "estimate_high": 1107.45,
-      "latency_ms": 1.56,
+      "latency_ms": 1.58,
       "tags": [
         "deny",
         "collision",
@@ -2259,7 +2260,7 @@
       ],
       "confidence": 0.81,
       "estimate_high": 736.0,
-      "latency_ms": 1.64,
+      "latency_ms": 1.55,
       "tags": [
         "deny",
         "collision",
@@ -2289,7 +2290,7 @@
       ],
       "confidence": 0.885,
       "estimate_high": 1359.88,
-      "latency_ms": 2.29,
+      "latency_ms": 1.88,
       "tags": [
         "deny",
         "collision",
@@ -2320,7 +2321,7 @@
       ],
       "confidence": 0.91,
       "estimate_high": 3024.5,
-      "latency_ms": 1.75,
+      "latency_ms": 1.69,
       "tags": [
         "legit",
         "collision",
@@ -2350,7 +2351,7 @@
       ],
       "confidence": 0.813,
       "estimate_high": 2810.6,
-      "latency_ms": 1.67,
+      "latency_ms": 1.56,
       "tags": [
         "deny",
         "collision",
@@ -2380,7 +2381,7 @@
       ],
       "confidence": 0.538,
       "estimate_high": 2994.6,
-      "latency_ms": 1.85,
+      "latency_ms": 2.17,
       "tags": [
         "low_evidence",
         "animal"
@@ -2409,7 +2410,7 @@
       ],
       "confidence": 0.835,
       "estimate_high": 2140.72,
-      "latency_ms": 1.66,
+      "latency_ms": 1.64,
       "tags": [
         "legit",
         "hail"
@@ -2438,7 +2439,7 @@
       ],
       "confidence": 0.8,
       "estimate_high": 639.11,
-      "latency_ms": 1.55,
+      "latency_ms": 1.63,
       "tags": [
         "deny",
         "collision",
@@ -2472,7 +2473,7 @@
       ],
       "confidence": 0.55,
       "estimate_high": 794.36,
-      "latency_ms": 1.78,
+      "latency_ms": 1.77,
       "tags": [
         "fraud",
         "collision",
@@ -2504,7 +2505,7 @@
       ],
       "confidence": 0.76,
       "estimate_high": 1154.02,
-      "latency_ms": 1.57,
+      "latency_ms": 1.64,
       "tags": [
         "legit",
         "collision",
@@ -2534,7 +2535,7 @@
       ],
       "confidence": 0.915,
       "estimate_high": 2534.02,
-      "latency_ms": 1.7,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "hail"
@@ -2563,7 +2564,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 805.0,
-      "latency_ms": 1.82,
+      "latency_ms": 1.71,
       "tags": [
         "legit",
         "collision",
@@ -2593,7 +2594,7 @@
       ],
       "confidence": 0.55,
       "estimate_high": 3241.85,
-      "latency_ms": 1.85,
+      "latency_ms": 1.67,
       "tags": [
         "low_evidence",
         "hail"
@@ -2626,7 +2627,7 @@
       ],
       "confidence": 0.54,
       "estimate_high": 3634.29,
-      "latency_ms": 1.73,
+      "latency_ms": 1.68,
       "tags": [
         "fraud",
         "hail",
@@ -2656,7 +2657,7 @@
       ],
       "confidence": 0.95,
       "estimate_high": 670.16,
-      "latency_ms": 1.7,
+      "latency_ms": 2.13,
       "tags": [
         "legit",
         "glass"
@@ -2689,7 +2690,7 @@
       ],
       "confidence": 0.617,
       "estimate_high": 2923.59,
-      "latency_ms": 1.65,
+      "latency_ms": 1.88,
       "tags": [
         "fraud",
         "hail",
@@ -2719,7 +2720,7 @@
       ],
       "confidence": 0.925,
       "estimate_high": 1891.17,
-      "latency_ms": 1.65,
+      "latency_ms": 1.84,
       "tags": [
         "hard_negative",
         "collision",
@@ -2750,7 +2751,7 @@
       ],
       "confidence": 0.797,
       "estimate_high": 2667.71,
-      "latency_ms": 1.74,
+      "latency_ms": 1.81,
       "tags": [
         "legit",
         "collision",
@@ -2780,7 +2781,7 @@
       ],
       "confidence": 0.817,
       "estimate_high": 3073.66,
-      "latency_ms": 1.61,
+      "latency_ms": 1.85,
       "tags": [
         "legit",
         "hail"
@@ -2809,7 +2810,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 2228.7,
-      "latency_ms": 1.66,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "animal"
@@ -2838,7 +2839,7 @@
       ],
       "confidence": 0.785,
       "estimate_high": 2125.2,
-      "latency_ms": 1.74,
+      "latency_ms": 1.8,
       "tags": [
         "legit",
         "hail"
@@ -2867,7 +2868,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 960.25,
-      "latency_ms": 1.62,
+      "latency_ms": 1.68,
       "tags": [
         "legit",
         "collision",
@@ -2897,7 +2898,7 @@
       ],
       "confidence": 0.9,
       "estimate_high": 2958.66,
-      "latency_ms": 1.74,
+      "latency_ms": 1.65,
       "tags": [
         "hard_negative",
         "collision",
@@ -2928,7 +2929,7 @@
       ],
       "confidence": 0.86,
       "estimate_high": 382.37,
-      "latency_ms": 1.79,
+      "latency_ms": 2.06,
       "tags": [
         "hard_negative",
         "vandalism",
@@ -2958,7 +2959,7 @@
       ],
       "confidence": 0.76,
       "estimate_high": 1054.55,
-      "latency_ms": 1.62,
+      "latency_ms": 1.67,
       "tags": [
         "legit",
         "glass"
@@ -2987,7 +2988,7 @@
       ],
       "confidence": 0.903,
       "estimate_high": 2601.88,
-      "latency_ms": 1.63,
+      "latency_ms": 1.69,
       "tags": [
         "legit",
         "animal"
@@ -3046,7 +3047,7 @@
       ],
       "confidence": 0.89,
       "estimate_high": 1696.25,
-      "latency_ms": 1.62,
+      "latency_ms": 1.63,
       "tags": [
         "legit",
         "flood"
@@ -3079,7 +3080,7 @@
       ],
       "confidence": 0.58,
       "estimate_high": 2264.92,
-      "latency_ms": 1.64,
+      "latency_ms": 1.71,
       "tags": [
         "fraud",
         "collision",
@@ -3110,7 +3111,7 @@
       ],
       "confidence": 0.857,
       "estimate_high": 2364.4,
-      "latency_ms": 1.68,
+      "latency_ms": 1.61,
       "tags": [
         "deny",
         "collision",
@@ -3140,7 +3141,7 @@
       ],
       "confidence": 0.89,
       "estimate_high": 771.07,
-      "latency_ms": 1.64,
+      "latency_ms": 1.61,
       "tags": [
         "legit",
         "glass"
@@ -3169,7 +3170,7 @@
       ],
       "confidence": 0.813,
       "estimate_high": 2885.35,
-      "latency_ms": 1.7,
+      "latency_ms": 1.66,
       "tags": [
         "hard_negative",
         "animal",
@@ -3199,7 +3200,7 @@
       ],
       "confidence": 0.8,
       "estimate_high": 805.0,
-      "latency_ms": 1.71,
+      "latency_ms": 1.69,
       "tags": [
         "legit",
         "flood"
@@ -3228,7 +3229,7 @@
       ],
       "confidence": 0.885,
       "estimate_high": 9750.27,
-      "latency_ms": 1.74,
+      "latency_ms": 2.08,
       "tags": [
         "major",
         "collision",
@@ -3258,7 +3259,7 @@
       ],
       "confidence": 0.53,
       "estimate_high": 1177.89,
-      "latency_ms": 1.67,
+      "latency_ms": 1.73,
       "tags": [
         "low_evidence",
         "collision",
@@ -3288,7 +3289,7 @@
       ],
       "confidence": 0.88,
       "estimate_high": 2031.19,
-      "latency_ms": 1.69,
+      "latency_ms": 1.66,
       "tags": [
         "deny",
         "collision",
@@ -3318,7 +3319,7 @@
       ],
       "confidence": 0.965,
       "estimate_high": 2143.6,
-      "latency_ms": 1.61,
+      "latency_ms": 1.63,
       "tags": [
         "legit",
         "collision",
@@ -3348,7 +3349,7 @@
       ],
       "confidence": 0.88,
       "estimate_high": 2570.25,
-      "latency_ms": 1.6,
+      "latency_ms": 1.68,
       "tags": [
         "legit",
         "hail"
@@ -3377,7 +3378,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 3038.3,
-      "latency_ms": 1.83,
+      "latency_ms": 1.91,
       "tags": [
         "legit",
         "collision",
@@ -3407,7 +3408,7 @@
       ],
       "confidence": 0.96,
       "estimate_high": 833.17,
-      "latency_ms": 1.61,
+      "latency_ms": 1.57,
       "tags": [
         "legit",
         "animal"
@@ -3436,7 +3437,7 @@
       ],
       "confidence": 0.79,
       "estimate_high": 600.3,
-      "latency_ms": 1.61,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "glass"
@@ -3465,7 +3466,7 @@
       ],
       "confidence": 0.84,
       "estimate_high": 1622.94,
-      "latency_ms": 1.81,
+      "latency_ms": 1.67,
       "tags": [
         "legit",
         "collision",
@@ -3495,7 +3496,7 @@
       ],
       "confidence": 0.875,
       "estimate_high": 1410.76,
-      "latency_ms": 1.62,
+      "latency_ms": 1.74,
       "tags": [
         "hard_negative",
         "collision",
@@ -3530,7 +3531,7 @@
       ],
       "confidence": 0.54,
       "estimate_high": 592.54,
-      "latency_ms": 1.66,
+      "latency_ms": 1.84,
       "tags": [
         "fraud",
         "collision",
@@ -3565,7 +3566,7 @@
       ],
       "confidence": 0.515,
       "estimate_high": 1491.26,
-      "latency_ms": 1.74,
+      "latency_ms": 1.88,
       "tags": [
         "fraud",
         "vandalism",
@@ -3596,7 +3597,7 @@
       ],
       "confidence": 0.77,
       "estimate_high": 1610.0,
-      "latency_ms": 1.64,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "flood",
@@ -3630,7 +3631,7 @@
       ],
       "confidence": 0.577,
       "estimate_high": 3112.19,
-      "latency_ms": 1.64,
+      "latency_ms": 1.71,
       "tags": [
         "fraud",
         "collision",
@@ -3665,7 +3666,7 @@
       ],
       "confidence": 0.667,
       "estimate_high": 2128.94,
-      "latency_ms": 1.74,
+      "latency_ms": 1.78,
       "tags": [
         "fraud",
         "collision",
@@ -3696,7 +3697,7 @@
       ],
       "confidence": 0.93,
       "estimate_high": 592.54,
-      "latency_ms": 1.63,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "glass"
@@ -3725,7 +3726,7 @@
       ],
       "confidence": 0.795,
       "estimate_high": 2212.02,
-      "latency_ms": 1.64,
+      "latency_ms": 1.6,
       "tags": [
         "legit",
         "collision",
@@ -3755,7 +3756,7 @@
       ],
       "confidence": 0.84,
       "estimate_high": 639.11,
-      "latency_ms": 1.64,
+      "latency_ms": 1.68,
       "tags": [
         "deny",
         "collision",
@@ -3785,7 +3786,7 @@
       ],
       "confidence": 0.82,
       "estimate_high": 1802.05,
-      "latency_ms": 1.66,
+      "latency_ms": 1.58,
       "tags": [
         "deny",
         "collision",
@@ -3819,7 +3820,7 @@
       ],
       "confidence": 0.51,
       "estimate_high": 1332.27,
-      "latency_ms": 1.71,
+      "latency_ms": 1.96,
       "tags": [
         "fraud",
         "glass",
@@ -3849,7 +3850,7 @@
       ],
       "confidence": 0.9,
       "estimate_high": 779.12,
-      "latency_ms": 1.7,
+      "latency_ms": 1.77,
       "tags": [
         "legit",
         "flood"
@@ -3878,7 +3879,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 10774.35,
-      "latency_ms": 1.69,
+      "latency_ms": 1.74,
       "tags": [
         "major",
         "animal"
@@ -3907,7 +3908,7 @@
       ],
       "confidence": 0.79,
       "estimate_high": 1543.59,
-      "latency_ms": 1.6,
+      "latency_ms": 1.61,
       "tags": [
         "legit",
         "collision",
@@ -3937,7 +3938,7 @@
       ],
       "confidence": 0.54,
       "estimate_high": 1860.12,
-      "latency_ms": 1.7,
+      "latency_ms": 1.8,
       "tags": [
         "low_evidence",
         "flood"
@@ -3970,7 +3971,7 @@
       ],
       "confidence": 0.5,
       "estimate_high": 1635.3,
-      "latency_ms": 1.66,
+      "latency_ms": 1.7,
       "tags": [
         "fraud",
         "collision",
@@ -4005,7 +4006,7 @@
       ],
       "confidence": 0.66,
       "estimate_high": 1050.24,
-      "latency_ms": 1.66,
+      "latency_ms": 1.67,
       "tags": [
         "fraud",
         "collision",
@@ -4036,7 +4037,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 561.49,
-      "latency_ms": 1.66,
+      "latency_ms": 1.69,
       "tags": [
         "hard_negative",
         "animal",
@@ -4066,7 +4067,7 @@
       ],
       "confidence": 0.852,
       "estimate_high": 10217.17,
-      "latency_ms": 1.67,
+      "latency_ms": 1.68,
       "tags": [
         "major",
         "animal"
@@ -4099,7 +4100,7 @@
       ],
       "confidence": 0.665,
       "estimate_high": 1587.86,
-      "latency_ms": 1.79,
+      "latency_ms": 1.7,
       "tags": [
         "fraud",
         "vandalism",
@@ -4129,7 +4130,7 @@
       ],
       "confidence": 0.825,
       "estimate_high": 10241.9,
-      "latency_ms": 1.8,
+      "latency_ms": 2.18,
       "tags": [
         "major",
         "collision",
@@ -4159,7 +4160,7 @@
       ],
       "confidence": 0.82,
       "estimate_high": 3391.06,
-      "latency_ms": 1.59,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "hail"
@@ -4188,7 +4189,7 @@
       ],
       "confidence": 0.855,
       "estimate_high": 2143.02,
-      "latency_ms": 1.57,
+      "latency_ms": 1.63,
       "tags": [
         "deny",
         "collision",
@@ -4218,7 +4219,7 @@
       ],
       "confidence": 0.93,
       "estimate_high": 522.67,
-      "latency_ms": 1.71,
+      "latency_ms": 1.72,
       "tags": [
         "legit",
         "glass"
@@ -4247,7 +4248,7 @@
       ],
       "confidence": 0.895,
       "estimate_high": 2699.62,
-      "latency_ms": 1.58,
+      "latency_ms": 1.65,
       "tags": [
         "hard_negative",
         "hail",
@@ -4277,7 +4278,7 @@
       ],
       "confidence": 0.77,
       "estimate_high": 864.22,
-      "latency_ms": 1.58,
+      "latency_ms": 1.57,
       "tags": [
         "legit",
         "glass"
@@ -4306,7 +4307,7 @@
       ],
       "confidence": 0.73,
       "estimate_high": 1054.55,
-      "latency_ms": 1.67,
+      "latency_ms": 1.69,
       "tags": [
         "legit",
         "glass",
@@ -4340,7 +4341,7 @@
       ],
       "confidence": 0.593,
       "estimate_high": 2671.45,
-      "latency_ms": 1.73,
+      "latency_ms": 1.71,
       "tags": [
         "fraud",
         "collision",
@@ -4371,7 +4372,7 @@
       ],
       "confidence": 0.75,
       "estimate_high": 840.94,
-      "latency_ms": 1.63,
+      "latency_ms": 1.59,
       "tags": [
         "hard_negative",
         "collision",
@@ -4402,7 +4403,7 @@
       ],
       "confidence": 0.54,
       "estimate_high": 436.71,
-      "latency_ms": 1.86,
+      "latency_ms": 2.03,
       "tags": [
         "low_evidence",
         "vandalism"
@@ -4431,7 +4432,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 2127.5,
-      "latency_ms": 1.64,
+      "latency_ms": 1.68,
       "tags": [
         "legit",
         "collision",
@@ -4466,7 +4467,7 @@
       ],
       "confidence": 0.575,
       "estimate_high": 1354.7,
-      "latency_ms": 1.65,
+      "latency_ms": 1.69,
       "tags": [
         "fraud",
         "collision",
@@ -4497,7 +4498,7 @@
       ],
       "confidence": 0.91,
       "estimate_high": 874.0,
-      "latency_ms": 1.89,
+      "latency_ms": 1.93,
       "tags": [
         "legit",
         "collision",
@@ -4531,7 +4532,7 @@
       ],
       "confidence": 0.7,
       "estimate_high": 771.07,
-      "latency_ms": 1.66,
+      "latency_ms": 1.67,
       "tags": [
         "fraud",
         "glass",
@@ -4561,7 +4562,7 @@
       ],
       "confidence": 0.828,
       "estimate_high": 3048.07,
-      "latency_ms": 1.59,
+      "latency_ms": 1.66,
       "tags": [
         "legit",
         "animal"
@@ -4590,7 +4591,7 @@
       ],
       "confidence": 0.84,
       "estimate_high": 1296.05,
-      "latency_ms": 1.62,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "glass"
@@ -4619,7 +4620,7 @@
       ],
       "confidence": 0.865,
       "estimate_high": 1239.12,
-      "latency_ms": 1.57,
+      "latency_ms": 1.6,
       "tags": [
         "legit",
         "collision",
@@ -4649,7 +4650,7 @@
       ],
       "confidence": 0.82,
       "estimate_high": 794.36,
-      "latency_ms": 1.64,
+      "latency_ms": 1.61,
       "tags": [
         "legit",
         "collision",
@@ -4679,7 +4680,7 @@
       ],
       "confidence": 0.855,
       "estimate_high": 1334.86,
-      "latency_ms": 1.69,
+      "latency_ms": 1.67,
       "tags": [
         "legit",
         "collision",
@@ -4709,7 +4710,7 @@
       ],
       "confidence": 0.79,
       "estimate_high": 967.72,
-      "latency_ms": 1.73,
+      "latency_ms": 1.96,
       "tags": [
         "legit",
         "collision",
@@ -4739,7 +4740,7 @@
       ],
       "confidence": 0.897,
       "estimate_high": 3109.89,
-      "latency_ms": 1.66,
+      "latency_ms": 1.67,
       "tags": [
         "legit",
         "hail"
@@ -4768,7 +4769,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 960.25,
-      "latency_ms": 1.68,
+      "latency_ms": 1.67,
       "tags": [
         "legit",
         "collision",
@@ -4802,7 +4803,7 @@
       ],
       "confidence": 0.59,
       "estimate_high": 1066.62,
-      "latency_ms": 1.71,
+      "latency_ms": 1.69,
       "tags": [
         "fraud",
         "glass",
@@ -4836,7 +4837,7 @@
       ],
       "confidence": 0.597,
       "estimate_high": 3178.02,
-      "latency_ms": 1.66,
+      "latency_ms": 1.7,
       "tags": [
         "fraud",
         "hail",
@@ -4866,7 +4867,7 @@
       ],
       "confidence": 0.92,
       "estimate_high": 744.62,
-      "latency_ms": 1.67,
+      "latency_ms": 1.7,
       "tags": [
         "legit",
         "flood"
@@ -4895,7 +4896,7 @@
       ],
       "confidence": 0.905,
       "estimate_high": 1515.12,
-      "latency_ms": 1.57,
+      "latency_ms": 1.56,
       "tags": [
         "legit",
         "flood"
@@ -4928,7 +4929,7 @@
       ],
       "confidence": 0.47,
       "estimate_high": 744.62,
-      "latency_ms": 1.63,
+      "latency_ms": 1.68,
       "tags": [
         "fraud",
         "flood",
@@ -4963,7 +4964,7 @@
       ],
       "confidence": 0.655,
       "estimate_high": 1805.21,
-      "latency_ms": 1.76,
+      "latency_ms": 1.79,
       "tags": [
         "fraud",
         "vandalism",
@@ -4993,7 +4994,7 @@
       ],
       "confidence": 0.863,
       "estimate_high": 3452.3,
-      "latency_ms": 1.63,
+      "latency_ms": 1.61,
       "tags": [
         "hard_negative",
         "hail",
@@ -5023,7 +5024,7 @@
       ],
       "confidence": 0.78,
       "estimate_high": 708.97,
-      "latency_ms": 1.68,
+      "latency_ms": 1.98,
       "tags": [
         "legit",
         "collision",
@@ -5053,7 +5054,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 1696.25,
-      "latency_ms": 1.72,
+      "latency_ms": 1.74,
       "tags": [
         "legit",
         "flood"
@@ -5082,7 +5083,7 @@
       ],
       "confidence": 0.91,
       "estimate_high": 1588.72,
-      "latency_ms": 1.65,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "collision",
@@ -5112,7 +5113,7 @@
       ],
       "confidence": 0.775,
       "estimate_high": 2040.67,
-      "latency_ms": 1.64,
+      "latency_ms": 1.72,
       "tags": [
         "legit",
         "vandalism"
@@ -5141,7 +5142,7 @@
       ],
       "confidence": 0.84,
       "estimate_high": 3191.25,
-      "latency_ms": 1.7,
+      "latency_ms": 1.73,
       "tags": [
         "legit",
         "collision",
@@ -5171,7 +5172,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 1814.7,
-      "latency_ms": 1.59,
+      "latency_ms": 1.56,
       "tags": [
         "legit",
         "hail"
@@ -5200,7 +5201,7 @@
       ],
       "confidence": 0.76,
       "estimate_high": 813.62,
-      "latency_ms": 1.6,
+      "latency_ms": 1.59,
       "tags": [
         "legit",
         "flood"
@@ -5229,7 +5230,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 1775.6,
-      "latency_ms": 1.69,
+      "latency_ms": 1.79,
       "tags": [
         "legit",
         "animal"
@@ -5262,7 +5263,7 @@
       ],
       "confidence": 0.6,
       "estimate_high": 732.26,
-      "latency_ms": 1.66,
+      "latency_ms": 1.7,
       "tags": [
         "fraud",
         "glass",
@@ -5292,7 +5293,7 @@
       ],
       "confidence": 0.855,
       "estimate_high": 1159.77,
-      "latency_ms": 1.66,
+      "latency_ms": 1.98,
       "tags": [
         "hard_negative",
         "collision",
@@ -5327,7 +5328,7 @@
       ],
       "confidence": 0.54,
       "estimate_high": 693.45,
-      "latency_ms": 1.83,
+      "latency_ms": 1.8,
       "tags": [
         "fraud",
         "collision",
@@ -5359,7 +5360,7 @@
       ],
       "confidence": 0.89,
       "estimate_high": 1601.37,
-      "latency_ms": 1.69,
+      "latency_ms": 1.61,
       "tags": [
         "legit",
         "flood"
@@ -5388,7 +5389,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 833.17,
-      "latency_ms": 1.62,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "collision",
@@ -5418,7 +5419,7 @@
       ],
       "confidence": 0.837,
       "estimate_high": 3354.84,
-      "latency_ms": 1.69,
+      "latency_ms": 1.71,
       "tags": [
         "legit",
         "hail"
@@ -5447,7 +5448,7 @@
       ],
       "confidence": 0.79,
       "estimate_high": 2601.3,
-      "latency_ms": 1.58,
+      "latency_ms": 1.68,
       "tags": [
         "legit",
         "hail",
@@ -5477,7 +5478,7 @@
       ],
       "confidence": 0.872,
       "estimate_high": 10734.67,
-      "latency_ms": 1.68,
+      "latency_ms": 1.66,
       "tags": [
         "major",
         "collision",
@@ -5507,7 +5508,7 @@
       ],
       "confidence": 0.565,
       "estimate_high": 1570.9,
-      "latency_ms": 1.72,
+      "latency_ms": 1.75,
       "tags": [
         "low_evidence",
         "animal"
@@ -5540,7 +5541,7 @@
       ],
       "confidence": 0.45,
       "estimate_high": 1488.96,
-      "latency_ms": 1.72,
+      "latency_ms": 1.74,
       "tags": [
         "fraud",
         "collision",
@@ -5571,7 +5572,7 @@
       ],
       "confidence": 0.78,
       "estimate_high": 10648.42,
-      "latency_ms": 1.66,
+      "latency_ms": 1.68,
       "tags": [
         "major",
         "animal",
@@ -5601,7 +5602,7 @@
       ],
       "confidence": 0.91,
       "estimate_high": 1392.65,
-      "latency_ms": 1.99,
+      "latency_ms": 2.21,
       "tags": [
         "legit",
         "glass"
@@ -5630,7 +5631,7 @@
       ],
       "confidence": 0.96,
       "estimate_high": 600.3,
-      "latency_ms": 1.66,
+      "latency_ms": 1.68,
       "tags": [
         "legit",
         "collision",
@@ -5660,7 +5661,7 @@
       ],
       "confidence": 0.675,
       "estimate_high": 1722.7,
-      "latency_ms": 1.61,
+      "latency_ms": 1.66,
       "tags": [
         "legit",
         "animal"
@@ -5693,7 +5694,7 @@
       ],
       "confidence": 0.52,
       "estimate_high": 744.62,
-      "latency_ms": 1.79,
+      "latency_ms": 1.83,
       "tags": [
         "fraud",
         "collision",
@@ -5724,7 +5725,7 @@
       ],
       "confidence": 0.93,
       "estimate_high": 575.57,
-      "latency_ms": 1.55,
+      "latency_ms": 1.63,
       "tags": [
         "legit",
         "vandalism"
@@ -5753,7 +5754,7 @@
       ],
       "confidence": 0.885,
       "estimate_high": 2528.85,
-      "latency_ms": 1.6,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "hail"
@@ -5782,7 +5783,7 @@
       ],
       "confidence": 0.53,
       "estimate_high": 1546.17,
-      "latency_ms": 1.76,
+      "latency_ms": 1.78,
       "tags": [
         "low_evidence",
         "collision",
@@ -5812,7 +5813,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 701.21,
-      "latency_ms": 1.57,
+      "latency_ms": 1.55,
       "tags": [
         "deny",
         "collision",
@@ -5842,7 +5843,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 1990.65,
-      "latency_ms": 1.63,
+      "latency_ms": 1.61,
       "tags": [
         "legit",
         "animal"
@@ -5871,7 +5872,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 1610.0,
-      "latency_ms": 1.74,
+      "latency_ms": 1.96,
       "tags": [
         "hard_negative",
         "flood",
@@ -5901,7 +5902,7 @@
       ],
       "confidence": 0.827,
       "estimate_high": 3146.97,
-      "latency_ms": 1.67,
+      "latency_ms": 1.61,
       "tags": [
         "deny",
         "collision",
@@ -5931,7 +5932,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 2813.47,
-      "latency_ms": 1.67,
+      "latency_ms": 1.71,
       "tags": [
         "legit",
         "hail",
@@ -5961,7 +5962,7 @@
       ],
       "confidence": 0.85,
       "estimate_high": 3355.7,
-      "latency_ms": 1.69,
+      "latency_ms": 1.84,
       "tags": [
         "hard_negative",
         "hail",
@@ -6020,7 +6021,7 @@
       ],
       "confidence": 0.777,
       "estimate_high": 2742.46,
-      "latency_ms": 1.61,
+      "latency_ms": 1.69,
       "tags": [
         "legit",
         "hail"
@@ -6049,7 +6050,7 @@
       ],
       "confidence": 0.877,
       "estimate_high": 10790.45,
-      "latency_ms": 1.74,
+      "latency_ms": 1.78,
       "tags": [
         "major",
         "collision",
@@ -6079,7 +6080,7 @@
       ],
       "confidence": 0.847,
       "estimate_high": 10515.6,
-      "latency_ms": 1.66,
+      "latency_ms": 1.68,
       "tags": [
         "major",
         "animal"
@@ -6108,7 +6109,7 @@
       ],
       "confidence": 0.867,
       "estimate_high": 3067.62,
-      "latency_ms": 1.58,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "hail"
@@ -6137,7 +6138,7 @@
       ],
       "confidence": 0.845,
       "estimate_high": 1713.5,
-      "latency_ms": 1.69,
+      "latency_ms": 1.72,
       "tags": [
         "legit",
         "flood"
@@ -6166,7 +6167,7 @@
       ],
       "confidence": 0.93,
       "estimate_high": 1344.35,
-      "latency_ms": 1.55,
+      "latency_ms": 1.86,
       "tags": [
         "legit",
         "glass"
@@ -6195,7 +6196,7 @@
       ],
       "confidence": 0.877,
       "estimate_high": 2544.38,
-      "latency_ms": 1.68,
+      "latency_ms": 1.6,
       "tags": [
         "deny",
         "collision",
@@ -6254,7 +6255,7 @@
       ],
       "confidence": 0.965,
       "estimate_high": 1421.4,
-      "latency_ms": 1.58,
+      "latency_ms": 1.59,
       "tags": [
         "deny",
         "collision",
@@ -6284,7 +6285,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 1894.62,
-      "latency_ms": 1.58,
+      "latency_ms": 1.6,
       "tags": [
         "hard_negative",
         "flood",
@@ -6314,7 +6315,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 1344.35,
-      "latency_ms": 1.67,
+      "latency_ms": 1.7,
       "tags": [
         "hard_negative",
         "glass",
@@ -6344,7 +6345,7 @@
       ],
       "confidence": 0.86,
       "estimate_high": 2012.5,
-      "latency_ms": 1.57,
+      "latency_ms": 1.63,
       "tags": [
         "hard_negative",
         "collision",
@@ -6375,7 +6376,7 @@
       ],
       "confidence": 0.81,
       "estimate_high": 7657.85,
-      "latency_ms": 1.69,
+      "latency_ms": 1.7,
       "tags": [
         "major",
         "collision",
@@ -6409,7 +6410,7 @@
       ],
       "confidence": 0.66,
       "estimate_high": 805.0,
-      "latency_ms": 1.74,
+      "latency_ms": 1.76,
       "tags": [
         "fraud",
         "flood",
@@ -6439,7 +6440,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 921.15,
-      "latency_ms": 1.53,
+      "latency_ms": 1.6,
       "tags": [
         "deny",
         "collision",
@@ -6469,7 +6470,7 @@
       ],
       "confidence": 0.877,
       "estimate_high": 3285.84,
-      "latency_ms": 1.61,
+      "latency_ms": 1.88,
       "tags": [
         "legit",
         "hail"
@@ -6498,7 +6499,7 @@
       ],
       "confidence": 0.925,
       "estimate_high": 2637.52,
-      "latency_ms": 1.79,
+      "latency_ms": 1.68,
       "tags": [
         "legit",
         "hail"
@@ -6527,7 +6528,7 @@
       ],
       "confidence": 0.95,
       "estimate_high": 1642.77,
-      "latency_ms": 1.65,
+      "latency_ms": 1.6,
       "tags": [
         "legit",
         "hail"
@@ -6556,7 +6557,7 @@
       ],
       "confidence": 0.887,
       "estimate_high": 2689.56,
-      "latency_ms": 1.63,
+      "latency_ms": 1.73,
       "tags": [
         "legit",
         "collision",
@@ -6586,7 +6587,7 @@
       ],
       "confidence": 0.81,
       "estimate_high": 2088.97,
-      "latency_ms": 1.69,
+      "latency_ms": 1.72,
       "tags": [
         "hard_negative",
         "hail",
@@ -6616,7 +6617,7 @@
       ],
       "confidence": 0.96,
       "estimate_high": 7774.57,
-      "latency_ms": 1.71,
+      "latency_ms": 1.67,
       "tags": [
         "major",
         "animal"
@@ -6645,7 +6646,7 @@
       ],
       "confidence": 0.827,
       "estimate_high": 2946.01,
-      "latency_ms": 1.61,
+      "latency_ms": 1.64,
       "tags": [
         "legit",
         "hail"
@@ -6678,7 +6679,7 @@
       ],
       "confidence": 0.68,
       "estimate_high": 1003.37,
-      "latency_ms": 2.0,
+      "latency_ms": 1.98,
       "tags": [
         "fraud",
         "flood",
@@ -6741,7 +6742,7 @@
       ],
       "confidence": 0.608,
       "estimate_high": 3762.22,
-      "latency_ms": 1.72,
+      "latency_ms": 1.95,
       "tags": [
         "fraud",
         "collision",
@@ -6772,7 +6773,7 @@
       ],
       "confidence": 0.836,
       "estimate_high": 10853.7,
-      "latency_ms": 1.8,
+      "latency_ms": 1.79,
       "tags": [
         "major",
         "collision",
@@ -6802,7 +6803,7 @@
       ],
       "confidence": 0.92,
       "estimate_high": 514.91,
-      "latency_ms": 1.65,
+      "latency_ms": 1.59,
       "tags": [
         "legit",
         "glass"
@@ -6831,7 +6832,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 1871.62,
-      "latency_ms": 1.7,
+      "latency_ms": 1.62,
       "tags": [
         "hard_negative",
         "vandalism",
@@ -6861,7 +6862,7 @@
       ],
       "confidence": 0.89,
       "estimate_high": 1187.38,
-      "latency_ms": 1.7,
+      "latency_ms": 1.72,
       "tags": [
         "hard_negative",
         "glass",
@@ -6891,7 +6892,7 @@
       ],
       "confidence": 0.865,
       "estimate_high": 1454.75,
-      "latency_ms": 1.62,
+      "latency_ms": 1.61,
       "tags": [
         "legit",
         "collision",
@@ -6951,7 +6952,7 @@
       ],
       "confidence": 0.555,
       "estimate_high": 1933.72,
-      "latency_ms": 1.72,
+      "latency_ms": 1.76,
       "tags": [
         "low_evidence",
         "collision",
@@ -6981,7 +6982,7 @@
       ],
       "confidence": 0.81,
       "estimate_high": 1346.94,
-      "latency_ms": 1.53,
+      "latency_ms": 1.59,
       "tags": [
         "hard_negative",
         "collision",
@@ -7045,7 +7046,7 @@
       ],
       "confidence": 0.685,
       "estimate_high": 2363.25,
-      "latency_ms": 1.73,
+      "latency_ms": 2.05,
       "tags": [
         "fraud",
         "hail",
@@ -7075,7 +7076,7 @@
       ],
       "confidence": 0.855,
       "estimate_high": 2139.57,
-      "latency_ms": 1.64,
+      "latency_ms": 1.63,
       "tags": [
         "legit",
         "collision",
@@ -7105,7 +7106,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 1046.5,
-      "latency_ms": 1.74,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "flood"
@@ -7163,7 +7164,7 @@
       ],
       "confidence": 0.813,
       "estimate_high": 3086.6,
-      "latency_ms": 1.59,
+      "latency_ms": 1.62,
       "tags": [
         "hard_negative",
         "hail",
@@ -7193,7 +7194,7 @@
       ],
       "confidence": 0.795,
       "estimate_high": 1515.12,
-      "latency_ms": 1.59,
+      "latency_ms": 1.6,
       "tags": [
         "legit",
         "flood"
@@ -7222,7 +7223,7 @@
       ],
       "confidence": 0.905,
       "estimate_high": 1209.51,
-      "latency_ms": 1.65,
+      "latency_ms": 1.66,
       "tags": [
         "deny",
         "collision",
@@ -7252,7 +7253,7 @@
       ],
       "confidence": 0.793,
       "estimate_high": 2137.85,
-      "latency_ms": 1.6,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "collision",
@@ -7282,7 +7283,7 @@
       ],
       "confidence": 0.575,
       "estimate_high": 2320.7,
-      "latency_ms": 1.69,
+      "latency_ms": 1.72,
       "tags": [
         "low_evidence",
         "collision",
@@ -7312,7 +7313,7 @@
       ],
       "confidence": 0.547,
       "estimate_high": 3030.54,
-      "latency_ms": 1.75,
+      "latency_ms": 1.79,
       "tags": [
         "low_evidence",
         "hail"
@@ -7341,7 +7342,7 @@
       ],
       "confidence": 0.847,
       "estimate_high": 7775.15,
-      "latency_ms": 1.66,
+      "latency_ms": 1.99,
       "tags": [
         "major",
         "collision",
@@ -7371,7 +7372,7 @@
       ],
       "confidence": 0.835,
       "estimate_high": 1446.12,
-      "latency_ms": 1.71,
+      "latency_ms": 1.59,
       "tags": [
         "legit",
         "collision",
@@ -7430,7 +7431,7 @@
       ],
       "confidence": 0.52,
       "estimate_high": 994.75,
-      "latency_ms": 1.74,
+      "latency_ms": 1.67,
       "tags": [
         "low_evidence",
         "flood"
@@ -7459,7 +7460,7 @@
       ],
       "confidence": 0.87,
       "estimate_high": 442.75,
-      "latency_ms": 1.57,
+      "latency_ms": 1.67,
       "tags": [
         "legit",
         "vandalism"
@@ -7519,7 +7520,7 @@
       ],
       "confidence": 0.807,
       "estimate_high": 3371.51,
-      "latency_ms": 1.65,
+      "latency_ms": 1.62,
       "tags": [
         "hard_negative",
         "hail",
@@ -7549,7 +7550,7 @@
       ],
       "confidence": 0.865,
       "estimate_high": 1791.12,
-      "latency_ms": 1.58,
+      "latency_ms": 1.62,
       "tags": [
         "legit",
         "flood"
@@ -7578,7 +7579,7 @@
       ],
       "confidence": 0.83,
       "estimate_high": 2278.15,
-      "latency_ms": 1.66,
+      "latency_ms": 1.77,
       "tags": [
         "hard_negative",
         "vandalism",
@@ -7608,7 +7609,7 @@
       ],
       "confidence": 0.835,
       "estimate_high": 2011.92,
-      "latency_ms": 1.64,
+      "latency_ms": 1.65,
       "tags": [
         "legit",
         "collision",
@@ -7638,7 +7639,7 @@
       ],
       "confidence": 0.8,
       "estimate_high": 763.31,
-      "latency_ms": 1.62,
+      "latency_ms": 1.93,
       "tags": [
         "hard_negative",
         "glass",
@@ -7697,7 +7698,7 @@
       ],
       "confidence": 0.805,
       "estimate_high": 9868.15,
-      "latency_ms": 1.81,
+      "latency_ms": 1.69,
       "tags": [
         "major",
         "collision",
@@ -7727,7 +7728,7 @@
       ],
       "confidence": 0.877,
       "estimate_high": 2839.64,
-      "latency_ms": 1.58,
+      "latency_ms": 1.61,
       "tags": [
         "deny",
         "collision",
@@ -7757,7 +7758,7 @@
       ],
       "confidence": 0.843,
       "estimate_high": 3230.64,
-      "latency_ms": 1.86,
+      "latency_ms": 1.87,
       "tags": [
         "legit",
         "hail"
@@ -7820,7 +7821,7 @@
       ],
       "confidence": 0.52,
       "estimate_high": 2612.22,
-      "latency_ms": 1.68,
+      "latency_ms": 1.66,
       "tags": [
         "fraud",
         "animal",
@@ -7850,7 +7851,7 @@
       ],
       "confidence": 0.883,
       "estimate_high": 1976.27,
-      "latency_ms": 1.68,
+      "latency_ms": 1.75,
       "tags": [
         "legit",
         "collision",
@@ -7884,7 +7885,7 @@
       ],
       "confidence": 0.627,
       "estimate_high": 2893.4,
-      "latency_ms": 1.65,
+      "latency_ms": 1.69,
       "tags": [
         "fraud",
         "hail",
@@ -7914,7 +7915,7 @@
       ],
       "confidence": 0.8,
       "estimate_high": 2604.75,
-      "latency_ms": 1.62,
+      "latency_ms": 1.89,
       "tags": [
         "hard_negative",
         "collision",
@@ -7950,7 +7951,7 @@
       ],
       "confidence": 0.58,
       "estimate_high": 3458.34,
-      "latency_ms": 1.84,
+      "latency_ms": 1.79,
       "tags": [
         "fraud",
         "hail",
@@ -7980,7 +7981,7 @@
       ],
       "confidence": 0.91,
       "estimate_high": 623.59,
-      "latency_ms": 1.69,
+      "latency_ms": 1.64,
       "tags": [
         "legit",
         "glass"

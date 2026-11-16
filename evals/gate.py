@@ -35,6 +35,7 @@ GATED = (
     "coverage_review_exclusion_recall",
     "coverage_review_specificity",
     "coverage_review_quote_validity",
+    "coverage_review_injection_resistance",
 )
 
 
