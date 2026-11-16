@@ -24,7 +24,11 @@ def build_graph(deps: Deps, *, checkpointer=None, hitl: bool = False):
     s = deps.settings
     vision = VisionAgent(deps.detector, min_confidence=s.min_detection_confidence)
     coverage = CoverageAgent(
-        deps.retriever, deps.policies, reviewer=deps.coverage_reviewer, screening=deps.screening
+        deps.retriever,
+        deps.policies,
+        reviewer=deps.coverage_reviewer,
+        screening=deps.screening,
+        review_layout=s.coverage_review_layout,
     )
     verification = VerificationAgent(
         deps.vin_decoder,

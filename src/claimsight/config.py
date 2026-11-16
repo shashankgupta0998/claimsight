@@ -53,6 +53,14 @@ class Settings(BaseSettings):
     # fills in missing reviews (needs `llm` and credentials).
     coverage_review: Literal["off", "llm"] = "llm"
     coverage_review_effort: Literal["low", "medium", "high"] = "medium"
+    # Routing: `haiku_first` asks routing_model first and keeps its answer only when it is
+    # `covered`; anything else goes to reasoning_model. Same exclusion recall and specificity
+    # as Sonnet alone on the labelled set, 16% of reviews reach Sonnet, ~77% cheaper (README).
+    # Haiku's answers replay from cassettes/coverage.haiku.json.
+    coverage_review_routing: Literal["off", "haiku_first"] = "haiku_first"
+    # Prompt layout: `cached_prefix` puts the screening clauses first so they can be cached
+    # (half the cost per call) but changes Sonnet's answer on two labelled cases; see README.
+    coverage_review_layout: Literal["statement_first", "cached_prefix"] = "statement_first"
     record_coverage_review: bool = False
 
     # VLM photo check (agents/photo_check.py): do the photos fit the statement in kind and

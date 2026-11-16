@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 
 import pytest
 
@@ -8,7 +9,10 @@ from claimsight.agents.coverage_review import (
     CassetteReviewer,
     MissingReview,
     ReviewRequest,
+    RoutedReviewer,
+    answer_cost,
     check_quotes,
+    cost_usd,
 )
 from claimsight.retrieval.base import RetrievedChunk
 
@@ -65,10 +69,21 @@ def test_quote_check_accepts_verbatim_and_rejects_the_rest():
 def test_reviewer_sees_statement_and_every_part_d_exclusion(deps, claim):
     agent, reviewer = _agent(deps, {"verdict": "covered", "quotes": [], "explanation": ""})
     agent.run(_with(claim("CLM-0003")), UBER)
-    shown = {c.clause_id for c in reviewer.requests[0].clauses}
+    request = reviewer.requests[0]
+    shown = {c.clause_id for c in request.shown}
+    assert {c.clause_id for c in request.fixed} >= {BUSINESS, "PP-D-EXCL", "PP-F-TERRITORY"}
+    # Default layout: statement first, one block. Cached layout: screening clauses first,
+    # as the block every request shares, statement last.
+    assert request.parts()[0] == "" and request.render().index(
+        "<statement>"
+    ) < request.render().index("<clause")
+    cached = replace(request, layout="cached_prefix")
+    static, dynamic = cached.parts()
+    assert static.count("<clause") == len(request.fixed) and "<statement>" in dynamic
+    assert cached.render() != request.render()  # different cassette keys
     assert {BUSINESS, "PP-D-EXCL", "PP-D-EXCL-GOV", "PP-F-TERRITORY", "PP-D-COLL"} <= shown
     assert "PP-A-EXCL" not in shown  # liability exclusions don't bear on damage to your auto
-    assert f"<statement>{UBER}</statement>" in reviewer.requests[0].render()
+    assert f"<statement>{UBER}</statement>" in request.render()
 
 
 def test_checked_exclusion_quote_escalates_never_denies(deps, claim):
@@ -173,3 +188,39 @@ def test_cassette_from_an_old_prompt_is_ignored_offline_and_refused_online(tmp_p
         CassetteReviewer(path).review(ReviewRequest("hail", "x", "y", []))
     with pytest.raises(ValueError, match="re-record"):
         CassetteReviewer(path, FakeReviewer(None))
+
+
+class Scripted:
+    def __init__(self, name, answer):
+        self.name, self.answer, self.calls = name, answer, 0
+
+    def review(self, request):
+        self.calls += 1
+        return self.answer
+
+
+def _req():
+    return ReviewRequest("collision", "collision", "hit a pole", [_chunk("X", "text")])
+
+
+def test_router_keeps_a_cheap_covered_and_escalates_everything_else():
+    usage = {"model": "claude-haiku-5-5", "input": 1000, "output": 100}
+    cheap = Scripted("haiku", {"verdict": "covered", "quotes": [], "usage": usage})
+    strong = Scripted("sonnet", {"verdict": "excluded", "quotes": []})
+    got = RoutedReviewer(cheap, strong).review(_req())
+    assert got["routed"] == "cheap" and strong.calls == 0
+
+    for first in ({"verdict": "unclear"}, {"verdict": "excluded"}, {"refused": True}, None):
+        strong.calls = 0
+        got = RoutedReviewer(Scripted("haiku", first), strong).review(_req())
+        assert got["routed"] == "strong" and got["verdict"] == "excluded" and strong.calls == 1
+
+
+def test_cost_counts_cache_reads_cheaply_and_both_calls_when_routed_up():
+    sonnet = {"model": "claude-sonnet-5-5", "input": 500, "output": 100, "cache_read": 1500}
+    assert cost_usd(sonnet) == pytest.approx((500 * 2 + 100 * 10 + 1500 * 0.10) / 1e6)
+    assert cost_usd(sonnet, cached=False) == pytest.approx((2000 * 2 + 100 * 10) / 1e6)
+    haiku = {"model": "claude-haiku-5-5", "input": 2000, "output": 100}
+    both = {"verdict": "excluded", "routed": "strong", "calls": [haiku, sonnet]}
+    assert answer_cost(both) == pytest.approx(cost_usd(haiku) + cost_usd(sonnet))
+    assert cost_usd({"model": "unknown", "input": 1, "output": 1}) == 0.0

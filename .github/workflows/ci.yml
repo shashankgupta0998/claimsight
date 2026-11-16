@@ -25,6 +25,8 @@ jobs:
         run: uv run python -m evals.gate --report evals/reports/ci.json --baseline evals/baseline.json
       - name: Policy-QA retrieval ablation
         run: uv run python -m evals.retrieval_eval --out evals/reports/retrieval.json
+      - name: Coverage review routing and caching (cost vs quality)
+        run: uv run python -m evals.routing_eval --out evals/reports/routing.json
       - uses: actions/upload-artifact@v7
         if: always()
         with:

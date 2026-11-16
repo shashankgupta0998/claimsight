@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
+.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage routing photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
 
 install:
 	uv sync --group dev
@@ -33,9 +33,16 @@ retrieval:  # policy-QA ablation: keyword vs dense vs hybrid, with and without r
 coverage:  # LLM coverage review on the labelled exclusion statements (replay)
 	uv run python -m evals.coverage_eval
 
-record-coverage:  # record missing coverage reviews (needs Anthropic credentials)
-	uv run --extra llm python -m evals.coverage_eval --record
-	CLAIMSIGHT_COVERAGE_REVIEW=llm CLAIMSIGHT_RECORD_COVERAGE_REVIEW=1 uv run --extra llm python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/review_on.json
+routing:  # coverage review cost vs quality: Sonnet vs Haiku first, with and without caching
+	uv run python -m evals.routing_eval
+
+record-coverage:  # record missing coverage reviews for every routing x layout (needs credentials)
+	for r in off haiku_first; do for l in statement_first cached_prefix; do \
+	  export CLAIMSIGHT_COVERAGE_REVIEW=llm CLAIMSIGHT_RECORD_COVERAGE_REVIEW=1 \
+	    CLAIMSIGHT_COVERAGE_REVIEW_ROUTING=$$r CLAIMSIGHT_COVERAGE_REVIEW_LAYOUT=$$l; \
+	  uv run --extra llm python -m evals.coverage_eval --record || exit 1; \
+	  uv run --extra llm python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/review_$${r}_$${l}.json || exit 1; \
+	done; done
 
 photo-check:  # VLM statement/photo check on 188 labelled statements (replay)
 	uv run python -m evals.photo_eval
