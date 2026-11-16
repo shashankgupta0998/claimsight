@@ -35,6 +35,8 @@ class Deps:
     vin_decoder: VinDecoder
     weather: WeatherEvidence
     photo_index: PhotoIndex
+    photo_embedder: object | None = None
+    embedding_index: object | None = None
     transcriber: Transcriber | None = None
     impact_classifier: ImpactClassifier = field(default_factory=RuleImpactClassifier)
     retrieval: RetrievalStack | None = None
@@ -53,6 +55,7 @@ class Deps:
             "impact_classifier": self.impact_classifier,
             "coverage_reviewer": self.coverage_reviewer,
             "photo_checker": self.photo_checker,
+            "photo_embedder": self.photo_embedder,
         }
         return {k: getattr(v, "name", type(v).__name__) for k, v in parts.items() if v is not None}
 
@@ -126,6 +129,15 @@ def build_live_deps(settings: Settings | None = None) -> Deps:
     from claimsight.models.asr import WhisperTranscriber
     from claimsight.models.detector import HFDetector
 
+    embedder = index = None
+    if s.photo_embeddings == "dinov2":
+        from claimsight.tools.photo_embed import DinoEmbedder, EmbeddingPhotoIndex
+
+        embedder = DinoEmbedder(s.photo_embed_model)
+        path = Path(s.golden_dir) / "prior_photo_embeddings.jsonl"
+        rows = path.read_text().splitlines() if path.exists() else []
+        index = EmbeddingPhotoIndex([json.loads(x) for x in rows if x.strip()])
+
     return Deps(
         settings=s,
         detector=HFDetector(s.detector_model, s.part_detector_model),
@@ -133,6 +145,8 @@ def build_live_deps(settings: Settings | None = None) -> Deps:
         weather=LiveWeather(timeout=s.http_timeout_s),
         transcriber=WhisperTranscriber(s.asr_model),
         impact_classifier=_impact(s, offline=False),
+        photo_embedder=embedder,
+        embedding_index=index,
         **_shared(s, online=True),
     )
 

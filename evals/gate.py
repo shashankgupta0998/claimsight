@@ -25,6 +25,9 @@ GATED = (
     # Real detector on held-out photos, from cassettes/detector.json.
     "detector_map",
     "detector_map_50",
+    # Reused-photo search on edited held-out photos, from cassettes/duplicates.json.
+    "duplicate_dinov2_recall",
+    "duplicate_dinov2_specificity",
     # VLM photo check on the held-out photos (only when photo_check is on).
     "photo_check_flag_recall",
     "photo_check_specificity",

@@ -77,6 +77,13 @@ class Settings(BaseSettings):
     flood_min_precip_mm: float = 25.0
     max_photo_distance_km: float = 50.0
     duplicate_max_hamming: int = 6
+    # DINOv2 reused-photo search (tools/photo_embed.py) for photos with image files, next to
+    # the hash. Off until there's an index of earlier claims' embeddings to search (live mode
+    # reads evals/golden/prior_photo_embeddings.jsonl if present; production: pgvector).
+    # The cosine threshold is set on val edits at <= 1% false alarms (evals/duplicate_eval.py).
+    photo_embeddings: Literal["off", "dinov2"] = "off"
+    photo_embed_model: str = "facebook/dinov2-small"
+    duplicate_min_cosine: float = 0.916
     http_timeout_s: float = 10.0
 
 

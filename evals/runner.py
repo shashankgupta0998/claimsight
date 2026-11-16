@@ -23,6 +23,8 @@ from evals.coverage_eval import load_cases as load_coverage_cases
 from evals.coverage_eval import score_reviews
 from evals.detector_eval import detection_map
 from evals.detector_eval import load as load_detector
+from evals.duplicate_eval import CASSETTE as DUPLICATE_CASSETTE
+from evals.duplicate_eval import score as score_duplicates
 from evals.metrics import (
     ndcg_at_k,
     percentile,
@@ -105,6 +107,12 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
         # the detector's held-out photos with statements that fit or contradict their labels.
         ph = score_photo_checks(checker, load_photo_cases())["metrics"]
         metrics |= {f"photo_check_{k}": ph[k] for k in ("flag_recall", "specificity")}
+    if DUPLICATE_CASSETTE.exists():
+        # Reused-photo search on edited copies of the held-out photos (DINOv2 vs dHash).
+        dup = score_duplicates(json.loads(DUPLICATE_CASSETTE.read_text()))["test"]
+        metrics["duplicate_dhash_recall"] = dup["dhash"]["recall"]
+        metrics["duplicate_dinov2_recall"] = dup["dinov2"]["recall"]
+        metrics["duplicate_dinov2_specificity"] = round(1 - dup["dinov2"]["fpr"], 4)
     if (Path(settings.golden_dir) / "cassettes" / "detector.json").exists():
         # Claim photos carry simulated detections; the real detector is scored on held-out
         # photos from its recorded predictions.

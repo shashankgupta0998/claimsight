@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage photo-check record-photo-check pages detector train-detector ingest api up down
+.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
 
 install:
 	uv sync --group dev
@@ -42,6 +42,12 @@ photo-check:  # VLM statement/photo check on 188 labelled statements (replay)
 
 record-photo-check:  # record missing photo checks (needs the CC0 photos in data/ and credentials)
 	uv run --extra llm python -m evals.photo_eval --record
+
+duplicates:  # reused-photo search: dHash vs DINOv2 on edited held-out photos (replay)
+	uv run python -m evals.duplicate_eval
+
+record-duplicates:  # embed the photos and edits with DINOv2 (needs the photos in data/)
+	uv run --extra ml python -m evals.duplicate_eval --record
 
 detector:  # damage detector mAP on the held-out test photos (replay)
 	uv run python -m evals.detector_eval

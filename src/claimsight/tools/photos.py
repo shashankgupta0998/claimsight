@@ -55,7 +55,7 @@ def read_exif(path: str | Path) -> tuple[datetime | None, float | None, float | 
 
 
 class InMemoryPhotoIndex:
-    """Linear scan over prior-claim photo hashes. Production: `photo_hashes` table + DINOv2 HNSW."""
+    """Linear scan over prior-claim photo hashes. DINOv2 search is in photo_embed.py."""
 
     name = "phash-index"
 
