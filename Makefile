@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage routing injection photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
+.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
 
 install:
 	uv sync --group dev
@@ -32,6 +32,12 @@ retrieval:  # policy-QA ablation: keyword vs dense vs hybrid, with and without r
 
 coverage:  # LLM coverage review on the labelled exclusion statements (replay)
 	uv run python -m evals.coverage_eval
+
+trace-eval:  # run the 257-case eval in replay with Langfuse tracing on (keys in .env)
+	uv run --extra llm --env-file .env python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/traced.json
+
+dashboards:  # run every dashboard widget's query against your Langfuse project (keys in .env)
+	uv run --extra llm --env-file .env python scripts/langfuse_dashboards.py --check
 
 injection:  # prompt-injection red team against the coverage review (replay)
 	uv run python -m evals.injection_eval

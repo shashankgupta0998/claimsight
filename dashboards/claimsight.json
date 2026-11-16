@@ -1,0 +1,384 @@
+{
+  "about": "ClaimSight dashboards for Langfuse. Each widget is a Langfuse metrics-API query (v2), so `make dashboards` can run them and the same view, metric, dimension and filters build the widget in the Langfuse UI (Dashboards > New widget). Time range comes from the dashboard, not the query. Data comes from claimsight/tracing.py.",
+  "dashboards": [
+    {
+      "name": "ClaimSight: decisions",
+      "widgets": [
+        {
+          "title": "Decisions per day",
+          "chart": "stacked bar",
+          "why": "Approve / deny / escalate / awaiting review volume. A shift in the mix is the first sign a model or rule changed behaviour.",
+          "query": {
+            "view": "scores-categorical",
+            "dimensions": [
+              {
+                "field": "stringValue"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "count",
+                "aggregation": "count"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "decision",
+                "type": "string"
+              }
+            ],
+            "timeDimension": {
+              "granularity": "day"
+            }
+          }
+        },
+        {
+          "title": "Escalation rate",
+          "chart": "line",
+          "why": "Share of claims sent to an adjuster: the main workload number. The README's baseline is about 0.33 on the golden set.",
+          "query": {
+            "view": "scores-boolean",
+            "dimensions": [],
+            "metrics": [
+              {
+                "measure": "value",
+                "aggregation": "avg"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "escalated",
+                "type": "string"
+              }
+            ],
+            "timeDimension": {
+              "granularity": "day"
+            }
+          }
+        },
+        {
+          "title": "Escalations caused by the coverage review",
+          "chart": "line",
+          "why": "Rate at which the LLM review turns an approval into an escalation. Should sit near zero on clean traffic; a jump means exclusions in the claims, a model change, or an attack (README, red team).",
+          "query": {
+            "view": "scores-boolean",
+            "dimensions": [],
+            "metrics": [
+              {
+                "measure": "value",
+                "aggregation": "avg"
+              },
+              {
+                "measure": "count",
+                "aggregation": "count"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "review_escalated",
+                "type": "string"
+              }
+            ],
+            "timeDimension": {
+              "granularity": "day"
+            }
+          }
+        },
+        {
+          "title": "Decision accuracy (eval runs)",
+          "chart": "line",
+          "why": "Only eval runs know the right answer (`decision_correct`, filtered to the `eval` tag). Tracks the gated metric over time.",
+          "query": {
+            "view": "scores-boolean",
+            "dimensions": [],
+            "metrics": [
+              {
+                "measure": "value",
+                "aggregation": "avg"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "decision_correct",
+                "type": "string"
+              },
+              {
+                "column": "tags",
+                "operator": "any of",
+                "value": [
+                  "eval"
+                ],
+                "type": "arrayOptions"
+              }
+            ],
+            "timeDimension": {
+              "granularity": "day"
+            }
+          }
+        },
+        {
+          "title": "Confidence distribution",
+          "chart": "histogram",
+          "why": "The critic escalates below 0.6. Mass piling up just under the line means many near-miss escalations.",
+          "query": {
+            "view": "scores-numeric",
+            "dimensions": [],
+            "metrics": [
+              {
+                "measure": "value",
+                "aggregation": "histogram"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "confidence",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Claims with a fraud flag",
+          "chart": "line",
+          "why": "Average number of fraud flags per claim (duplicate photos, EXIF, weather, statement checks).",
+          "query": {
+            "view": "scores-numeric",
+            "dimensions": [],
+            "metrics": [
+              {
+                "measure": "value",
+                "aggregation": "avg"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "fraud_flags",
+                "type": "string"
+              }
+            ],
+            "timeDimension": {
+              "granularity": "day"
+            }
+          }
+        },
+        {
+          "title": "Agent latency p95",
+          "chart": "bar",
+          "why": "Which agent is slow. Replay runs are milliseconds; in live runs the coverage span includes its Claude calls (generations are recorded after each call returns, so their own duration is not the call's latency).",
+          "query": {
+            "view": "observations",
+            "dimensions": [
+              {
+                "field": "name"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "latency",
+                "aggregation": "p95"
+              },
+              {
+                "measure": "count",
+                "aggregation": "count"
+              }
+            ],
+            "filters": [
+              {
+                "column": "traceName",
+                "operator": "=",
+                "value": "claim",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ClaimSight: LLM cost",
+      "widgets": [
+        {
+          "title": "Cost per day by model",
+          "chart": "stacked bar",
+          "why": "Where the money goes. Haiku carries almost every call on clean traffic; Sonnet's share is the exclusions.",
+          "query": {
+            "view": "observations",
+            "dimensions": [
+              {
+                "field": "providedModelName"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "totalCost",
+                "aggregation": "sum"
+              }
+            ],
+            "filters": [
+              {
+                "column": "type",
+                "operator": "=",
+                "value": "GENERATION",
+                "type": "string"
+              }
+            ],
+            "timeDimension": {
+              "granularity": "day"
+            }
+          }
+        },
+        {
+          "title": "Review calls by model",
+          "chart": "pie",
+          "why": "Routing at work. On clean claims Haiku settles nearly every review (230 of 230 on the golden claims); on the labelled exclusion set 16% go to Sonnet. A rising Sonnet share means more claims that look excluded, or Haiku getting less sure.",
+          "query": {
+            "view": "observations",
+            "dimensions": [
+              {
+                "field": "providedModelName"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "count",
+                "aggregation": "count"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "coverage_review",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Where reviews end",
+          "chart": "pie",
+          "why": "cheap = Haiku's `covered` stood; strong = Sonnet decided; single = routing off.",
+          "query": {
+            "view": "scores-categorical",
+            "dimensions": [
+              {
+                "field": "stringValue"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "count",
+                "aggregation": "count"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "review_route",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Review cost per claim",
+          "chart": "number",
+          "why": "Average and p95 of every model call one claim's review took. Clean claims Haiku settles alone: about $0.0003 (golden claims). Reviews Sonnet decides cost about ten times that.",
+          "query": {
+            "view": "scores-numeric",
+            "dimensions": [],
+            "metrics": [
+              {
+                "measure": "value",
+                "aggregation": "avg"
+              },
+              {
+                "measure": "value",
+                "aggregation": "p95"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "review_cost_usd",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Tokens by model",
+          "chart": "bar",
+          "why": "Input vs output tokens. Cache reads, when caching is on, are counted separately in usage details.",
+          "query": {
+            "view": "observations",
+            "dimensions": [
+              {
+                "field": "providedModelName"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "inputTokens",
+                "aggregation": "sum"
+              },
+              {
+                "measure": "outputTokens",
+                "aggregation": "sum"
+              }
+            ],
+            "filters": [
+              {
+                "column": "type",
+                "operator": "=",
+                "value": "GENERATION",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Review verdicts",
+          "chart": "pie",
+          "why": "covered / excluded / unclear across all reviews. Excluded or unclear answers that aren't backed by a checked quote don't escalate.",
+          "query": {
+            "view": "scores-categorical",
+            "dimensions": [
+              {
+                "field": "stringValue"
+              }
+            ],
+            "metrics": [
+              {
+                "measure": "count",
+                "aggregation": "count"
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "review_verdict",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

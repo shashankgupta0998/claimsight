@@ -81,6 +81,8 @@ class CoverageReview(BaseModel):
     explanation: str
     quotes: list[QuoteCheck] = Field(default_factory=list)
     applied: bool = False  # did the review change the finding?
+    route: str | None = None  # "cheap" or "strong" when routed
+    cost_usd: float = 0.0  # every model call it took, at list prices
 
 
 class CoverageFinding(BaseModel):

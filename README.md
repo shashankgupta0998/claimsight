@@ -44,7 +44,8 @@ make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
 ```
 
-Optional local stack (Postgres + pgvector, Redis, MinIO, Langfuse): `make up`.
+Optional local stack (Postgres + pgvector, Redis, MinIO): `make up`. Tracing goes to Langfuse
+Cloud; see "Langfuse dashboards".
 
 Extras: `uv sync --extra ml` (real models), `--extra pg` (Postgres client),
 `--extra embed` (embedding model, reranker and ColQwen2; pulls in torch), `--extra rag` (both),
@@ -567,6 +568,54 @@ no Python objects with the run that paused the claim:
 - the API: one app takes the claim, a second shows it awaiting review and records the
   decision, a third sees the decided packet and rejects a resubmission (409).
 
+## Langfuse dashboards
+
+`claimsight/tracing.py` sends one Langfuse trace per claim when `LANGFUSE_PUBLIC_KEY` and
+`LANGFUSE_SECRET_KEY` are set (and does nothing otherwise):
+
+- **Trace `claim`**, tagged with loss type, `mode:replay` or `mode:live`, and `eval` or
+  `api`. A claim's submission and its adjuster review share a session (the claim id).
+- **A span per agent** (intake, vision, coverage, verification, estimator, critic,
+  finalize). LangGraph runs the parallel ones in threads that copy the context, so they
+  nest under the claim; a test checks it.
+- **A generation per Claude call** in the coverage review, with model, token usage (cache
+  reads separate) and cost at list prices. Usage comes from the recorded calls, so replay
+  runs report what those calls cost.
+- **Scores per claim**: decision, escalated, confidence, fraud flags, review verdict,
+  whether the review escalated, where it ended (Haiku or Sonnet), its cost, and in eval
+  runs whether the decision was right.
+- **Claim text stays out** unless `CLAIMSIGHT_TRACE_CONTENT=true`: real statements carry
+  names, addresses and plates.
+
+Langfuse's API can query metrics but not create dashboards, so `dashboards/claimsight.json`
+defines them: two dashboards, 13 widgets, each with the metrics-API query that builds it in
+the UI (Dashboards > New widget). `make trace-eval` sends the 257 golden claims (replay, no
+API calls); `make dashboards` runs every widget's query against the project and fails if
+one comes back empty. A test fails if a widget filters on a score or observation name the
+code no longer emits.
+
+From `make trace-eval` on Langfuse Cloud:
+
+| widget | result |
+|---|---|
+| decisions | 145 approve, 27 deny, 85 escalate (257) |
+| escalation rate | 0.3307, as in the eval report |
+| decision accuracy (eval) | 1.00 |
+| escalations caused by the review | 0 of 230 reviews |
+| review calls / where reviews end | 230 Haiku, all settled by Haiku (`covered`) |
+| review cost per claim | $0.00033 average, $0.00047 p95; $0.076 for the set |
+| tokens | 475,558 input, 55,903 output (Haiku) |
+| fraud flags per claim | 0.19 |
+
+On the golden claims every review ends at Haiku: they're clean, and Sonnet only sees
+statements that look excluded (16% of the labelled set). Agent latencies are replay
+milliseconds; live runs fill the same widgets with real ones. Generations are logged after
+each call returns, so their own duration isn't the call's latency: there's no per-model
+latency widget for that reason, and the coverage span carries it in live runs.
+
+`docker-compose.yml` no longer runs Langfuse: it pinned v2, and the SDK here needs a v3+
+server, which self-hosts with ClickHouse, Redis and object storage.
+
 ## Data sources
 
 - [NHTSA vPIC](https://vpic.nhtsa.dot.gov/api/): VIN decoding
@@ -593,7 +642,7 @@ no Python objects with the run that paused the claim:
 - [x] Weeks 7–8: Postgres checkpointer (claims awaiting review survive restarts; `CLAIMSIGHT_CHECKPOINTER=postgres`)
 - [x] Weeks 9–10: model routing and caching for the coverage review (Haiku first: same recall, 77% cheaper; caching measured, off)
 - [x] Weeks 9–10: prompt-injection red team (208 attacks; 11.1% → 0% success after tag escaping and a policy-source rule)
-- [ ] Weeks 9–10, rest: Langfuse dashboards
+- [x] Weeks 9–10: Langfuse tracing and dashboards (13 widgets, checked against Langfuse Cloud)
 - [ ] Weeks 11–12: Redis queue, Locust load test, deploy (Modal + Fly.io), HF Space demo
 
 ## Layout

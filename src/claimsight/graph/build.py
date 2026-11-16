@@ -14,6 +14,7 @@ from __future__ import annotations
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import interrupt
 
+from claimsight import tracing
 from claimsight.agents import CoverageAgent, Critic, Estimator, VerificationAgent, VisionAgent
 from claimsight.deps import Deps
 from claimsight.graph.state import ClaimState
@@ -130,14 +131,19 @@ def build_graph(deps: Deps, *, checkpointer=None, hitl: bool = False):
         return {"packet": packet}
 
     g = StateGraph(ClaimState)
-    g.add_node("intake", intake_node)
-    g.add_node("vision", vision_node)
-    g.add_node("coverage", coverage_node)
-    g.add_node("verification", verification_node)
-    g.add_node("estimator", estimator_node)
-    g.add_node("critic", critic_node)
+    # Each node runs in a Langfuse span when tracing is on. Not human_review: it pauses the
+    # graph by raising, which would end its span as an error.
+    for name, node in [
+        ("intake", intake_node),
+        ("vision", vision_node),
+        ("coverage", coverage_node),
+        ("verification", verification_node),
+        ("estimator", estimator_node),
+        ("critic", critic_node),
+        ("finalize", finalize_node),
+    ]:
+        g.add_node(name, tracing.span(name)(node))
     g.add_node("human_review", human_review_node)
-    g.add_node("finalize", finalize_node)
 
     g.add_edge(START, "intake")
     for node in ("vision", "coverage", "verification"):
