@@ -51,6 +51,15 @@ class Settings(BaseSettings):
     coverage_review_effort: Literal["low", "medium", "high"] = "medium"
     record_coverage_review: bool = False
 
+    # VLM photo check (agents/photo_check.py): do the photos fit the statement in kind and
+    # severity? `inconsistent` escalates, never denies. Runs only on photos with files; replay
+    # reads cassettes/photo_check.json. `record_photo_check` calls the API on a miss.
+    # Off by default: at 0.80 specificity on the held-out photos it would escalate about one
+    # in five consistent claims, and there are no real claim photos yet to measure that on.
+    photo_check: Literal["off", "llm"] = "off"
+    photo_check_effort: Literal["low", "medium", "high"] = "medium"
+    record_photo_check: bool = False
+
     # RT-DETRv2 fine-tuned by scripts/train_detector.py (local until pushed to the Hub).
     detector_model: str = str(REPO_ROOT / "models" / "rtdetr-hitl-damage")
     part_detector_model: str = "google/owlv2-base-patch16-ensemble"

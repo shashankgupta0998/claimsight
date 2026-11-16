@@ -25,6 +25,9 @@ GATED = (
     # Real detector on held-out photos, from cassettes/detector.json.
     "detector_map",
     "detector_map_50",
+    # VLM photo check on the held-out photos (only when photo_check is on).
+    "photo_check_flag_recall",
+    "photo_check_specificity",
     # Only when coverage_review is on (skipped if the baseline doesn't have them).
     "coverage_review_exclusion_recall",
     "coverage_review_specificity",

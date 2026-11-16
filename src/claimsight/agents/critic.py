@@ -1,10 +1,14 @@
 """Critic: cross-check the agents' outputs against each other, then decide or escalate.
 
-The statement-vs-photos check lives here because it needs both the transcript and the
-vision output. It compares where the claimant says the car was hit (agents/impact.py)
-with where the photos show damage, weighting each damaged part by severity x detector
-confidence so one faint false-positive detection can't make a contradictory story look
-consistent.
+The statement-vs-photos checks live here because they need both the transcript and the
+photos:
+
+* statement_consistency compares where the claimant says the car was hit
+  (agents/impact.py) with where the detector found damage, weighting each damaged part by
+  severity x detector confidence so one faint false positive can't make a contradictory
+  story look consistent.
+* photo_statement (agents/photo_check.py) asks a vision model whether the photos fit the
+  statement in kind and severity. Only runs on photos with image files.
 """
 
 from __future__ import annotations
@@ -12,6 +16,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from claimsight.agents.impact import ImpactClassifier, RuleImpactClassifier
+from claimsight.agents.photo_check import PhotoChecker, run_check
 from claimsight.schemas import (
     ClaimInput,
     CostEstimate,
@@ -60,6 +65,7 @@ class Critic:
     impact: ImpactClassifier = field(default_factory=RuleImpactClassifier)
     # The stated impact zone must carry at least this share of the zoned damage weight.
     min_zone_share: float = 0.25
+    photo_checker: PhotoChecker | None = None
 
     def consistency(self, claim: ClaimInput, statement: str, damage: list[DamageItem]):
         if claim.loss_type != LossType.COLLISION:
@@ -106,7 +112,8 @@ class Critic:
         signals: list[VerificationSignal],
         estimate: CostEstimate,
     ) -> CriticResult:
-        new = [s for s in [self.consistency(claim, statement, damage)] if s is not None]
+        photo = run_check(self.photo_checker, statement, [p.uri for p in claim.photos])
+        new = [s for s in [self.consistency(claim, statement, damage), photo] if s is not None]
         all_signals = signals + new
         flags = [s for s in all_signals if s.status == SignalStatus.FLAG]
         unknowns = [s for s in all_signals if s.status == SignalStatus.UNKNOWN]

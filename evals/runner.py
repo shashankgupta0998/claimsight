@@ -16,7 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from claimsight.config import Settings
-from claimsight.deps import Deps, build_deps
+from claimsight.deps import Deps, build_deps, build_photo_checker
 from claimsight.graph import build_graph
 from claimsight.schemas import ClaimInput
 from evals.coverage_eval import load_cases as load_coverage_cases
@@ -31,6 +31,8 @@ from evals.metrics import (
     safe_div,
     word_error_rate,
 )
+from evals.photo_eval import load_cases as load_photo_cases
+from evals.photo_eval import score_photo_checks
 from evals.retrieval_eval import load_queries, score_retriever
 
 K = 5
@@ -95,6 +97,14 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
         cov = score_reviews(deps, load_coverage_cases())["metrics"]
         metrics |= {f"coverage_review_{k}": v for k, v in cov.items() if k != "n"}
         metrics["coverage_review_claims_escalated"] = sum(r["review_escalated"] for r in rows)
+    checker = deps.photo_checker or build_photo_checker(
+        settings.model_copy(update={"photo_check": "llm"}), online=False
+    )
+    if (Path(settings.golden_dir) / "cassettes" / "photo_check.json").exists():
+        # Off or on, the gate tracks it. Claim photos have no image files, so it's scored on
+        # the detector's held-out photos with statements that fit or contradict their labels.
+        ph = score_photo_checks(checker, load_photo_cases())["metrics"]
+        metrics |= {f"photo_check_{k}": ph[k] for k in ("flag_recall", "specificity")}
     if (Path(settings.golden_dir) / "cassettes" / "detector.json").exists():
         # Claim photos carry simulated detections; the real detector is scored on held-out
         # photos from its recorded predictions.
