@@ -38,6 +38,15 @@ class Settings(BaseSettings):
     # (needs `embed`, and `llm` plus Anthropic credentials when query_rewrite is on).
     record_retrieval: bool = False
 
+    # LLM coverage review (agents/coverage_review.py): reads the statement against the clauses
+    # and every Part D exclusion; quotes are checked against the clause text. It can turn an
+    # approval into an escalation, never into a denial. Replay reads cassettes/coverage.json
+    # (a claim with no recorded review keeps the rules' finding); `record_coverage_review`
+    # fills in missing reviews (needs `llm` and credentials).
+    coverage_review: Literal["off", "llm"] = "llm"
+    coverage_review_effort: Literal["low", "medium", "high"] = "medium"
+    record_coverage_review: bool = False
+
     detector_model: str = "your-hf-username/rtdetr-cardd"
     part_detector_model: str = "google/owlv2-base-patch16-ensemble"
     asr_model: str = "openai/whisper-large-v3-turbo"

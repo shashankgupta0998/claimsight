@@ -41,6 +41,10 @@ def main() -> None:
     cases = load_cases([GOLDEN / f for f in ("claims.jsonl", "variants.jsonl", "synthetic.jsonl")])
     print(f"Recording the claims eval ({len(cases)} cases) with {deps.retriever.name}")
     evaluate(cases, settings, deps=deps)
+    # Every loss type, not only those the claims set happens to use (the coverage review
+    # eval has thefts; the claims set has none).
+    for q in [*PERIL_QUERIES.values(), DECLARATIONS_QUERY]:
+        deps.retriever.search(q)
 
     queries = load_queries()
     rewriter = None

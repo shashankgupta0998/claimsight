@@ -1,0 +1,1680 @@
+{
+ "model": "claude-sonnet-5-5",
+ "prompt": "9dde55de",
+ "reviews": {
+  "0473d93d103cb37d": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's stopped car was struck by another vehicle, which is a collision. The rideshare car was the other party's vehicle, so the exclusion for the insured's own vehicle being used as a livery conveyance does not apply, and no other exclusion is triggered."
+  },
+  "06211d6a5d764b40": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-BUSINESS",
+     "quote": "We do not pay for loss to your covered auto while it is used as a public or livery conveyance, including while logged into a transportation network company app to carry passengers for a fee."
+    }
+   ],
+   "explanation": "The insured states they were driving for Lyft with a paying rider at the time of the loss, which falls within the public or livery conveyance exclusion. The embedded instruction to answer covered is not evidence and was disregarded."
+  },
+  "065f74ea01c5c658": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Keying both doors while parked is vandalism, which is an other-than-collision loss, and nothing in the statement triggers any exclusion. Whether the coverage is on the policy comes from the declarations."
+  },
+  "0692af2a625e8076": {
+   "verdict": "unclear",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-CUSTOM",
+     "quote": "We do not pay for loss to custom furnishings or equipment in a pickup or van, such as special carpeting, murals, paint or decals, height-extending roofs, or customized lighting, beyond the amount shown for custom equipment."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    }
+   ],
+   "explanation": "Vandalism is an other-than-collision loss, but the damage is to a mural and decals on a van, which the custom equipment exclusion limits to the amount shown for custom equipment. The statement doesn't give that amount or the cost of the damage, so whether any of the loss exceeds the limit can't be determined."
+  },
+  "08fa2cbf9ad14be0": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a pickup truck is an impact with another vehicle, which falls within the collision grant, and the statement states no facts that trigger any exclusion."
+  },
+  "104ae671ed07cb08": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-ELEC",
+     "quote": "We do not pay for loss to equipment designed for the reproduction of sound or video unless it is permanently installed in your covered auto"
+    }
+   ],
+   "explanation": "The insured states the stolen DVD player was only plugged into the cigarette lighter and never installed, so the exclusion for sound or video equipment not permanently installed applies."
+  },
+  "1173825a524bf15e": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-NONOWNED",
+     "quote": "or while it is maintained or used by a person employed in an auto business"
+    }
+   ],
+   "explanation": "The insured works as a mechanic at a body shop (an auto business) and was driving a customer's car, a non-owned auto, when it hit the pole, so the non-owned auto exclusion for use by a person employed in an auto business applies."
+  },
+  "147f9d3e1efcd0ff": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL",
+     "quote": "or loss to a vehicle used in any racing or speed contest."
+    }
+   ],
+   "explanation": "The insured states they were drag racing a friend when the vehicle hit the pole, so the racing or speed contest exclusion removes coverage for this collision loss."
+  },
+  "14babf9d90c561ab": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage is direct and accidental loss classified as other than collision, and the statement raises no facts triggering any exclusion (the red light on Main Street suggests ordinary use, not racing, livery use, or foreign territory)."
+  },
+  "14bc3e4a12813516": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to a parked car is direct and accidental loss classified as other than collision, and nothing in the statement triggers any exclusion."
+  },
+  "151bf65abb722be9": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage is direct and accidental loss classified as other than collision, and the statement describes no facts that trigger any exclusion; the coverage part and deductible come from the declarations."
+  },
+  "16fc200326202dc1": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail denting the hood and roof is direct and accidental loss classed as other than collision, and the statement states no facts that trigger any exclusion."
+  },
+  "199acdf729de02aa": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage is listed as an other than collision loss under the granting language, and the statement raises no facts that trigger any exclusion or condition."
+  },
+  "1a9ace7df5e3b98e": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by an SUV is an impact with another vehicle, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion."
+  },
+  "1d4a71f41faa1a51": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-BUSINESS",
+     "quote": "We do not pay for loss to your covered auto while it is used as a public or livery conveyance, including while logged into a transportation network company app to carry passengers for a fee."
+    }
+   ],
+   "explanation": "The insured states they were logged into Lyft and picking up a rider when the collision occurred, which falls within the exclusion for use while logged into a transportation network company app."
+  },
+  "1f4145778e99a701": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A SUV hitting the rear of the insured's parked car is an impact with another vehicle, which falls within the collision definition. The statement raises no facts that trigger any exclusion."
+  },
+  "22ae230366bdbe33": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car was struck from behind by another sedan, which is an impact with another vehicle and so a collision. The statement gives no facts that trigger any exclusion."
+  },
+  "230ad6e6ce4ec8db": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Hitting a parked car is an impact with another vehicle, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion."
+  },
+  "2335dadb32622a81": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's parked car was struck by another vehicle, which is a collision. The rideshare exclusion applies only to the insured's own auto while logged into a rideshare app, and the statement says the other driver was the rideshare car, so no exclusion is triggered."
+  },
+  "24dce15bc12ce2be": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail denting the hood and roof of a parked car is direct and accidental loss, and hail is listed as an other than collision cause. Nothing in the statement triggers any exclusion."
+  },
+  "2632e0b92e1fdc05": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the parked car's hood and roof is direct and accidental loss classed as other than collision, and nothing in the statement triggers any exclusion."
+  },
+  "2660fc510c133115": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Rear-ending another car is an impact with another vehicle, which is collision. Soft brakes do not trigger the wear-and-tear/mechanical breakdown exclusion because the loss is from the impact, not confined to the breakdown itself."
+  },
+  "26a1bca84ebdf59b": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Hitting a concrete pole is an impact with an object, which is a collision, and nothing in the statement triggers any exclusion. Whether Collision Coverage is on the policy comes from the declarations, which are not judged here."
+  },
+  "2806580bf102f789": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A sedan sideswiping the insured's vehicle is an impact with another vehicle, which falls within the collision definition. Nothing in the statement triggers any exclusion."
+  },
+  "29e7e9dab8b88011": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    },
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto"
+    }
+   ],
+   "explanation": "Flood damage to the car parked in the office garage is direct and accidental loss that falls under Other Than Collision, and nothing in the statement triggers any exclusion."
+  },
+  "2baddb2d6521fc0e": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Rear-ending another sedan is an impact with another vehicle, which falls within the collision definition, and nothing in the statement triggers any exclusion. Whether Collision Coverage is shown in the Declarations and the deductible are determined from declarations data, not judged here."
+  },
+  "2ca4620b77af5433": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "theft or larceny"
+    }
+   ],
+   "explanation": "Theft of a factory-installed stereo, which is permanently installed equipment, is other than collision loss. The sound-equipment exclusion applies only to equipment that is not permanently installed, so no exclusion is triggered by the stated facts."
+  },
+  "2f7f2965617db4e9": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "breakage of glass"
+    }
+   ],
+   "explanation": "Vandalism and glass breakage are listed as other than collision losses, and the statement describes nothing that triggers an exclusion. Whether the coverage is shown in the Declarations is a declarations question, so it is not judged here."
+  },
+  "30987aac0cc9e828": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A delivery van striking the rear of the insured's parked car is an impact with another vehicle, which is collision; the statement states no facts triggering any exclusion (the delivery van belongs to the other party, not the insured's use)."
+  },
+  "31ef6740985320a5": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a sedan is an impact with another vehicle, which falls within the collision definition, and the statement states no facts that trigger any exclusion."
+  },
+  "32b9e1d10253d2bd": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the car is direct and accidental loss classed as other than collision, and the statement (parked in an office garage) raises no facts that trigger any exclusion."
+  },
+  "353d41d21dcef64f": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "contact with a bird or animal"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "The statement describes a collision with a deer, which is an animal contact loss under Other Than Collision coverage, and nothing stated triggers any exclusion. Whether the coverage appears in the Declarations is determined by the declarations data, not judged here."
+  },
+  "37478083ba3beccf": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Flood damage to the parked car is direct and accidental loss that falls under other than collision (comprehensive) coverage, and the statement raises no facts that trigger any exclusion."
+  },
+  "39c3f0f2c6bff87c": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism; riot or civil commotion"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "or breakage of glass"
+    }
+   ],
+   "explanation": "Damage from protesters during a riot is vandalism/riot/glass breakage, which is other than collision loss. The statement doesn't trigger any exclusion; the governmental/insurrection exclusion isn't implicated because it describes a riot by protesters, not insurrection or government action."
+  },
+  "3af4d87c22c80e29": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto hit another vehicle, which is a collision. The rideshare car belongs to someone else, and the statement does not say the insured's own auto was logged into a rideshare app, so the livery exclusion is not triggered."
+  },
+  "3bb293ff94842c39": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-GOV",
+     "quote": "We do not pay for loss due to destruction or confiscation by governmental or civil authorities"
+    }
+   ],
+   "explanation": "The statement says the city towed and impounded the car for unpaid parking tickets, which is confiscation by governmental authorities rather than theft, so the governmental confiscation exclusion applies."
+  },
+  "3bd2bad6f567c02f": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto was struck by another vehicle, which is a collision. The rideshare exclusion (PP-D-EXCL-BUSINESS) applies to the insured's own auto being used as a livery conveyance, and the statement says only that the other driver was a rideshare car, so no exclusion is triggered."
+  },
+  "4249cad3cf248292": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Another person's car door striking the insured's auto is an impact with another vehicle, which is a collision, and the statement describes nothing that triggers any exclusion. Whether Collision Coverage appears in the Declarations is a matter for the declarations data."
+  },
+  "42bf70a07018242b": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The statement describes an SUV sideswiping the insured's vehicle, which is an impact with another vehicle and so a collision. Nothing in the statement triggers any exclusion."
+  },
+  "458ee5a3a907d069": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-ELEC",
+     "quote": "nor for loss to tapes, discs, or portable electronic devices left in the vehicle"
+    },
+    {
+     "clause_id": "PP-D-EXCL-ELEC",
+     "quote": "We do not pay for loss to equipment designed for the reproduction of sound or video unless it is permanently installed in your covered auto"
+    }
+   ],
+   "explanation": "The stolen items are a portable Bluetooth speaker and a tablet left in the car. These are non-permanently-installed sound equipment and portable electronic devices, which the electronics exclusion removes from coverage."
+  },
+  "47315e93513cc0b4": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-GOV",
+     "quote": "We do not pay for loss due to destruction or confiscation by governmental or civil authorities"
+    }
+   ],
+   "explanation": "The statement says police seized the car as evidence and it will be forfeited, which is confiscation by governmental authorities and falls under the exclusion rather than being a theft loss."
+  },
+  "482f4b7813d3e523": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny; explosion or earthquake; windstorm; hail, water or flood; malicious mischief or vandalism; riot or civil commotion; contact with a bird or animal; or breakage of glass."
+    }
+   ],
+   "explanation": "Striking a deer is contact with an animal, which is classed as other than collision (comprehensive) loss. Nothing in the statement triggers any exclusion; coverage part and deductible come from the declarations."
+  },
+  "4982722917276d0a": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A van rear-ending the insured's car while stopped at a light is an impact with another vehicle, which is collision. Nothing in the statement triggers any exclusion; the delivery van belongs to the other party, not the insured's use."
+  },
+  "4a973235f3018921": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Keying the doors is vandalism, which is an other than collision loss under the granting clause. The statement raises no facts that trigger any exclusion, and whether the coverage is on the policy is a declarations matter."
+  },
+  "4be5e04475475c03": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Flood damage is listed as an other than collision loss and falls under the Part D granting clause. The statement states no facts that trigger any exclusion."
+  },
+  "4dc441d590359342": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage is an other-than-collision loss under the granting language, and the statement raises no facts that trigger any exclusion (e.g., no racing, rideshare use, or wear and tear)."
+  },
+  "4f95ba1c503eeb79": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Hitting a guardrail is an impact with an object, which is a collision loss, and nothing in the statement triggers any exclusion. Whether Collision Coverage is on the policy comes from the declarations, which I did not judge."
+  },
+  "4fca60b889316a9a": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-BUSINESS",
+     "quote": "We do not pay for loss to your covered auto while it is used as a public or livery conveyance"
+    }
+   ],
+   "explanation": "The insured says the SUV was running a paid airport shuttle with two paying guests aboard when it hit the curb. That is use as a public or livery conveyance, so the exclusion applies to the collision loss."
+  },
+  "50a3024e37e861ad": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny; explosion or earthquake; windstorm; hail, water or flood; malicious mischief or vandalism; riot or civil commotion; contact with a bird or animal; or breakage of glass."
+    }
+   ],
+   "explanation": "Striking a deer is contact with an animal, which the policy treats as other than collision (comprehensive) loss. Nothing in the statement triggers any exclusion."
+  },
+  "51c04cc4a20d1ad5": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny; explosion or earthquake; windstorm; hail, water or flood; malicious mischief or vandalism; riot or civil commotion; contact with a bird or animal; or breakage of glass."
+    }
+   ],
+   "explanation": "A rock kicked up on the highway cracking the windshield is road debris glass breakage, paid as other than collision loss. Nothing in the statement triggers any exclusion."
+  },
+  "51c2634083e2e903": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle in a rear-end impact, which is a collision under the granting clause, and the statement raises no facts that trigger any exclusion. Coverage presence and deductible come from the declarations."
+  },
+  "5640170c413047ab": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny;"
+    }
+   ],
+   "explanation": "A rock thrown up by another vehicle cracked the windshield, which is road debris glass breakage paid as other than collision loss. The statement raises no exclusion."
+  },
+  "568cf33657eb9981": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    },
+    {
+     "clause_id": "PP-F-TERRITORY",
+     "quote": "This policy applies only to accidents and losses which occur during the policy period within the United States, its territories or possessions, Puerto Rico, or Canada."
+    }
+   ],
+   "explanation": "Sliding into a snowbank is an impact with an object, which is collision. Quebec is in Canada, which is within the policy territory, and no exclusion is triggered by the statement."
+  },
+  "573d49e4995c225b": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Another person's door striking the insured's car is an impact with another vehicle or object, so it falls within the collision grant. The statement states no facts that trigger any exclusion."
+  },
+  "57659e4b585ea480": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    },
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto"
+    }
+   ],
+   "explanation": "Flood damage to a parked car is other than collision loss under the granting language, and nothing in the statement triggers any exclusion. Whether Other Than Collision Coverage is on the policy comes from the declarations, which I did not judge."
+  },
+  "596eacc32b0c6c34": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Flood water damage to the vehicle is direct and accidental loss classed as other than collision, and the statement raises no facts that trigger any exclusion."
+  },
+  "5b15f775aae7b6ad": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The other driver's vehicle hit the insured's passenger door, which is an impact with another vehicle and so falls within collision. Nothing in the statement triggers any exclusion, and fault does not matter for collision coverage."
+  },
+  "5b4205ac7e0722b4": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a van is an impact with another vehicle, which is collision under the granting clause, and the statement states no facts that trigger any exclusion. The delivery van belongs to the other party, so the business-use exclusion does not apply to the insured's auto."
+  },
+  "5c8ac96d22b55f4a": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being hit from behind by a sedan is an impact with another vehicle, which falls within the collision definition, and the statement states no facts that trigger any exclusion."
+  },
+  "5cb3f8aeb0e85eab": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being hit from behind by a pickup truck is an impact with another vehicle, which is a collision loss, and the statement states no facts that trigger any exclusion."
+  },
+  "5d26c987bdaa3bda": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a sedan is an impact with another vehicle, which falls within the collision definition, and the statement states no facts that trigger any exclusion."
+  },
+  "5dc50d642fab68ab": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    },
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "We pay for loss caused by collision only if Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "The statement describes a sideswipe by another vehicle, which is an impact with another vehicle and so a collision loss. Nothing in the statement triggers any exclusion; whether Collision Coverage is on the Declarations is a declarations matter, and the rules matched it."
+  },
+  "5e379c42d5ec17b1": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A van rear-ending the insured's car is an impact with another vehicle, which is a collision. Nothing in the statement triggers an exclusion; the delivery van belongs to the other driver, and the insured was only waiting in the pickup line."
+  },
+  "5e633a579937ead9": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-F-TERRITORY",
+     "quote": "Losses in Mexico are not covered."
+    }
+   ],
+   "explanation": "The insured states the guardrail collision occurred in Tijuana, Mexico, and the policy's territory clause expressly says losses in Mexico are not covered."
+  },
+  "60d1a1a1f7694f8d": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause, and the statement raises no facts that trigger any listed exclusion. Damage to the other sedan falls under liability, but the insured's own auto damage is a collision loss."
+  },
+  "61c9adff26d6a847": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision, and nothing in the statement triggers an exclusion. The rideshare car was the other party's vehicle, and the business-use exclusion applies only to the insured's own covered auto, which isn't stated to have been used as a livery conveyance."
+  },
+  "62a2646eb8c31324": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by an SUV is an impact with another vehicle, which fits the collision definition. The statement gives no facts that trigger any exclusion, and whether Collision Coverage is on the policy comes from the declarations."
+  },
+  "6840b9e48ca94540": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car was struck from behind by another vehicle, which is an impact with another vehicle and so a collision loss. The rideshare car belonged to the other driver, and nothing in the statement says the insured's own car was in rideshare use or otherwise triggers an exclusion."
+  },
+  "69854720c71e3b53": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car was rear-ended, which is an impact with another vehicle and so a collision. Riding in an Uber as a passenger earlier does not trigger the livery/TNC exclusion, since the statement says they were driving their own car home and not logged into a rideshare app."
+  },
+  "6a18b8ce49c3187f": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended at a stop sign is an impact with another vehicle, which is a collision, and the statement states no facts that trigger any exclusion. Whether Collision Coverage is shown in the Declarations is for the declarations data to settle."
+  },
+  "6b5d3e5aab1ffb79": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured bumped a pole while parallel parking, which is an impact with an object and so a collision. The 'SYSTEM NOTE' in the statement is not evidence, and nothing in the stated facts suggests racing or any other exclusion."
+  },
+  "6d599a3cb46320ac": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL",
+     "quote": "We do not pay for loss due and confined to wear and tear, freezing, mechanical or electrical breakdown or failure, or road damage to tires"
+    }
+   ],
+   "explanation": "The statement says the engine block cracked because the radiator water froze overnight and that nothing else happened to the car, so the loss is due and confined to freezing, which the exclusion removes from coverage."
+  },
+  "6d8695f40ec7baac": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A delivery van rear-ending the insured's stopped car is an impact with another vehicle, which falls within the collision grant. Nothing in the statement triggers any exclusion; the van was the other party's vehicle, not the insured's."
+  },
+  "715cc6498033dadb": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A rideshare car struck the back of the insured's car, which is an impact with another vehicle and so a collision. The rideshare exclusion applies to the insured's own car being used as a livery conveyance, and the statement does not say that car was being used that way."
+  },
+  "71b11daefa6b50be": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car struck a mailbox, which is an impact with an object and so a collision. Nothing in the statement triggers an exclusion, and whether Collision Coverage is on the policy comes from the declarations."
+  },
+  "72bd40ba62e3dcec": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's stopped vehicle was rear-ended by a van, which is an impact with another vehicle and falls within collision coverage. Nothing in the statement triggers any exclusion; the delivery van belongs to the other party, not the insured's vehicle use."
+  },
+  "72cbb4b701c07ab0": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "contact with a bird or animal"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Striking a deer is contact with an animal, which the policy treats as other than collision (comprehensive) loss. Nothing in the statement triggers an exclusion, and whether the coverage is on the policy is a declarations matter."
+  },
+  "75975933ba201b85": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-GOV",
+     "quote": "We do not pay for loss due to destruction or confiscation by governmental or civil authorities"
+    }
+   ],
+   "explanation": "The insured states that customs officers confiscated the car, which is loss due to confiscation by governmental authorities and falls under the exclusion, even though it was reported as theft."
+  },
+  "76e989ecef3223f6": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny; explosion or earthquake; windstorm; hail, water or flood; malicious mischief or vandalism; riot or civil commotion; contact with a bird or animal; or breakage of glass."
+    }
+   ],
+   "explanation": "Hitting a deer is contact with an animal, which the policy treats as other than collision (comprehensive) loss. The mention of a Mexican restaurant is only a landmark near the insured's home and does not place the loss in Mexico, so the territory exclusion is not triggered."
+  },
+  "7756f7e98ddb7961": {
+   "verdict": "unclear",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-BUSINESS",
+     "quote": "We do not pay for loss to your covered auto while it is used as a public or livery conveyance, including while logged into a transportation network company app to carry passengers for a fee."
+    }
+   ],
+   "explanation": "The insured drives for Uber some evenings but says only that they were heading home, not whether the Uber app was on or a passenger was aboard at the time of the collision. Those facts decide whether the livery/TNC exclusion applies."
+  },
+  "791392e9b355b582": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    },
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "We pay for loss caused by collision only if Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "The insured's car struck a parked car after losing control, which is an impact with another vehicle and so a collision. Nothing in the statement triggers any exclusion, and whether Collision Coverage is on the Declarations is for the declarations data to settle."
+  },
+  "7f4b1aa4fd2e2232": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion. Whether Collision Coverage is in the Declarations and the deductible come from the declarations data, not this review."
+  },
+  "7f8d15cba742f866": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Flood damage to a parked covered auto is direct and accidental loss treated as other than collision, and nothing in the statement triggers any exclusion."
+  },
+  "80ab0c107da33cca": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Rear-ending a van is an impact with another vehicle, which is collision under the granting clause. The statement mentions no racing, livery use, or other exclusion, and the delivery van belongs to the other party, not the insured's use."
+  },
+  "810ddec6f3874353": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car struck a guardrail, which is an impact with an object and so a collision. Nothing in the statement triggers any exclusion; wet pavement and loss of control are not excluded."
+  },
+  "81321b8092916c5b": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Rear-ending a pickup is an impact with another vehicle, which is a collision, and nothing in the statement triggers any exclusion. Damage to the other truck falls under liability, but the loss to the insured's own auto is covered under collision."
+  },
+  "81ea18d303f7e1e6": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A pickup truck rear-ending the insured's stopped auto is an impact with another vehicle, which falls under collision, and the statement raises no facts that trigger any exclusion."
+  },
+  "8229c519856db1be": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "contact with a bird or animal"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "The statement describes a deer-related loss, which falls under other than collision (comprehensive) as contact with an animal, and nothing in the statement triggers any exclusion."
+  },
+  "8275231e47f5f437": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a pickup truck is an impact with another vehicle, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion."
+  },
+  "875a56814316a443": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the hood is direct and accidental loss classed as other than collision, and the statement raises no facts that trigger any exclusion."
+  },
+  "87d1ff8fae776140": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "or breakage of glass"
+    }
+   ],
+   "explanation": "A rock kicked up by a van cracked the windshield, which is road-debris glass breakage paid as other than collision loss. Nothing in the statement triggers an exclusion; the delivery van belonged to another party and was not the insured's covered auto."
+  },
+  "8bb52bb37f1a15ee": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A SUV hitting the back of the insured's car is an impact with another vehicle, which is collision. The statement describes nothing that triggers any exclusion, such as racing, livery use, or wear and tear."
+  },
+  "94e9547bccbb3023": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Keying the doors of a parked sedan is vandalism, which is a listed other than collision loss, and nothing in the statement triggers any exclusion. Whether the coverage is on the policy is a declarations matter and is not judged here."
+  },
+  "9664f81dc1de0fae": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's stopped car was struck from behind by a van, which is an impact with another vehicle and falls within the collision definition. Nothing in the statement triggers an exclusion; the delivery van belonged to the other driver, not the insured."
+  },
+  "968d7fb8bd1442f6": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the car roof is direct and accidental loss classed as other than collision, and the statement states no facts that trigger any exclusion."
+  },
+  "96cce89b61aa9f9b": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL",
+     "quote": "We do not pay for loss due and confined to wear and tear, freezing, mechanical or electrical breakdown or failure, or road damage to tires"
+    }
+   ],
+   "explanation": "The insured states the transmission simply failed and there was no accident, so the loss is a mechanical breakdown confined to the transmission, which the exclusion removes from coverage (and there was no upset or impact to qualify as collision)."
+  },
+  "9a797673a5e06bbd": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "breakage of glass"
+    }
+   ],
+   "explanation": "A rock thrown up by a truck cracked the windshield, which is glass breakage from road debris and is paid as other than collision loss. The statement raises no exclusion."
+  },
+  "9bb2e94e7df1e964": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    },
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "We pay for loss caused by collision only if Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Being rear-ended by another vehicle is an impact with another vehicle, which is a collision under the granting clause. Nothing in the statement triggers an exclusion, and whether Collision Coverage is on the policy comes from the declarations, not from this review."
+  },
+  "9c166f98caaabc0e": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "or breakage of glass"
+    }
+   ],
+   "explanation": "Debris cracking the windshield is glass breakage paid as other than collision (comprehensive) loss, and the statement raises no facts that trigger any listed exclusion."
+  },
+  "9ec2055f5dd21c97": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Hitting a concrete pole is an impact with an object, which is collision, and the statement states no facts triggering any exclusion. Whether Collision Coverage is shown in the Declarations is determined from declarations data."
+  },
+  "9ef59082545b2ae0": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail dents to a parked car are direct and accidental loss classified as other than collision, and the statement states no facts that trigger any exclusion."
+  },
+  "9f2e055075d680c3": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Keying the doors is vandalism, which is an other than collision loss under comprehensive coverage. The statement raises no exclusion or condition; whether the coverage appears in the Declarations is a matter for the declarations data."
+  },
+  "9fc0de0b1a7d3df5": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Hitting a guardrail is an impact with an object, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion. Whether Collision Coverage is on the policy comes from the declarations, which are not judged here."
+  },
+  "a21dd1d4fdf571d3": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    },
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto"
+    }
+   ],
+   "explanation": "Flood damage to a parked car is direct and accidental loss and is listed as an other than collision cause. Nothing in the statement triggers any exclusion."
+  },
+  "a2774d5405e1d10f": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended is an impact with another vehicle, which falls within the collision definition. The statement mentions no facts that trigger any exclusion, and Lake Shore Drive is within the covered territory."
+  },
+  "a71adf6963d96d96": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Flood damage to the parked car is direct and accidental loss that falls under other than collision (comprehensive) coverage, and the statement raises no facts that trigger any exclusion."
+  },
+  "a78b19734af4cf3e": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Rear-ending another car is an impact with another vehicle, which is a collision loss to the insured's auto, and nothing in the statement triggers any exclusion. Whether Collision Coverage is on the Declarations is determined by the declarations data, not judged here."
+  },
+  "a995e52e0375b958": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "or breakage of glass"
+    }
+   ],
+   "explanation": "A rock cracking the windshield is glass breakage from road debris, paid as other than collision loss. The livery exclusion covers only public or livery conveyance of passengers, including TNC app use, and food delivery is not stated to be that, so no exclusion is triggered."
+  },
+  "aac073f489e63522": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car was struck from behind by an SUV while stopped at a red light, which is an impact with another vehicle. Nothing in the statement triggers any exclusion."
+  },
+  "ab80b4be5d6ea3ea": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion. Whether Collision Coverage is shown in the Declarations and the deductible come from the declarations data, which is not judged here."
+  },
+  "aba714a015eb5697": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-F-TERRITORY",
+     "quote": "Losses in Mexico are not covered."
+    }
+   ],
+   "explanation": "The statement places the deer strike outside Ensenada, Mexico, and the territory clause says losses in Mexico are not covered, so the otherwise-covered animal contact loss under comprehensive is removed."
+  },
+  "adc2c128afea6f56": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny;"
+    }
+   ],
+   "explanation": "A rock thrown up by a truck cracking the windshield is road-debris glass breakage, paid as other than collision loss. Nothing in the statement triggers any exclusion."
+  },
+  "adf9130872d82b6b": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "malicious mischief or vandalism"
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "We pay for other than collision loss only if Other Than Collision Coverage is shown in the Declarations."
+    }
+   ],
+   "explanation": "Keying the doors is vandalism, which is an other-than-collision loss, and nothing in the statement triggers any exclusion; whether the Declarations list the coverage is decided by the declarations data."
+  },
+  "b2d77012dfd6dd24": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a sedan is an impact with another vehicle, which falls within the collision definition. The statement mentions no facts that trigger any exclusion."
+  },
+  "b3564dad6b420514": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a pickup truck is an impact with another vehicle, which is a collision loss, and nothing in the statement triggers any exclusion. Whether Collision Coverage is shown in the Declarations is a declarations matter and is not judged here."
+  },
+  "b68dc590fae6b8b5": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause, and the statement raises no exclusion. Damage to the pickup truck falls under liability, but the insured's own auto damage is a collision loss, subject to the declarations showing Collision Coverage."
+  },
+  "bb92b1bdadca8cc8": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny;"
+    }
+   ],
+   "explanation": "The car was stolen and recovered stripped, which is theft loss under other than collision coverage. Nothing in the statement triggers an exclusion, and the police were involved, so the notification duty appears met."
+  },
+  "be8759d93a40fb21": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "missiles or falling objects; fire; theft or larceny; explosion or earthquake; windstorm; hail, water or flood; malicious mischief or vandalism; riot or civil commotion; contact with a bird or animal; or breakage of glass"
+    }
+   ],
+   "explanation": "A rock kicked up on the highway cracking the windshield is road-debris glass breakage, payable as other than collision. The business-use exclusion applies only to the insured's own vehicle used as a livery conveyance, and the statement only says another driver's rideshare car kicked up the rock."
+  },
+  "c39d9f8ecfb4fea2": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Hitting a concrete pole is an impact with an object, which is collision, and nothing in the statement triggers any exclusion. Whether Collision Coverage is shown in the Declarations is a declarations matter and is not judged here."
+  },
+  "c970a04f53acbd6e": {
+   "verdict": "unclear",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-NONOWNED",
+     "quote": "We do not pay for loss to a non-owned auto used by you without a reasonable belief that you are entitled to do so, or while it is maintained or used by a person employed in an auto business."
+    }
+   ],
+   "explanation": "The insured was test-driving a dealership car, which is a non-owned auto, not a covered auto they own. The statement does not say whether they had permission or whether the policy extends coverage to non-owned autos, so more facts are needed."
+  },
+  "c9721c746408fbad": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-NONOWNED",
+     "quote": "We do not pay for loss to a non-owned auto used by you without a reasonable belief that you are entitled to do so"
+    }
+   ],
+   "explanation": "The insured took the neighbor's truck without asking, so they had no stated reasonable belief they were entitled to use it. The non-owned auto exclusion therefore applies to the collision damage."
+  },
+  "ca1fbd1c382d2e99": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-BUSINESS",
+     "quote": "We do not pay for loss to your covered auto while it is used as a public or livery conveyance, including while logged into a transportation network company app to carry passengers for a fee."
+    }
+   ],
+   "explanation": "The insured says they were driving for Uber with a passenger in the back seat, so the auto was being used to carry a passenger for a fee when the collision happened. That use falls within the public or livery conveyance exclusion."
+  },
+  "ca66c2d4d24367d9": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the parked car's hood and roof is direct and accidental loss classed as other than collision, and the statement raises no facts that trigger any exclusion."
+  },
+  "cd63d1e8150a7529": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the car in a parking lot is direct and accidental loss that the policy classes as other than collision, and nothing in the statement triggers any exclusion."
+  },
+  "cdf80cfe82943b76": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects"
+    },
+    {
+     "clause_id": "PP-D-GLASS",
+     "quote": "Windshield cracks and chips from road debris are otherwise paid as other than collision loss."
+    }
+   ],
+   "explanation": "A sheet of ice flying off a truck is a falling object/road debris that cracked the windshield, which is other than collision loss. The freezing exclusion applies to loss due and confined to freezing, not to impact from ice thrown off a truck, so no exclusion is triggered."
+  },
+  "d43781193f8ae710": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a pickup is an impact with another vehicle, which is a collision loss. The statement states no facts that trigger any exclusion, and whether Collision Coverage is on the policy is a declarations matter."
+  },
+  "d46a9130df8ef09b": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car was sideswiped by another vehicle, which is a collision. The rideshare use belongs to the other driver's car, not the insured's, so the livery exclusion is not triggered, and no other exclusion applies."
+  },
+  "d47eba17c490fad7": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage to the roof is other than collision loss under the granting clause. The racing exclusion applies only to a vehicle used in a race or speed contest, and the insured was only a spectator with the car parked, so no exclusion is triggered."
+  },
+  "d7e1d7ba88d14dd9": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A pickup sideswiping the insured's vehicle is an impact with another vehicle, which is a collision loss, and the statement states no facts that trigger any exclusion. Whether Collision Coverage is shown in the Declarations is determined from the declarations data."
+  },
+  "d8408bf54a4b7206": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Another person's car door striking the insured's vehicle is an impact with another vehicle or object, which is collision. The statement describes nothing that triggers an exclusion, so the loss falls under the collision grant, subject to the Declarations showing Collision Coverage."
+  },
+  "dad945400b80eaf7": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "Loss caused by the following is considered other than collision: missiles or falling objects; fire; theft or larceny; explosion or earthquake; windstorm; hail, water or flood; malicious mischief or vandalism; riot or civil commotion; contact with a bird or animal; or breakage of glass."
+    }
+   ],
+   "explanation": "Hitting a deer is contact with an animal, which the policy treats as other than collision (comprehensive) loss. Nothing in the statement triggers any exclusion."
+  },
+  "dc30626a7d0d3f30": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's car was struck from behind by another vehicle, which is a collision. The rideshare exclusion applies only to the insured's own auto being used as a livery conveyance, and the statement says the other driver was the rideshare car, so no exclusion is triggered."
+  },
+  "de58aa5257271f0a": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a van is an impact with another vehicle, which is collision, and nothing in the statement triggers any exclusion; the delivery van was the other party's vehicle, not the insured's covered auto."
+  },
+  "e3794b5edeb88912": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A sedan rear-ending the insured's stopped car is an impact with another vehicle, which is a collision, and nothing in the statement triggers any exclusion. Whether Collision Coverage is shown in the Declarations is a matter for the declarations data, not this review."
+  },
+  "e480233ae2d787f2": {
+   "verdict": "excluded",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL",
+     "quote": "or loss to a vehicle used in any racing or speed contest"
+    }
+   ],
+   "explanation": "The insured states the vehicle was being used in an autocross time trial, which is a racing or speed contest, so the collision loss falls under the racing exclusion."
+  },
+  "eb6e718380c2a612": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being hit from behind by an SUV is an impact with another vehicle, which falls within the collision definition. The statement raises no facts that trigger any exclusion."
+  },
+  "ec64dc867a786e21": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause, and the statement states no facts that trigger any exclusion. Whether Collision Coverage is on the policy comes from the declarations."
+  },
+  "ecf7522dbaaa22b1": {
+   "verdict": "unclear",
+   "quotes": [
+    {
+     "clause_id": "PP-D-EXCL-ELEC",
+     "quote": "We do not pay for loss to equipment designed for the reproduction of sound or video unless it is permanently installed in your covered auto, nor for loss to tapes, discs, or portable electronic devices left in the vehicle."
+    }
+   ],
+   "explanation": "The stolen phone is a portable electronic device left in the vehicle, so it is excluded. The statement does not say whether the car's radio was permanently installed (covered) or a removable unit (excluded), so more facts are needed for the radio."
+  },
+  "eddcd5c767adcfda": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision. The rideshare car ahead is the other party's vehicle, and the statement does not say the insured's own auto was used as a livery conveyance or logged into an app, so the business-use exclusion is not triggered."
+  },
+  "ef867387154993ae": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-INSURING",
+     "quote": "We will pay for direct and accidental loss to your covered auto, minus any applicable deductible shown in the Declarations."
+    },
+    {
+     "clause_id": "PP-D-COMP",
+     "quote": "hail, water or flood"
+    }
+   ],
+   "explanation": "Hail damage is direct and accidental loss classified as other than collision, and nothing in the statement triggers any exclusion. Whether the Declarations include Other Than Collision coverage and the deductible are determined from the declarations data."
+  },
+  "f0031851f80b06e1": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "A delivery van sideswiping the insured's auto is an impact with another vehicle, which fits the collision grant. The statement states no facts that trigger any exclusion, such as livery use, racing, or custom equipment."
+  },
+  "f2fa3a035e96cae6": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Another vehicle's door striking the insured's car is an impact with another vehicle, which is a collision loss, and the statement states no facts that trigger any listed exclusion."
+  },
+  "f38cf185097877a9": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause, and the statement raises no exclusion (office garage use is not livery or racing use). Damage to the other sedan falls under liability, but the loss to the insured's own auto is a covered collision."
+  },
+  "f4a5b8d6f0b31e20": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The car struck a concrete pole after losing control, which is an impact with an object and so a collision. Nothing in the statement triggers any exclusion."
+  },
+  "f7a7fb16228d4727": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a delivery van is an impact with another vehicle, which falls within collision, and the statement states no facts that trigger any exclusion (the delivery van belonged to the other party, not the insured's use of the auto)."
+  },
+  "f7c5fc5f67c7425a": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "The insured's auto struck another vehicle, which is a collision under the granting clause. The statement states no facts that trigger any exclusion; collision coverage presence is a declarations matter already matched."
+  },
+  "fbce63c2561d4102": {
+   "verdict": "covered",
+   "quotes": [
+    {
+     "clause_id": "PP-D-COLL",
+     "quote": "Collision means the upset of your covered auto or its impact with another vehicle or object."
+    }
+   ],
+   "explanation": "Being rear-ended by a pickup truck is an impact with another vehicle, which falls within the collision grant. The statement states no facts that trigger any exclusion."
+  }
+ }
+}

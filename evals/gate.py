@@ -22,6 +22,10 @@ GATED = (
     "damage_recall",
     "fraud_precision",
     "fraud_recall",
+    # Only when coverage_review is on (skipped if the baseline doesn't have them).
+    "coverage_review_exclusion_recall",
+    "coverage_review_specificity",
+    "coverage_review_quote_validity",
 )
 
 
@@ -53,7 +57,8 @@ def main(argv: list[str] | None = None) -> int:
         for f in failures:
             print(f"  ✗ {f}")
         return 1
-    print(f"Eval gate passed ({len(GATED)} metrics within {args.tolerance} of baseline).")
+    checked = sum(name in baseline for name in GATED)
+    print(f"Eval gate passed ({checked} metrics within {args.tolerance} of baseline).")
     return 0
 
 

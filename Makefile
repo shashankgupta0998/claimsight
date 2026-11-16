@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval record ingest api up down
+.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage ingest api up down
 
 install:
 	uv sync --group dev
@@ -29,6 +29,13 @@ data: variants
 
 retrieval:  # policy-QA ablation: keyword vs dense vs hybrid, with and without rerank
 	uv run python -m evals.retrieval_eval
+
+coverage:  # LLM coverage review on the labelled exclusion statements (replay)
+	uv run python -m evals.coverage_eval
+
+record-coverage:  # record missing coverage reviews (needs Anthropic credentials)
+	uv run --extra llm python -m evals.coverage_eval --record
+	CLAIMSIGHT_COVERAGE_REVIEW=llm CLAIMSIGHT_RECORD_COVERAGE_REVIEW=1 uv run --extra llm python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/review_on.json
 
 record:  # re-record embedding, rerank and query-rewrite cassettes with the real models
 	uv run --extra embed --extra llm python scripts/record_retrieval.py
