@@ -20,7 +20,7 @@ intake ─┬─ vision ── estimator ─┐
 | intake | Transcribes the voice note | Whisper wrapper | + PII redaction (GLiNER, Presidio) |
 | vision | Finds damage, maps it to parts | Replay detector; RT-DETRv2 fine-tuned on CC0 damage photos (scored from a cassette) | + OWLv2 parts in the live path, real claim photos |
 | coverage | Retrieves and cites policy clauses; optional LLM review of the statement against the exclusions, with checked quotes | Dense (bge-small) → cross-encoder rerank, in memory or on pgvector; optional ColQwen2 page lane | + real PDF ingest |
-| verification | Checks outside evidence | NHTSA vPIC, NOAA SPC, Open-Meteo, EXIF, photo hashes | + DINOv2 near-duplicates |
+| verification | Checks outside evidence | NHTSA vPIC, NOAA SPC, Open-Meteo, EXIF, photo hashes; optional DINOv2 reused-photo search | + pgvector index of earlier claims' photos |
 | estimator | Repair cost range | Parts table | LightGBM |
 | critic | Cross-checks agents, decides | Rules + statement/damage consistency; optional VLM photo check | + real claim photos |
 | human_review | Adjuster approval | LangGraph `interrupt` | Postgres checkpointer |
@@ -36,6 +36,7 @@ make retrieval      # policy-QA ablation: keyword / dense / hybrid / page lane, 
 make coverage       # LLM coverage review on 35 labelled exclusion statements (replay)
 make detector       # damage detector mAP on held-out photos (replay)
 make photo-check    # VLM statement/photo check on 188 labelled statements (replay)
+make duplicates     # reused-photo search: dHash vs DINOv2 on edited photos (replay)
 make ingest         # load the policy corpus into Postgres + pgvector
 make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
@@ -397,6 +398,57 @@ adjuster, and there are no real claim photos to measure that on. CI replays
 images are needed) and the gate tracks flag recall and specificity either way.
 `make record-photo-check` re-records (needs the photos in `data/`, about 190 Sonnet calls).
 
+## Reused-photo search
+
+The duplicate check hashes each photo (64-bit dHash) and flags a claim whose photo is
+within Hamming distance 6 of an earlier claim's. That survives resizing and recompression.
+A crop, a mirror image or a photo of a screen flips most of the bits.
+
+`tools/photo_embed.py` adds DINOv2 (`facebook/dinov2-small`, Apache-2.0): each photo
+becomes a 384-d vector of what's in it, and a reused photo is one whose nearest earlier
+photo is within a cosine threshold.
+
+**Eval** (`evals/duplicate_eval.py`). The index of "earlier claims" is the 651 CC0
+training photos plus a hash-chosen half of the val and test photos (725). Every val and
+test photo is edited seven ways; an edit is a positive if its original is indexed (it must
+match *that* photo) and a negative if not: other photos of damaged cars are the hard
+negatives. The cosine threshold is set on val (best recall
+with at most 1% false alarms: **0.916**) and reported on test.
+
+`make duplicates` (replay, 658 test edits, 315 of indexed photos):
+
+| test recall | dHash ≤ 6 | DINOv2 |
+|---|---|---|
+| recompress (60%, JPEG 60) | 1.00 | 0.98 |
+| colour shift | 1.00 | 1.00 |
+| photo of a screen | 0.00 | **0.91** |
+| rotate 7° | 0.00 | **0.69** |
+| centre crop 70% | 0.00 | **0.42** |
+| mirror | 0.00 | 0.29 |
+| off-centre crop + mirror | 0.00 | 0.02 |
+| **all** | **0.29** | **0.62** |
+| false alarms | 0.6% | 2.6% |
+| false alarms, without 2 twin photos | 0.0% | 0.0% |
+
+- **DINOv2 doubles recall** and catches what a hash can't: photos of a screen, rotations,
+  crops. dHash only survives edits that keep every pixel in place.
+- **Every false alarm on test is one of two photos** whose near-twin is in the index: same
+  car, same spot, taken seconds apart (one pair dHash also matches). I found them by
+  looking after the first run. Whether a second shot from the same session counts as
+  reuse is a policy call; the table shows both.
+- **Mirror images are the weak spot.** The CLS embedding isn't flip-invariant. Searching
+  with the photo *and* its mirror image catches every mirrored copy, but it also matches
+  the other side of the same car. To stay at 1% false alarms on val the threshold rises
+  to 0.96 and overall val recall falls from 0.63 to 0.47, so val picked the plain query.
+- The recorded comparison (`cassettes/duplicates.json`, each edit's best match under each
+  method) replays in CI; the gate tracks DINOv2 recall and specificity. Edits are seeded,
+  so `make record-duplicates` (about 2 minutes on an M4) reproduces it.
+
+**Off by default** (`CLAIMSIGHT_PHOTO_EMBEDDINGS=off`). It needs an index of earlier claims'
+embeddings to search; live mode reads `evals/golden/prior_photo_embeddings.jsonl` if it
+exists, and in production this belongs in a pgvector table like the policy clauses. The
+golden claims carry hashes, not images, so the claims eval still runs on dHash.
+
 ## Data sources
 
 - [NHTSA vPIC](https://vpic.nhtsa.dot.gov/api/): VIN decoding
@@ -419,7 +471,8 @@ images are needed) and the gate tracks flag recall and specificity either way.
 - [x] Weeks 5–6: fine-tune RT-DETRv2 on CC0 damage photos (CarDD's licence blocks it), record detector cassettes (test mAP 0.076)
 - [ ] Weeks 5–6, rest: push the detector to the HF Hub
 - [x] Weeks 7–8: VLM statement/photo check (flags 0.89 of contradictions, 0.80 specificity; off by default)
-- [ ] Weeks 7–8, rest: DINOv2 duplicate search, Postgres checkpointer
+- [x] Weeks 7–8: DINOv2 reused-photo search (recall 0.29 → 0.62 on edited photos vs dHash; off until an index exists)
+- [ ] Weeks 7–8, rest: Postgres checkpointer
 - [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
 - [ ] Weeks 11–12: Redis queue, Locust load test, deploy (Modal + Fly.io), HF Space demo
 
@@ -433,7 +486,7 @@ src/claimsight/
   models/        detector (damage + parts), damage training data, ASR
   retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, LLM query rewrite, ColQwen2
                  page lane, pgvector
-  tools/         NHTSA, weather, photo forensics, geo
+  tools/         NHTSA, weather, photo forensics (dHash, DINOv2), geo
   api/           FastAPI app with human review
 evals/           golden set, runner, gate, LLM judge
 infra/sql/       Postgres + pgvector schema

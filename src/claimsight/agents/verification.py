@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import timedelta
+from pathlib import Path
 
 from claimsight.interfaces import PhotoIndex, VinDecoder, WeatherEvidence
 from claimsight.schemas import ClaimInput, LossType, SignalStatus, VerificationSignal
@@ -27,6 +28,11 @@ class VerificationAgent:
     flood_min_precip_mm: float = 25.0
     max_photo_distance_km: float = 50.0
     duplicate_max_hamming: int = 6
+    # Optional DINOv2 search (tools/photo_embed.py) for photos that come with an image file:
+    # catches crops, mirror images and photos of a screen that change the hash.
+    photo_embedder: object | None = None
+    embedding_index: object | None = None
+    duplicate_min_cosine: float = 1.0
 
     def run(self, claim: ClaimInput) -> list[VerificationSignal]:
         checks: list[tuple[str, Callable[[ClaimInput], VerificationSignal | None]]] = [
@@ -154,17 +160,26 @@ class VerificationAgent:
         )
 
     def check_duplicates(self, claim: ClaimInput) -> VerificationSignal | None:
-        hashed = [p for p in claim.photos if p.phash]
-        if not hashed:
+        embed = self.photo_embedder is not None and self.embedding_index is not None
+        with_file = [p for p in claim.photos if embed and p.uri and Path(p.uri).exists()]
+        if not any(p.phash for p in claim.photos) and not with_file:
             return None
         matches = []
-        for p in hashed:
-            hit = self.photo_index.nearest(p.phash, exclude_claim_id=claim.claim_id)
+        for p in claim.photos:
+            hit = p.phash and self.photo_index.nearest(p.phash, exclude_claim_id=claim.claim_id)
             if hit and hit[1] <= self.duplicate_max_hamming:
                 entry, distance = hit
                 matches.append(
                     {"photo_id": p.photo_id, "matches": entry["claim_id"], "hamming": distance}
                 )
+            elif p in with_file:
+                vec = self.photo_embedder.embed(p.uri)
+                near = self.embedding_index.nearest(vec, exclude_claim_id=claim.claim_id)
+                if near and near[1] >= self.duplicate_min_cosine:
+                    entry, sim = near
+                    matches.append(
+                        {"photo_id": p.photo_id, "matches": entry["claim_id"], "cosine": sim}
+                    )
         if matches:
             claims = sorted({m["matches"] for m in matches})
             return VerificationSignal(

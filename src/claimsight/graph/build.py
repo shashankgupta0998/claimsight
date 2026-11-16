@@ -34,6 +34,9 @@ def build_graph(deps: Deps, *, checkpointer=None, hitl: bool = False):
         flood_min_precip_mm=s.flood_min_precip_mm,
         max_photo_distance_km=s.max_photo_distance_km,
         duplicate_max_hamming=s.duplicate_max_hamming,
+        photo_embedder=deps.photo_embedder,
+        embedding_index=deps.embedding_index,
+        duplicate_min_cosine=s.duplicate_min_cosine,
     )
     estimator = Estimator()
     critic = Critic(
