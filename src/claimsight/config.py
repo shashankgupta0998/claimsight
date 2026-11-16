@@ -34,6 +34,10 @@ class Settings(BaseSettings):
     query_rewrite: Literal["off", "replace", "expand", "joint", "dual"] = "off"
     rewrite_model: str = "claude-opus-5-5"
     rewrite_effort: Literal["low", "medium", "high"] = "low"
+    # ColQwen2 page lane (retrieval/pages.py): rank rendered policy page images by late
+    # interaction and fuse the clauses on the top pages into the first stage by RRF.
+    page_lane: Literal["off", "colqwen2"] = "off"
+    page_model: str = "vidore/colqwen2-v1.0-hf"
     # Replay records missing embeddings / rerank scores / rewrites instead of failing
     # (needs `embed`, and `llm` plus Anthropic credentials when query_rewrite is on).
     record_retrieval: bool = False

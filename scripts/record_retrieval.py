@@ -8,6 +8,8 @@ evals/golden/cassettes/embeddings.json and rerank.json with only the entries sti
 
 Also records LLM query rewrites (evals/golden/cassettes/rewrites.json) for the rewrite
 configs; that part needs the `llm` extra and Anthropic credentials, and costs a few cents.
+And records ColQwen2 page scores (cassettes/pages.json) for the page-lane configs: the first
+run downloads the model (about 4.5 GB); render the pages first with scripts/render_pages.py.
 
 Re-run after changing policy clauses, retrieval queries, the peril queries in
 agents/coverage.py, the embedding model, the reranker, or the rewrite prompt or model.
@@ -48,14 +50,20 @@ def main() -> None:
 
     queries = load_queries()
     rewriter = None
-    for label, retriever, rerank, rewrite in CONFIGS:
+    pages = None
+    for label, retriever, rerank, rewrite, page_lane in CONFIGS:
         s = Settings(
-            record_retrieval=True, retriever=retriever, rerank=rerank, query_rewrite=rewrite
+            record_retrieval=True,
+            retriever=retriever,
+            rerank=rerank,
+            query_rewrite=rewrite,
+            page_lane=page_lane,
         )
         ablation = build_retrieval(
-            s, embedder=stack.embedder, reranker=stack.reranker, rewriter=rewriter
+            s, embedder=stack.embedder, reranker=stack.reranker, rewriter=rewriter, pages=pages
         )
         rewriter = rewriter or ablation.rewriter
+        pages = pages or ablation.pages
         score_retriever(ablation.retriever, queries)
         print(f"Recorded ablation config: {label}")
 
@@ -74,9 +82,10 @@ def main() -> None:
     print(f"Scored {len(all_queries)} queries x {len(texts)} clauses with the reranker")
 
     stack.save_cassettes(prune=True)
-    if rewriter is not None:
-        rewriter.save(prune=True)
-    for cassette in (stack.embedder, stack.reranker, rewriter):
+    for extra in (rewriter, pages):
+        if extra is not None:
+            extra.save(prune=True)
+    for cassette in (stack.embedder, stack.reranker, rewriter, pages):
         if cassette is not None:
             print(f"Wrote {cassette.path.relative_to(ROOT)}")
 

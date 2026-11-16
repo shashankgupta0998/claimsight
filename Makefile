@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage ingest api up down
+.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage pages ingest api up down
 
 install:
 	uv sync --group dev
@@ -37,7 +37,10 @@ record-coverage:  # record missing coverage reviews (needs Anthropic credentials
 	uv run --extra llm python -m evals.coverage_eval --record
 	CLAIMSIGHT_COVERAGE_REVIEW=llm CLAIMSIGHT_RECORD_COVERAGE_REVIEW=1 uv run --extra llm python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/review_on.json
 
-record:  # re-record embedding, rerank and query-rewrite cassettes with the real models
+pages:  # draw the specimen policy as page images for the ColQwen2 page lane
+	uv run python scripts/render_pages.py
+
+record:  # re-record embedding, rerank, query-rewrite and page-score cassettes with the real models
 	uv run --extra embed --extra llm python scripts/record_retrieval.py
 
 ingest:  # load the policy corpus into Postgres + pgvector

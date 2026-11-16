@@ -2,6 +2,7 @@
 
     first stage  keyword | dense | hybrid      backend  memory | pgvector
     then         optional cross-encoder rerank of the top `rerank_pool`
+    plus         optional ColQwen2 page lane, fused into the first stage by RRF
     around both  optional LLM query rewriting: replace | expand | joint | dual
 
 Models sit behind cassettes in evals/golden/cassettes/. Offline (replay, CI) reads them and
@@ -19,6 +20,7 @@ from claimsight.retrieval.base import Retriever
 from claimsight.retrieval.dense import DenseRetriever, HybridRetriever
 from claimsight.retrieval.embed import CassetteEmbedder
 from claimsight.retrieval.keyword import BM25Retriever
+from claimsight.retrieval.pages import CassettePageScorer, PageLaneRetriever
 from claimsight.retrieval.rerank import CassetteReranker, RerankingRetriever
 from claimsight.retrieval.rewrite import (
     CassetteRewriter,
@@ -35,9 +37,10 @@ class RetrievalStack:
     embedder: CassetteEmbedder | None = None
     reranker: CassetteReranker | None = None
     rewriter: CassetteRewriter | None = None
+    pages: CassettePageScorer | None = None
 
     def save_cassettes(self, prune: bool = False) -> None:
-        for cassette in (self.embedder, self.reranker, self.rewriter):
+        for cassette in (self.embedder, self.reranker, self.rewriter, self.pages):
             if cassette is not None:
                 cassette.save(prune=prune)
 
@@ -60,6 +63,16 @@ def build_embedder(s: Settings, online: bool) -> CassetteEmbedder:
     return CassetteEmbedder(cassette_dir(s) / "embeddings.json", inner)
 
 
+def build_page_scorer(s: Settings, online: bool) -> CassettePageScorer:
+    pages_dir = Path(s.golden_dir) / "pages"
+    inner = None
+    if online:
+        from claimsight.retrieval.pages import ColQwen2PageScorer
+
+        inner = ColQwen2PageScorer(s.page_model, pages_dir)
+    return CassettePageScorer(cassette_dir(s) / "pages.json", pages_dir, inner)
+
+
 def build_rewriter(s: Settings, online: bool) -> CassetteRewriter:
     inner = None
     if online:
@@ -75,9 +88,10 @@ def build_retrieval(
     embedder: CassetteEmbedder | None = None,
     reranker: CassetteReranker | None = None,
     rewriter: CassetteRewriter | None = None,
+    pages: CassettePageScorer | None = None,
 ) -> RetrievalStack:
-    """`embedder` / `reranker` / `rewriter` reuse existing cassettes (the recorder shares
-    one of each)."""
+    """`embedder` / `reranker` / `rewriter` / `pages` reuse existing cassettes (the recorder
+    shares one of each)."""
     online = online or s.record_retrieval
     chunks = load_chunks(Path(s.golden_dir))
     if s.retriever != "keyword" and embedder is None:
@@ -100,6 +114,11 @@ def build_retrieval(
         "dense": dense,
         "hybrid": HybridRetriever([dense, sparse], pool=s.rerank_pool) if dense else sparse,
     }[s.retriever]
+    if s.page_lane == "colqwen2":
+        pages = pages or build_page_scorer(s, online)
+        first = HybridRetriever([first, PageLaneRetriever(chunks, pages)], pool=s.rerank_pool)
+    else:
+        pages = None
 
     if s.query_rewrite == "off":
         rewriter = None
@@ -128,4 +147,4 @@ def build_retrieval(
         reranker = None
     if s.query_rewrite == "replace":
         first = RewrittenQueryRetriever(first, rewriter)
-    return RetrievalStack(first, embedder, reranker, rewriter)
+    return RetrievalStack(first, embedder, reranker, rewriter, pages)

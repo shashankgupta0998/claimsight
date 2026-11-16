@@ -19,7 +19,7 @@ intake ─┬─ vision ── estimator ─┐
 |---|---|---|---|
 | intake | Transcribes the voice note | Whisper wrapper | + PII redaction (GLiNER, Presidio) |
 | vision | Finds damage, maps it to parts | Replay detector | RT-DETR on CarDD + OWLv2 parts |
-| coverage | Retrieves and cites policy clauses; optional LLM review of the statement against the exclusions, with checked quotes | Dense (bge-small) → cross-encoder rerank, in memory or on pgvector | + ColQwen2 page lane |
+| coverage | Retrieves and cites policy clauses; optional LLM review of the statement against the exclusions, with checked quotes | Dense (bge-small) → cross-encoder rerank, in memory or on pgvector; optional ColQwen2 page lane | + real PDF ingest |
 | verification | Checks outside evidence | NHTSA vPIC, NOAA SPC, Open-Meteo, EXIF, photo hashes | + DINOv2 near-duplicates |
 | estimator | Repair cost range | Parts table | LightGBM |
 | critic | Cross-checks agents, decides | Rules + statement/damage consistency | + LLM consistency pass |
@@ -32,7 +32,7 @@ make install        # uv sync --group dev
 make test           # unit + graph + API tests, fully offline
 make eval           # score the graph on the golden set
 make gate           # fail if quality dropped vs evals/baseline.json
-make retrieval      # policy-QA ablation: keyword / dense / hybrid, with and without rerank
+make retrieval      # policy-QA ablation: keyword / dense / hybrid / page lane, rerank on/off
 make coverage       # LLM coverage review on 35 labelled exclusion statements (replay)
 make ingest         # load the policy corpus into Postgres + pgvector
 make test-pg        # integration tests against Postgres + pgvector
@@ -42,7 +42,7 @@ make api            # http://localhost:8000/docs
 Optional local stack (Postgres + pgvector, Redis, MinIO, Langfuse): `make up`.
 
 Extras: `uv sync --extra ml` (real models), `--extra pg` (Postgres client),
-`--extra embed` (embedding model and reranker; pulls in torch), `--extra rag` (both),
+`--extra embed` (embedding model, reranker and ColQwen2; pulls in torch), `--extra rag` (both),
 `--extra llm` (Anthropic judge, query rewriting, coverage review, Langfuse tracing).
 
 ## Replay vs live
@@ -133,6 +133,8 @@ keyed my car" is malicious mischief, "I took it to a track day" is the racing ex
 | **Dense (default)** | **bge-reranker-v2-m3** | **0.62** | **0.77** | **0.68** | **0.67** |
 | LLM rewrite → dense | bge-reranker-v2-m3 on the rewrite | 0.60 | 0.98 | 0.82 | 1.00 |
 | **LLM rewrite → dense** | **question + rewrite scores added** | **0.64** | **0.98** | **0.82** | **1.00** |
+| Dense + ColQwen2 pages (RRF) | | 0.44 | 0.67 | 0.56 | 0.50 |
+| Dense + ColQwen2 pages (RRF) | bge-reranker-v2-m3 | 0.66 | 0.83 | 0.72 | 0.76 |
 
 What the numbers say:
 
@@ -171,6 +173,42 @@ would add an LLM call per claim for nothing. It becomes the default for free-tex
 questions once the LLM coverage step reads the claimant's statement. CI replays the rewrites
 from a cassette, so the comparison table is checked on every push.
 
+**ColQwen2 page lane** (`retrieval/pages.py`). Real policies arrive as PDFs: declarations
+tables, running headers, endorsements stapled on. A visual retriever skips text extraction
+and chunking: ColQwen2 (`vidore/colqwen2-v1.0-hf`, 2B) embeds each page image into one
+128-d vector per patch (about 750 per page), the question into one per token, and scores a
+page by late interaction (for each query token, the best patch, summed). The lane ranks
+pages, returns the clauses printed on them best page first, and joins the text lane by RRF
+ahead of the cross-encoder.
+
+There is no PDF in this repo, so `make pages` draws the specimen policy, one image per page
+that holds a clause (15 pages): running header and form number, section title, each
+clause under its heading, page footer, and a coverage table on the declarations page. The
+PNGs are committed (`evals/golden/pages/`) and the score cassette is tied to a hash of
+their pixels, so a re-render without re-recording fails loudly.
+
+- **On its own, at page level, ColQwen2 is close to the text stack** without reading any
+  text: it puts a page holding the answer first on 0.64 of questions, against 0.46 for
+  dense and 0.70 for dense → rerank (page recall@3 0.76 / 0.75 / 0.80).
+- **As a second lane it helps where fusion with BM25 hurt:** dense + pages → rerank goes
+  from R@5 0.77 to 0.83 and lexical-gap R@5 from 0.67 to 0.76, with hit@1 0.62 → 0.66.
+  Four questions improve and none get worse. The page lane brings whole pages into the
+  pool, so the cross-encoder sees clauses dense ranked too low: appraisal for "I disagree
+  with the adjuster's estimate", the non-owned auto definition for a borrowed car, the
+  auto-business exclusion for "a mechanic was test-driving", and the declarations page
+  (with its deductible table) for "what deductible applies to a collision claim".
+- **It does not close the world-knowledge gap.** Five questions still miss, among them
+  "keyed the paint" and "seized by police". LLM rewriting (R@5 0.98) remains the better fix
+  for those; the page lane costs no API call but needs a 2B vision model per query.
+
+The page lane is **off by default** (`CLAIMSIGHT_PAGE_LANE=off`). The coverage agent searches
+by peril in policy vocabulary and already cites the right clause on every golden claim, so
+it would add a VLM query for nothing. It's there for a corpus that arrives as scanned
+pages, where there is no clean clause text to embed. The page scores are bfloat16, so close
+pages can tie; ties go to the lower page number. Two caveats on the numbers: the pages are
+rendered from the same clause text the text lanes search, which is the easy case for a
+visual retriever, and they are 50 dev-set questions.
+
 **Coverage retrieves by peril, not by statement.** Searching with the claimant's whole
 statement let incidental details win: "the windshield is smashed" pulled glass clauses ahead
 of vandalism, "keyed both doors" matched nothing useful. Intake already gives a structured
@@ -189,11 +227,13 @@ reason dense is the first stage.
 **Cassettes.** `cassettes/embeddings.json` (base64 float16 vectors), `cassettes/rerank.json`
 (a score for every query × clause pair) and `cassettes/rewrites.json` (one rewrite per
 question, tagged with the model and a hash of the prompt) and `cassettes/coverage.json`
-(one review per claim, same tagging) let CI run all of this without
+(one review per claim, same tagging) and `cassettes/pages.json` (ColQwen2 score for
+every question × page, tied to the page images' hash) let CI run all of this without
 torch or an API key. Replay raises on any retrieval input not recorded (a missing coverage
 review falls back to the rules). `make record` re-records after
-changing clauses, queries, the peril queries, any model or the rewrite prompt; the rewrite
-part needs Anthropic credentials and costs a few cents.
+changing clauses, queries, the peril queries, any model, the rewrite prompt or the page
+images; the rewrite part needs Anthropic credentials and costs a few cents, and the first
+run downloads ColQwen2 (about 4.5 GB; about 7 minutes to embed 15 pages on an M4).
 
 ## Coverage review
 
@@ -265,7 +305,7 @@ reviews (about 150 Sonnet calls for both sets).
 - [x] Weeks 3–4: 42-clause corpus, policy-QA eval, dense + rerank retrieval, pgvector ingest and lanes, CI integration job
 - [x] Weeks 3–4: LLM query rewriting (policy-QA R@5 0.77 → 0.98, off by default until a free-text consumer exists)
 - [x] Weeks 3–4: LLM coverage review with quote validation
-- [ ] Weeks 3–4, rest: ColQwen2 page lane
+- [x] Weeks 3–4: ColQwen2 page lane over rendered policy pages (R@5 0.77 → 0.83, off by default)
 - [ ] Weeks 5–6: fine-tune RT-DETR on CarDD, push to the HF Hub, record detector cassettes
 - [ ] Weeks 7–8: VLM statement/damage check, DINOv2 duplicate search, Postgres checkpointer
 - [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
@@ -278,7 +318,8 @@ src/claimsight/
   agents/        vision, coverage (+ LLM review), verification, estimator, critic
   graph/         LangGraph state and wiring
   models/        detector (damage + parts), ASR
-  retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, LLM query rewrite, pgvector
+  retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, LLM query rewrite, ColQwen2
+                 page lane, pgvector
   tools/         NHTSA, weather, photo forensics, geo
   api/           FastAPI app with human review
 evals/           golden set, runner, gate, LLM judge
