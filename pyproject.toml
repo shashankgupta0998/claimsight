@@ -17,6 +17,9 @@ dependencies = [
 [project.optional-dependencies]
 # Real models (detector, part finder, ASR). Heavy: install only on machines that run inference.
 ml = ["torch>=2.4", "transformers>=4.46", "accelerate>=0.34", "timm>=1.0"]
+# Fine-tuning the damage detector (scripts/train_detector.py): torchvision for the image
+# processor, scipy for the Hungarian matcher, torchmetrics + pycocotools for COCO mAP.
+train = ["claimsight[ml]", "torchvision>=0.20", "scipy>=1.13", "torchmetrics>=1.4", "pycocotools>=2.0.8"]
 # Postgres + pgvector client. Light: CI's integration job installs only this.
 pg = ["psycopg[binary]>=3.2", "pgvector>=0.3", "numpy>=1.26"]
 # Embedding model for recording embedding cassettes and live mode. Pulls in torch.

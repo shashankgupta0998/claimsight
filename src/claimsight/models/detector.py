@@ -1,8 +1,10 @@
 """Damage detection: a fine-tuned damage detector plus a zero-shot part finder.
 
-CarDD labels say *what* the damage is (dent, scratch, crack, glass shatter, lamp broken,
-tire flat) but not *where*. Repair cost depends on the part, so each damage box is
-assigned to the zero-shot part box that contains most of it.
+The detector (RT-DETRv2 fine-tuned on CC0 car-damage photos, scripts/train_detector.py)
+says *what* the damage is but not *where*. Repair cost depends on the part, so each damage
+box is assigned to the zero-shot part box that contains most of it, and the part then
+settles labels the detector can't: a broken headlamp is `lamp_broken`, a broken windshield
+`glass_shatter` (the pipeline's types, from CarDD's six classes).
 """
 
 from __future__ import annotations
@@ -25,6 +27,36 @@ PART_PROMPTS: dict[str, str] = {
     "trunk lid": "trunk",
     "tire": "tire",
 }
+
+
+# Detector label -> pipeline damage type. Paint damage of any kind costs like a scratch.
+DAMAGE_TYPES = {
+    "dent": "dent",
+    "scratch": "scratch",
+    "paint_chip": "scratch",
+    "flaking": "scratch",
+    "crack": "crack",
+    "broken_part": "broken_part",
+    "missing_part": "missing_part",
+    "corrosion": "corrosion",
+}
+BROKEN_BY_PART = {
+    "headlamp": "lamp_broken",
+    "taillamp": "lamp_broken",
+    "windshield": "glass_shatter",
+}
+
+
+# Live score cutoff. On the held-out photos, 0.3 kept ~26 boxes a photo at 13% precision;
+# 0.5 keeps ~4 at 36% (IoU 0.5, right class), with a correct box on 72 of 94 photos.
+DAMAGE_THRESHOLD = 0.5
+
+
+def pipeline_damage_type(label: str, part: str) -> str:
+    """Map a detector label onto the estimator's damage types, using the part it sits on."""
+    label = label.lower().replace(" ", "_")
+    kind = DAMAGE_TYPES.get(label, label)
+    return BROKEN_BY_PART.get(part, kind) if kind == "broken_part" else kind
 
 
 def box_area(b: Box) -> float:
@@ -73,7 +105,7 @@ class HFDetector:
 
         with Image.open(photo.uri) as im:
             image = im.convert("RGB")
-        damages = self._damage(image, threshold=0.3)
+        damages = self._damage(image, threshold=DAMAGE_THRESHOLD)
         parts = self._parts(image, candidate_labels=list(PART_PROMPTS), threshold=0.15)
 
         items = []
@@ -90,7 +122,7 @@ class HFDetector:
             items.append(
                 DamageItem(
                     part=best_part,
-                    damage_type=det["label"].lower().replace(" ", "_"),
+                    damage_type=pipeline_damage_type(det["label"], best_part),
                     severity=round(severity, 3),
                     confidence=round(float(det["score"]), 3),
                     photo_id=photo.photo_id,

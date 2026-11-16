@@ -21,6 +21,8 @@ from claimsight.graph import build_graph
 from claimsight.schemas import ClaimInput
 from evals.coverage_eval import load_cases as load_coverage_cases
 from evals.coverage_eval import score_reviews
+from evals.detector_eval import detection_map
+from evals.detector_eval import load as load_detector
 from evals.metrics import (
     ndcg_at_k,
     percentile,
@@ -93,6 +95,11 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
         cov = score_reviews(deps, load_coverage_cases())["metrics"]
         metrics |= {f"coverage_review_{k}": v for k, v in cov.items() if k != "n"}
         metrics["coverage_review_claims_escalated"] = sum(r["review_escalated"] for r in rows)
+    if (Path(settings.golden_dir) / "cassettes" / "detector.json").exists():
+        # Claim photos carry simulated detections; the real detector is scored on held-out
+        # photos from its recorded predictions.
+        det = detection_map(*load_detector(Path(settings.golden_dir))[:2])
+        metrics |= {f"detector_{k}": det[k] for k in ("map", "map_50", "map_75")}
     return {
         "metrics": metrics,
         "retriever": deps.retriever.name,
