@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from claimsight.agents.coverage import screening_clauses
-from claimsight.agents.coverage_review import CassetteReviewer
+from claimsight.agents.coverage_review import CassetteReviewer, RoutedReviewer
 from claimsight.agents.impact import (
     CascadeImpactClassifier,
     ImpactClassifier,
@@ -40,7 +40,7 @@ class Deps:
     transcriber: Transcriber | None = None
     impact_classifier: ImpactClassifier = field(default_factory=RuleImpactClassifier)
     retrieval: RetrievalStack | None = None
-    coverage_reviewer: CassetteReviewer | None = None
+    coverage_reviewer: CassetteReviewer | RoutedReviewer | None = None
     photo_checker: CassettePhotoChecker | None = None
     screening: list = field(default_factory=list)
 
@@ -68,15 +68,23 @@ def _merge_json(paths) -> dict:
     return merged
 
 
-def build_coverage_reviewer(s: Settings, online: bool) -> CassetteReviewer | None:
+def build_coverage_reviewer(s: Settings, online: bool) -> CassetteReviewer | RoutedReviewer | None:
     if s.coverage_review == "off":
         return None
-    inner = None
-    if online or s.record_coverage_review:
-        from claimsight.agents.coverage_review import ClaudeCoverageReviewer
+    cassettes = Path(s.golden_dir) / "cassettes"
 
-        inner = ClaudeCoverageReviewer(s.reasoning_model, s.coverage_review_effort)
-    return CassetteReviewer(Path(s.golden_dir) / "cassettes" / "coverage.json", inner)
+    def reviewer(model: str, path: Path) -> CassetteReviewer:
+        inner = None
+        if online or s.record_coverage_review:
+            from claimsight.agents.coverage_review import ClaudeCoverageReviewer
+
+            inner = ClaudeCoverageReviewer(model, s.coverage_review_effort)
+        return CassetteReviewer(path, inner)
+
+    strong = reviewer(s.reasoning_model, cassettes / "coverage.json")
+    if s.coverage_review_routing == "haiku_first":
+        return RoutedReviewer(reviewer(s.routing_model, cassettes / "coverage.haiku.json"), strong)
+    return strong
 
 
 def build_photo_checker(s: Settings, online: bool) -> CassettePhotoChecker | None:

@@ -85,6 +85,7 @@ class CoverageAgent:
     k: int = 5
     reviewer: CoverageReviewer | None = None
     screening: list[RetrievedChunk] = field(default_factory=list)
+    review_layout: str = "statement_first"
 
     def retrieve(self, claim: ClaimInput) -> list[RetrievedChunk]:
         peril = PERIL_QUERIES.get(claim.loss_type.value, claim.loss_type.value)
@@ -109,16 +110,23 @@ class CoverageAgent:
         finding: CoverageFinding,
     ) -> CoverageFinding:
         """Run the LLM review over an approval and apply what its checked quotes support."""
-        shown = _dedupe(chunks + self.screening)
+        fixed_ids = {c.clause_id for c in self.screening}
+        retrieved = [c for c in _dedupe(chunks) if c.clause_id not in fixed_ids]
         request = ReviewRequest(
-            claim.loss_type.value, finding.coverage_part or "", statement, shown
+            claim.loss_type.value,
+            finding.coverage_part or "",
+            statement,
+            clauses=retrieved,
+            fixed=self.screening,
+            layout=self.review_layout,
         )
+        shown = request.shown
         try:
             raw = self.reviewer.review(request)
         except MissingReview:
             log.warning("no recorded coverage review for %s; keeping the rules", claim.claim_id)
             return finding
-        if not raw:  # refusal or empty answer: the rules stand
+        if not raw or raw.get("refused"):  # refusal or empty answer: the rules stand
             return finding
 
         by_id = {c.clause_id: c for c in shown}

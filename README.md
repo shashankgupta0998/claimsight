@@ -34,6 +34,7 @@ make eval           # score the graph on the golden set
 make gate           # fail if quality dropped vs evals/baseline.json
 make retrieval      # policy-QA ablation: keyword / dense / hybrid / page lane, rerank on/off
 make coverage       # LLM coverage review on 35 labelled exclusion statements (replay)
+make routing        # coverage review cost vs quality: Sonnet vs Haiku first, cached or not
 make detector       # damage detector mAP on held-out photos (replay)
 make photo-check    # VLM statement/photo check on 188 labelled statements (replay)
 make duplicates     # reused-photo search: dHash vs DINOv2 on edited photos (replay)
@@ -246,7 +247,8 @@ The rules decide coverage from structured facts: loss type → coverage part →
 carry it. They never read the statement, so "I was driving for Uber with a paying passenger"
 or "they stole the tablet I left on the seat" sail through to approval.
 
-The review (`agents/coverage_review.py`, Sonnet 5.5 at medium effort, JSON schema output)
+The review (`agents/coverage_review.py`, Sonnet 5.5 at medium effort behind a Haiku 5.5
+first pass, see Routing below; JSON schema output)
 reads the statement next to the retrieved clauses and **every** Part D exclusion plus the
 territory condition. Those are listed in full rather than retrieved: there are few of them,
 and missing one is the expensive mistake. It answers `covered`, `excluded` or `unclear`, and
@@ -291,7 +293,44 @@ unit tests cover what it catches (invented wording, a clause that wasn't shown, 
 clause quoted as an exclusion). The review is **on by default**
 (`CLAIMSIGHT_COVERAGE_REVIEW=llm`); CI replays `cassettes/coverage.json` and the gate tracks
 exclusion recall, specificity and quote validity. `make record-coverage` records new
-reviews (about 150 Sonnet calls for both sets).
+reviews for every routing and layout below (about 600 calls, ~$1.50).
+
+### Routing and caching
+
+The review is the one Claude call on by default: one per claim the rules would approve.
+Two levers on its cost, measured by `make routing` (replay; CI runs it) over the 35
+labelled statements and the 147 distinct reviews the claims set needs. Every recorded call
+keeps its token usage, so the cost is what the API billed at list prices, not an estimate.
+
+- **Routing** (`RoutedReviewer`). Haiku 5.5 reviews first. Its `covered` is final: the
+  review can only escalate, so a `covered` changes nothing and the rules stand. Anything
+  else goes to Sonnet 5.5, whose answer is final. Haiku costs a twentieth of Sonnet.
+- **Prompt caching.** The system prompt and the seven screening clauses are the same on
+  every request (1,447 tokens). Put first with a cache breakpoint, each later request reads
+  them at $0.10/MTok instead of $2.
+
+| | Sonnet | Sonnet, cached | **Haiku first** | Haiku first, cached |
+|---|---|---|---|---|
+| exclusion recall (35 set) | 1.00 | 0.95 | **1.00** | 0.95 |
+| specificity (35 set) | 0.93 | 0.87 | **0.93** | 0.93 |
+| claims escalated / decision accuracy | 0 / 1.00 | 0 / 1.00 | **0 / 1.00** | 0 / 1.00 |
+| reviews sent to Sonnet | 100% | 100% | **16%** | 15% |
+| $ per review | 0.0056 | 0.0028 | **0.0013** | 0.0007 |
+
+- **Routing is free here.** Haiku never answered `covered` on a statement that should
+  escalate (0 of 20), so every exclusion reached Sonnet; it sent 3 of the 15 covered cases
+  up as well, which only costs money. Cost per review falls 77%. **On by default**
+  (`CLAIMSIGHT_COVERAGE_REVIEW_ROUTING=haiku_first`). The risk to watch: an exclusion Haiku
+  waves through is missed, so recall on a bigger labelled set is the number to grow.
+- **Caching isn't free, so it's off.** Caching needs the shared clauses *before* the
+  statement. That reorder flips two labelled cases for Sonnet, three times out of three
+  each: "I drive for Uber some evenings, I was heading home" goes from `unclear` to
+  `covered`, and a hard negative goes from `covered` to `unclear`. Moving the clauses into
+  a cached system block instead didn't fix the first one. Statement first, nothing is
+  shared, so nothing caches. `CLAIMSIGHT_COVERAGE_REVIEW_LAYOUT=cached_prefix` turns it on
+  for another 45% off.
+- The recordings ran one request at a time, so the cache was always warm. Real traffic
+  with gaps over five minutes would pay the cache write (1.25x) more often.
 
 ## Damage detector
 
@@ -501,7 +540,8 @@ no Python objects with the run that paused the claim:
 - [x] Weeks 7–8: VLM statement/photo check (flags 0.89 of contradictions, 0.80 specificity; off by default)
 - [x] Weeks 7–8: DINOv2 reused-photo search (recall 0.29 → 0.62 on edited photos vs dHash; off until an index exists)
 - [x] Weeks 7–8: Postgres checkpointer (claims awaiting review survive restarts; `CLAIMSIGHT_CHECKPOINTER=postgres`)
-- [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
+- [x] Weeks 9–10: model routing and caching for the coverage review (Haiku first: same recall, 77% cheaper; caching measured, off)
+- [ ] Weeks 9–10, rest: prompt-injection red-team set, Langfuse dashboards
 - [ ] Weeks 11–12: Redis queue, Locust load test, deploy (Modal + Fly.io), HF Space demo
 
 ## Layout

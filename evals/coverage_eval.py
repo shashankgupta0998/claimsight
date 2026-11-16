@@ -51,7 +51,11 @@ def _claim(case: dict) -> ClaimInput:
 
 def score_reviews(deps: Deps, cases: list[dict]) -> dict:
     agent = CoverageAgent(
-        deps.retriever, deps.policies, reviewer=deps.coverage_reviewer, screening=deps.screening
+        deps.retriever,
+        deps.policies,
+        reviewer=deps.coverage_reviewer,
+        screening=deps.screening,
+        review_layout=deps.settings.coverage_review_layout,
     )
     rows = []
     for case in cases:
