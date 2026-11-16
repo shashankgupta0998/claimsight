@@ -42,6 +42,7 @@ make duplicates     # reused-photo search: dHash vs DINOv2 on edited photos (rep
 make ingest         # load the policy corpus into Postgres + pgvector
 make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
+make worker         # runs queued claims (CLAIMSIGHT_QUEUE=redis)
 ```
 
 Optional local stack (Postgres + pgvector, Redis, MinIO): `make up`. Tracing goes to Langfuse
@@ -568,6 +569,34 @@ no Python objects with the run that paused the claim:
 - the API: one app takes the claim, a second shows it awaiting review and records the
   decision, a third sees the decided packet and rejects a resubmission (409).
 
+## Job queue
+
+By default the API runs a claim inside the request and returns the decision. With
+`CLAIMSIGHT_QUEUE=redis` it puts the claim on a Redis queue (arq) and returns 202; a worker
+(`make worker`) runs the graph, and the client polls `GET /claims/{id}`:
+`queued` -> `processing` -> `decided` or `awaiting_review`, or `failed` with the error after
+the last retry. The adjuster's review stays a direct call (it only runs the last two nodes).
+
+- **The worker and the API share state through Postgres.** They're separate processes, so
+  queued mode refuses to start without `CLAIMSIGHT_CHECKPOINTER=postgres`.
+- **No double runs.** The job id is the claim id; arq won't enqueue an id it already holds,
+  and the API also refuses a claim the graph has seen (409).
+- **Retries continue, not restart.** arq doesn't retry a job that raises, so the worker
+  raises `Retry` itself (up to 3 tries, backing off). A retry continues the graph from its
+  last checkpoint: nodes that finished, like a coverage review that ran next to a failed
+  detector call, aren't run (or billed) again.
+- `ClaimService` (`claimsight/service.py`) is the one place a claim runs, inline or in the
+  worker, with the same tracing.
+
+**Tests** (`tests/test_queue.py`, with Postgres and Redis in CI's `pgvector` job): submit
+returns 202 and a burst worker decides it; an escalated claim reaches `awaiting_review`
+through the queue and the review completes it; a second submit is refused while queued and
+after; a detector that fails once is retried and the coverage review isn't repeated (the
+test fails if a retry restarts the claim, checked by making it); a detector that always
+fails ends as `failed` with its error after 3 tries; queued mode without Postgres refuses
+to start. Run end to end with the worker and API as separate processes: 202, `queued`, then
+`awaiting_review` within half a second, then the review decided it.
+
 ## Langfuse dashboards
 
 `claimsight/tracing.py` sends one Langfuse trace per claim when `LANGFUSE_PUBLIC_KEY` and
@@ -643,7 +672,8 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 9–10: model routing and caching for the coverage review (Haiku first: same recall, 77% cheaper; caching measured, off)
 - [x] Weeks 9–10: prompt-injection red team (208 attacks; 11.1% → 0% success after tag escaping and a policy-source rule)
 - [x] Weeks 9–10: Langfuse tracing and dashboards (13 widgets, checked against Langfuse Cloud)
-- [ ] Weeks 11–12: Redis queue, Locust load test, deploy (Modal + Fly.io), HF Space demo
+- [x] Weeks 11–12: Redis job queue (arq worker, retries continue from the checkpoint)
+- [ ] Weeks 11–12, rest: Locust load test, deploy (Modal + Fly.io), HF Space demo
 
 ## Layout
 

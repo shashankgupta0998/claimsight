@@ -51,14 +51,22 @@ jobs:
           --health-cmd "pg_isready -U claimsight"
           --health-interval 5s
           --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-retries 10
     env:
       CLAIMSIGHT_DATABASE_URL: postgresql://claimsight:claimsight@localhost:5432/claimsight
       CLAIMSIGHT_TEST_DATABASE_URL: postgresql://claimsight:claimsight@localhost:5432/claimsight
+      CLAIMSIGHT_TEST_REDIS_URL: redis://localhost:6379/0
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.3.3
-      - run: uv sync --group dev --extra pg
-      - name: Integration tests (ingest, HNSW vs exact, full stack parity)
+      - run: uv sync --group dev --extra pg --extra queue
+      - name: Integration tests (ingest, HNSW vs exact, full stack parity, checkpointer, queue)
         run: uv run pytest -q -m pg
       - name: Ingest policies and run the ablation on Postgres
         run: |

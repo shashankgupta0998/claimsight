@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
+.PHONY: install test test-pg workerlint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
 
 install:
 	uv sync --group dev
@@ -6,8 +6,8 @@ install:
 test:
 	uv run pytest -q
 
-test-pg:  # needs Postgres with pgvector (make up); override with CLAIMSIGHT_TEST_DATABASE_URL
-	CLAIMSIGHT_TEST_DATABASE_URL=$${CLAIMSIGHT_TEST_DATABASE_URL:-postgresql://claimsight:claimsight@localhost:5432/claimsight} uv run --extra pg pytest -q -m pg
+test-pg:  # needs Postgres with pgvector and Redis (make up); override the CLAIMSIGHT_TEST_* URLs
+	CLAIMSIGHT_TEST_DATABASE_URL=$${CLAIMSIGHT_TEST_DATABASE_URL:-postgresql://claimsight:claimsight@localhost:5432/claimsight} CLAIMSIGHT_TEST_REDIS_URL=$${CLAIMSIGHT_TEST_REDIS_URL:-redis://localhost:6379/0} uv run --extra pg --extra queue pytest -q -m pg
 
 lint:
 	uv run ruff check .
@@ -83,6 +83,9 @@ ingest:  # load the policy corpus into Postgres + pgvector
 
 api:
 	uv run uvicorn claimsight.api.main:app --reload
+
+worker:  # run queued claims (CLAIMSIGHT_QUEUE=redis, CLAIMSIGHT_CHECKPOINTER=postgres)
+	uv run --extra pg --extra queue python -m claimsight.queue
 
 up:
 	docker compose up -d
