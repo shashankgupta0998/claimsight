@@ -19,6 +19,8 @@ from claimsight.config import Settings
 from claimsight.deps import Deps, build_deps
 from claimsight.graph import build_graph
 from claimsight.schemas import ClaimInput
+from evals.coverage_eval import load_cases as load_coverage_cases
+from evals.coverage_eval import score_reviews
 from evals.metrics import (
     ndcg_at_k,
     percentile,
@@ -67,6 +69,7 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
                 "ndcg_at_k": ndcg_at_k(retrieved, labels["relevant_clause_ids"], K),
                 "cited": cited,
                 "cited_relevant": sum(c in labels["relevant_clause_ids"] for c in cited),
+                "review_escalated": bool(packet.coverage.review and packet.coverage.review.applied),
                 "damage_pr": precision_recall(
                     {(d.part, d.damage_type) for d in packet.damage},
                     {tuple(x) for x in labels["damage"]},
@@ -85,6 +88,11 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
     # The claims set only needs a few clauses; the policy-QA set is what separates retrievers.
     qa = score_retriever(deps.retriever, load_queries(), k=K)["metrics"]
     metrics = aggregate(rows) | {f"policy_qa_{k}": v for k, v in qa.items() if k != "n"}
+    if deps.coverage_reviewer is not None:
+        # The claims set has no exclusions to find; the coverage set is where recall shows.
+        cov = score_reviews(deps, load_coverage_cases())["metrics"]
+        metrics |= {f"coverage_review_{k}": v for k, v in cov.items() if k != "n"}
+        metrics["coverage_review_claims_escalated"] = sum(r["review_escalated"] for r in rows)
     return {
         "metrics": metrics,
         "retriever": deps.retriever.name,

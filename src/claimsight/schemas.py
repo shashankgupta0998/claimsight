@@ -66,12 +66,30 @@ class Citation(BaseModel):
     snippet: str
 
 
+class QuoteCheck(BaseModel):
+    clause_id: str
+    quote: str
+    valid: bool
+    problem: str | None = None
+
+
+class CoverageReview(BaseModel):
+    """What the LLM coverage reviewer said, and whether its quotes held up."""
+
+    reviewer: str
+    verdict: str  # covered | excluded | unclear
+    explanation: str
+    quotes: list[QuoteCheck] = Field(default_factory=list)
+    applied: bool = False  # did the review change the finding?
+
+
 class CoverageFinding(BaseModel):
     applies: bool | None
     coverage_part: str | None = None
     deductible: float | None = None
     citations: list[Citation] = Field(default_factory=list)
     rationale: str
+    review: CoverageReview | None = None
 
 
 class SignalStatus(StrEnum):
