@@ -37,7 +37,10 @@ def build_graph(deps: Deps, *, checkpointer=None, hitl: bool = False):
     )
     estimator = Estimator()
     critic = Critic(
-        s.escalation_confidence, s.auto_approve_limit_usd, impact=deps.impact_classifier
+        s.escalation_confidence,
+        s.auto_approve_limit_usd,
+        impact=deps.impact_classifier,
+        photo_checker=deps.photo_checker,
     )
     versions = {**deps.model_versions(), "estimator": estimator.name}
 

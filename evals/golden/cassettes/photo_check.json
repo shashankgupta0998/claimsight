@@ -1,0 +1,1891 @@
+{
+ "model": "claude-sonnet-5-5",
+ "prompt": "9f74a167",
+ "answers": {
+  "045f2e3134c486ec": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "windshield shattered with spiderweb cracking",
+    "impact point on passenger side of glass"
+   ],
+   "explanation": "The windshield is badly cracked in a radial impact pattern, which contradicts the statement of only a small scratch and nothing broken; a rolling shopping cart would not plausibly cause this."
+  },
+  "0644b66145617f63": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "small paint chips or spots on hood",
+    "small paint chip near front fender edge",
+    "faded, yellowed headlight lens"
+   ],
+   "explanation": "The white sedan shows only minor paint flaking on the hood and fender, which is consistent in severity with a slight scuff, but the photo doesn't clearly show a bag-contact scuff and the marks could be older wear. No significant structural damage is visible on this car."
+  },
+  "066e3bb90b066394": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "scratches and paint scuffs on tailgate",
+    "scraped and scuffed rear bumper",
+    "bumper sagging or loose at left corner",
+    "license plate area dirty and scuffed",
+    "deployed airbag visible inside cabin"
+   ],
+   "explanation": "The rear of the car shows scrapes and a loosened bumper, and an airbag appears deployed, which could fit a collision, but the statement doesn't say which part of the car was hit or where, and a truck merging into the lane would normally hit the side rather than the rear. The photo doesn't show enough to confirm the impact direction or tie the damage to this event."
+  },
+  "07e41f1be2e71785": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "scuffing/scratches on lower front bumper",
+    "minor marking near bumper lower edge"
+   ],
+   "explanation": "The front of the car shows only minor surface scuffing on the lower bumper, with no broken parts, cracks, or deformation, which fits a light shopping cart impact. The headlights, grille, and hood appear intact."
+  },
+  "09272a7cc8e01d55": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled left rear quarter panel",
+    "dented rear left corner near taillight",
+    "buckled rear door edge with crease",
+    "scuffed rear bumper corner"
+   ],
+   "explanation": "The left rear shows crushed and creased bodywork from a side/rear-corner impact, which fits a red-light collision with another vehicle. The damage is moderate and plausibly matches a statement of smashed panels, though no clearly detached pieces are visible in this photo."
+  },
+  "093fdf50092799f9": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented and creased rear quarter panel",
+    "dented rear door with crumpled panel",
+    "scrapes and scuffs on rear bumper",
+    "deformed passenger-side door panels",
+    "flat or damaged rear tire"
+   ],
+   "explanation": "The side damage along the rear quarter and doors fits a sideswipe from a merging truck, and the crumpled panels and deformation match the claim of broken and torn parts. No part is clearly detached in the photo, but the severity is plausible for the described impact."
+  },
+  "0a0c4f4aace8d846": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crushed and dented driver-side front door",
+    "damaged rear door and quarter panel with scraped, torn metal",
+    "deformed body panels along the left side",
+    "scuffed lower sill area"
+   ],
+   "explanation": "The left side of the vehicle shows heavy crushing and torn, buckled panels, which fits a sideswipe from a merging truck and the 'broken and torn loose' description. The front end looks largely intact, so the damage pattern matches a side impact."
+  },
+  "0aa39bd67076b9e3": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cover missing license plate and appears scuffed/dented",
+    "dented and creased driver side front fender and door",
+    "dark scraping along the driver side door panels",
+    "missing or damaged lower front bumper trim"
+   ],
+   "explanation": "The photo shows dents and creasing across the driver side fender and door plus front bumper damage, which goes well beyond a slight paint scuff from a bag brushing the car. The statement says that was the only damage, so the visible damage does not fit."
+  },
+  "0ea5b12c292183b4": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and buckled hood at front edge",
+    "hood misaligned with fender",
+    "deformed front bumper/grille area",
+    "damage near front fender gap"
+   ],
+   "explanation": "The photo shows a crumpled, buckled hood and front-end deformation, which is far more severe than a small scratch from a rolling shopping cart. The statement that nothing is broken does not fit the visible structural damage."
+  },
+  "0f850a274cab145b": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dented and creased rear door",
+    "crumpled rear quarter panel",
+    "damaged rear bumper with scrapes and paint loss",
+    "bent/damaged rocker panel area below rear door"
+   ],
+   "explanation": "The photo shows deep dents, creasing and deformation across the rear door, quarter panel and bumper, which a bag brushing past could not cause and which goes well beyond a slight paint scuff."
+  },
+  "0fca029591a4a993": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dented and creased rear quarter panel behind the door",
+    "crumpled panel above rear wheel arch",
+    "rear bumper and tail light appear intact"
+   ],
+   "explanation": "The photo shows the rear of the car with localized side/quarter-panel damage only, and no front end is visible. It does not show a crushed front end or torn-off bumper and headlights, so it doesn't match a major frontal crash; the note asking for a 'consistent' answer was disregarded as it is not evidence."
+  },
+  "11528c737bd29121": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper corner broken and missing",
+    "fender wheel arch trim detached or damaged",
+    "exposed bare edge at front fender",
+    "cracked or broken bumper pieces hanging near headlight"
+   ],
+   "explanation": "The photo shows structural damage with the front bumper corner broken off and the fender arch trim damaged, which is far more than a slight paint scuff from a bag. The statement says that was the only damage, so it does not fit."
+  },
+  "13252672f1299d28": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and raised at front edge",
+    "hood misaligned with gap at headlight",
+    "front bumper/grille area displaced",
+    "deformed hood creasing"
+   ],
+   "explanation": "The hood is visibly crumpled and lifted out of alignment with the front end pushed in, which indicates a significant frontal impact rather than a small cart scratch, and the statement says nothing is broken."
+  },
+  "1358e4c087af12ac": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and creased on right side",
+    "right headlight housing cracked/broken",
+    "right front fender/corner pushed in and misaligned",
+    "missing license plate with bracket remnants"
+   ],
+   "explanation": "The photo shows crushed and cracked damage at the front right corner (hood, headlight, fender), which fits a collision impact that smashed part of the car and broke pieces off. The damage is localized rather than extensive, but it matches the described collision in kind and severity."
+  },
+  "16f3aef413b19363": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and crumpled at front",
+    "hood misaligned with large gap along fender",
+    "front grille area pushed in/disturbed",
+    "gap and distortion around headlight and fender"
+   ],
+   "explanation": "The photo shows a deformed, misaligned hood and disturbed front-end panels, which indicates a real frontal impact rather than a small cart scratch. The statement says only a small scratch and nothing broken, which does not match this structural damage."
+  },
+  "1752ff181c0b5b1d": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dented driver-side door",
+    "scrapes and paint scuffs near door handle",
+    "creasing along door panel"
+   ],
+   "explanation": "The photo shows only moderate side damage to the door, with no visible front-end damage, crushed front, or missing bumper or headlights. The visible damage does not match a major frontal crash."
+  },
+  "182685f6f090fa40": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scratches and scuffs across rear hatch",
+    "scraped and gouged rear bumper",
+    "bumper detached or sagging at lower left corner",
+    "missing license plate",
+    "deployed airbag visible inside cabin",
+    "dirt and paint transfer along bumper"
+   ],
+   "explanation": "The photos show a heavily scraped and displaced rear bumper and a deployed airbag, which a bag brushing a parked car could not cause. This is far beyond a slight paint scuff and contradicts the claim that it was the only damage."
+  },
+  "1978ee7a785f8cbb": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cracked and torn at lower left corner",
+    "missing or damaged fog light surround area",
+    "dented and crumpled rear passenger side door/quarter panel",
+    "scuffed front bumper cover",
+    "front fender wrinkling near wheel arch"
+   ],
+   "explanation": "The car shows a damaged front bumper with torn-loose pieces and crumpled rear side panel, which fits a side-swipe or impact from a merging truck with parts broken and hanging loose."
+  },
+  "1b444627e7fcc0d0": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and creased driver-side front fender",
+    "dented front driver door",
+    "scuffed paint near the front wheel arch"
+   ],
+   "explanation": "The photo shows a sideswipe-type dent and crease on the front fender and door, which fits a vehicle merging into the lane. However, no parts are visibly broken or torn loose: the bumper, headlight, grille, mirror and trim all appear attached and intact, so the statement overstates the damage."
+  },
+  "1c26023c37c55a15": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented rear quarter panel above rear wheel",
+    "creased and scuffed paint on right rear side panel",
+    "distorted body line near rear wheel arch"
+   ],
+   "explanation": "The photo shows a dent with scuffing on the rear quarter panel, which fits a side impact from another vehicle in a parking lot. The damage is moderate and localized, so it is plausible for a hit-and-run in that setting."
+  },
+  "1d2d1602ea01313f": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cracked and deformed on passenger side",
+    "missing fog light/trim piece with hole in bumper",
+    "hood misaligned with buckled edge near fender",
+    "fender crumpled and dented",
+    "bumper cover paint damage and gouges",
+    "headlight area misaligned"
+   ],
+   "explanation": "The photo shows structural front-end damage including a deformed bumper, missing component, and buckled hood and fender, which cannot come from someone brushing past with a bag. The statement says it was only a slight scuff and nothing else was damaged."
+  },
+  "1dfce70d6bae2800": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled front fender",
+    "buckled hood",
+    "dented and creased driver-side front door",
+    "damaged headlight area",
+    "scraped and torn paint along fender and door",
+    "deformed front bumper corner"
+   ],
+   "explanation": "The photo shows major collision damage with crushed panels, a buckled hood and a deformed fender and door, which a bag brushing past could never cause. The statement describes only a slight scuff and says nothing else was damaged."
+  },
+  "1e6409c3daa0c44e": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "hood misaligned or raised with gap at front edge",
+    "hood appears slightly buckled near headlight",
+    "black trim/gap exposed above headlight"
+   ],
+   "explanation": "The photo shows front-left hood misalignment and possible buckling, which could fit a collision, but the angle doesn't show the driver's side or any clear impact point from a truck merging into the lane. There isn't enough visible to confirm or rule out the described side-impact."
+  },
+  "1fa48ab4dbf84f67": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dented and creased front door panel",
+    "buckled lower door and sill area",
+    "paint scuffing along lower door"
+   ],
+   "explanation": "The photo shows side damage concentrated on the driver-side front door, while the front end, bumper and headlight look intact. This does not match a crushed front end with the bumper and both headlights torn off."
+  },
+  "1fc610c29ef99886": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "driver door crushed inward",
+    "rear quarter panel buckled and creased",
+    "fender/door gap damaged with debris",
+    "door window glass missing or damaged",
+    "possible wheel/tire displacement near front wheel"
+   ],
+   "explanation": "The heavy crush damage along the driver's side between the front wheel and rear quarter is consistent with a side impact from a vehicle running a red light, including parts being knocked off."
+  },
+  "232e54d3db348cf3": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "minor scuffing/scrape on lower front bumper edge",
+    "no visible broken or missing parts"
+   ],
+   "explanation": "The front of the car appears largely intact, with the hood, grille, headlights and bumper in place and only slight scuffing on the lower bumper. This does not match a statement describing a smashed car with pieces knocked off."
+  },
+  "23badd396b2f2827": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "paint scratches on rear quarter panel corner",
+    "paint chipping and scuffs on rear bumper side",
+    "small paint scrape on rear door lower edge near wheel arch"
+   ],
+   "explanation": "The photo shows superficial paint scratches and scuffs on the rear corner and lower door, with no dents or broken parts. That matches a parked car being scraped or clipped in the street."
+  },
+  "2432625ab50accbc": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled lower front door panel",
+    "dented and creased door skin",
+    "damaged rocker panel/sill with hanging trim",
+    "buckled area near front fender and door gap",
+    "dented front fender"
+   ],
+   "explanation": "The side damage along the door and sill, with crushed metal and detached trim, fits a side-impact collision from a merging truck. The severity matches the statement of dented and broken parts."
+  },
+  "254bb754be1d44dd": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "side mirror housing broken with large missing section",
+    "cracked mirror cover paint",
+    "internal mirror components exposed"
+   ],
+   "explanation": "A merging truck striking the side of the car could plausibly break off part of the mirror housing like this. The photo shows only the mirror, but nothing contradicts a side-swipe impact, and the statement is general about broken parts."
+  },
+  "27385252d0f14e3b": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper corner broken off/torn away",
+    "missing wheel arch trim exposing bare edge",
+    "cracked and detached front corner plastic near headlight",
+    "rusty steel wheel with no cover (likely pre-existing)"
+   ],
+   "explanation": "The front corner of the car shows a broken-away bumper section and detached trim, which fits a side-swipe from a merging truck that tore parts loose. The rust on the wheel looks like old wear and does not conflict with the statement."
+  },
+  "28e75541ea39f592": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dent in rear quarter panel ahead of rear wheel",
+    "red paint transfer scuffs on quarter panel",
+    "scraped paint and scuff near lower door/sill edge",
+    "scuff near wheel arch edge"
+   ],
+   "explanation": "The photo shows only a moderate dent and paint transfer on the rear quarter panel, with no crushed front end, missing bumper, or torn-off headlights visible. The damage is on a different area and much milder than the major frontal crash described."
+  },
+  "2933ebec105e63db": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled front fender",
+    "buckled hood edge",
+    "dented and creased front door",
+    "damaged front bumper corner",
+    "bumper cover pulled away near wheel",
+    "misaligned headlight area"
+   ],
+   "explanation": "The photo shows heavy crushing and tearing along the front-left side, with the fender, door and bumper cover deformed or pulled loose. This fits a side-swipe or merge impact from a larger vehicle and the statement's description of broken, torn-loose parts."
+  },
+  "29c92df9e5a614e8": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "broken left headlight with shattered lens",
+    "left front bumper corner cracked and pushed in",
+    "misaligned bumper and fender gap on left side",
+    "scuffed paint on front bumper"
+   ],
+   "explanation": "The front-left corner shows a broken headlight and a deformed, loosened bumper, which fits a side-swipe or impact from a merging truck and the description of broken and torn-loose parts."
+  },
+  "2ab4f8e38a50113d": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "scuffed and scratched paint on lower right rear bumper",
+    "chipped paint patch on bumper corner",
+    "minor paint marks on trunk lid"
+   ],
+   "explanation": "The photo shows only superficial scratches and paint chips on the rear bumper, which fits a parked car being scraped or bumped. There is no structural damage or missing parts that would go beyond the described minor damage."
+  },
+  "2c60437541322756": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dented and creased rear driver-side door",
+    "crumpled rear quarter panel area",
+    "damaged body panel behind rear door",
+    "dirty, weathered exterior"
+   ],
+   "explanation": "The photo shows what looks like a dent or crease in the rear door and quarter panel on the driver's side. That is structural body damage, far beyond a slight paint scuff from a bag, and the statement says nothing else was damaged."
+  },
+  "2c77e8651c36bb4e": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "rough, scraped or corroded patch along front fender wheel arch edge",
+    "possible paint loss or filler residue above wheel arch",
+    "no clearly visible dent"
+   ],
+   "explanation": "The photo shows a rough, scuffed patch on the wheel arch lip that could be a scrape, but it also looks like corrosion or old repair, and no clear dent is visible. The photo doesn't show enough to confirm a recent parking-lot hit-and-run."
+  },
+  "2d411ea03ed78e0d": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "Crumpled and dented rear passenger door",
+    "Buckled rear quarter panel behind the door",
+    "Deformed rear bumper corner pulled away near the wheel",
+    "Creasing and distorted body lines along the side",
+    "Steel wheel with no hubcap (likely unrelated)"
+   ],
+   "explanation": "The photo shows significant crush damage to the rear door, quarter panel and bumper corner, which is structural-level deformation from a real impact rather than a slight paint scuff from a bag. The statement says a scuff was the only damage, so the severity does not fit."
+  },
+  "302560ba98f85cfe": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cracked and torn near license plate",
+    "lower grille broken with hanging pieces",
+    "scuffed and scraped bumper paint",
+    "license plate mounting area broken"
+   ],
+   "explanation": "The front bumper and lower grille are broken, scraped and partly torn away, which fits a collision with a merging truck. The damage is moderate and matches the statement's 'dented and broken' description."
+  },
+  "304370ae4fd27458": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and misaligned with a gap along the front edge",
+    "front fender/wing distorted near the headlight",
+    "dark gap between hood and fender where panels no longer line up"
+   ],
+   "explanation": "The hood and fender are visibly deformed and misaligned, which points to a front-end impact rather than a slight paint scuff from a bag. The statement says a scuff is the only damage, which does not match the structural panel damage shown."
+  },
+  "30ee5689ef50197e": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled and buckled hood",
+    "cracked and scuffed front bumper cover",
+    "front fender dented and creased",
+    "bumper separated at the wheel arch",
+    "damage along the front driver-side door and fender area"
+   ],
+   "explanation": "The front-left corner damage, with a dented fender, buckled hood and broken bumper, fits a sideswipe or merge collision with a truck, and the statement of dented and broken parts matches this severity."
+  },
+  "31c653a55d4e3206": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and buckled hood",
+    "front bumper cover broken and hanging off",
+    "lower bumper section detached/displaced",
+    "damage to front left corner near headlight",
+    "front end pushed in around grille"
+   ],
+   "explanation": "The photo shows major front-end collision damage, including a buckled hood and a broken, detached bumper, which a bag brushing past could not cause. The statement describes only a slight paint scuff and says nothing else was damaged."
+  },
+  "35d5e776824b652d": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "buckled/creased passenger-side front fender",
+    "dented and creased passenger doors",
+    "crumpled rear door area",
+    "scraped and scuffed front bumper",
+    "misaligned hood/fender gap"
+   ],
+   "explanation": "The photo shows structural-looking deformation along the passenger side, with creased and dented panels and a distorted fender, which is far more than a slight paint scuff from a bag. The statement says that was the only damage, so it clearly does not fit."
+  },
+  "37b74c86d016f3eb": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and buckled hood",
+    "cracked and displaced front bumper cover",
+    "damaged front fender with creases",
+    "gap and misalignment between bumper and fender",
+    "scraped lower front bumper",
+    "deformed wheel arch area near front wheel"
+   ],
+   "explanation": "The photo shows significant front-end collision damage, including a buckled hood, a deformed fender, and a cracked, displaced bumper. A bag brushing past could at most cause a slight paint scuff, so this does not fit the statement."
+  },
+  "3add7f8b02674fdc": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dent in door panel",
+    "scratches near door handle",
+    "paint scuffing along door",
+    "creased bodywork on driver-side door"
+   ],
+   "explanation": "The door shows a dent with scratches and paint scuffing, which fits a side-contact impact from another vehicle or object in a parking lot. The severity is moderate and matches the described dent and scratch."
+  },
+  "3b30d1de8f9f9ae2": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and creased",
+    "hood misaligned with gap at front edge",
+    "front grille/upper bumper area displaced",
+    "headlight area disturbed with loose trim above it",
+    "front bumper pushed in at corner"
+   ],
+   "explanation": "The photo shows a deformed hood, displaced front-end components and a misaligned headlight area, which is structural front impact damage far beyond a small scratch from a shopping cart. The statement that nothing is broken does not fit what is visible."
+  },
+  "3cc6cd5443bd0bc9": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented rear door panel",
+    "crumpled rear quarter panel",
+    "damaged rear bumper corner near wheel",
+    "scraped and creased side body",
+    "steel wheel with no hubcap"
+   ],
+   "explanation": "The dents and crumpling along the driver-side rear door, quarter panel and bumper corner fit a side-swipe from a merging vehicle, and the statement's 'dented and broken' matches the severity shown."
+  },
+  "3d4975a243589968": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "Crushed and dented driver-side front door",
+    "Buckled rear door panel with creasing",
+    "Scraped and torn paint along the side",
+    "Damage extending toward the rear quarter panel"
+   ],
+   "explanation": "The side of the SUV shows heavy crush damage and deformed door panels, which is far beyond a slight paint scuff from a bag. The statement says this was the only damage, so it does not fit the visible damage."
+  },
+  "42416fa764a78185": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cracked and torn at right side",
+    "bumper cover hanging/detached near wheel arch",
+    "crumpled lower bumper section",
+    "damage around grille and plate area",
+    "misaligned front bumper/headlight area"
+   ],
+   "explanation": "The photo shows a front bumper that is broken, torn and partly detached, which is far more severe than a small scratch from a rolling shopping cart. The statement says nothing is broken, which the visible damage contradicts."
+  },
+  "429be4c5dc6c7212": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffed and cracked front bumper corner on right side",
+    "slightly misaligned right headlight area",
+    "minor scrapes on bumper edge"
+   ],
+   "explanation": "The front of the car looks largely intact, with only minor scuffing and bumper damage on one corner, and no smashed sections or missing pieces are visible, which does not match a statement of a violent impact that smashed part of the car and knocked pieces off."
+  },
+  "4629f6ba90cc1065": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and creased along the right edge",
+    "front bumper cover sagging with a gap at the lower edge",
+    "lower valance or grille area looks loose",
+    "hood misaligned with the fender"
+   ],
+   "explanation": "The white sedan shows a buckled hood and a sagging front bumper, which is front-end damage and does not fit a truck merging into the side of the lane. Nothing on the sides shows a sideswipe, and no parts are visibly torn off or hanging loose, so the photos do not support the statement."
+  },
+  "4829a4524974e059": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front fender crushed and buckled",
+    "hood misaligned with crease at the fender edge",
+    "front bumper cover cracked and displaced on the passenger side",
+    "door panel dented and creased",
+    "gap between fender and hood and headlight area"
+   ],
+   "explanation": "The photo shows major collision damage to the fender, hood, bumper and door, which a bag brushing the car and causing a slight paint scuff could not produce. The statement also says that was the only damage, which the visible deformation contradicts."
+  },
+  "4978ac4ed951ca3e": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "scuffed/dirty front bumper",
+    "possible minor scrapes on lower front corner",
+    "yellow circle marking on windshield"
+   ],
+   "explanation": "The photo is taken from the front-left and shows no clear dents, broken parts, or crush damage on the visible panels, so it neither confirms nor contradicts a red-light collision; the impact area (likely the right side or rear) is not shown."
+  },
+  "4b0f2474dd048954": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "cracked/shattered driver-side window",
+    "front fender/front corner crumpled and detached on the left side",
+    "dented and creased rear quarter panel near fuel flap",
+    "dented door panel with ripples",
+    "scuffed rear bumper corner"
+   ],
+   "explanation": "The photo shows a shattered window, a crumpled front end, and a dented rear quarter panel. That is far more than a small scratch from a shopping cart, and it contradicts the claim that nothing is broken."
+  },
+  "4b2eae698b550d95": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled hood",
+    "crushed front fender",
+    "damaged front bumper with exposed components",
+    "displaced bumper cover edge near wheel",
+    "creased front door edge"
+   ],
+   "explanation": "The buckled hood, crushed front fender and damaged bumper fit a significant front-corner collision such as being struck by a vehicle running a red light, and match the statement of dented body and broken parts."
+  },
+  "4c230b0be5e840ac": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood crumpled and buckled",
+    "hood misaligned with fender",
+    "front bumper cover pushed in and loose",
+    "grille damaged",
+    "headlight area disturbed",
+    "debris hanging near front wheel"
+   ],
+   "explanation": "The photo shows a buckled hood and a pushed-in, displaced front bumper and grille, which is structural front-end impact damage. A shopping cart causing only a small scratch could not account for this."
+  },
+  "4dd4c250f27991cf": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper crushed and buckled",
+    "lower bumper grille/section missing or detached",
+    "bumper cover misaligned with gaps near headlights",
+    "creasing on bumper corners",
+    "hood edge slightly misaligned"
+   ],
+   "explanation": "The photo shows significant front-end impact damage with a deformed bumper and missing lower grille parts, which is far beyond a small scratch from a rolling shopping cart. The statement that nothing is broken is contradicted by the visible damage."
+  },
+  "4ef7ac2efb122946": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cracked and buckled",
+    "bumper cover displaced/missing lower section exposing grille mesh",
+    "license plate dislodged and crooked",
+    "crumpled bumper corners near headlights",
+    "front panel misalignment around grille and headlight"
+   ],
+   "explanation": "The front-end damage, including a crushed and displaced bumper with missing lower pieces, fits a collision where another vehicle struck the front and knocked parts off. The severity matches the statement's description of smashed parts and pieces knocked off."
+  },
+  "4f492a4e626ae9de": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "Possible slight damage near front left fender/wheel area, not clearly visible",
+    "Front bumper and hood appear intact"
+   ],
+   "explanation": "The black Chevrolet Cruze shown from the front-left appears largely intact, and the side where a merging truck would have struck is not clearly visible, so the dents and broken parts described cannot be confirmed. The heavily damaged silver car in the background is a different vehicle."
+  },
+  "506f4f8f826c738c": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "peeling/missing paint patches on hood",
+    "paint chipping on front fender",
+    "faded, hazy headlight lens"
+   ],
+   "explanation": "The photo shows only minor paint flaking and worn headlight lenses, with no broken, torn, or detached parts on the visible front and passenger side. This does not match a truck collision that broke parts and tore them loose."
+  },
+  "52e425929aafba45": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and wrinkled",
+    "front bumper cover pushed in and misaligned",
+    "bumper held with ties/wire",
+    "lower front splitter damaged",
+    "grille area deformed",
+    "trunk lid open and appears damaged or bent",
+    "front fender and headlight area misaligned"
+   ],
+   "explanation": "The photo shows significant front-end collision damage, including a crumpled hood, a displaced bumper and a damaged splitter. This is far beyond a slight paint scuff from someone brushing past with a bag, and the statement says that was the only damage."
+  },
+  "52f6304da1b4c7b0": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dent on rear quarter panel ahead of wheel arch",
+    "red paint transfer scuffs on quarter panel",
+    "scratches and paint scrape on lower rear quarter/sill area",
+    "minor chip/scuff at wheel arch edge"
+   ],
+   "explanation": "The photo shows a dent with red paint transfer and scrapes on the rear quarter panel, which fits a parking lot hit-and-run by another vehicle. The severity is moderate and matches the described dent and scratches."
+  },
+  "537e9111044a35bb": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "horizontal scratches across door panel",
+    "paint scuffing near door handle",
+    "shallow dent/creasing along door",
+    "paint transfer/scrape marks at rear edge of door"
+   ],
+   "explanation": "The door shows scrapes, scratches and slight denting along its side, which fits a sideswipe or contact from another vehicle in a parking lot. The severity is moderate and matches a hit-and-run description."
+  },
+  "54f323340594525a": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented rear door",
+    "crumpled rear quarter panel",
+    "scuffed and damaged rear bumper corner",
+    "damaged rocker panel/sill trim near rear door",
+    "scratches and paint scuffs on rear bumper"
+   ],
+   "explanation": "The side damage along the rear door, quarter panel and bumper corner fits a sideswipe from a merging vehicle, and the dents and damaged trim match the description of dented and broken parts."
+  },
+  "55159bfabfaab8c5": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "side mirror housing broken open with a large missing section",
+    "cracked paint on mirror cover",
+    "exposed internal mirror components"
+   ],
+   "explanation": "The statement describes only a slight paint scuff from a bag brushing past, but the mirror housing has a large piece missing and cracked. That level of structural damage could not come from a light brush with a bag."
+  },
+  "5591bb7c948fe872": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cracked and crumpled",
+    "bumper cover detached/hanging at left corner",
+    "headlight area damaged and misaligned",
+    "fender pushed in and gapped",
+    "hood misaligned/creased at left edge",
+    "exposed paint scrapes on bumper"
+   ],
+   "explanation": "The photo shows major structural front-corner collision damage including a crushed bumper, displaced fender and damaged headlight, which could not result from someone brushing past with a bag. The statement claims only a slight scuff and no other damage."
+  },
+  "57158363f12bcbcc": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cover cracked and pulled away at passenger-side corner",
+    "bumper corner detached and hanging near front wheel",
+    "scuffed and dented front fender edge area",
+    "bumper misaligned with fender"
+   ],
+   "explanation": "The damage is concentrated at the front corner of the car, with a dented and broken bumper and fender area, which fits a side-swipe or merge impact from a truck. The severity matches the statement's description of dented and broken parts."
+  },
+  "59ce826e31d0a6c3": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffs and scrapes on rear bumper lower right",
+    "minor paint abrasion on bumper corner"
+   ],
+   "explanation": "The photo shows the rear of the vehicle with only minor scuffing on the bumper, and no crushed front end or missing headlights are visible. The visible damage does not match a major front-end collision with torn-off parts."
+  },
+  "5a3671ef05202671": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and creased along the right edge",
+    "hood misaligned with a gap at the fender",
+    "front bumper cover displaced or sagging at the lower edge",
+    "missing or loose lower bumper trim/grille section"
+   ],
+   "explanation": "The photo shows a buckled, misaligned hood and a displaced front bumper, which indicates a front-end impact and not a slight paint scuff from a bag. The statement says a scuff was the only damage, which the structural deformation clearly contradicts."
+  },
+  "5b150b958c1934f1": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "rear quarter panel crushed and creased",
+    "torn metal near rear wheel arch",
+    "rear bumper corner broken and detached",
+    "rear door panel buckled"
+   ],
+   "explanation": "The rear quarter panel is crushed and torn, and the bumper corner is broken loose. That fits a side-swipe from a merging truck and matches the statement that parts were broken and torn loose."
+  },
+  "5c89f4937b18cb88": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "damaged lower front bumper",
+    "broken or missing bumper pieces on right front corner",
+    "scuffed bumper edge near fog light",
+    "dislodged lower grille area"
+   ],
+   "explanation": "The front bumper on the right side shows broken and missing pieces with scuffing, which fits a collision that knocked pieces off. The rest of the body looks intact, and the damage is modest but consistent with a moderate front-corner impact."
+  },
+  "5cbfca0ee3ae6d5c": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented front door panel",
+    "dented rear door panel",
+    "creased body panel along both doors",
+    "paint chipped on front fender",
+    "wet/icy surface with droplets"
+   ],
+   "explanation": "The doors show broad dents and creasing consistent with a side impact from another vehicle. Broken parts are not clearly visible in this view, but the dented body matches the statement."
+  },
+  "5d3fdd0e58c47a46": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear quarter panel crushed/buckled near wheel arch",
+    "gap and deformation at rear bumper cover edge by wheel",
+    "creasing in rear fender panel",
+    "bumper cover misaligned and pushed in on right side"
+   ],
+   "explanation": "The rear quarter panel and bumper corner show structural deformation and buckling, which is far beyond a slight paint scuff from a bag brushing the car, and the statement says that was the only damage."
+  },
+  "5d7bca166fdc541a": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear quarter panel crease/dent above rear wheel arch",
+    "slight gap or misalignment at rear bumper/quarter panel seam",
+    "wet/dirty body, no visible detached parts"
+   ],
+   "explanation": "The photo shows only a modest dent and crease on the rear quarter panel with the bumper, lights and body panels still attached, which does not fit parts being broken and torn loose. A side-swipe from a merging truck could cause the dent, but not the severity described."
+  },
+  "5e1d08b964a10be1": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dent and crease in rear door panel",
+    "scuffs and scratches on door",
+    "buckled side trim molding at door seam"
+   ],
+   "explanation": "The photo shows only moderate side damage to the doors, with no front-end crushing, missing bumper, or missing headlights. This is far less severe and in a different location than the statement describes."
+  },
+  "5ea84ac50f5568a9": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rough, corroded or filler-like patch on the fender above the wheel arch",
+    "minor paint wear along the wheel arch edge"
+   ],
+   "explanation": "The photo shows a black Audi front fender with only a small, localized patch of rough, aged-looking damage at the wheel arch. There is no crushing, and the headlight and bumper corner appear intact, which contradicts a major crash with a crushed front end and torn-off bumper and headlights."
+  },
+  "607a0226ce0849d5": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and creased front fender",
+    "dented, deformed driver-side front door",
+    "scraped paint along fender and door",
+    "damaged fender area near wheel arch"
+   ],
+   "explanation": "The front fender and door show crumpling and deformation, far beyond a slight paint scuff from a bag brushing the car. The statement says this was the only damage, which does not fit the structural body damage visible."
+  },
+  "60df809d830c76c1": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented front door",
+    "creased and buckled lower door panel",
+    "scuffed paint along door and sill area"
+   ],
+   "explanation": "The front door has a noticeable dent with creasing and scuffing, which fits a side impact from another vehicle or object in a parking lot. The severity is plausible for a hit-and-run in a lot."
+  },
+  "64ba2286d3e7b668": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled front bumper cover torn loose",
+    "buckled hood",
+    "broken and shattered headlight",
+    "damaged grille",
+    "crushed front-left fender area"
+   ],
+   "explanation": "The front-end damage shows a significant impact with a bumper cover torn away, a buckled hood, and a broken headlight, which fits a collision where parts were broken and torn loose. A merging truck striking the front corner of the car could plausibly cause this."
+  },
+  "67adb5cad151eece": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear door crushed inward near rear wheel arch",
+    "buckled body panel and creases on rear quarter",
+    "displaced panel gap/seam at rear door and quarter panel",
+    "damage at rear wheel arch edge"
+   ],
+   "explanation": "The photo shows a significantly dented and buckled rear door and quarter panel with a distorted panel seam, which is far more severe than a small scratch from a shopping cart. The statement's claim that nothing is broken does not match this structural deformation."
+  },
+  "68c78a1b70e86500": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood buckled and creased",
+    "hood misaligned with gap above headlight",
+    "hood edge pushed up near fender",
+    "bumper/grille area slightly shifted"
+   ],
+   "explanation": "The hood is visibly deformed and misaligned with the fender and headlight, which is structural front-end impact damage far beyond a small scratch from a rolling shopping cart."
+  },
+  "6c7f9bc4652b3e5a": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "minor scuffs and scratches on front bumper",
+    "light surface marks on front bumper lower edge"
+   ],
+   "explanation": "The blue Audi shows only light scuffing on the front bumper, with no visible dents, broken parts, or panel deformation. This does not fit a red-light collision that dented the body and broke parts."
+  },
+  "6eb13aa1f41f1402": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "minor scuffing on wheel rim edge",
+    "small dimples or marks on front fender",
+    "no visible broken parts",
+    "no significant dents"
+   ],
+   "explanation": "The photo shows a largely intact front corner with only minor marks and rim scuffing, with no dented panels or broken parts as described after a truck collision. The visible damage is far less severe than the statement claims."
+  },
+  "6f42ed8a612eb451": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and creased",
+    "front grille/upper panel area misaligned or missing trim",
+    "headlight surround displaced on front-right corner",
+    "front bumper slightly deformed near right headlight"
+   ],
+   "explanation": "The front-right corner shows a buckled hood, displaced headlight and grille area, and missing or misaligned trim, which fits a collision that smashed part of the car and knocked pieces off. The photo does not show the impact direction or the other vehicle, but the damage type and severity are plausible."
+  },
+  "7095baa36a169b07": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper pushed in and misaligned",
+    "right headlight housing damaged with exposed/missing lower mount",
+    "hood misaligned with gap at front edge",
+    "grille area deformed",
+    "bumper trim displaced near wheel arch"
+   ],
+   "explanation": "The front-right corner shows a bumper, headlight and hood deformation that plausibly results from a collision with another vehicle, matching the statement of dented bodywork and broken parts."
+  },
+  "72aaca399febbb4d": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cracked and deformed with missing lower section",
+    "front bumper cover misaligned and gouged near fog light area",
+    "rear door/quarter panel crushed and buckled on passenger side",
+    "dented front fender and hood edge"
+   ],
+   "explanation": "The photo shows significant structural damage to the front bumper and a crushed rear side panel, far beyond a slight paint scuff from a bag. The statement says this was the only damage, which clearly contradicts what is visible."
+  },
+  "7416d2ba3a8f1156": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cracked and pushed in at right corner",
+    "right headlight area misaligned/damaged",
+    "hood slightly buckled or misaligned",
+    "scuffing on right front bumper"
+   ],
+   "explanation": "The photo shows a Mazda with deformed bumper and headlight area on the right front, plus a possibly misaligned hood, which exceeds a small shopping cart scratch and 'nothing broken'. The vehicle is also at a salvage yard, which further undermines the minor-damage description."
+  },
+  "74b539f620549922": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper license plate area scuffed/cracked with paint damage",
+    "bumper lower section appears dented or damaged near center",
+    "hood has dents or creasing on the surface"
+   ],
+   "explanation": "The front shows a damaged, cracked bumper section and apparent hood deformation, which exceeds a small scratch from a rolling shopping cart. The statement's claim that nothing is broken does not fit this damage."
+  },
+  "75d7141f941c3422": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dent and creasing on front fender above wheel arch",
+    "scuffed paint on fender and bumper corner",
+    "light scrapes on front door"
+   ],
+   "explanation": "The photo shows moderate localized fender denting and scuffing, with the bumper and wheel arch intact and no visible crushing. This does not match a major crash with a crushed front end and bumper and both headlights torn off."
+  },
+  "77f9f72078b364e5": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "both headlights missing or removed, internals exposed",
+    "cracked front bumper cover on left side",
+    "crack at hood edge above grille",
+    "bumper misaligned near grille surround"
+   ],
+   "explanation": "The front end shows missing headlights, a cracked bumper and a cracked hood edge, which fits a collision with a merging truck that broke and tore parts loose. The damage is broken-off components, matching the severity described."
+  },
+  "78ee7f24551fd298": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled hood",
+    "damaged and detached front bumper",
+    "broken lower bumper trim hanging",
+    "front-left corner deformation near headlight/fender",
+    "missing or displaced bumper cover at left corner"
+   ],
+   "explanation": "The dented hood and broken, detached front bumper on the left corner fit a collision with a merging vehicle, and the statement of dented and broken parts matches the severity shown."
+  },
+  "7c94382020951f49": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "large crushed dent across rear door and rear quarter panel",
+    "buckled body panel and creased metal on the passenger side",
+    "rear wheel arch deformed",
+    "rear wheel appears pushed in or misaligned",
+    "paint damage along the side of the vehicle",
+    "damage to the rear door and quarter panel area"
+   ],
+   "explanation": "The photo shows heavy structural impact damage along the side and rear quarter, with crushed panels and an apparently displaced rear wheel. A shopping cart causing a small scratch could not produce this level of damage."
+  },
+  "7f3e4f5d5cc4ff2f": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled hood",
+    "smashed front headlight area",
+    "damaged front bumper and grille",
+    "front fender deformation",
+    "rear corner damage near taillight",
+    "scuffing along the side"
+   ],
+   "explanation": "The photo shows major collision damage, including a buckled hood, destroyed headlight and bumper, and rear corner damage. A slight paint scuff from a bag brushing past cannot account for this, and the statement says it was the only damage."
+  },
+  "7fe43952945a937a": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and raised at front edge",
+    "hood misaligned with gap above headlight",
+    "front bumper pushed slightly, possible displacement near right corner",
+    "grille area disturbed"
+   ],
+   "explanation": "The front-end damage, with a crumpled and lifted hood and a disturbed bumper and grille area, is plausible for a collision with another vehicle running a red light. The statement of dented body and broken parts matches the severity visible."
+  },
+  "82830311d014ed4d": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "rear bumper cover cracked and sagging",
+    "bumper torn loose at the left corner",
+    "trunk lid crumpled and buckled",
+    "misaligned trunk-to-bumper gaps",
+    "damaged rear body panel near taillight"
+   ],
+   "explanation": "The rear bumper is torn and sagging and the trunk lid is crumpled, which matches a vehicle striking the car and tearing parts loose. The severity fits a significant impact from a larger vehicle such as a truck."
+  },
+  "8524d9c990a46659": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "scratches along both side doors",
+    "paint scuffing on rear door",
+    "light scrape marks near rear wheel arch",
+    "possible shallow dents in door panels"
+   ],
+   "explanation": "The side of the car shows scratches and scuffing typical of a sideswipe or contact in a parking lot. The damage is light to moderate and fits a hit-and-run description, though the dents are minor and hard to confirm from the photo."
+  },
+  "861f5c658d871b36": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "scuffed and scratched paint on right rear bumper corner",
+    "small dents/chipped paint on right side of bumper",
+    "paint wear along lower bumper edge"
+   ],
+   "explanation": "The rear bumper shows scratches, scuffing and minor dents on the right corner, which fits a minor parking-lot hit-and-run in kind and severity. No major structural damage is visible that would exceed the described incident."
+  },
+  "8bc11c246365b829": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "light scratches along front and rear door panels",
+    "minor paint scuffing on door",
+    "small paint chips near rear door edge"
+   ],
+   "explanation": "The photo shows only light surface scratches on the side doors, with no crushed front end, missing bumper, or torn-off headlights. The visible damage is far less severe than a major frontal crash and is on a different part of the vehicle."
+  },
+  "8dee9bea44515628": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cover cracked and pushed in on driver-side corner",
+    "bumper cover torn away near front wheel",
+    "headlight area damaged and misaligned",
+    "hood and fender panel gap/buckling near headlight",
+    "scraped, scuffed lower bumper"
+   ],
+   "explanation": "The front corner damage with a dented, broken bumper and displaced fender and headlight area fits a side-swipe or merge collision with a truck. The severity matches the statement's description of dented and broken parts."
+  },
+  "8fa930798fd403a7": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled hood",
+    "broken front left headlight",
+    "damaged front left fender and bumper",
+    "gap and detached trim at front bumper",
+    "scuffs on left side doors",
+    "damaged rear corner and tail light area"
+   ],
+   "explanation": "The car shows heavy front-left damage with a crumpled hood, a broken headlight and loose bumper parts, along with side scuffs and rear-corner damage. This fits a vehicle merging into the car's lane and causing broken, torn-loose parts."
+  },
+  "9072e8e03cabaa38": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "lower front bumper torn/broken",
+    "hanging debris under front bumper",
+    "buckled/creased hood",
+    "damaged lower front fascia"
+   ],
+   "explanation": "The front bumper is broken with parts torn loose and the hood is buckled, which fits a collision with a merging truck and the statement's description of broken, torn-off parts. The photo shows mainly front-end damage, but nothing contradicts the described impact."
+  },
+  "90ac41085bfa94f8": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "cracked front bumper cover",
+    "bumper misaligned with gap near center",
+    "headlights missing or removed, internals exposed",
+    "crack/dent in hood edge above grille",
+    "hood appears misaligned"
+   ],
+   "explanation": "The statement describes only a slight paint scuff from a bag, but the photo shows a cracked and displaced bumper, missing headlight assemblies, and hood damage, which indicate a significant front impact."
+  },
+  "911f06c3a0cf87cb": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "no visible body damage on front or passenger side",
+    "no missing or broken parts seen",
+    "headlight, bumper, grille, and fender appear intact"
+   ],
+   "explanation": "The visible front and passenger side of the SUV look intact, with no smashed panels or missing pieces, which does not match a collision that smashed part of the car and knocked pieces off."
+  },
+  "9227197a2a266c6e": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffed and cracked license plate area on front bumper",
+    "minor paint damage on lower front bumper",
+    "small dent or scuff on hood"
+   ],
+   "explanation": "The front of the car looks largely intact, with only minor scuffing around the bumper plate area and no smashed panels or missing pieces, which does not match a statement describing a collision that smashed part of the car and knocked pieces off."
+  },
+  "92a26be3ce168adc": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear bumper corner crushed and torn",
+    "rear quarter panel dented and buckled",
+    "wheel arch edge deformed",
+    "paint damage and creasing near fuel door and tail light area"
+   ],
+   "explanation": "The photo shows structural deformation at the rear corner, including a crushed bumper and buckled quarter panel, which a bag brushing the car could not cause. The statement describes only a slight scuff and says nothing else was damaged."
+  },
+  "937f6bf0a3fa9962": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "lower front bumper cover broken/hanging",
+    "missing or detached bumper section below grille",
+    "crumpled and wavy hood",
+    "debris and torn parts under front end"
+   ],
+   "explanation": "The photo shows structural front-end damage: a damaged bumper cover with detached pieces and a deformed hood. A slight paint scuff from a bag brushing the car could not cause this, and the statement says it was the only damage."
+  },
+  "941ecc40122f559c": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper lower section broken/missing with exposed internals",
+    "deployed airbag visible in windshield area",
+    "hood appears misaligned with gap along the front edge",
+    "cracked or damaged windshield",
+    "possible dent/crease on hood"
+   ],
+   "explanation": "The statement describes a slight paint scuff from a bag, but the photo shows a broken front bumper, a deployed airbag and a misaligned hood, which indicates a significant collision. The damage is far beyond the minor scuff described."
+  },
+  "95b15b2f402f1b90": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crushed and dented passenger-side front door",
+    "buckled rear passenger door",
+    "torn and creased body panels with exposed inner structure",
+    "scuffed lower door sill area"
+   ],
+   "explanation": "The heavy side impact damage to both passenger-side doors fits a T-bone collision from a driver running a red light, and it matches the described dents and broken parts."
+  },
+  "968dfca609cdbb40": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled and dented driver-side rear door and quarter panel",
+    "front driver-side corner crushed with wheel pushed in",
+    "deflated or damaged front tire",
+    "scraped and scuffed side panels",
+    "dirty/muddy rear bumper"
+   ],
+   "explanation": "The left side of the car shows heavy crushing, scraping and deformation along the doors and front corner, which fits a side impact from a merging truck and the described broken or torn parts."
+  },
+  "9950a12f9867e155": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and dented rear door and quarter panel",
+    "front fender/door area heavily damaged and pushed in",
+    "deformed front wheel and tire, appears flat or turned",
+    "creased body panels along the driver-side",
+    "scraped paint along the lower side"
+   ],
+   "explanation": "The photo shows major structural body damage along the side, including crushed panels and a deformed front wheel, which is far beyond a slight paint scuff from a bag brushing past. The statement says this was the only damage, which clearly does not match."
+  },
+  "9a54c357f39fd2c4": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "light scuffs and scratches on front bumper",
+    "minor surface marks on bumper paint"
+   ],
+   "explanation": "The front bumper shows only light surface scuffs and scratches, with no broken or detached parts, which fits a minor shopping cart contact. The car sits in a salvage-style yard, but the visible damage itself matches the statement."
+  },
+  "9abbe312df583c77": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "side mirror housing torn off, mirror assembly missing",
+    "heavy scuffing and dark transfer marks along both doors",
+    "dented and creased door panels",
+    "scrapes on rear quarter panel"
+   ],
+   "explanation": "The long horizontal scrapes across the doors and the ripped-off mirror fit a sideswipe by a merging truck, and the missing mirror matches the statement of parts broken and torn loose."
+  },
+  "9add7ed6fd81865b": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled front left fender",
+    "dented and creased hood",
+    "crushed front left door",
+    "scraped paint along fender and door",
+    "broken or missing left headlight area",
+    "pushed-in front bumper corner"
+   ],
+   "explanation": "The damage runs along the front left fender, door and hood, which fits a vehicle merging into the car's left side. The dents and broken parts match the statement's description."
+  },
+  "9c97e96e24816ca7": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "door panel heavily creased and crumpled",
+    "buckled and torn lower door sill area",
+    "dented front fender",
+    "detached or hanging trim pieces under the door",
+    "extensive paint damage and deformation along the door"
+   ],
+   "explanation": "The photo shows major structural deformation, with a crushed door, a torn sill and hanging parts. A bag brushing past could not cause this, and the statement says a slight scuff was the only damage."
+  },
+  "9c9afc0c06c363db": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cover torn and pushed in at passenger-side corner",
+    "bumper cover detached/hanging near front wheel",
+    "gap and misalignment between bumper and fender",
+    "cracked or displaced fender lower edge",
+    "scraped lower bumper"
+   ],
+   "explanation": "The photo shows the front passenger-side bumper torn, displaced and hanging off, which is structural impact damage far beyond a slight paint scuff from a bag. The statement says that scuff is the only damage, which the visible damage contradicts."
+  },
+  "9f30edc2bf370686": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled front bumper cover with cracks",
+    "crushed and creased hood",
+    "damaged front fender with torn edges",
+    "displaced fender/door gap with a bent, protruding panel piece",
+    "front passenger-side corner pushed in"
+   ],
+   "explanation": "The front-corner crushing, crumpled hood, buckled fender and cracked bumper fit a significant collision such as being struck by a vehicle running a red light, and match the statement of dented body and broken parts."
+  },
+  "9fbfbc09b7cb9a79": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "Crushed and buckled driver-side front door",
+    "Dented and creased driver-side rear door/quarter panel",
+    "Blue protective film or tarp over the driver-side front window/pillar area",
+    "Apparent damage near the A-pillar and window frame"
+   ],
+   "explanation": "The photo shows significant structural denting and crushing along the driver-side doors, far beyond a small scratch from a shopping cart. The statement that nothing is broken does not match this level of damage."
+  },
+  "9fe76cd4db533977": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "airbag deployed (visible at windshield/passenger side)",
+    "front bumper lower section broken/missing near right-front corner",
+    "hood appears slightly misaligned with a small mark near the front edge"
+   ],
+   "explanation": "The deployed airbag and broken lower front bumper show a real impact and parts torn loose, but the photo shows only the front-left view and no damage along the side where a merging truck would typically strike, so the point of impact can't be confirmed."
+  },
+  "a053c076da199a75": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "rear bumper corner crushed and torn",
+    "rear quarter panel dented and creased",
+    "buckled panel near rear wheel arch",
+    "fuel door area deformed",
+    "scuffed paint on rear corner"
+   ],
+   "explanation": "The crushed rear corner, dented quarter panel and broken bumper fit a side-swipe or merging impact from another vehicle, matching the statement's description of dented and broken parts."
+  },
+  "a35cd6451d019ced": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffed and scraped front bumper",
+    "dents and creasing along the driver-side doors and rear quarter",
+    "minor scratches on the front fender area"
+   ],
+   "explanation": "The photo shows scrapes and dents along the side and bumper, which fit a sideswipe from a merging truck, but no parts are visibly broken or torn loose. The bumper, lights, mirror, and body panels all appear attached, so the statement overstates the severity."
+  },
+  "a37b580686265c0f": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "large dents and creasing along front and rear door panels",
+    "paint chipped/scraped on front fender",
+    "deformed body line across both doors",
+    "possible dent near rear wheel arch"
+   ],
+   "explanation": "The photo shows broad dents and creasing across both doors and fender, which is far more than the small scratch from a rolling shopping cart that the statement describes."
+  },
+  "a496324534d11968": {
+   "verdict": "unclear",
+   "visible_damage": [],
+   "explanation": "The photo shows the rear and right side of a brown Audi wagon with no obvious damage, and no scratch is visible at this resolution. Nothing contradicts the statement, but the photo doesn't show a scratch either, so it can't be confirmed."
+  },
+  "a53eb70f8a1cb7e8": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper torn and hanging at right front corner",
+    "crumpled/dented front right bumper area",
+    "displaced bumper cover near right headlight",
+    "scuffed lower front bumper",
+    "possible grille misalignment"
+   ],
+   "explanation": "The front-end damage, with a broken and detached bumper and dented bodywork at the corner, plausibly results from a collision with another vehicle as described. The severity matches a moderate impact that dented the body and broke parts."
+  },
+  "a59d8d1ea201385f": {
+   "verdict": "inconsistent",
+   "visible_damage": [],
+   "explanation": "The grey estate shown, photographed in what looks like a salvage yard, has no visible dents, broken parts or crash damage from the front or the passenger side. The photo does not support a collision that dented the body and broke parts."
+  },
+  "a6b09965b87d426f": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dent in rear door panel",
+    "scratches and scuffs on door",
+    "creased side trim molding at door seam",
+    "scuffed lower door panel"
+   ],
+   "explanation": "The photo shows a dent, scratches and a creased trim strip along the side doors, which fits a moderate side-swipe or door-contact impact in a parking lot. The severity matches a hit-and-run description of dents and scratches."
+  },
+  "a8137437e75a273c": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "large dent in front door panel",
+    "crumpled fender behind front wheel",
+    "warped body line and distorted reflections",
+    "possible paint damage near door edge and sill"
+   ],
+   "explanation": "The photo shows deformed, dented sheet metal across the fender and front door, which is far more than a slight paint scuff from a bag brushing past. The statement says that was the only damage, but the visible damage is structural and of much greater severity."
+  },
+  "a94306e7ac139615": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "minor paint scuffing on front bumper",
+    "slight surface marks on front fender",
+    "blue paint transfer/scuffs on wheel rim edge"
+   ],
+   "explanation": "The photo shows only minor surface marks and no dents, cracks, or detached parts, which fits a slight scuff from brushing past with a bag."
+  },
+  "a95e41705c9acf4d": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled hood at front right corner",
+    "buckled hood edge near grille",
+    "front bumper displaced or misaligned on right side",
+    "gap/misalignment at right front fender and hood",
+    "damaged grille area near emblem"
+   ],
+   "explanation": "The front-right corner shows a crumpled hood, misaligned bumper and disturbed grille area, which fits a collision with another vehicle. The statement describes smashed parts and pieces knocked off, and the visible frontal damage plausibly matches that in kind and severity."
+  },
+  "aa24d7483b51d9ff": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dent and creasing on front fender above wheel arch",
+    "scuffed paint near fender crease",
+    "light scratches/scuffs on front door lower area"
+   ],
+   "explanation": "The moderate dent, creasing and scuffs on the front fender and door are typical of a side-swipe or low-speed impact in a parking lot, matching the described dent and scratches."
+  },
+  "ab04c9fd7ac29997": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear bumper cover crumpled and buckled on left corner",
+    "creased and dented rear quarter panel",
+    "bumper misaligned with gaps and distorted lines near taillight",
+    "damaged bumper trim and side marker area"
+   ],
+   "explanation": "The photo shows deformed and creased body panels and a buckled rear bumper, which indicates a real impact rather than a slight paint scuff from a bag. The statement describes only a minor scuff and says nothing else was damaged, so the damage is far more severe than described."
+  },
+  "ae5c259c093e5b01": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled hood corner on right side",
+    "cracked and displaced right headlight",
+    "damaged right front bumper corner and fender edge",
+    "hood misaligned with creases"
+   ],
+   "explanation": "The photo shows a deformed hood, a broken right headlight and a damaged bumper corner, which is far beyond a small shopping cart scratch and conflicts with the claim that nothing is broken."
+  },
+  "ae6af7cb32d83602": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dent and creasing on front fender",
+    "deformed door panel near front edge",
+    "minor paint scuffing along lower door edge"
+   ],
+   "explanation": "The photo shows moderate dents and creasing on the fender and door, but no parts are broken, torn loose, or hanging off. A side-swipe from a merging truck could cause this panel damage, yet the claim of broken and torn-off parts is not supported."
+  },
+  "aec89b463514ba6d": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "peeling/faded clear coat and paint on trunk lid",
+    "rust or paint spots on rear quarter panel",
+    "shattered or cracked rear window glass",
+    "scuffed rear bumper"
+   ],
+   "explanation": "The visible damage is mainly paint deterioration and a cracked rear window, with no crushed panels, deformation or missing pieces that would show a collision impact that smashed the car and knocked parts off. The body panels and bumper look intact and aligned."
+  },
+  "b00cbe88d0a13e41": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper pushed in and misaligned",
+    "headlight housing damaged with exposed internals",
+    "hood displaced and gapped at front edge",
+    "fender/headlight area panel gap and broken trim",
+    "grille area deformed"
+   ],
+   "explanation": "The photo shows a front-end impact with the hood, headlight, bumper and grille displaced or broken, far beyond the small scratch from a shopping cart that the statement describes. The statement also says nothing is broken, which the visible broken parts contradict."
+  },
+  "b16d268ea44bb4c4": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "rear door heavily dented and creased",
+    "rear quarter panel buckled",
+    "front door dented and scraped",
+    "rear wheel arch deformed",
+    "paint damage along the left side"
+   ],
+   "explanation": "The left side shows significant crushing and buckling across both doors and the rear quarter panel, which fits a side impact from a vehicle running a red light. The severity matches the statement's description of smashed panels, though no detached pieces are clearly visible in this photo."
+  },
+  "b16fe981ef1b0049": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cover broken and missing on driver side",
+    "grille missing/torn off exposing radiator",
+    "headlight area damaged and displaced",
+    "hood buckled/creased at front edge",
+    "front fascia pieces detached"
+   ],
+   "explanation": "The front-end damage, with missing bumper and grille pieces, exposed radiator and a crumpled hood, fits a significant collision that smashed the car and knocked parts off, as described."
+  },
+  "b1d675a556ad3c65": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "large dent and crease in rear quarter panel",
+    "dented and buckled rear door",
+    "deformed door panels along the side",
+    "scuffed and scratched rear bumper",
+    "flat or deflated rear tire"
+   ],
+   "explanation": "The photo shows significant crushed and creased body panels on the rear quarter and doors, which goes far beyond a slight paint scuff from a bag brushing the car. The statement says that was the only damage, so the visible structural deformation clearly does not match."
+  },
+  "b50af1e1c7fc1d92": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "paint chipped and peeling on front bumper cover",
+    "scratches and scuffs on front bumper",
+    "paint flaking/dull finish on hood and fender",
+    "scratch marks on front fender"
+   ],
+   "explanation": "The photo shows chipped, scratched and flaking paint, mainly on the front bumper and fender, which fits the described scratching and chipping. No structural or crush damage is visible that would exceed what the statement describes."
+  },
+  "b8f9de3294295f3b": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "front bumper cracked and torn on passenger side",
+    "missing fog light/trim piece with exposed hole",
+    "crumpled front fender with gap at hood edge",
+    "hood misaligned or buckled near the fender",
+    "scuffs and dents on lower front corner"
+   ],
+   "explanation": "The front passenger-side corner shows a crushed bumper, a missing piece, and a deformed fender and hood edge. This fits a vehicle merging into the lane and striking the car, and it matches the 'broken and torn loose' parts described."
+  },
+  "ba422b948d103577": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear window appears shattered or cracked",
+    "peeling or faded paint and clearcoat on trunk lid",
+    "scraped or damaged paint on rear quarter panel",
+    "general weathered, worn condition"
+   ],
+   "explanation": "The statement describes only a small scratch with nothing broken, but the rear window looks shattered and the trunk and quarter panel show extensive paint damage. A shopping cart would not plausibly cause this."
+  },
+  "bd3af7da62226276": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented and creased driver-side front door",
+    "damaged rear door panel area",
+    "bent or damaged A-pillar and door frame with blue protective film",
+    "front door window area disturbed"
+   ],
+   "explanation": "The photo shows significant side-impact denting on the driver-side doors, which fits a collision where another vehicle struck the car at an intersection. The statement is general (dented body, broken parts), and the visible damage matches that in kind and severity."
+  },
+  "be1dc6198161a965": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "dented rear bumper corner",
+    "creased and deformed bumper surface near parking sensor",
+    "scratches and scuffs on rear quarter panel",
+    "distorted reflections indicating panel deformation"
+   ],
+   "explanation": "The rear bumper shows visible dents and deformation along with scratches on the quarter panel, which is more than a slight paint scuff from brushing past with a bag. The statement says that was the only damage, so the visible deformation contradicts it."
+  },
+  "bf5615df7433864d": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and creased",
+    "hood misaligned and gapping at the front edge",
+    "front bumper pushed in and misaligned",
+    "grille displaced",
+    "headlight area disturbed with gap at the fender"
+   ],
+   "explanation": "The buckled hood, shifted bumper and grille, and gaps around the headlight are consistent with a frontal collision that dented the body and broke parts. The statement is general, so this level of damage fits."
+  },
+  "c26fcedfbc901697": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cover torn away/missing upper section",
+    "grille missing and radiator exposed",
+    "hood buckled and creased",
+    "headlight area displaced with surrounding trim broken",
+    "front bumper scraped and cracked along edge"
+   ],
+   "explanation": "The photo shows major front-end collision damage with the bumper cover and grille torn off, the radiator exposed and the hood deformed, which a rolling shopping cart causing a small scratch with nothing broken could not produce."
+  },
+  "c2af4900b885c8a4": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "Windshield shattered with spiderweb cracking on passenger side",
+    "No visible crushing or deformation of body panels",
+    "No missing parts visible"
+   ],
+   "explanation": "The photo shows only a cracked windshield, while the bumper, hood, fenders, lights and doors appear intact with no parts knocked off. A red-light collision that smashed the car and knocked pieces off would leave much more body damage than this."
+  },
+  "c44d6482ca739de3": {
+   "verdict": "inconsistent",
+   "visible_damage": [],
+   "explanation": "The photo shows the rear and right side of an Audi wagon with no visible smashed panels, missing parts, or deformation; the bumper, tailgate, lights and body panels all look intact. The statement describes a collision that smashed part of the car and knocked pieces off, which is not reflected in this view."
+  },
+  "c509c6da52ee2eca": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "hood crumpled and buckled",
+    "hood gap misaligned along front edge",
+    "front bumper/grille area pushed in",
+    "headlight area displaced and loose fit"
+   ],
+   "explanation": "The hood is visibly crumpled and the front end is deformed, which indicates a significant frontal impact. A shopping cart causing only a small scratch with nothing broken could not produce this."
+  },
+  "c7ac2b55f3b22aa8": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood crumpled and buckled",
+    "hood misaligned with gap at front edge",
+    "front bumper/grille area shifted",
+    "possible damage near right headlight"
+   ],
+   "explanation": "The crumpled hood and disturbed front-end panels fit a frontal collision, such as being struck by a vehicle running a red light. The statement's description of dented bodywork and broken parts matches the visible damage in kind and severity."
+  },
+  "ce2528862fb35277": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "dented and creased driver-side front door and fender",
+    "scuffed front bumper cover",
+    "missing license plate",
+    "dull and scratched paint on the side panels"
+   ],
+   "explanation": "The driver-side panels show dents and creasing that could fit a side-swipe from a merging truck. No parts are visibly broken or torn loose from this angle, and the photo doesn't show the rear or the rest of the side, so the statement's severity can't be confirmed."
+  },
+  "d0c7f4c9199c45a1": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "door crushed inward",
+    "rear quarter panel buckled and creased",
+    "deformed body panels behind the front wheel",
+    "front wheel appears pushed out of alignment",
+    "window glass missing or shattered on driver side"
+   ],
+   "explanation": "The photo shows a heavily crushed driver-side door and quarter panel with structural deformation, which a shopping cart could not cause and which contradicts a small scratch with nothing broken."
+  },
+  "d44975fc4e3491f5": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear bumper crushed and deformed",
+    "rear bumper cover displaced or missing near the license plate area",
+    "tailgate lower edge buckled",
+    "rear quarter panel creased and dented",
+    "license plate bent or loose"
+   ],
+   "explanation": "The statement describes a small scratch from a shopping cart with nothing broken, but the photo shows a deformed rear bumper, a buckled tailgate and a creased rear quarter panel. That is structural impact damage well beyond what a rolling cart would cause."
+  },
+  "d5251912f08da296": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and creased near headlight",
+    "hood misaligned with gap at fender edge",
+    "wavy dents on hood surface",
+    "front bumper slightly displaced near headlight"
+   ],
+   "explanation": "The front right corner shows a crumpled hood and gap at the fender, which fits a collision that dented the body and affected parts. The damage is moderate and plausible for a front-corner impact from another vehicle."
+  },
+  "d79ada232f60add2": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented rear driver-side door",
+    "creased rear quarter panel",
+    "scuffed lower door area"
+   ],
+   "explanation": "The photo shows dents and creasing along the driver-side rear door and quarter panel, which fits a side impact from a merging truck. The damage is moderate and matches the 'dented' description, though broken parts are not clearly visible from this angle."
+  },
+  "d97f9cdae57646c3": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "lower front bumper cover missing/detached",
+    "license plate area exposed with bracket",
+    "hanging black lower bumper piece",
+    "broken fog light area and trim"
+   ],
+   "explanation": "The front bumper cover is torn away and lower trim is hanging, which fits a collision with another vehicle that broke parts of the car. Visible dents are minimal but the broken parts match the statement."
+  },
+  "da7387269e88e318": {
+   "verdict": "unclear",
+   "visible_damage": [],
+   "explanation": "The photo shows the front and passenger side of the SUV with no obvious damage, but at this distance and resolution a small scratch could not be seen or ruled out. Nothing visible contradicts the statement of a minor scratch with nothing broken."
+  },
+  "db54c9aa71d2c3e5": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper corner broken and torn away",
+    "headlight area exposed and damaged",
+    "fender crease and scrape with paint transfer behind the wheel arch",
+    "bumper cover pushed in and detached near wheel"
+   ],
+   "explanation": "The statement describes a small scratch with nothing broken, but the photo shows a broken, detached front bumper corner and a damaged headlight area plus a fender crease. This is far more severe than a shopping cart could cause."
+  },
+  "db931e750b356d36": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "no clearly visible damage from this angle"
+   ],
+   "explanation": "The gray wagon shows no obvious dents, broken parts, or scratches at this distance and angle, so a small scratch can't be confirmed or ruled out; nothing visible contradicts a minor claim, but the photo doesn't show the scratch itself."
+  },
+  "dc5dc825fae00966": {
+   "verdict": "unclear",
+   "visible_damage": [
+    "Possible slight bend or misalignment at front left fender/door area",
+    "No obvious scuffs visible on front bumper or hood"
+   ],
+   "explanation": "The black Chevrolet Cruze in the foreground shows no clear major damage from this angle, which fits a minor scuff claim, but the photo is too distant and angled to confirm or rule out a slight paint scuff. The severely damaged silver car in the background is a different vehicle and is not relevant."
+  },
+  "df139bda9249f165": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled front bumper cover with cracks",
+    "crushed and buckled front fender",
+    "hood misaligned with bent edge and creases",
+    "gap and distortion between fender and door",
+    "door panel dented with trim hanging loose",
+    "cracked or damaged headlight area"
+   ],
+   "explanation": "The photo shows major front-end collision damage with crumpled panels, a buckled fender and hood, and displaced trim, which is far beyond a small scratch from a shopping cart. The statement says nothing is broken, but multiple parts are visibly broken or deformed."
+  },
+  "dfe47fed63c6d969": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "Side mirror cover missing, internals exposed",
+    "Heavy dark scrape marks across both doors",
+    "Dented, deformed door panels",
+    "Scraped rear quarter panel and side molding"
+   ],
+   "explanation": "The photo shows a missing mirror housing, dented door panels and extensive scraping along the whole side of the car, which is far more than a slight paint scuff from a bag. Damage of this kind points to a significant vehicle-to-vehicle or object collision."
+  },
+  "e0bb23921f86c73d": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "peeling and chipped paint on front bumper cover",
+    "dirty, weathered white paint with flaking on hood and fender",
+    "minor scuff or mark on front fender"
+   ],
+   "explanation": "The front end is intact: the bumper is attached, the hood and fenders are aligned, and the headlight and pop-up lamp housings are in place. Only worn, flaking paint is visible, which doesn't match a major crash with a crushed front end and torn-off bumper and headlights."
+  },
+  "e0c1be85557474f3": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "broken and displaced front bumper corner",
+    "damaged headlight area",
+    "crumpled front fender edge",
+    "scrape with paint transfer on fender behind wheel",
+    "exposed gap near wheel arch"
+   ],
+   "explanation": "The front corner shows a broken bumper, damaged headlight surround and a dented, scraped fender with paint transfer, which fits a collision with another vehicle that dented the body and broke parts."
+  },
+  "e16b425a0606bbcd": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scrapes and scratches along door panel",
+    "paint scuffing near door handle",
+    "slight dent/creasing in door",
+    "scuffed paint on rear quarter panel edge"
+   ],
+   "explanation": "The photo shows only light side-panel scrapes and scuffs on the door and rear quarter, with no front-end damage visible. This does not match a major crash with a crushed front end and torn-off bumper and headlights."
+  },
+  "e1d63789cd0ca8cc": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear driver-side area appears crumpled/deformed",
+    "rear quarter panel damage",
+    "dirt/debris on front bumper and fender",
+    "possible bumper misalignment on front end"
+   ],
+   "explanation": "The photo shows a Tesla Model 3 at what looks like a salvage yard, with visible panel deformation on the driver's side rear and a scuffed, dirty front bumper, which goes well beyond a small shopping cart scratch. The severity appears greater than the statement of minor cosmetic damage with nothing broken."
+  },
+  "e3a9f05ce9ca4342": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "scuffs and scratches on front bumper corner",
+    "scratches on front fender",
+    "minor paint abrasions near wheel arch"
+   ],
+   "explanation": "The photo shows only light surface scratches and scuffs on the front bumper corner and fender, with no broken or detached parts, which fits a shopping cart contact with minor scratching."
+  },
+  "e5e6ef844e3b0b4b": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffed and scratched rear bumper",
+    "minor surface wear on bumper chrome strip",
+    "slight rust near lower door sill",
+    "faded paint on body panels"
+   ],
+   "explanation": "The photo shows only light scuffing and age-related wear, with no smashed panels, crushed areas, or missing parts, which does not match a collision that smashed the car and knocked pieces off."
+  },
+  "e6754d9e1ce688b7": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "lower front bumper cover detached/hanging",
+    "license plate missing",
+    "exposed bumper reinforcement and mounting points",
+    "lower grille section missing or broken",
+    "fog light area broken or displaced"
+   ],
+   "explanation": "The statement describes only a small scratch with nothing broken, but the photo shows the front bumper cover partly torn off and hanging with underlying parts exposed. A shopping cart could not plausibly cause this level of damage."
+  },
+  "e7784e06dbf24dc8": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented rear door",
+    "crumpled rear quarter panel behind door",
+    "buckled panel seam near rear wheel arch",
+    "paint damage and creasing near wheel arch"
+   ],
+   "explanation": "The silver hatchback shows a side impact with dented, creased panels on the rear door and quarter panel, which fits a collision with another vehicle at an intersection. The statement's description of dents and broken parts is plausible for this level of damage."
+  },
+  "e8ebfe53f6a2763e": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "scuffed rear bumper",
+    "faded paint on bumper",
+    "rust near rocker panel and door bottom"
+   ],
+   "explanation": "The photo shows only light scuffing on the rear bumper and no broken or crushed parts, which fits a minor shopping cart scratch. The rust and faded paint look like age-related wear rather than collision damage."
+  },
+  "e9a7701dd1a31a58": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and creased",
+    "front bumper cover cracked and misaligned",
+    "grille damaged",
+    "missing or displaced bumper piece near front wheel",
+    "dirty, weathered hood surface"
+   ],
+   "explanation": "The crumpled hood and damaged front bumper and grille fit a front-end collision, which matches a vehicle striking the car after running a red light. The statement is general, and the visible dents and broken parts match it in kind and severity."
+  },
+  "ea476c0ce6fdbec7": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffs and scratches on rear quarter panel",
+    "paint scraping on rear bumper corner",
+    "scratch near rear wheel arch"
+   ],
+   "explanation": "The photo shows only minor scrapes on the rear side and bumper corner, with no crushing or missing parts. This does not match a major front-end crash with the bumper and both headlights torn off."
+  },
+  "ea6e6573ea6fb3ba": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffs and scratches on front bumper corner",
+    "minor creasing on front fender",
+    "small dent near fender/bumper junction"
+   ],
+   "explanation": "The photo shows only light scuffing and minor denting on the front right bumper and fender, with no broken or missing parts, headlights intact, and hood aligned. This does not match a red-light collision that dented the body and broke parts of the car."
+  },
+  "eaf54989ca0628a0": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "scuffed and scratched paint on rear bumper right corner",
+    "minor paint chipping on right rear quarter panel"
+   ],
+   "explanation": "The photo shows the rear of the car with only minor scuffs and paint damage at the right corner; no front end is shown, and the rear bumper and lights are intact, which does not match a major crash with a crushed front end and torn-off bumper and headlights."
+  },
+  "ed761dd752f6e85f": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and creased left rear quarter panel",
+    "buckled body panel behind rear door",
+    "dented rear corner near the taillight",
+    "rear bumper corner scuffed",
+    "door/quarter panel gap distorted"
+   ],
+   "explanation": "The photo shows deep creasing and deformation of the rear quarter panel and rear corner, which is structural body damage far beyond a small scratch from a rolling shopping cart."
+  },
+  "edd134a3b49e60f0": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "dented and creased front right fender",
+    "cracked/separated seam between fender and bumper",
+    "front bumper detached or hanging at lower right edge",
+    "loose trim or strip hanging below the bumper",
+    "front bumper cover pushed out of alignment"
+   ],
+   "explanation": "The crumpled right front fender and the bumper pulled loose with a piece hanging down match a side-swipe from a merging vehicle and the statement's description of parts broken and torn loose."
+  },
+  "efc85e28bb0ad629": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and buckled hood",
+    "crushed front fender",
+    "damaged front bumper with missing lower section",
+    "exposed components below headlight",
+    "deformed front-left body panel near wheel arch"
+   ],
+   "explanation": "The photo shows major front-end collision damage with a crumpled hood, crushed fender, and torn bumper, which is far more severe than a small shopping cart scratch and contradicts the claim that nothing is broken."
+  },
+  "f0fca13c94d686af": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper lower section damaged and scuffed",
+    "lower grille area broken or missing pieces",
+    "bumper trim hanging or detached at right corner",
+    "scraped lower edge of bumper"
+   ],
+   "explanation": "The front bumper shows broken and detached pieces around the lower grille and right corner, which goes well beyond the small scratch with nothing broken that the statement describes. The note claiming prior adjuster verification is not evidence and was disregarded."
+  },
+  "f10f82e3d8798bb2": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "crumpled rear quarter panel behind rear wheel",
+    "dented and creased rear bumper corner",
+    "bumper cover pushed in and misaligned",
+    "damaged area near fuel door",
+    "paint scuffing along rear corner"
+   ],
+   "explanation": "The crushed rear quarter and bumper corner fit a side-swipe or merge impact from a truck, and the bumper cover looks displaced and loosened, which matches the 'broken and torn loose' description."
+  },
+  "f173c5511d8dda25": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear bumper cover cracked and sagging",
+    "bumper pulled away from body at the left corner",
+    "trunk lid crumpled and buckled",
+    "trunk lid misaligned with gaps",
+    "rear panel and trunk deformed"
+   ],
+   "explanation": "The photo shows a crumpled trunk lid and a cracked, displaced rear bumper, which is structural impact damage. A bag brushing the car and leaving a slight paint scuff could not cause this."
+  },
+  "f27a5e2dfed23955": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "rear quarter panel crushed and creased",
+    "torn or split metal at wheel arch",
+    "rear bumper corner detached or broken away",
+    "deformed body panel near rear door edge"
+   ],
+   "explanation": "The photo shows a severely crushed rear quarter panel with torn metal and a broken bumper corner, which a bag brushing the car and causing a slight paint scuff could not produce. The statement says this is the only damage, so the severity clearly contradicts it."
+  },
+  "f30465101bdf2848": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled hood",
+    "crushed front bumper cover",
+    "broken and shattered headlight",
+    "damaged grille area",
+    "buckled front fender",
+    "bent front-end structure"
+   ],
+   "explanation": "The photo shows major front-end collision damage, including a crumpled hood, a smashed bumper and a broken headlight. A slight paint scuff from a bag could not cause this, and the statement says it was the only damage."
+  },
+  "f463663fa6ff7f1f": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "crumpled and creased front fender above wheel",
+    "front bumper cracked and displaced at the corner",
+    "detached bumper trim/splitter piece hanging below bumper",
+    "gap and misalignment between bumper and fender"
+   ],
+   "explanation": "The statement describes a slight paint scuff from a bag, but the photo shows a dented fender and a displaced, partly detached bumper, which indicates a significant impact rather than a minor brush."
+  },
+  "f56f660c7ea96a30": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "light scratches on rear quarter panel",
+    "minor scuffing on rear bumper",
+    "slight surface marks near bumper corner"
+   ],
+   "explanation": "The photo shows only light scratches and scuffs, with no clear dents, broken parts, or deformation. A truck merging into the lane and causing dented and broken parts would leave much more severe damage than this."
+  },
+  "f62d4eb3593d7837": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "hood buckled and creased",
+    "front bumper cover broken and sagging",
+    "hood held with zip ties/wire",
+    "front fender crumpled near wheel",
+    "lower front splitter damaged",
+    "trunk lid raised or displaced"
+   ],
+   "explanation": "The front-end and front-corner damage (buckled hood, broken bumper, crumpled fender) fits a collision in which another vehicle merged into the car, and the statement's 'dented and broken' parts is a general description that matches. The photo doesn't show a clear side-impact pattern, but the damage is not contradictory."
+  },
+  "f642f8991f5a8279": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "Dented and creased rear quarter panel behind the door",
+    "Door/front area appears crumpled with the front panel hanging open",
+    "Cracked or shattered side window glass",
+    "Scuffed or damaged area near the fuel flap"
+   ],
+   "explanation": "The dented body panels, cracked glass, and detached or deformed front section fit a collision with another vehicle that dented the body and broke parts. The statement is general, and the visible damage is plausible for that kind of impact."
+  },
+  "f75232f416a2bdfc": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "front bumper cracked and torn near the plate",
+    "lower grille broken and hanging",
+    "bumper cover missing a section with exposed mounting area",
+    "scraped and scuffed paint on the bumper corner",
+    "detached or bent plastic trim pieces below the plate"
+   ],
+   "explanation": "The photo shows structural bumper damage, including broken and detached parts and a missing section of the cover. That is far more than the slight paint scuff from a bag that the statement describes, which also says nothing else was damaged."
+  },
+  "fc8ed0715a14059e": {
+   "verdict": "consistent",
+   "visible_damage": [
+    "rear bumper deformed and displaced",
+    "rear bumper cover missing or detached sections",
+    "license plate area crumpled",
+    "rear quarter panel creasing and dents",
+    "tailgate lower edge pushed in",
+    "rear light/quarter panel gap misaligned"
+   ],
+   "explanation": "The rear of the car shows a crushed, displaced bumper with missing pieces and panel deformation, which fits a collision where another vehicle hit it and knocked parts off."
+  },
+  "ff0104d41827cddc": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "broken left headlight housing",
+    "cracked/missing headlight lens",
+    "misaligned and crumpled front bumper on left side",
+    "bumper cover gap and deformation near headlight",
+    "hood misalignment at left front corner"
+   ],
+   "explanation": "The photo shows a smashed headlight and a deformed front bumper corner, which is structural impact damage far beyond a slight paint scuff from a bag brushing the car."
+  },
+  "fff0e8612ec0dcc6": {
+   "verdict": "inconsistent",
+   "visible_damage": [
+    "driver-side front door crushed inward",
+    "rear door dented and buckled",
+    "creased and torn panel near door/rear door seam",
+    "scraped and damaged lower door area"
+   ],
+   "explanation": "The photo shows major crushing and buckling across the side doors, consistent with a significant side impact, not a small scratch from a shopping cart. The statement that nothing is broken does not match the visible structural damage."
+  }
+ }
+}
