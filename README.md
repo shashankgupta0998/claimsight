@@ -23,7 +23,7 @@ intake ─┬─ vision ── estimator ─┐
 | verification | Checks outside evidence | NHTSA vPIC, NOAA SPC, Open-Meteo, EXIF, photo hashes; optional DINOv2 reused-photo search | + pgvector index of earlier claims' photos |
 | estimator | Repair cost range | Parts table | LightGBM |
 | critic | Cross-checks agents, decides | Rules + statement/damage consistency; optional VLM photo check | + real claim photos |
-| human_review | Adjuster approval | LangGraph `interrupt` | Postgres checkpointer |
+| human_review | Adjuster approval | LangGraph `interrupt`; state in Postgres (or memory) | + review queue UI |
 
 ## Quickstart
 
@@ -449,6 +449,34 @@ embeddings to search; live mode reads `evals/golden/prior_photo_embeddings.jsonl
 exists, and in production this belongs in a pgvector table like the policy clauses. The
 golden claims carry hashes, not images, so the claims eval still runs on dHash.
 
+## Human review that survives a restart
+
+An escalated claim pauses at `human_review` (LangGraph `interrupt`) until an adjuster
+posts a decision, which can take days. With the in-memory checkpointer that pause lived
+only as long as the API process: a deploy or a crash lost every claim waiting for review.
+
+`claimsight/checkpoint.py` picks the saver from `CLAIMSIGHT_CHECKPOINTER`:
+
+- `memory` (default): tests, replay evals, one dev process.
+- `postgres`: `langgraph-checkpoint-postgres` on a psycopg pool (`--extra pg`). Each step
+  is written to its `checkpoints*` tables, created on startup; any API process can pick a
+  claim up by its id. `prepare_threshold=0` keeps it working behind PgBouncer.
+
+**Serializer allowlist.** Graph state holds our Pydantic models and enums, and LangGraph
+rebuilds them from msgpack on resume. It currently does that for any type with a warning,
+and says a future version will refuse unregistered types, which would strand every paused
+claim on upgrade. The saver registers exactly the types in `claimsight/schemas.py`; a test
+fails if a resume logs an unregistered type (checked by removing the allowlist).
+
+**Tests** (`tests/test_checkpoint.py`, Postgres ones run in CI's `pgvector` job, each in a
+throwaway schema). "Restart" means a new connection pool and a new graph or app, sharing
+no Python objects with the run that paused the claim:
+
+- a claim pauses for review, the pool closes, a new graph resumes it into the adjuster's
+  decision;
+- the API: one app takes the claim, a second shows it awaiting review and records the
+  decision, a third sees the decided packet and rejects a resubmission (409).
+
 ## Data sources
 
 - [NHTSA vPIC](https://vpic.nhtsa.dot.gov/api/): VIN decoding
@@ -472,7 +500,7 @@ golden claims carry hashes, not images, so the claims eval still runs on dHash.
 - [ ] Weeks 5–6, rest: push the detector to the HF Hub
 - [x] Weeks 7–8: VLM statement/photo check (flags 0.89 of contradictions, 0.80 specificity; off by default)
 - [x] Weeks 7–8: DINOv2 reused-photo search (recall 0.29 → 0.62 on edited photos vs dHash; off until an index exists)
-- [ ] Weeks 7–8, rest: Postgres checkpointer
+- [x] Weeks 7–8: Postgres checkpointer (claims awaiting review survive restarts; `CLAIMSIGHT_CHECKPOINTER=postgres`)
 - [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
 - [ ] Weeks 11–12: Redis queue, Locust load test, deploy (Modal + Fly.io), HF Space demo
 

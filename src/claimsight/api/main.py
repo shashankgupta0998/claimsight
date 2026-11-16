@@ -1,8 +1,9 @@
 """HTTP API: submit a claim, read its status, and record an adjuster's review.
 
-v0 runs the graph inside the request and keeps state in an in-memory checkpointer.
-Week 9-10: enqueue to Redis (arq), persist checkpoints with langgraph's Postgres saver,
-and write packets to the `decision_packets` table.
+The graph runs inside the request. Its state lives in the checkpointer from Settings
+(claimsight/checkpoint.py): with `CLAIMSIGHT_CHECKPOINTER=postgres` a claim waiting for an
+adjuster survives a restart and can be reviewed through any API process.
+Weeks 11-12: enqueue to Redis (arq) and write packets to the `decision_packets` table.
 """
 
 from __future__ import annotations
@@ -10,10 +11,10 @@ from __future__ import annotations
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException
-from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
 from pydantic import BaseModel
 
+from claimsight.checkpoint import make_checkpointer
 from claimsight.deps import Deps, build_deps
 from claimsight.graph import build_graph
 from claimsight.observability import get_callbacks
@@ -33,9 +34,10 @@ class ReviewInput(BaseModel):
     note: str | None = None
 
 
-def create_app(deps: Deps | None = None) -> FastAPI:
+def create_app(deps: Deps | None = None, checkpointer=None) -> FastAPI:
     deps = deps or build_deps()
-    graph = build_graph(deps, checkpointer=MemorySaver(), hitl=True)
+    checkpointer = checkpointer or make_checkpointer(deps.settings)
+    graph = build_graph(deps, checkpointer=checkpointer, hitl=True)
     app = FastAPI(title="ClaimSight", version="0.1.0")
 
     def config(claim_id: str) -> dict:
