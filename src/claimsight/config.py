@@ -18,6 +18,10 @@ class Settings(BaseSettings):
     golden_dir: Path = REPO_ROOT / "evals" / "golden"
 
     database_url: str = "postgresql://claimsight:claimsight@localhost:5432/claimsight"
+    # Graph state between steps (claimsight/checkpoint.py). `postgres` keeps claims waiting
+    # for an adjuster across restarts; `memory` is for tests and a single dev process.
+    checkpointer: Literal["memory", "postgres"] = "memory"
+    checkpoint_pool_size: int = 10
     redis_url: str = "redis://localhost:6379/0"
     # Policy retrieval. First stage: keyword (BM25 / tsvector), dense, or hybrid (RRF of both).
     # Optional cross-encoder rerank of the first stage's top `rerank_pool`.
