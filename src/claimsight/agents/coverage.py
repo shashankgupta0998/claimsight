@@ -22,11 +22,14 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 
+from claimsight import tracing
 from claimsight.agents.coverage_review import (
     CoverageReviewer,
     MissingReview,
     ReviewRequest,
+    answer_cost,
     check_quotes,
+    cost_usd,
 )
 from claimsight.policies import JsonPolicyStore
 from claimsight.retrieval.base import RetrievedChunk, Retriever
@@ -131,11 +134,22 @@ class CoverageAgent:
 
         by_id = {c.clause_id: c for c in shown}
         quotes = check_quotes(raw.get("quotes", []), by_id)
+        calls = [u for u in (raw.get("calls") or [raw.get("usage")]) if u]
+        for usage in calls:
+            tracing.generation(
+                "coverage_review",
+                usage,
+                cost_usd(usage),
+                output=tracing.content({"verdict": raw["verdict"], "quotes": raw.get("quotes")}),
+                route=raw.get("routed"),
+            )
         review = CoverageReview(
             reviewer=self.reviewer.name,
             verdict=raw["verdict"],
             explanation=raw.get("explanation", ""),
             quotes=quotes,
+            route=raw.get("routed"),
+            cost_usd=round(answer_cost(raw), 6),
         )
         screening_ids = {c.clause_id for c in self.screening}
         backing = [q for q in quotes if q.valid and q.clause_id in screening_ids]

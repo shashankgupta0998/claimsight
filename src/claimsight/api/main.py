@@ -14,10 +14,10 @@ from fastapi import FastAPI, HTTPException
 from langgraph.types import Command
 from pydantic import BaseModel
 
+from claimsight import tracing
 from claimsight.checkpoint import make_checkpointer
 from claimsight.deps import Deps, build_deps
 from claimsight.graph import build_graph
-from claimsight.observability import get_callbacks
 from claimsight.schemas import ClaimInput, Decision, DecisionPacket
 
 
@@ -41,7 +41,7 @@ def create_app(deps: Deps | None = None, checkpointer=None) -> FastAPI:
     app = FastAPI(title="ClaimSight", version="0.1.0")
 
     def config(claim_id: str) -> dict:
-        return {"configurable": {"thread_id": claim_id}, "callbacks": get_callbacks()}
+        return {"configurable": {"thread_id": claim_id}}
 
     def status(claim_id: str) -> ClaimStatus:
         snap = graph.get_state(config(claim_id))
@@ -64,8 +64,16 @@ def create_app(deps: Deps | None = None, checkpointer=None) -> FastAPI:
     def submit(claim: ClaimInput) -> ClaimStatus:
         if graph.get_state(config(claim.claim_id)).values:
             raise HTTPException(409, f"Claim {claim.claim_id} was already submitted.")
-        graph.invoke({"claim": claim}, config(claim.claim_id))
-        return status(claim.claim_id)
+        mode = deps.settings.mode
+        with tracing.claim_trace(claim.claim_id, claim.loss_type.value, mode, ["api"]):
+            graph.invoke({"claim": claim}, config(claim.claim_id))
+            result = status(claim.claim_id)
+            if result.packet is not None:
+                tracing.score_claim(result.packet)
+            else:
+                tracing.score("decision", "awaiting_review")
+        tracing.flush()
+        return result
 
     @app.get("/claims/{claim_id}", response_model=ClaimStatus)
     def get_claim(claim_id: str) -> ClaimStatus:
@@ -75,8 +83,15 @@ def create_app(deps: Deps | None = None, checkpointer=None) -> FastAPI:
     def review(claim_id: str, body: ReviewInput) -> ClaimStatus:
         if status(claim_id).status != "awaiting_review":
             raise HTTPException(409, f"Claim {claim_id} is not waiting for review.")
-        graph.invoke(Command(resume=body.model_dump(mode="json")), config(claim_id))
-        return status(claim_id)
+        claim = graph.get_state(config(claim_id)).values["claim"]
+        mode = deps.settings.mode
+        with tracing.claim_trace(claim_id, claim.loss_type.value, mode, ["api", "review"]):
+            graph.invoke(Command(resume=body.model_dump(mode="json")), config(claim_id))
+            result = status(claim_id)
+            tracing.score_claim(result.packet)
+            tracing.score("reviewed_by_adjuster", True)
+        tracing.flush()
+        return result
 
     return app
 

@@ -15,6 +15,7 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
+from claimsight import tracing
 from claimsight.config import Settings
 from claimsight.deps import Deps, build_deps, build_photo_checker
 from claimsight.graph import build_graph
@@ -60,9 +61,11 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
         claim = ClaimInput.model_validate(case["claim"])
         labels = case["labels"]
         start = time.perf_counter()
-        state = graph.invoke({"claim": claim})
+        with tracing.claim_trace(claim.claim_id, claim.loss_type.value, settings.mode, ["eval"]):
+            state = graph.invoke({"claim": claim})
+            packet = state["packet"]
+            tracing.score_claim(packet, expected=labels["decision"])
         latency_ms = (time.perf_counter() - start) * 1000
-        packet = state["packet"]
         retrieved = state.get("retrieved_clause_ids", [])
         cited = [c.clause_id for c in packet.coverage.citations]
         rows.append(
@@ -126,6 +129,7 @@ def evaluate(cases: list[dict], settings: Settings, deps: Deps | None = None) ->
         # photos from its recorded predictions.
         det = detection_map(*load_detector(Path(settings.golden_dir))[:2])
         metrics |= {f"detector_{k}": det[k] for k in ("map", "map_50", "map_75")}
+    tracing.flush()
     return {
         "metrics": metrics,
         "retriever": deps.retriever.name,
