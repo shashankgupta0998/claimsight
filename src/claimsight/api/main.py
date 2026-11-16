@@ -1,97 +1,105 @@
 """HTTP API: submit a claim, read its status, and record an adjuster's review.
 
-The graph runs inside the request. Its state lives in the checkpointer from Settings
-(claimsight/checkpoint.py): with `CLAIMSIGHT_CHECKPOINTER=postgres` a claim waiting for an
-adjuster survives a restart and can be reviewed through any API process.
-Weeks 11-12: enqueue to Redis (arq) and write packets to the `decision_packets` table.
+Two ways to run a claim (`CLAIMSIGHT_QUEUE`):
+
+* `off` (default): the graph runs inside the request, which returns the decision.
+* `redis`: the request puts the claim on a Redis queue and returns 202; a worker
+  (`make worker`, claimsight/queue.py) runs the graph. Poll GET /claims/{id}:
+  queued -> processing -> decided | awaiting_review, or failed after the last retry.
+
+Either way the graph's state lives in the checkpointer (claimsight/checkpoint.py), keyed by
+claim id: with `CLAIMSIGHT_CHECKPOINTER=postgres` any API process can read a claim's status
+or record the adjuster's review, and claims waiting for review survive restarts.
 """
 
 from __future__ import annotations
 
-from typing import Literal
+import asyncio
+from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException
-from langgraph.types import Command
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, Response
 
-from claimsight import tracing
 from claimsight.checkpoint import make_checkpointer
 from claimsight.deps import Deps, build_deps
 from claimsight.graph import build_graph
-from claimsight.schemas import ClaimInput, Decision, DecisionPacket
+from claimsight.schemas import ClaimInput
+from claimsight.service import ClaimService, ClaimStatus, ReviewInput
+
+__all__ = ["ClaimStatus", "ReviewInput", "create_app"]
 
 
-class ClaimStatus(BaseModel):
-    claim_id: str
-    status: Literal["decided", "awaiting_review"]
-    packet: DecisionPacket | None = None
-    review_request: dict | None = None
-
-
-class ReviewInput(BaseModel):
-    decision: Decision
-    reviewer: str
-    note: str | None = None
-
-
-def create_app(deps: Deps | None = None, checkpointer=None) -> FastAPI:
+def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> FastAPI:
     deps = deps or build_deps()
-    checkpointer = checkpointer or make_checkpointer(deps.settings)
-    graph = build_graph(deps, checkpointer=checkpointer, hitl=True)
-    app = FastAPI(title="ClaimSight", version="0.1.0")
+    s = deps.settings
+    queued = s.queue == "redis"
+    if queued and checkpointer is None and s.checkpointer != "postgres":
+        raise ValueError(
+            "CLAIMSIGHT_QUEUE=redis needs CLAIMSIGHT_CHECKPOINTER=postgres: the API and the "
+            "worker are separate processes and must share the graph's state."
+        )
+    checkpointer = checkpointer or make_checkpointer(s)
+    service = ClaimService(build_graph(deps, checkpointer=checkpointer, hitl=True), s.mode)
+    pool = {"redis": queue_pool}
 
-    def config(claim_id: str) -> dict:
-        return {"configurable": {"thread_id": claim_id}}
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        if queued and pool["redis"] is None:
+            from arq import create_pool
 
-    def status(claim_id: str) -> ClaimStatus:
-        snap = graph.get_state(config(claim_id))
-        if not snap.values:
-            raise HTTPException(404, f"Claim {claim_id} not found.")
-        if snap.next:
-            pending = [i.value for t in snap.tasks for i in t.interrupts]
-            return ClaimStatus(
-                claim_id=claim_id,
-                status="awaiting_review",
-                review_request=pending[0] if pending else None,
-            )
-        return ClaimStatus(claim_id=claim_id, status="decided", packet=snap.values.get("packet"))
+            from claimsight.queue import redis_settings
+
+            pool["redis"] = await create_pool(redis_settings(s))
+        yield
+        if queued and queue_pool is None and pool["redis"] is not None:
+            await pool["redis"].aclose()
+
+    app = FastAPI(title="ClaimSight", version="0.1.0", lifespan=lifespan)
 
     @app.get("/healthz")
-    def healthz() -> dict:
-        return {"status": "ok", "mode": deps.settings.mode, "models": deps.model_versions()}
+    async def healthz() -> dict:
+        return {
+            "status": "ok",
+            "mode": s.mode,
+            "queue": s.queue,
+            "models": deps.model_versions(),
+        }
 
     @app.post("/claims", response_model=ClaimStatus)
-    def submit(claim: ClaimInput) -> ClaimStatus:
-        if graph.get_state(config(claim.claim_id)).values:
+    async def submit(claim: ClaimInput, response: Response) -> ClaimStatus:
+        if service.status(claim.claim_id) is not None:
             raise HTTPException(409, f"Claim {claim.claim_id} was already submitted.")
-        mode = deps.settings.mode
-        with tracing.claim_trace(claim.claim_id, claim.loss_type.value, mode, ["api"]):
-            graph.invoke({"claim": claim}, config(claim.claim_id))
-            result = status(claim.claim_id)
-            if result.packet is not None:
-                tracing.score_claim(result.packet)
-            else:
-                tracing.score("decision", "awaiting_review")
-        tracing.flush()
-        return result
+        if not queued:
+            return await asyncio.to_thread(service.run, claim)
+        from claimsight.queue import enqueue
+
+        if not await enqueue(pool["redis"], claim):
+            raise HTTPException(409, f"Claim {claim.claim_id} was already submitted.")
+        response.status_code = 202
+        return ClaimStatus(claim_id=claim.claim_id, status="queued")
 
     @app.get("/claims/{claim_id}", response_model=ClaimStatus)
-    def get_claim(claim_id: str) -> ClaimStatus:
-        return status(claim_id)
+    async def get_claim(claim_id: str) -> ClaimStatus:
+        graph_state = service.status(claim_id)
+        if queued:
+            from claimsight.queue import job_state
+
+            job, error = await job_state(pool["redis"], claim_id)
+            if job == "failed":  # out of retries; the graph may have stopped partway
+                return ClaimStatus(claim_id=claim_id, status="failed", error=error)
+            if graph_state is None and job in ("queued", "processing"):
+                return ClaimStatus(claim_id=claim_id, status=job)
+        if graph_state is None:
+            raise HTTPException(404, f"Claim {claim_id} not found.")
+        return graph_state
 
     @app.post("/claims/{claim_id}/review", response_model=ClaimStatus)
-    def review(claim_id: str, body: ReviewInput) -> ClaimStatus:
-        if status(claim_id).status != "awaiting_review":
+    async def review(claim_id: str, body: ReviewInput) -> ClaimStatus:
+        current = service.status(claim_id)
+        if current is None:
+            raise HTTPException(404, f"Claim {claim_id} not found.")
+        if current.status != "awaiting_review":
             raise HTTPException(409, f"Claim {claim_id} is not waiting for review.")
-        claim = graph.get_state(config(claim_id)).values["claim"]
-        mode = deps.settings.mode
-        with tracing.claim_trace(claim_id, claim.loss_type.value, mode, ["api", "review"]):
-            graph.invoke(Command(resume=body.model_dump(mode="json")), config(claim_id))
-            result = status(claim_id)
-            tracing.score_claim(result.packet)
-            tracing.score("reviewed_by_adjuster", True)
-        tracing.flush()
-        return result
+        return await asyncio.to_thread(service.resume, claim_id, body)
 
     return app
 

@@ -23,6 +23,14 @@ class Settings(BaseSettings):
     checkpointer: Literal["memory", "postgres"] = "memory"
     checkpoint_pool_size: int = 10
     redis_url: str = "redis://localhost:6379/0"
+    # Claims run inline in the request (`off`) or on a Redis queue with a separate worker
+    # (`redis`, claimsight/queue.py; needs checkpointer=postgres and the `queue` extra).
+    queue: Literal["off", "redis"] = "off"
+    queue_max_tries: int = 3
+    queue_retry_delay_s: float = 5.0
+    queue_concurrency: int = 4
+    queue_job_timeout_s: int = 300
+    queue_keep_result_s: int = 86_400
     # Policy retrieval. First stage: keyword (BM25 / tsvector), dense, or hybrid (RRF of both).
     # Optional cross-encoder rerank of the first stage's top `rerank_pool`.
     # Backend: in-memory (replay, CI) or Postgres + pgvector.
