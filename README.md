@@ -18,7 +18,7 @@ intake ─┬─ vision ── estimator ─┐
 | Node | Does | Now | Target |
 |---|---|---|---|
 | intake | Transcribes the voice note | Whisper wrapper | + PII redaction (GLiNER, Presidio) |
-| vision | Finds damage, maps it to parts | Replay detector | RT-DETR on CarDD + OWLv2 parts |
+| vision | Finds damage, maps it to parts | Replay detector; RT-DETRv2 fine-tuned on CC0 damage photos (scored from a cassette) | + OWLv2 parts in the live path, real claim photos |
 | coverage | Retrieves and cites policy clauses; optional LLM review of the statement against the exclusions, with checked quotes | Dense (bge-small) → cross-encoder rerank, in memory or on pgvector; optional ColQwen2 page lane | + real PDF ingest |
 | verification | Checks outside evidence | NHTSA vPIC, NOAA SPC, Open-Meteo, EXIF, photo hashes | + DINOv2 near-duplicates |
 | estimator | Repair cost range | Parts table | LightGBM |
@@ -34,6 +34,7 @@ make eval           # score the graph on the golden set
 make gate           # fail if quality dropped vs evals/baseline.json
 make retrieval      # policy-QA ablation: keyword / dense / hybrid / page lane, rerank on/off
 make coverage       # LLM coverage review on 35 labelled exclusion statements (replay)
+make detector       # damage detector mAP on held-out photos (replay)
 make ingest         # load the policy corpus into Postgres + pgvector
 make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
@@ -43,7 +44,8 @@ Optional local stack (Postgres + pgvector, Redis, MinIO, Langfuse): `make up`.
 
 Extras: `uv sync --extra ml` (real models), `--extra pg` (Postgres client),
 `--extra embed` (embedding model, reranker and ColQwen2; pulls in torch), `--extra rag` (both),
-`--extra llm` (Anthropic judge, query rewriting, coverage review, Langfuse tracing).
+`--extra llm` (Anthropic judge, query rewriting, coverage review, Langfuse tracing),
+`--extra train` (fine-tuning the damage detector).
 
 ## Replay vs live
 
@@ -109,8 +111,9 @@ faint false-positive fender made a front-impact story look plausible. The fix
 The synthetic set's 1.00 reflects its template statements. The held-out score and a
 `--paraphrase` run are the honest tests of language coverage.
 
-Detector outputs are simulated, so damage scores are an upper bound until real model
-outputs are recorded on CarDD images.
+Detector outputs on claim photos are simulated (the claims have no real images), so
+damage scores here are an upper bound. The real detector is scored separately on held-out
+photos (see "Damage detector" below), and it is much weaker than the simulation assumes.
 
 ## Policy retrieval
 
@@ -288,12 +291,63 @@ clause quoted as an exclusion). The review is **on by default**
 exclusion recall, specificity and quote validity. `make record-coverage` records new
 reviews (about 150 Sonnet calls for both sets).
 
+## Damage detector
+
+RT-DETRv2 (r18, `PekingU/rtdetr_v2_r18vd`, Apache-2.0) fine-tuned on Humans in the Loop's
+car-damage photos: 814 images, 8 classes, about 11 boxes a photo, polygons turned into
+boxes (`models/damage_data.py`). Split 80/10/10 by a hash of the file name: 651 train, 69
+val, 94 test. `make train-detector` trains for 30 epochs at 640 px (about 100 minutes on an
+M4) and keeps the best val checkpoint (epoch 17).
+
+**Why not CarDD.** CarDD's labels match the pipeline better, but its licence requires the
+lab's signed consent and forbids redistribution, and the copies on the Hub don't show that
+permission. Weights and cassettes trained on it couldn't ship. These photos are CC0.
+
+`make detector` (replay, 94 held-out photos, 1,086 boxes):
+
+| | AP | AP50 | test boxes |
+|---|---|---|---|
+| **all classes (mAP)** | **0.076** | **0.129** | 1,086 |
+| missing part | 0.201 | 0.338 | 57 |
+| broken part | 0.161 | 0.291 | 161 |
+| dent | 0.058 | 0.143 | 169 |
+| scratch | 0.035 | 0.089 | 482 |
+| corrosion | 0.014 | 0.024 | 35 |
+| flaking | 0.006 | 0.011 | 35 |
+| paint chip | 0.004 | 0.012 | 145 |
+| crack | 0.126 | 0.126 | 2 (noise) |
+
+This is a weak detector, and the numbers say where:
+
+- **Big, distinct damage is learnable; thin and tiny damage is not, at this size.**
+  Missing and broken parts reach AP50 0.29–0.34. Scratches, paint chips and flaking are
+  long or speck-sized; a polygon's bounding box is mostly undamaged paint, and 640 px
+  shrinks a chip to a few pixels.
+- **At the live cutoff it's a weak signal, not a measurement.** At score ≥ 0.5 it returns
+  about 4 boxes a photo, 36% of them right (IoU 0.5, right class), and gets at least one
+  right on 72 of 94 photos. At the 0.3 cutoff the live path used to have, it returned 26 a
+  photo at 13% precision, so the cutoff is now 0.5.
+- **Val mAP plateaued at about 0.06 from epoch 11.** More epochs won't fix it; more data,
+  tiling or a higher input size for small damage might.
+
+**What's recorded.** `cassettes/detector.json` holds the model's top 100 detections on
+each test photo and `golden/detector/test.json` the ground truth, so CI scores the
+detector without torch or the images (`evals/detector_eval.py`, COCO mAP in pure Python;
+within 0.002 of pycocotools on a random check). The gate tracks `detector_map` and
+`detector_map_50`. The pipeline's damage types come from CarDD's six; `HFDetector` maps
+the detector's eight onto them using the part each box sits on (a broken headlamp is
+`lamp_broken`, paint chips and flaking cost like scratches).
+
+The claim photos have no real images, so the claims eval still runs on simulated
+detections; its damage scores don't reflect this model.
+
 ## Data sources
 
 - [NHTSA vPIC](https://vpic.nhtsa.dot.gov/api/): VIN decoding
 - [NOAA SPC storm reports](https://www.spc.noaa.gov/climo/reports/): hail size and location
 - [Open-Meteo archive](https://open-meteo.com/en/docs/historical-weather-api): daily weather
-- CarDD: car damage detection dataset (detector training and eval)
+- [Humans in the Loop, Car Parts and Car Damages](https://humansintheloop.org/resources/datasets/car-parts-and-car-damages-dataset/)
+  (CC0 1.0): the 814 damage photos the detector is trained and tested on
 - Policy text in `evals/golden/policy_clauses.jsonl` is paraphrased in the structure of a
   personal auto policy. Replace it with a state-filed specimen policy when you ingest real
   documents.
@@ -306,7 +360,8 @@ reviews (about 150 Sonnet calls for both sets).
 - [x] Weeks 3–4: LLM query rewriting (policy-QA R@5 0.77 → 0.98, off by default until a free-text consumer exists)
 - [x] Weeks 3–4: LLM coverage review with quote validation
 - [x] Weeks 3–4: ColQwen2 page lane over rendered policy pages (R@5 0.77 → 0.83, off by default)
-- [ ] Weeks 5–6: fine-tune RT-DETR on CarDD, push to the HF Hub, record detector cassettes
+- [x] Weeks 5–6: fine-tune RT-DETRv2 on CC0 damage photos (CarDD's licence blocks it), record detector cassettes (test mAP 0.076)
+- [ ] Weeks 5–6, rest: push the detector to the HF Hub
 - [ ] Weeks 7–8: VLM statement/damage check, DINOv2 duplicate search, Postgres checkpointer
 - [ ] Weeks 9–10: model routing, caching, prompt-injection red-team set, Langfuse dashboards
 - [ ] Weeks 11–12: Redis queue, Locust load test, deploy (Modal + Fly.io), HF Space demo
@@ -317,7 +372,7 @@ reviews (about 150 Sonnet calls for both sets).
 src/claimsight/
   agents/        vision, coverage (+ LLM review), verification, estimator, critic
   graph/         LangGraph state and wiring
-  models/        detector (damage + parts), ASR
+  models/        detector (damage + parts), damage training data, ASR
   retrieval/     BM25, dense, RRF hybrid, cross-encoder rerank, LLM query rewrite, ColQwen2
                  page lane, pgvector
   tools/         NHTSA, weather, photo forensics, geo

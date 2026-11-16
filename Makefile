@@ -1,4 +1,4 @@
-.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage pages ingest api up down
+.PHONY: install test test-pg lint data eval gate baseline variants retrieval coverage record record-coverage pages detector train-detector ingest api up down
 
 install:
 	uv sync --group dev
@@ -36,6 +36,12 @@ coverage:  # LLM coverage review on the labelled exclusion statements (replay)
 record-coverage:  # record missing coverage reviews (needs Anthropic credentials)
 	uv run --extra llm python -m evals.coverage_eval --record
 	CLAIMSIGHT_COVERAGE_REVIEW=llm CLAIMSIGHT_RECORD_COVERAGE_REVIEW=1 uv run --extra llm python -m evals.runner --golden evals/golden/claims.jsonl evals/golden/variants.jsonl evals/golden/synthetic.jsonl --out evals/reports/review_on.json
+
+detector:  # damage detector mAP on the held-out test photos (replay)
+	uv run python -m evals.detector_eval
+
+train-detector:  # fine-tune RT-DETRv2 on the CC0 damage photos (see models/damage_data.py)
+	uv run --extra train python scripts/train_detector.py
 
 pages:  # draw the specimen policy as page images for the ColQwen2 page lane
 	uv run python scripts/render_pages.py

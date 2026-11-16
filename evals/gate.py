@@ -22,6 +22,9 @@ GATED = (
     "damage_recall",
     "fraud_precision",
     "fraud_recall",
+    # Real detector on held-out photos, from cassettes/detector.json.
+    "detector_map",
+    "detector_map_50",
     # Only when coverage_review is on (skipped if the baseline doesn't have them).
     "coverage_review_exclusion_recall",
     "coverage_review_specificity",

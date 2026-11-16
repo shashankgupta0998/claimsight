@@ -10,3 +10,4 @@ evals/reports/*.json
 /data/
 *.pt
 *.onnx
+/models/

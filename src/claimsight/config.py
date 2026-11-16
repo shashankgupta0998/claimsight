@@ -51,7 +51,8 @@ class Settings(BaseSettings):
     coverage_review_effort: Literal["low", "medium", "high"] = "medium"
     record_coverage_review: bool = False
 
-    detector_model: str = "your-hf-username/rtdetr-cardd"
+    # RT-DETRv2 fine-tuned by scripts/train_detector.py (local until pushed to the Hub).
+    detector_model: str = str(REPO_ROOT / "models" / "rtdetr-hitl-damage")
     part_detector_model: str = "google/owlv2-base-patch16-ensemble"
     asr_model: str = "openai/whisper-large-v3-turbo"
     embed_model: str = "BAAI/bge-small-en-v1.5"
