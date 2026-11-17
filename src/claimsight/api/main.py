@@ -79,15 +79,20 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
 
     @app.get("/claims/{claim_id}", response_model=ClaimStatus)
     async def get_claim(claim_id: str) -> ClaimStatus:
-        graph_state = service.status(claim_id)
         if queued:
             from claimsight.queue import job_state
 
+            # The job first, then the graph: the worker writes the graph's state before the
+            # job completes, so a finished job always has state to read. The other order
+            # raced (load test): graph read empty, worker finished, job read "done" -> 404.
             job, error = await job_state(pool["redis"], claim_id)
             if job == "failed":  # out of retries; the graph may have stopped partway
                 return ClaimStatus(claim_id=claim_id, status="failed", error=error)
+            graph_state = service.status(claim_id)
             if graph_state is None and job in ("queued", "processing"):
                 return ClaimStatus(claim_id=claim_id, status=job)
+        else:
+            graph_state = service.status(claim_id)
         if graph_state is None:
             raise HTTPException(404, f"Claim {claim_id} not found.")
         return graph_state

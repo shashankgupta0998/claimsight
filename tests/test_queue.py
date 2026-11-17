@@ -68,7 +68,7 @@ def _drain(deps, settings, service=None):
         d = type(deps)(**{**deps.__dict__, "settings": settings})
         graph = build_graph(d, checkpointer=make_checkpointer(settings), hitl=True)
         service = ClaimService(graph, settings.mode)
-    w = worker(settings, service=service, burst=True, handle_signals=False, poll_delay=0.05)
+    w = worker(settings, service=service, burst=True, handle_signals=False)
     w.run()
     return w
 

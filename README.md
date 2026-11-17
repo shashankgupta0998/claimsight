@@ -43,6 +43,7 @@ make ingest         # load the policy corpus into Postgres + pgvector
 make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
 make worker         # runs queued claims (CLAIMSIGHT_QUEUE=redis)
+make loadtest       # Locust against a running API (replay: no model calls)
 ```
 
 Optional local stack (Postgres + pgvector, Redis, MinIO): `make up`. Tracing goes to Langfuse
@@ -597,6 +598,59 @@ fails ends as `failed` with its error after 3 tries; queued mode without Postgre
 to start. Run end to end with the worker and API as separate processes: 202, `queued`, then
 `awaiting_review` within half a second, then the review decided it.
 
+## Load test
+
+`loadtest/locustfile.py` (`make loadtest`, against a running API) files golden claims
+under fresh ids, back to back, and posts the adjuster's review when a claim escalates, so
+every claim finishes its whole life. Against a queued API it polls `GET /claims/{id}` every
+100 ms and records `claim decided`: submit to decision, what a client waits. `loadtest/run.py`
+(`make loadtest-matrix`) starts each configuration, runs Locust for 30 s with fresh
+Postgres and Redis state, and tears it down.
+
+The API runs in replay mode, so this measures the service (HTTP, graph, checkpointer,
+queue), not Claude: live runs add the model calls' latency on top. Everything ran on one
+10-core M4 laptop, Locust included, so read the rows against each other, roughly: the two
+4-worker runs, which should be about equal, came out 15% apart.
+
+| setup | users | claims/s | p50 | p95 | p99 |
+|---|---|---|---|---|---|
+| inline, in-memory state, 1 process | 1 | 256 | 3 ms | 4 ms | 4 ms |
+| | 10 | 270 | 31 ms | 53 ms | 63 ms |
+| | 40 | 269 | 120 ms | 160 ms | 170 ms |
+| inline, Postgres state, 1 process | 10 | 135 | 60 ms | 80 ms | 93 ms |
+| | 40 | 134 | 200 ms | 350 ms | 360 ms |
+| inline, Postgres state, 4 processes | 40 | 265 | 110 ms | 190 ms | 230 ms |
+| queued, 1 worker (submit to decision) | 40 | 138 | 310 ms | 350 ms | 430 ms |
+| queued, 4 workers | 40 | 206 | 180 ms | 270 ms | 340 ms |
+| queued, 4 API processes, 4 workers | 40 | 177 | 210 ms | 320 ms | 330 ms |
+
+No request failed in the final runs; about a third of claims escalate and get a review,
+as in the golden set.
+
+- **One process is about 270 claims/s and already full at one user**: 3 ms a claim, and
+  more users only queue (Python runs one claim at a time per process).
+- **Postgres state halves it** (135/s): every graph step is a checkpoint write. That's the
+  price of claims that survive restarts.
+- **A worker is worth about one inline process**, and adding API processes doesn't help:
+  the work is the graph and its writes, not HTTP. Four workers give about 1.5x one on this
+  laptop, sharing ten cores with Locust, Postgres and the API.
+
+**What the first run found** (all fixed, with tests):
+
+1. **Replicas starting together crashed.** The checkpointer's table setup isn't safe to run
+   concurrently: on a fresh database, workers and API processes raced on `CREATE TABLE`
+   and all but one died (`DuplicateTable`). The single-worker queued run decided nothing.
+   Setup now takes a Postgres advisory lock. A blocking lock deadlocked, because setup runs
+   `CREATE INDEX CONCURRENTLY`, which waits for every running statement, including the
+   waiting lock calls; it now tries the lock and sleeps between tries. A test starts eight
+   checkpointers at once on a fresh schema; without the lock it failed 3 times in 3.
+2. **Workers idled.** arq checks Redis every 0.5 s by default, which capped each worker at
+   about 4 claims/s. The check is now every 50 ms (`CLAIMSIGHT_QUEUE_POLL_S`) and a worker
+   runs up to 16 jobs at once.
+3. **A decided claim could 404.** `GET /claims/{id}` read the graph state, then the job:
+   a worker finishing in between left an empty graph read and a "done" job (13 of 7,870
+   polls). It now reads the job first; the worker writes state before the job completes.
+
 ## Langfuse dashboards
 
 `claimsight/tracing.py` sends one Langfuse trace per claim when `LANGFUSE_PUBLIC_KEY` and
@@ -673,7 +727,8 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 9–10: prompt-injection red team (208 attacks; 11.1% → 0% success after tag escaping and a policy-source rule)
 - [x] Weeks 9–10: Langfuse tracing and dashboards (13 widgets, checked against Langfuse Cloud)
 - [x] Weeks 11–12: Redis job queue (arq worker, retries continue from the checkpoint)
-- [ ] Weeks 11–12, rest: Locust load test, deploy (Modal + Fly.io), HF Space demo
+- [x] Weeks 11–12: Locust load test (inline ~270 claims/s per process, Postgres state ~135/s; found and fixed three queue bugs)
+- [ ] Weeks 11–12, rest: deploy (Modal + Fly.io), HF Space demo
 
 ## Layout
 

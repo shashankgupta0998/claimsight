@@ -44,3 +44,27 @@ def test_duplicate_submission_is_rejected(client, golden_cases):
 
 def test_unknown_claim_is_404(client):
     assert client.get("/claims/NOPE").status_code == 404
+
+
+def test_queued_status_reads_the_job_before_the_graph(deps, monkeypatch):
+    """Load-test race: a worker finishing between the two reads made a decided claim 404."""
+    from langgraph.checkpoint.memory import MemorySaver
+
+    import claimsight.queue as q
+    from claimsight.service import ClaimService, ClaimStatus
+
+    finished = {"done": False}
+
+    async def job_state(pool, claim_id):
+        finished["done"] = True  # the worker completes right as Redis is asked
+        return "done", None
+
+    def status(self, claim_id):
+        return ClaimStatus(claim_id=claim_id, status="decided") if finished["done"] else None
+
+    monkeypatch.setattr(q, "job_state", job_state)
+    monkeypatch.setattr(ClaimService, "status", status)
+    s = deps.settings.model_copy(update={"queue": "redis"})
+    app = create_app(type(deps)(**{**deps.__dict__, "settings": s}), MemorySaver(), object())
+    resp = TestClient(app).get("/claims/LT-1")
+    assert resp.status_code == 200 and resp.json()["status"] == "decided"

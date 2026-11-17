@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import enum
 import inspect
+import time
 
 from pydantic import BaseModel
 
@@ -42,6 +43,10 @@ def serializer():
     return JsonPlusSerializer(allowed_msgpack_modules=state_types())
 
 
+SETUP_LOCK = 7_301_100  # pg_advisory_lock key for checkpoint-table setup
+SETUP_LOCK_TIMEOUT_S = 120
+
+
 def make_checkpointer(s: Settings, database_url: str | None = None):
     if s.checkpointer == "memory":
         from langgraph.checkpoint.memory import MemorySaver
@@ -62,5 +67,22 @@ def make_checkpointer(s: Settings, database_url: str | None = None):
         open=True,
     )
     saver = PostgresSaver(pool, serde=serializer())
-    saver.setup()  # creates or migrates the checkpoint tables; idempotent
+    # setup() creates or migrates the checkpoint tables. It's idempotent but not safe to run
+    # concurrently: replicas starting together on a fresh database race on CREATE TABLE and
+    # all but one crash (found by the load test). An advisory lock runs them one at a time.
+    # Try-and-sleep, not a blocking pg_advisory_lock: setup runs CREATE INDEX CONCURRENTLY,
+    # which waits for every running statement, including a blocked lock call, and that
+    # deadlocks (undetected) with the replicas waiting for the lock.
+    with pool.connection() as conn:
+        deadline = time.monotonic() + SETUP_LOCK_TIMEOUT_S
+        while not conn.execute("SELECT pg_try_advisory_lock(%s)", (SETUP_LOCK,)).fetchone()[
+            "pg_try_advisory_lock"
+        ]:
+            if time.monotonic() > deadline:
+                raise TimeoutError("another process has held the checkpoint setup lock too long")
+            time.sleep(0.2)
+        try:
+            saver.setup()
+        finally:
+            conn.execute("SELECT pg_advisory_unlock(%s)", (SETUP_LOCK,))
     return saver

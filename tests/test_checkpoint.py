@@ -99,3 +99,15 @@ def test_review_through_a_second_api_process(deps, golden_cases, pg_url):
     assert client.post("/claims", json=golden_cases["CLM-0004"]["claim"]).status_code == 409
     second.conn.close()
     third.conn.close()
+
+
+@pytest.mark.pg
+@pytest.mark.skipif(not DB_URL, reason="CLAIMSIGHT_TEST_DATABASE_URL not set")
+def test_replicas_starting_together_on_a_fresh_database_all_come_up(pg_url):
+    # Found by the load test: concurrent setup() raced on CREATE TABLE and crashed workers.
+    from concurrent.futures import ThreadPoolExecutor
+
+    with ThreadPoolExecutor(8) as pool:
+        savers = list(pool.map(lambda _: make_checkpointer(PG, pg_url), range(8)))
+    for saver in savers:
+        saver.conn.close()
