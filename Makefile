@@ -75,8 +75,8 @@ detector:  # damage detector mAP on the held-out test photos (replay)
 train-detector:  # fine-tune RT-DETRv2 on the CC0 damage photos (see models/damage_data.py)
 	uv run --extra train python scripts/train_detector.py
 
-detector-hub:  # weights + model card in build/detector, checked against the cassette (README)
-	uv run --extra ml python scripts/push_detector.py
+detector-hub:  # weights + model card in build/detector, checked against the cassette (README); REPO=you/name
+	uv run --extra ml python scripts/push_detector.py $(if $(REPO),--repo $(REPO))
 
 pages:  # draw the specimen policy as page images for the ColQwen2 page lane
 	uv run python scripts/render_pages.py

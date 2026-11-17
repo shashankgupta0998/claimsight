@@ -448,17 +448,22 @@ a pixel), so what goes up is the model that was evaluated. One thing that check 
 the cassette was recorded on photos shrunk to 800 px JPEGs, as in training, and full-size
 photos shift the scores by about 2 points (a dent at 0.673 scores 0.650). The card says so.
 
-To publish it (needs your Hugging Face login):
+It is live at
+[huggingface.co/guptashashank/claimsight-damage-rtdetr](https://huggingface.co/guptashashank/claimsight-damage-rtdetr)
+(public, Apache-2.0). After uploading, a fresh download from the Hub had the same sha256 and
+passed the same 16-box check. Live mode loads it with
+`CLAIMSIGHT_DETECTOR_MODEL=guptashashank/claimsight-damage-rtdetr`; the default is still
+the local `models/rtdetr-hitl-damage`.
+
+To publish your own copy (needs your Hugging Face login):
 
 ```bash
 hf auth login
-make detector-hub
+make detector-hub REPO=<your-username>/claimsight-damage-rtdetr
 hf upload <your-username>/claimsight-damage-rtdetr build/detector . --repo-type model
 ```
 
-Then live mode can load it from the Hub with
-`CLAIMSIGHT_DETECTOR_MODEL=<your-username>/claimsight-damage-rtdetr`; the default is still
-the local `models/rtdetr-hitl-damage`.
+`REPO` only fills in the card's usage example.
 
 ## Photo check
 
@@ -830,7 +835,7 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 3–4: LLM coverage review with quote validation
 - [x] Weeks 3–4: ColQwen2 page lane over rendered policy pages (R@5 0.77 → 0.83, off by default)
 - [x] Weeks 5–6: fine-tune RT-DETRv2 on CC0 damage photos (CarDD's licence blocks it), record detector cassettes (test mAP 0.076)
-- [ ] Weeks 5–6, rest: push the detector to the HF Hub (`make detector-hub` builds the card and checks the weights; publishing needs an HF login)
+- [x] Weeks 5–6, rest: push the detector to the HF Hub ([live](https://huggingface.co/guptashashank/claimsight-damage-rtdetr); `make detector-hub` builds the card and checks the weights)
 - [x] Weeks 7–8: VLM statement/photo check (flags 0.89 of contradictions, 0.80 specificity; off by default)
 - [x] Weeks 7–8: DINOv2 reused-photo search (recall 0.29 → 0.62 on edited photos vs dHash; off until an index exists)
 - [x] Weeks 7–8: Postgres checkpointer (claims awaiting review survive restarts; `CLAIMSIGHT_CHECKPOINTER=postgres`)

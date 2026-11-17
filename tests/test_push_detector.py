@@ -63,3 +63,11 @@ def test_rebuild_replaces_its_own_folder_but_not_someone_elses(push, fake_model,
 def test_missing_weights_say_how_to_make_them(push, tmp_path):
     with pytest.raises(SystemExit, match="make train-detector"):
         push.build(tmp_path / "hub", tmp_path / "nowhere")
+
+
+def test_card_example_loads_the_named_repo(push, fake_model, tmp_path):
+    push.build(tmp_path / "a", fake_model)
+    assert f'model="{push.PLACEHOLDER}"' in (tmp_path / "a" / "README.md").read_text()
+    push.build(tmp_path / "b", fake_model, repo="someone/claimsight-damage-rtdetr")
+    readme = (tmp_path / "b" / "README.md").read_text()
+    assert 'model="someone/claimsight-damage-rtdetr"' in readme and push.PLACEHOLDER not in readme
