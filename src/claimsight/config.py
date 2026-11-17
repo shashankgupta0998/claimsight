@@ -34,6 +34,10 @@ class Settings(BaseSettings):
     # When set, every /claims route needs this in the X-API-Key header (/healthz stays open).
     # Set it on any deployment reachable from the internet.
     api_key: str | None = None
+    # Public demo (api/demo.py, the Hugging Face Space): a page at `/` that files the golden
+    # claims, and a cap on claims kept in memory, since anyone on the internet can file them.
+    demo: bool = False
+    demo_max_claims: int = 5_000
     queue_max_tries: int = 3
     queue_retry_delay_s: float = 5.0
     # Jobs one worker runs at once, and how often an idle worker checks Redis. arq's default

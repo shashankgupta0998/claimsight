@@ -60,6 +60,11 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
 
     app = FastAPI(title="ClaimSight", version="0.1.0", lifespan=lifespan)
     guarded = [Depends(require_key)]
+    filed = {"claims": 0}  # demo mode's cap: in-memory state grows with every claim
+    if s.demo:
+        from claimsight.api.demo import router as demo_router
+
+        app.include_router(demo_router(s.golden_dir))
 
     @app.get("/healthz")
     async def healthz() -> dict:
@@ -74,6 +79,10 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
     async def submit(claim: ClaimInput, response: Response) -> ClaimStatus:
         if service.status(claim.claim_id) is not None:
             raise HTTPException(409, f"Claim {claim.claim_id} was already submitted.")
+        if s.demo:
+            if filed["claims"] >= s.demo_max_claims:
+                raise HTTPException(503, "The demo is full; it empties when the Space restarts.")
+            filed["claims"] += 1
         if not queued:
             return await asyncio.to_thread(service.run, claim)
         from claimsight.queue import enqueue
