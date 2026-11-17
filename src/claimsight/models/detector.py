@@ -84,7 +84,7 @@ class ReplayDetector:
 
 
 class HFDetector:
-    """Live detector. Needs the `ml` extra and a damage model fine-tuned on CarDD."""
+    """Live detector. Needs the `ml` extra and the fine-tuned damage model (local or on the Hub)."""
 
     def __init__(self, damage_model: str, part_model: str, device: int | str | None = None):
         from transformers import pipeline

@@ -437,6 +437,29 @@ the detector's eight onto them using the part each box sits on (a broken headlam
 The claim photos have no real images, so the claims eval still runs on simulated
 detections; its damage scores don't reflect this model.
 
+**On the Hub.** `make detector-hub` (`scripts/push_detector.py`) puts the weights and a
+model card in `build/detector/` (80.5 MB): Apache-2.0 like the base, `base_model` and the
+dataset linked, the per-class table and the limits above, and the weights' sha256. The
+card's numbers are computed from the cassette by `evals/detector_eval.py`, not copied, so
+it can't drift from what CI measures. Before writing the card it runs the assembled
+weights through the same transformers pipeline `HFDetector` uses on 5 test photos and
+checks every recorded box at score ≥ 0.5 comes back (16 boxes; scores to 0.001, boxes to
+a pixel), so what goes up is the model that was evaluated. One thing that check found:
+the cassette was recorded on photos shrunk to 800 px JPEGs, as in training, and full-size
+photos shift the scores by about 2 points (a dent at 0.673 scores 0.650). The card says so.
+
+To publish it (needs your Hugging Face login):
+
+```bash
+hf auth login
+make detector-hub
+hf upload <your-username>/claimsight-damage-rtdetr build/detector . --repo-type model
+```
+
+Then live mode can load it from the Hub with
+`CLAIMSIGHT_DETECTOR_MODEL=<your-username>/claimsight-damage-rtdetr`; the default is still
+the local `models/rtdetr-hitl-damage`.
+
 ## Photo check
 
 The rule check compares the *side* the statement names with the side the detector found
@@ -792,7 +815,7 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 3–4: LLM coverage review with quote validation
 - [x] Weeks 3–4: ColQwen2 page lane over rendered policy pages (R@5 0.77 → 0.83, off by default)
 - [x] Weeks 5–6: fine-tune RT-DETRv2 on CC0 damage photos (CarDD's licence blocks it), record detector cassettes (test mAP 0.076)
-- [ ] Weeks 5–6, rest: push the detector to the HF Hub
+- [ ] Weeks 5–6, rest: push the detector to the HF Hub (`make detector-hub` builds the card and checks the weights; publishing needs an HF login)
 - [x] Weeks 7–8: VLM statement/photo check (flags 0.89 of contradictions, 0.80 specificity; off by default)
 - [x] Weeks 7–8: DINOv2 reused-photo search (recall 0.29 → 0.62 on edited photos vs dHash; off until an index exists)
 - [x] Weeks 7–8: Postgres checkpointer (claims awaiting review survive restarts; `CLAIMSIGHT_CHECKPOINTER=postgres`)
