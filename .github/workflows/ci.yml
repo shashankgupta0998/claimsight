@@ -91,9 +91,9 @@ jobs:
           test "$(curl -s -o /dev/null -w '%{http_code}' -X POST localhost:8000/claims -H 'content-type: application/json' -d "$claim")" = 401
           curl -sf -X POST localhost:8000/claims -H 'content-type: application/json' -H 'X-API-Key: ci-key' -d "$claim" | tee out.json
           python3 -c "import json; d=json.load(open('out.json')); assert d['status'] in ('decided', 'awaiting_review'), d"
-      - name: Hugging Face Space image (demo page, no key)
+      - name: Docker Space image (demo page, no key; HF hosts it only with PRO)
         run: |
-          python3 scripts/build_space.py
+          python3 scripts/build_space.py --kind docker
           DOCKER_BUILDKIT=1 docker build -t claimsight:space build/space
           docker run -d --name space -p 8001:8000 claimsight:space
           for i in $(seq 1 30); do curl -sf localhost:8001/healthz && break; sleep 1; done

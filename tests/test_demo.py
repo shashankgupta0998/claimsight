@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -71,9 +72,9 @@ def build_space():
     return mod
 
 
-def test_space_has_the_front_matter_the_demo_and_no_local_files(build_space, tmp_path):
+def test_docker_space_has_the_front_matter_the_demo_and_no_local_files(build_space, tmp_path):
     out = tmp_path / "space"
-    files = build_space.build(out)
+    files = build_space.build_docker(out)
     readme = (out / "README.md").read_text()
     assert readme.startswith("---\n") and "sdk: docker" in readme and "app_port: 8000" in readme
     dockerfile = (out / "Dockerfile").read_text()
@@ -88,5 +89,54 @@ def test_space_has_the_front_matter_the_demo_and_no_local_files(build_space, tmp
 def test_space_build_refuses_to_delete_a_folder_it_did_not_make(build_space, tmp_path):
     (tmp_path / "keep.txt").write_text("mine")
     with pytest.raises(SystemExit):
-        build_space.build(tmp_path)
+        build_space.build_static(tmp_path)
     assert (tmp_path / "keep.txt").exists()
+
+
+@pytest.fixture(scope="module")
+def static_space(build_space, tmp_path_factory):
+    out = tmp_path_factory.mktemp("static") / "space"
+    build_space.build_static(out)
+    return out
+
+
+def test_static_space_is_the_demo_page_in_static_mode(static_space):
+    readme = (static_space / "README.md").read_text()
+    assert (
+        readme.startswith("---\n") and "sdk: static" in readme and "app_file: index.html" in readme
+    )
+    page = (static_space / "index.html").read_text()
+    assert page.count('data-mode="static"') == 1
+    source = (ROOT / "src/claimsight/api/static/demo.html").read_text()
+    assert page.replace(' data-mode="static"', "") == source  # one page, two modes
+
+
+def test_static_space_saved_every_answer_the_page_asks_for(static_space, deps):
+    """The page loads data/<id>.json on File claim and data/<id>.<decision>.json on review;
+    each must exist and match what the API returns now."""
+    data = static_space / "data"
+    samples = json.loads((data / "samples.json").read_text())
+    assert len(samples) == 17
+    client = demo_client(deps)
+    for s in samples:
+        filed = json.loads((data / f"{s['id']}.json").read_text())
+        claim = {**s["claim"], "claim_id": s["id"]}
+        assert client.post("/claims", json=claim).json() == filed, s["id"]
+        reviews = sorted(p.name for p in data.glob(f"{s['id']}.*.json"))
+        if filed["status"] == "awaiting_review":
+            assert reviews == [f"{s['id']}.approve.json", f"{s['id']}.deny.json"]
+            for decision in ("approve", "deny"):
+                done = json.loads((data / f"{s['id']}.{decision}.json").read_text())
+                assert done["status"] == "decided"
+                assert done["packet"]["decision"] == decision
+                assert done["packet"]["decided_by"] == "demo-adjuster"
+        else:
+            assert reviews == [] and filed["status"] == "decided"
+
+
+def test_static_space_build_is_deterministic(build_space, static_space, tmp_path):
+    again = tmp_path / "again"
+    build_space.build_static(again)
+    first = {p.relative_to(static_space): p.read_bytes() for p in static_space.rglob("*.json")}
+    second = {p.relative_to(again): p.read_bytes() for p in again.rglob("*.json")}
+    assert first == second

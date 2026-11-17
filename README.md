@@ -42,7 +42,7 @@ make duplicates     # reused-photo search: dHash vs DINOv2 on edited photos (rep
 make ingest         # load the policy corpus into Postgres + pgvector
 make test-pg        # integration tests against Postgres + pgvector
 make api            # http://localhost:8000/docs
-make demo           # the Space's demo page at http://localhost:8000
+make demo           # the demo page, with the API, at http://localhost:8000
 make worker         # runs queued claims (CLAIMSIGHT_QUEUE=redis)
 make loadtest       # Locust against a running API (replay: no model calls)
 ```
@@ -711,41 +711,42 @@ Hub and a budget. The free place to show the replay demo is a Hugging Face Space
 
 ## Hugging Face Space
 
-A free Docker Space runs the same image in demo mode (`CLAIMSIGHT_DEMO=true`): a page at
-`/` lists the 17 golden claims and fraud variants, files one under a fresh id, shows the
-decision with its reasons, coverage citations, the LLM review, the checks and the
-estimate, and, when the claim waits for an adjuster, lets the visitor approve or deny it.
-The API is still at `/docs`. Replay mode, so nothing calls a model and nothing is billed.
-A visitor can edit the statement: photo detections come with each sample, and new wording
-has no recorded coverage review, so the rules' finding stands and the decision says so.
+**Live: https://huggingface.co/spaces/guptashashank/claimsight** (free static Space).
 
-- `make space` assembles the Space in `build/space/` (`scripts/build_space.py`): the
-  files the Dockerfile copies, taken from git (tracked or not ignored, so `.env`, `data/`,
-  `models/` and reports can't get in), `space/README.md` with the front matter a Docker
-  Space needs (`sdk: docker`, `app_port: 8000`), and `ENV CLAIMSIGHT_DEMO=true` added to
-  the Dockerfile. 113 files, 4.2 MB.
-- Claims live in memory (no Postgres on a free Space) and go when the Space restarts or
-  sleeps after 48 hours without visitors. A claim takes about 50 KB (2,000 claims through
-  the demo: +100 MB, 56 claims/s on one process), so `CLAIMSIGHT_DEMO_MAX_CLAIMS` (5,000,
-  about 250 MB) answers 503 after that instead of letting a busy public page run the
-  16 GB free machine out of memory. Reading claims still works.
-- No API key: the page calls the API from the visitor's browser, and anyone can file a
-  demo claim anyway. Don't set `CLAIMSIGHT_API_KEY` on the Space.
-- CI's `docker` job builds the Space image too and checks the page, the 17 samples and a
-  claim, without a key.
+The page lists the 17 golden claims and fraud variants, files one, shows the decision with
+its reasons, coverage citations, the LLM review, the checks and the estimate, and, when
+the claim waits for an adjuster, lets the visitor approve or deny it.
 
-Not published yet: that needs your Hugging Face account. To publish it:
+**Why static.** Hugging Face hosts Docker and Gradio Spaces on its free CPU only with a PRO
+subscription now; static Spaces stay free. Replay mode is deterministic, so a server isn't
+needed to show it: `make space` (`scripts/build_space.py`) runs the real API once per
+sample (17) and, for the 13 that wait for an adjuster, once per choice (26), and saves
+each answer as JSON next to the page. 46 files, 0.15 MB. The page is the same file the API
+serves in demo mode (`api/static/demo.html`), switched by a `data-mode="static"` attribute,
+so the two can't drift. What the static page can't do is edit the statement: there's
+nothing to run new wording through, so the field is read-only and says to run `make demo`.
+
+- Tests check the saved answers equal what the API returns now, that every claim waiting
+  for an adjuster has both choices, and that two builds are byte-identical.
+- To publish after a change: `make space`, then upload with the Python API (`hf upload`
+  first tries to create the repo as a Gradio Space and gets a 402):
 
 ```bash
-hf auth login
-hf repos create claimsight --repo-type space --space-sdk docker
-make space
-hf upload <your-username>/claimsight build/space . --repo-type space
+uv run --no-project --with huggingface_hub python -c "from huggingface_hub import HfApi; HfApi().upload_folder(repo_id='<you>/claimsight', repo_type='space', folder_path='build/space', ignore_patterns=['.claimsight-space'])"
 ```
 
-The Space then builds the image (a few minutes) and serves the page at
-`https://<your-username>-claimsight.hf.space`. Run `make space` and upload again after a
-change; HF rebuilds on every upload.
+**The server version** (`make demo` locally; `make space-docker` for a Docker Space if you
+have PRO): `CLAIMSIGHT_DEMO=true` serves the same page at `/`, filing claims through the
+real API under fresh ids, with the API at `/docs`. A visitor can edit the statement: photo
+detections come with each sample, and new wording has no recorded coverage review, so the
+rules' finding stands and the decision says so.
+
+- Claims live in memory and go on restart. A claim takes about 50 KB (2,000 claims: +100
+  MB, 56 claims/s on one process), so `CLAIMSIGHT_DEMO_MAX_CLAIMS` (5,000, about 250 MB)
+  answers 503 after that; reading claims still works.
+- No API key: the page calls the API from the visitor's browser. Don't set
+  `CLAIMSIGHT_API_KEY` on a public demo.
+- CI's `docker` job builds that image and checks the page, the 17 samples and a claim.
 
 ## Langfuse dashboards
 
@@ -838,8 +839,8 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 9–10: Langfuse tracing and dashboards (15 widgets, built on Langfuse Cloud by `make dashboards-build`)
 - [x] Weeks 11–12: Redis job queue (arq worker, retries continue from the checkpoint)
 - [x] Weeks 11–12: Locust load test (inline ~270 claims/s per process, Postgres state ~135/s; found and fixed three queue bugs)
-- [x] Weeks 11–12: HF Space demo (`make space`: replay mode, a page that files the golden claims and plays the adjuster; CI builds and checks the image)
-- [ ] Weeks 11–12, rest: publish the Space (needs an HF login); paid deploy (Dockerfile and fly.toml ready; every option costs money)
+- [x] Weeks 11–12: HF Space demo, live at https://huggingface.co/spaces/guptashashank/claimsight (static: replay answers precomputed by the real API; Docker Spaces need PRO)
+- [ ] Weeks 11–12, rest: paid deploy (Dockerfile and fly.toml ready; every option costs money)
 
 ## Layout
 

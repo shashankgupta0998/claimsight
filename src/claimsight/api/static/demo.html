@@ -73,9 +73,9 @@ pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; background
   <p class="lede">Auto-insurance claims triage: damage from photos, coverage from the policy text,
   fraud checks, a cost estimate, and an adjuster for anything the system isn't sure of.
   This demo runs in <b>replay mode</b>: every model output was recorded once, so nothing here
-  calls a model, and filing a claim is free. Pick a sample, edit the statement if you like,
-  and file it. <a href="https://github.com/shashankgupta0998/claimsight">Source and evals</a> ·
-  <a href="docs">API</a></p>
+  calls a model, and filing a claim is free. <span id="how">Pick a sample, edit the statement
+  if you like, and file it.</span> <a href="https://github.com/shashankgupta0998/claimsight">Source
+  and evals</a><span id="api-link"> · <a href="docs">API</a></span></p>
 </header>
 <main>
   <section class="panel" aria-labelledby="h-samples">
@@ -107,6 +107,16 @@ const pct = (x) => Math.round(x * 100) + "%";
 const badge = (d) => el("span", { class: "badge " + d }, d);
 
 let samples = [], current = null;
+// Static mode (the free Hugging Face Space, scripts/build_space.py): no server. Every
+// sample's API answer, and both adjuster choices, were computed by the real API at build
+// time and saved under data/. Replay is deterministic, so they're what the API returns.
+const STATIC = document.documentElement.dataset.mode === "static";
+if (STATIC) {
+  $("#api-link").remove();
+  $("#how").textContent = "Pick a sample and file it: each answer was computed by the real API " +
+    "when this page was built, so the statement can't be edited here.";
+}
+const saved = (name) => api(`data/${encodeURIComponent(name)}.json`);
 
 async function api(path, body) {
   const r = await fetch(path, body ? { method: "POST", headers: { "content-type": "application/json" },
@@ -139,8 +149,10 @@ function pick(s) {
       el("dt", {}, "Where"), el("dd", {}, c.location.label || `${c.location.lat}, ${c.location.lon}`),
       el("dt", {}, "Vehicle"), el("dd", {}, c.reported_vehicle || "–")),
     el("h3", {}, el("label", { for: "statement" }, "Statement")),
-    el("textarea", { id: "statement" }, c.statement),
-    el("p", { class: "muted small" }, "Edit it to see the rules at work. Coverage reviews were recorded for the original wording only; a new wording keeps the rules' finding, and the decision says so."),
+    el("textarea", STATIC ? { id: "statement", readonly: "" } : { id: "statement" }, c.statement),
+    el("p", { class: "muted small" }, STATIC
+      ? "Read-only on this page: it has no server to run new wording through. Run the API locally (make demo) to edit it."
+      : "Edit it to see the rules at work. Coverage reviews were recorded for the original wording only; a new wording keeps the rules' finding, and the decision says so."),
     el("h3", {}, "Photos (detector output recorded)"), photos,
     el("div", { class: "row" }, el("button", { class: "primary", id: "file", onclick: fileClaim }, "File claim")));
   $("#result").replaceChildren(el("p", { class: "empty" }, "File the claim to see the decision."));
@@ -149,17 +161,20 @@ function pick(s) {
 async function fileClaim() {
   const btn = $("#file"); btn.disabled = true;
   const claim = { ...current.claim, statement: $("#statement").value,
-    claim_id: current.id + "-" + Math.random().toString(36).slice(2, 8) };
+    claim_id: STATIC ? current.id : current.id + "-" + Math.random().toString(36).slice(2, 8) };
   $("#result").replaceChildren(el("p", { class: "empty" }, "Running " + claim.claim_id + "…"));
-  try { renderResult(await api("/claims", claim)); }
+  try { renderResult(STATIC ? await saved(current.id) : await api("/claims", claim)); }
   catch (e) { $("#result").replaceChildren(el("p", { class: "error" }, "Couldn't file the claim: " + e.message)); }
   finally { btn.disabled = false; }
 }
 
 async function review(claimId, decision) {
-  const note = $("#note").value || null;
+  const note = $("#note")?.value || null;
   document.querySelectorAll("button.choice").forEach(b => b.disabled = true);
-  try { renderResult(await api(`/claims/${encodeURIComponent(claimId)}/review`, { decision, reviewer: "demo-adjuster", note })); }
+  try {
+    renderResult(STATIC ? await saved(`${claimId}.${decision}`)
+      : await api(`/claims/${encodeURIComponent(claimId)}/review`, { decision, reviewer: "demo-adjuster", note }));
+  }
   catch (e) { $("#result").append(el("p", { class: "error" }, "Couldn't record the review: " + e.message)); }
 }
 
@@ -173,7 +188,7 @@ function renderResult(st) {
         ` at ${pct(rr.confidence ?? 0)} confidence, so it waits for an adjuster.`),
       el("ul", {}, (rr.reasons || []).map(r => el("li", {}, r))),
       el("h3", {}, "You're the adjuster"),
-      el("input", { type: "text", id: "note", placeholder: "Note (optional)", "aria-label": "Adjuster's note" }),
+      STATIC ? null : el("input", { type: "text", id: "note", placeholder: "Note (optional)", "aria-label": "Adjuster's note" }),
       el("div", { class: "row" },
         el("button", { class: "choice", onclick: () => review(st.claim_id, "approve") }, "Approve"),
         el("button", { class: "choice", onclick: () => review(st.claim_id, "deny") }, "Deny")));
@@ -211,7 +226,7 @@ function renderPacket(box, p) {
     el("p", {}, `Repair estimate ${money(p.estimate.low)} – ${money(p.estimate.high)}.`));
 }
 
-api("/demo/samples").then(s => { samples = s; renderSamples(); pick(samples[0]); })
+(STATIC ? saved("samples") : api("/demo/samples")).then(s => { samples = s; renderSamples(); pick(samples[0]); })
   .catch(e => $("#samples").replaceChildren(el("p", { class: "error" }, "Couldn't load samples: " + e.message)));
 </script>
 </body>
