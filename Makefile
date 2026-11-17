@@ -1,4 +1,4 @@
-.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards dashboards-build photo-check record-photo-check duplicates record-duplicates pages detector train-detector detector-hub ingest api demo space up down
+.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards dashboards-build photo-check record-photo-check duplicates record-duplicates pages detector train-detector detector-hub ingest api demo space space-docker up down
 
 install:
 	uv sync --group dev
@@ -93,8 +93,11 @@ api:
 demo:  # the Space's page at http://localhost:8000 (replay mode, in memory)
 	CLAIMSIGHT_DEMO=true uv run uvicorn claimsight.api.main:app --reload
 
-space:  # assemble the Hugging Face Space in build/space (README, "Hugging Face Space")
+space:  # the free static Hugging Face Space in build/space (README, "Hugging Face Space")
 	uv run python scripts/build_space.py
+
+space-docker:  # the Docker Space in build/space (Hugging Face hosts it only with PRO)
+	uv run python scripts/build_space.py --kind docker
 
 HOST ?= http://localhost:8000
 USERS ?= 20
