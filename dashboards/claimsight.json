@@ -1,5 +1,5 @@
 {
-  "about": "ClaimSight dashboards for Langfuse. Each widget is a Langfuse metrics-API query (v2), so `make dashboards` can run them and the same view, metric, dimension and filters build the widget in the Langfuse UI (Dashboards > New widget). Time range comes from the dashboard, not the query. Data comes from claimsight/tracing.py.",
+  "about": "ClaimSight dashboards for Langfuse. Each widget is a Langfuse metrics-API query (v2) with one metric, since Langfuse charts draw only the first, so `make dashboards` can run them and the same view, metric, dimension and filters build the widget in the Langfuse UI (Dashboards > New widget). Time range comes from the dashboard, not the query. Data comes from claimsight/tracing.py.",
   "dashboards": [
     {
       "name": "ClaimSight: decisions",
@@ -71,10 +71,6 @@
               {
                 "measure": "value",
                 "aggregation": "avg"
-              },
-              {
-                "measure": "count",
-                "aggregation": "count"
               }
             ],
             "filters": [
@@ -188,10 +184,6 @@
               {
                 "measure": "latency",
                 "aggregation": "p95"
-              },
-              {
-                "measure": "count",
-                "aggregation": "count"
               }
             ],
             "filters": [
@@ -294,9 +286,9 @@
           }
         },
         {
-          "title": "Review cost per claim",
+          "title": "Review cost per claim (average)",
           "chart": "number",
-          "why": "Average and p95 of every model call one claim's review took. Clean claims Haiku settles alone: about $0.0003 (golden claims). Reviews Sonnet decides cost about ten times that.",
+          "why": "Every model call one claim's review took, averaged over claims. Clean claims Haiku settles alone: about $0.0003 on the golden claims. Reviews Sonnet decides cost about ten times that.",
           "query": {
             "view": "scores-numeric",
             "dimensions": [],
@@ -304,7 +296,26 @@
               {
                 "measure": "value",
                 "aggregation": "avg"
-              },
+              }
+            ],
+            "filters": [
+              {
+                "column": "name",
+                "operator": "=",
+                "value": "review_cost_usd",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Review cost per claim (p95)",
+          "chart": "number",
+          "why": "The expensive end: one claim in twenty costs more than this. About $0.0005 on the golden claims, all Haiku; it climbs when reviews start going to Sonnet.",
+          "query": {
+            "view": "scores-numeric",
+            "dimensions": [],
+            "metrics": [
               {
                 "measure": "value",
                 "aggregation": "p95"
@@ -321,9 +332,9 @@
           }
         },
         {
-          "title": "Tokens by model",
+          "title": "Input tokens by model",
           "chart": "bar",
-          "why": "Input vs output tokens. Cache reads, when caching is on, are counted separately in usage details.",
+          "why": "Prompt tokens per model: the policy clauses and statement each review sends. Cache reads, when caching is on, are counted separately in usage details.",
           "query": {
             "view": "observations",
             "dimensions": [
@@ -335,7 +346,30 @@
               {
                 "measure": "inputTokens",
                 "aggregation": "sum"
-              },
+              }
+            ],
+            "filters": [
+              {
+                "column": "type",
+                "operator": "=",
+                "value": "GENERATION",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Output tokens by model",
+          "chart": "bar",
+          "why": "Completion tokens per model: the verdict, explanation and quotes. Output costs five times input, so a jump here moves cost most.",
+          "query": {
+            "view": "observations",
+            "dimensions": [
+              {
+                "field": "providedModelName"
+              }
+            ],
+            "metrics": [
               {
                 "measure": "outputTokens",
                 "aggregation": "sum"
