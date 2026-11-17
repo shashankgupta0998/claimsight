@@ -1,4 +1,4 @@
-.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
+.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api demo space up down
 
 install:
 	uv sync --group dev
@@ -83,6 +83,12 @@ ingest:  # load the policy corpus into Postgres + pgvector
 
 api:
 	uv run uvicorn claimsight.api.main:app --reload
+
+demo:  # the Space's page at http://localhost:8000 (replay mode, in memory)
+	CLAIMSIGHT_DEMO=true uv run uvicorn claimsight.api.main:app --reload
+
+space:  # assemble the Hugging Face Space in build/space (README, "Hugging Face Space")
+	uv run python scripts/build_space.py
 
 HOST ?= http://localhost:8000
 USERS ?= 20

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClaimSight demo</title>
+<style>
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #e3e2dd;
+  --accent: #2f5bd3; --accent-ink: #ffffff;
+  --approve: #1f7a4d; --approve-bg: #e4f3eb; --deny: #b3261e; --deny-bg: #fbe7e5;
+  --escalate: #8a5a00; --escalate-bg: #fbf0d9; --flag: #b3261e; --pass: #1f7a4d; --unknown: #6b6b66;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161615; --panel: #1f1f1d; --ink: #ecebe6; --muted: #a09f99; --line: #33332f;
+    --accent: #7c9cf5; --accent-ink: #111111;
+    --approve: #6fd3a0; --approve-bg: #183324; --deny: #f2a49d; --deny-bg: #3a1c1a;
+    --escalate: #f0c46b; --escalate-bg: #3a2e14; --flag: #f2a49d; --pass: #6fd3a0; --unknown: #a09f99;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { padding: 24px 16px 8px; max-width: 1200px; margin: 0 auto; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 15px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+h3 { font-size: 14px; margin: 16px 0 6px; }
+.lede { color: var(--muted); margin: 0; max-width: 820px; }
+a { color: var(--accent); }
+main { max-width: 1200px; margin: 0 auto; padding: 16px; display: grid; gap: 16px;
+  grid-template-columns: 300px minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; }
+@media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
+.samples { display: flex; flex-direction: column; gap: 6px; max-height: 75vh; overflow: auto; }
+.sample { text-align: left; border: 1px solid var(--line); background: transparent; color: inherit;
+  border-radius: 8px; padding: 8px 10px; cursor: pointer; font: inherit; }
+.sample:hover { border-color: var(--muted); }
+.sample[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.sample .id { font: 600 12px ui-monospace, Menlo, monospace; }
+.sample .t { display: block; font-size: 13px; color: var(--muted); }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0; }
+dt { color: var(--muted); } dd { margin: 0; }
+textarea { width: 100%; min-height: 84px; font: inherit; color: inherit; background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px; resize: vertical; }
+input[type=text] { font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 8px; width: 100%; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; }
+button.primary, button.choice { font: inherit; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+  border: 1px solid var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-ink); }
+button.choice { background: transparent; color: var(--accent); }
+button:disabled { opacity: .5; cursor: progress; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+.approve { color: var(--approve); background: var(--approve-bg); }
+.deny { color: var(--deny); background: var(--deny-bg); }
+.escalate { color: var(--escalate); background: var(--escalate-bg); }
+.s-flag { color: var(--flag); font-weight: 600; } .s-pass { color: var(--pass); } .s-unknown { color: var(--unknown); }
+.muted { color: var(--muted); } .small { font-size: 13px; }
+.quote { border-left: 3px solid var(--line); padding: 2px 10px; margin: 6px 0; color: var(--muted); font-size: 13px; }
+.error { color: var(--deny); }
+pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; background: var(--bg);
+  padding: 8px; border-radius: 8px; max-height: 360px; overflow: auto; }
+.empty { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>ClaimSight</h1>
+  <p class="lede">Auto-insurance claims triage: damage from photos, coverage from the policy text,
+  fraud checks, a cost estimate, and an adjuster for anything the system isn't sure of.
+  This demo runs in <b>replay mode</b>: every model output was recorded once, so nothing here
+  calls a model, and filing a claim is free. Pick a sample, edit the statement if you like,
+  and file it. <a href="https://github.com/shashankgupta0998/claimsight">Source and evals</a> ·
+  <a href="docs">API</a></p>
+</header>
+<main>
+  <section class="panel" aria-labelledby="h-samples">
+    <h2 id="h-samples">Sample claims</h2>
+    <div class="samples" id="samples"><p class="empty">Loading…</p></div>
+  </section>
+  <section class="panel" aria-labelledby="h-claim">
+    <h2 id="h-claim">Claim</h2>
+    <div id="claim"><p class="empty">Pick a sample.</p></div>
+  </section>
+  <section class="panel" aria-labelledby="h-result" aria-live="polite">
+    <h2 id="h-result">Decision</h2>
+    <div id="result"><p class="empty">File a claim to see what the system decides and why.</p></div>
+  </section>
+</main>
+<script>
+const $ = (sel) => document.querySelector(sel);
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v);
+  }
+  for (const k of kids.flat()) if (k != null) n.append(k.nodeType ? k : String(k));
+  return n;
+}
+const money = (x) => x == null ? "–" : "$" + Math.round(x).toLocaleString("en-US");
+const pct = (x) => Math.round(x * 100) + "%";
+const badge = (d) => el("span", { class: "badge " + d }, d);
+
+let samples = [], current = null;
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify(body) } : {});
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.detail ? (typeof data.detail === "string" ? data.detail : JSON.stringify(data.detail)) : r.statusText);
+  return data;
+}
+
+function renderSamples() {
+  const box = $("#samples"); box.replaceChildren();
+  for (const s of samples) {
+    box.append(el("button", { class: "sample", "aria-pressed": String(current?.id === s.id),
+      onclick: () => pick(s) },
+      el("span", { class: "id" }, s.id), " ", el("span", { class: "muted small" }, "· labelled " + s.expected),
+      el("span", { class: "t" }, s.title)));
+  }
+}
+
+function pick(s) {
+  current = s; renderSamples();
+  const c = s.claim;
+  const photos = el("table", {}, el("tr", {}, el("th", {}, "photo"), el("th", {}, "taken"), el("th", {}, "detected")),
+    c.photos.map(p => el("tr", {}, el("td", {}, p.photo_id), el("td", {}, (p.exif_taken_at || "–").replace("T", " ")),
+      el("td", {}, (p.recorded_detections || []).map(d => `${d.part} ${d.damage_type} (${pct(d.confidence)})`).join(", ") || "nothing"))));
+  $("#claim").replaceChildren(
+    el("dl", {},
+      el("dt", {}, "Policy"), el("dd", {}, c.policy_id),
+      el("dt", {}, "Loss"), el("dd", {}, `${c.loss_type} on ${c.loss_date}`),
+      el("dt", {}, "Where"), el("dd", {}, c.location.label || `${c.location.lat}, ${c.location.lon}`),
+      el("dt", {}, "Vehicle"), el("dd", {}, c.reported_vehicle || "–")),
+    el("h3", {}, el("label", { for: "statement" }, "Statement")),
+    el("textarea", { id: "statement" }, c.statement),
+    el("p", { class: "muted small" }, "Edit it to see the rules at work. Coverage reviews were recorded for the original wording only; a new wording keeps the rules' finding, and the decision says so."),
+    el("h3", {}, "Photos (detector output recorded)"), photos,
+    el("div", { class: "row" }, el("button", { class: "primary", id: "file", onclick: fileClaim }, "File claim")));
+  $("#result").replaceChildren(el("p", { class: "empty" }, "File the claim to see the decision."));
+}
+
+async function fileClaim() {
+  const btn = $("#file"); btn.disabled = true;
+  const claim = { ...current.claim, statement: $("#statement").value,
+    claim_id: current.id + "-" + Math.random().toString(36).slice(2, 8) };
+  $("#result").replaceChildren(el("p", { class: "empty" }, "Running " + claim.claim_id + "…"));
+  try { renderResult(await api("/claims", claim)); }
+  catch (e) { $("#result").replaceChildren(el("p", { class: "error" }, "Couldn't file the claim: " + e.message)); }
+  finally { btn.disabled = false; }
+}
+
+async function review(claimId, decision) {
+  const note = $("#note").value || null;
+  document.querySelectorAll("button.choice").forEach(b => b.disabled = true);
+  try { renderResult(await api(`/claims/${encodeURIComponent(claimId)}/review`, { decision, reviewer: "demo-adjuster", note })); }
+  catch (e) { $("#result").append(el("p", { class: "error" }, "Couldn't record the review: " + e.message)); }
+}
+
+function renderResult(st) {
+  const box = $("#result"); box.replaceChildren();
+  box.append(el("p", { class: "muted small" }, "Claim " + st.claim_id));
+  if (st.status === "awaiting_review") {
+    const rr = st.review_request || {};
+    box.append(
+      el("p", {}, "The system proposes ", badge(rr.proposed_decision || "escalate"),
+        ` at ${pct(rr.confidence ?? 0)} confidence, so it waits for an adjuster.`),
+      el("ul", {}, (rr.reasons || []).map(r => el("li", {}, r))),
+      el("h3", {}, "You're the adjuster"),
+      el("input", { type: "text", id: "note", placeholder: "Note (optional)", "aria-label": "Adjuster's note" }),
+      el("div", { class: "row" },
+        el("button", { class: "choice", onclick: () => review(st.claim_id, "approve") }, "Approve"),
+        el("button", { class: "choice", onclick: () => review(st.claim_id, "deny") }, "Deny")));
+  } else if (st.packet) {
+    renderPacket(box, st.packet);
+  } else {
+    box.append(el("p", {}, "Status: " + st.status + (st.error ? " – " + st.error : "")));
+  }
+  box.append(el("details", {}, el("summary", { class: "muted small" }, "Raw response"),
+    el("pre", {}, JSON.stringify(st, null, 2))));
+}
+
+function renderPacket(box, p) {
+  const cov = p.coverage;
+  box.append(
+    el("p", {}, badge(p.decision), " ", el("span", { class: "muted" },
+      `${pct(p.confidence)} confidence · decided by ${p.decided_by}`)),
+    el("ul", {}, p.reasons.map(r => el("li", {}, r))),
+    el("h3", {}, "Coverage"),
+    el("p", {}, cov.applies === true ? `Covered under ${cov.coverage_part}, deductible ${money(cov.deductible)}.`
+      : cov.applies === false ? "Not covered." : "Unclear.", " ", el("span", { class: "muted small" }, cov.rationale)),
+    ...cov.citations.map(c => el("div", { class: "quote" }, el("b", {}, c.clause_id), c.page ? ` (p. ${c.page}) ` : " ", c.snippet)));
+  if (cov.review) {
+    const r = cov.review;
+    box.append(el("p", { class: "small" }, `LLM review (${r.reviewer}${r.route ? ", " + r.route + " model" : ""}): `,
+      el("b", {}, r.verdict), r.applied ? " – changed the finding. " : " – ", r.explanation));
+  }
+  box.append(
+    el("h3", {}, "Checks"),
+    el("table", {}, el("tr", {}, el("th", {}, "check"), el("th", {}, "result"), el("th", {}, "detail")),
+      p.signals.map(s => el("tr", {}, el("td", {}, s.check), el("td", { class: "s-" + s.status }, s.status), el("td", {}, s.detail)))),
+    el("h3", {}, "Damage and estimate"),
+    el("table", {}, el("tr", {}, el("th", {}, "part"), el("th", {}, "damage"), el("th", {}, "severity")),
+      p.damage.map(d => el("tr", {}, el("td", {}, d.part), el("td", {}, d.damage_type), el("td", {}, pct(d.severity))))),
+    el("p", {}, `Repair estimate ${money(p.estimate.low)} – ${money(p.estimate.high)}.`));
+}
+
+api("/demo/samples").then(s => { samples = s; renderSamples(); pick(samples[0]); })
+  .catch(e => $("#samples").replaceChildren(el("p", { class: "error" }, "Couldn't load samples: " + e.message)));
+</script>
+</body>
+</html>

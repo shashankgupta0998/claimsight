@@ -12,3 +12,4 @@ evals/reports/*.json
 *.onnx
 /models/
 evals/reports/loadtest_logs/
+/build/

@@ -91,6 +91,16 @@ jobs:
           test "$(curl -s -o /dev/null -w '%{http_code}' -X POST localhost:8000/claims -H 'content-type: application/json' -d "$claim")" = 401
           curl -sf -X POST localhost:8000/claims -H 'content-type: application/json' -H 'X-API-Key: ci-key' -d "$claim" | tee out.json
           python3 -c "import json; d=json.load(open('out.json')); assert d['status'] in ('decided', 'awaiting_review'), d"
+      - name: Hugging Face Space image (demo page, no key)
+        run: |
+          python3 scripts/build_space.py
+          DOCKER_BUILDKIT=1 docker build -t claimsight:space build/space
+          docker run -d --name space -p 8001:8000 claimsight:space
+          for i in $(seq 1 30); do curl -sf localhost:8001/healthz && break; sleep 1; done
+          curl -sf localhost:8001/ | grep -q "ClaimSight demo"
+          test "$(curl -sf localhost:8001/demo/samples | python3 -c 'import json,sys; print(len(json.load(sys.stdin)))')" = 17
+          claim=$(python3 -c "import json; print(json.dumps(json.loads(open('evals/golden/claims.jsonl').readline())['claim']))")
+          curl -sf -X POST localhost:8001/claims -H 'content-type: application/json' -d "$claim" | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['status'] in ('decided', 'awaiting_review'), d"
       - name: Container logs
         if: always()
-        run: docker logs api || true
+        run: docker logs api || true; docker logs space || true
