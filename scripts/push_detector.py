@@ -1,6 +1,7 @@
 """Assemble the damage detector for the Hugging Face Hub: the weights and a model card.
 
     make detector-hub                     # writes build/detector/, checks the weights
+    make detector-hub REPO=<you>/claimsight-damage-rtdetr   # the card names that repo
     hf upload <you>/claimsight-damage-rtdetr build/detector . --repo-type model
 
 The card's numbers come from the recorded test-split eval (evals/detector_eval.py), not
@@ -28,6 +29,7 @@ FILES = ("config.json", "preprocessor_config.json", "model.safetensors")
 PHOTOS = ROOT / "data" / "hitl-car-damage" / "Car parts dataset" / "File1" / "img"
 DATASET = "DrBimmer/car-parts-and-damage-dataset"
 SOURCE = "https://github.com/shashankgupta0998/claimsight"
+PLACEHOLDER = "<this repo>"
 CHECK_PHOTOS, CHECK_MIN_SCORE, SCORE_TOL, BOX_TOL = 5, 0.5, 0.001, 1.0
 
 PRETTY = {
@@ -45,7 +47,7 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def card(metrics: dict, base: str, size: int, digest: str) -> str:
+def card(metrics: dict, base: str, size: int, digest: str, repo: str = PLACEHOLDER) -> str:
     m = metrics
     rows = "\n".join(
         f"| {PRETTY.get(lab, lab)}{' (too few to mean much)' if c['n'] < 10 else ''} "
@@ -97,7 +99,7 @@ photos, not to price a repair. Treat its output as a signal for a human, not a m
 ```python
 from transformers import pipeline
 
-detect = pipeline("object-detection", model="<this repo>")
+detect = pipeline("object-detection", model="{repo}")
 detect("car.jpg", threshold=0.5)
 # [{{"score": 0.65, "label": "dent", "box": {{"xmin": 424, "ymin": 168, ...}}}}, ...]
 ```
@@ -192,7 +194,7 @@ def check(out: Path, cassette: dict, truth: list[dict]) -> str:
     return f"ok: {compared} recorded boxes on {len(images)} test photos reproduced"
 
 
-def build(out: Path, model_dir: Path = MODEL_DIR) -> dict:
+def build(out: Path, model_dir: Path = MODEL_DIR, repo: str = PLACEHOLDER) -> dict:
     if out.exists():
         if {p.name for p in out.iterdir()} - {*FILES, "README.md"}:
             raise SystemExit(f"{out} exists and wasn't made by this script; not deleting it.")
@@ -206,16 +208,17 @@ def build(out: Path, model_dir: Path = MODEL_DIR) -> dict:
     for f in FILES:
         shutil.copy2(model_dir / f, out / f)
     digest = sha256(out / "model.safetensors")
-    (out / "README.md").write_text(card(metrics, cassette["base"], cassette["size"], digest))
+    (out / "README.md").write_text(card(metrics, cassette["base"], cassette["size"], digest, repo))
     return {"metrics": metrics, "sha256": digest, "cassette": cassette, "truth": truth}
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--out", type=Path, default=ROOT / "build" / "detector")
+    ap.add_argument("--repo", default=PLACEHOLDER, help="the Hub repo the card's example loads")
     ap.add_argument("--no-check", action="store_true", help="skip running the weights")
     args = ap.parse_args()
-    built = build(args.out)
+    built = build(args.out, repo=args.repo)
     size = sum(p.stat().st_size for p in args.out.iterdir())
     m = built["metrics"]
     print(f"{args.out}: {size / 1e6:.1f} MB, test mAP {m['map']:.3f} / AP50 {m['map_50']:.3f}")
