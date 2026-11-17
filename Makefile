@@ -1,4 +1,4 @@
-.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api demo space up down
+.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector detector-hub ingest api demo space up down
 
 install:
 	uv sync --group dev
@@ -71,6 +71,9 @@ detector:  # damage detector mAP on the held-out test photos (replay)
 
 train-detector:  # fine-tune RT-DETRv2 on the CC0 damage photos (see models/damage_data.py)
 	uv run --extra train python scripts/train_detector.py
+
+detector-hub:  # weights + model card in build/detector, checked against the cassette (README)
+	uv run --extra ml python scripts/push_detector.py
 
 pages:  # draw the specimen policy as page images for the ColQwen2 page lane
 	uv run python scripts/render_pages.py
