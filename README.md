@@ -766,12 +766,26 @@ change; HF rebuilds on every upload.
 - **Claim text stays out** unless `CLAIMSIGHT_TRACE_CONTENT=true`: real statements carry
   names, addresses and plates.
 
-Langfuse's API can query metrics but not create dashboards, so `dashboards/claimsight.json`
-defines them: two dashboards, 13 widgets, each with the metrics-API query that builds it in
-the UI (Dashboards > New widget). `make trace-eval` sends the 257 golden claims (replay, no
-API calls); `make dashboards` runs every widget's query against the project and fails if
-one comes back empty. A test fails if a widget filters on a score or observation name the
-code no longer emits.
+`dashboards/claimsight.json` defines two dashboards, 15 widgets, each a metrics-API query
+with one metric (Langfuse charts draw only a widget's first metric; the spec had four
+widgets with two, and their second silently didn't show, so tokens and review cost are now
+split in two). `make trace-eval` sends the 257 golden claims (replay, no API calls).
+
+- `make dashboards-build` creates them in your Langfuse project through its dashboard API
+  (unstable since Langfuse v3.216): each widget, then each dashboard with its widgets two
+  to a row. Without `APPLY=1` it only prints the plan. Rerunning updates the same widgets
+  in place (found by name and a note in their description, so a chart of yours with the
+  same title is left alone) and deletes the ones it made that left the spec. That API
+  allows 30 requests a minute; the script waits when Langfuse says to.
+- `make dashboards` runs every widget's query and fails if one comes back empty. A time
+  series pads empty buckets, so it adds a row count to tell a real 0 (no escalations) from
+  no data. The metrics API allows 100 queries a day on the Hobby plan; the script stops and
+  says when it resets instead of retrying for hours.
+- A test fails if a widget filters on a score or observation name the code no longer emits;
+  others run the build against a fake Langfuse (create, rerun, prune, wait on a 429).
+
+Built on Langfuse Cloud and checked in the UI: all 15 charts draw data from the traced
+eval run. "ClaimSight: decisions" has 7 tiles, "ClaimSight: LLM cost" 8.
 
 From `make trace-eval` on Langfuse Cloud:
 
@@ -782,8 +796,8 @@ From `make trace-eval` on Langfuse Cloud:
 | decision accuracy (eval) | 1.00 |
 | escalations caused by the review | 0 of 230 reviews |
 | review calls / where reviews end | 230 Haiku, all settled by Haiku (`covered`) |
-| review cost per claim | $0.00033 average, $0.00047 p95; $0.076 for the set |
-| tokens | 475,558 input, 55,903 output (Haiku) |
+| review cost per claim | $0.00033 average, $0.00047 p95 (two number tiles); $0.076 for the set |
+| input / output tokens | 475,558 / 55,903 (Haiku) |
 | fraud flags per claim | 0.19 |
 
 On the golden claims every review ends at Haiku: they're clean, and Sonnet only sees
@@ -821,7 +835,7 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 7–8: Postgres checkpointer (claims awaiting review survive restarts; `CLAIMSIGHT_CHECKPOINTER=postgres`)
 - [x] Weeks 9–10: model routing and caching for the coverage review (Haiku first: same recall, 77% cheaper; caching measured, off)
 - [x] Weeks 9–10: prompt-injection red team (208 attacks; 11.1% → 0% success after tag escaping and a policy-source rule)
-- [x] Weeks 9–10: Langfuse tracing and dashboards (13 widgets, checked against Langfuse Cloud)
+- [x] Weeks 9–10: Langfuse tracing and dashboards (15 widgets, built on Langfuse Cloud by `make dashboards-build`)
 - [x] Weeks 11–12: Redis job queue (arq worker, retries continue from the checkpoint)
 - [x] Weeks 11–12: Locust load test (inline ~270 claims/s per process, Postgres state ~135/s; found and fixed three queue bugs)
 - [x] Weeks 11–12: HF Space demo (`make space`: replay mode, a page that files the golden claims and plays the adjuster; CI builds and checks the image)

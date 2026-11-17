@@ -1,4 +1,4 @@
-.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector detector-hub ingest api demo space up down
+.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards dashboards-build photo-check record-photo-check duplicates record-duplicates pages detector train-detector detector-hub ingest api demo space up down
 
 install:
 	uv sync --group dev
@@ -38,6 +38,9 @@ trace-eval:  # run the 257-case eval in replay with Langfuse tracing on (keys in
 
 dashboards:  # run every dashboard widget's query against your Langfuse project (keys in .env)
 	uv run --extra llm --env-file .env python scripts/langfuse_dashboards.py --check
+
+dashboards-build:  # create/update the dashboards in Langfuse (dry run; APPLY=1 to make them)
+	uv run --extra llm --env-file .env python scripts/langfuse_dashboards.py --build $(if $(APPLY),--apply)
 
 injection:  # prompt-injection red team against the coverage review (replay)
 	uv run python -m evals.injection_eval
