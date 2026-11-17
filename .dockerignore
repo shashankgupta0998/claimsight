@@ -1,0 +1,23 @@
+# Secrets never go in the image: Fly secrets carry them at runtime.
+.env
+.env.*
+!.env.example
+
+# Local state and caches
+.git
+.venv
+.pytest_cache
+.ruff_cache
+**/__pycache__
+*.pyc
+
+# Big local-only data: training photos, model weights, reports, load-test logs
+data/
+models/
+evals/reports/
+
+# Not needed to serve
+tests/
+loadtest/
+dashboards/
+.github/

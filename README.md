@@ -651,6 +651,41 @@ as in the golden set.
    a worker finishing in between left an empty graph read and a "done" job (13 of 7,870
    polls). It now reads the job first; the worker writes state before the job completes.
 
+## Deploy
+
+Not deployed: every option below costs money, and none is needed to run, test or
+evaluate anything here. What's ready:
+
+- **`Dockerfile`**: the API (or, with `python -m claimsight.queue`, the worker) in replay
+  mode, so it needs no model weights or API keys. Two stages, runs as a non-root user.
+  `.dockerignore` keeps `.env`, `data/` (the training photos) and `models/` out. CI's
+  `docker` job builds it, checks those aren't inside, starts it with an API key, checks a
+  request without the key gets 401, and decides a golden claim. There's no Docker on the
+  machine this was written on, so that job is the build's only test; the same file set,
+  copied to an empty folder, installed and started outside the repo, decided a claim
+  locally.
+- **`CLAIMSIGHT_API_KEY`**: when set, every `/claims` route needs it in `X-API-Key`;
+  `/healthz` stays open. Set it on anything reachable from the internet, or anyone can
+  file claims into your database.
+- **`fly.toml`**: the cheapest useful setup, one 512 MB API machine that stops when idle,
+  two processes sharing state through Postgres. The comment at the top lists the commands.
+  `DATABASE_URL`, which `fly postgres attach` sets, is read as well as
+  `CLAIMSIGHT_DATABASE_URL`. One process uses about 92 MB.
+
+What it would cost, from Fly's and Upstash's pricing pages (November 2026):
+
+| setup | about |
+|---|---|
+| inline, unmanaged single-node Fly Postgres (backups are yours; Fly calls it unsupported) | $2-6 / month |
+| queued: + an always-on worker and Redis on its own Fly machine | $8-12 / month |
+| queued, managed: Fly Managed Postgres ($38) + Upstash fixed 250 MB ($10) + machines | $55+ / month |
+
+Not Upstash pay-as-you-go: an idle arq worker polls Redis every 50 ms, millions of
+commands a day, at $0.20 per 100K. Modal was meant for the GPU models (detector, part
+finder, speech-to-text), which only live mode needs; that waits for the detector on the
+Hub and a budget. A free place to show the replay demo is a Hugging Face Docker Space,
+the roadmap's last item, which this image is ready for.
+
 ## Langfuse dashboards
 
 `claimsight/tracing.py` sends one Langfuse trace per claim when `LANGFUSE_PUBLIC_KEY` and
@@ -728,7 +763,7 @@ server, which self-hosts with ClickHouse, Redis and object storage.
 - [x] Weeks 9–10: Langfuse tracing and dashboards (13 widgets, checked against Langfuse Cloud)
 - [x] Weeks 11–12: Redis job queue (arq worker, retries continue from the checkpoint)
 - [x] Weeks 11–12: Locust load test (inline ~270 claims/s per process, Postgres state ~135/s; found and fixed three queue bugs)
-- [ ] Weeks 11–12, rest: deploy (Modal + Fly.io), HF Space demo
+- [ ] Weeks 11–12, rest: deploy (Dockerfile, fly.toml and a CI image check are ready; not deployed, every option costs money), HF Space demo
 
 ## Layout
 
