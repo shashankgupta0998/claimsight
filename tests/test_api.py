@@ -68,3 +68,27 @@ def test_queued_status_reads_the_job_before_the_graph(deps, monkeypatch):
     app = create_app(type(deps)(**{**deps.__dict__, "settings": s}), MemorySaver(), object())
     resp = TestClient(app).get("/claims/LT-1")
     assert resp.status_code == 200 and resp.json()["status"] == "decided"
+
+
+def test_api_key_guards_every_claims_route_but_not_health(deps, golden_cases):
+    s = deps.settings.model_copy(update={"api_key": "s3cret"})
+    client = TestClient(create_app(type(deps)(**{**deps.__dict__, "settings": s})))
+    claim = golden_cases["CLM-0003"]["claim"]
+    assert client.get("/healthz").status_code == 200
+    assert client.post("/claims", json=claim).status_code == 401
+    assert client.post("/claims", json=claim, headers={"X-API-Key": "wrong"}).status_code == 401
+    assert client.get("/claims/CLM-0003").status_code == 401
+    assert client.post("/claims/CLM-0003/review", json={}).status_code == 401
+    ok = {"X-API-Key": "s3cret"}
+    assert client.post("/claims", json=claim, headers=ok).status_code == 200
+    assert client.get("/claims/CLM-0003", headers=ok).json()["status"] == "decided"
+
+
+def test_database_url_also_reads_the_plain_name(monkeypatch):
+    from claimsight.config import Settings
+
+    monkeypatch.delenv("CLAIMSIGHT_DATABASE_URL", raising=False)
+    monkeypatch.setenv("DATABASE_URL", "postgres://fly:pw@db.internal:5432/app")
+    assert Settings(_env_file=None).database_url == "postgres://fly:pw@db.internal:5432/app"
+    monkeypatch.setenv("CLAIMSIGHT_DATABASE_URL", "postgresql://mine/db")
+    assert Settings(_env_file=None).database_url == "postgresql://mine/db"

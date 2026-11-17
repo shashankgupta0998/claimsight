@@ -4,6 +4,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -17,7 +18,11 @@ class Settings(BaseSettings):
     mode: Literal["replay", "live"] = "replay"
     golden_dir: Path = REPO_ROOT / "evals" / "golden"
 
-    database_url: str = "postgresql://claimsight:claimsight@localhost:5432/claimsight"
+    # CLAIMSIGHT_DATABASE_URL, or plain DATABASE_URL (what `fly postgres attach` sets).
+    database_url: str = Field(
+        default="postgresql://claimsight:claimsight@localhost:5432/claimsight",
+        validation_alias=AliasChoices("CLAIMSIGHT_DATABASE_URL", "DATABASE_URL"),
+    )
     # Graph state between steps (claimsight/checkpoint.py). `postgres` keeps claims waiting
     # for an adjuster across restarts; `memory` is for tests and a single dev process.
     checkpointer: Literal["memory", "postgres"] = "memory"
@@ -26,6 +31,9 @@ class Settings(BaseSettings):
     # Claims run inline in the request (`off`) or on a Redis queue with a separate worker
     # (`redis`, claimsight/queue.py; needs checkpointer=postgres and the `queue` extra).
     queue: Literal["off", "redis"] = "off"
+    # When set, every /claims route needs this in the X-API-Key header (/healthz stays open).
+    # Set it on any deployment reachable from the internet.
+    api_key: str | None = None
     queue_max_tries: int = 3
     queue_retry_delay_s: float = 5.0
     # Jobs one worker runs at once, and how often an idle worker checks Redis. arq's default

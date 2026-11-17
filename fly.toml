@@ -1,0 +1,49 @@
+# Fly.io config for the replay demo: one API machine that stops when idle, state in Postgres.
+# Nothing here has been deployed. To use it (README, "Deploy"):
+#
+#   fly apps create <your-app>            # then set `app` below
+#   fly postgres create --name <your-app>-db --initial-cluster-size 1 --vm-size shared-cpu-1x --volume-size 1
+#   fly postgres attach <your-app>-db     # sets the DATABASE_URL secret, which the app reads
+#   fly secrets set CLAIMSIGHT_API_KEY="$(openssl rand -hex 24)"
+#   fly deploy
+#
+# Cost (Fly's pricing page, Nov 2026): the 512 MB machine is $3.69/month if it never
+# stops; stopped, only its disk ($0.15/GB/month). Unmanaged single-node Postgres is about
+# $2/month and unsupported by Fly (backups are yours). The queued setup (worker + Redis)
+# costs more: see README.
+
+app = "claimsight-demo"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  CLAIMSIGHT_MODE = "replay"
+  CLAIMSIGHT_CHECKPOINTER = "postgres"
+  CLAIMSIGHT_QUEUE = "off"
+  # Two processes share state through Postgres.
+  WEB_CONCURRENCY = "2"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 50
+    hard_limit = 100
+
+  [[http_service.checks]]
+    method = "GET"
+    path = "/healthz"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "20s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

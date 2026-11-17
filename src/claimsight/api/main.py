@@ -15,9 +15,10 @@ or record the adjuster's review, and claims waiting for review survive restarts.
 from __future__ import annotations
 
 import asyncio
+import hmac
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, Response
+from fastapi import Depends, FastAPI, Header, HTTPException, Response
 
 from claimsight.checkpoint import make_checkpointer
 from claimsight.deps import Deps, build_deps
@@ -53,7 +54,12 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
         if queued and queue_pool is None and pool["redis"] is not None:
             await pool["redis"].aclose()
 
+    def require_key(x_api_key: str | None = Header(default=None)) -> None:
+        if s.api_key and not hmac.compare_digest(x_api_key or "", s.api_key):
+            raise HTTPException(401, "Missing or wrong X-API-Key.")
+
     app = FastAPI(title="ClaimSight", version="0.1.0", lifespan=lifespan)
+    guarded = [Depends(require_key)]
 
     @app.get("/healthz")
     async def healthz() -> dict:
@@ -64,7 +70,7 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
             "models": deps.model_versions(),
         }
 
-    @app.post("/claims", response_model=ClaimStatus)
+    @app.post("/claims", response_model=ClaimStatus, dependencies=guarded)
     async def submit(claim: ClaimInput, response: Response) -> ClaimStatus:
         if service.status(claim.claim_id) is not None:
             raise HTTPException(409, f"Claim {claim.claim_id} was already submitted.")
@@ -77,7 +83,7 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
         response.status_code = 202
         return ClaimStatus(claim_id=claim.claim_id, status="queued")
 
-    @app.get("/claims/{claim_id}", response_model=ClaimStatus)
+    @app.get("/claims/{claim_id}", response_model=ClaimStatus, dependencies=guarded)
     async def get_claim(claim_id: str) -> ClaimStatus:
         if queued:
             from claimsight.queue import job_state
@@ -97,7 +103,7 @@ def create_app(deps: Deps | None = None, checkpointer=None, queue_pool=None) -> 
             raise HTTPException(404, f"Claim {claim_id} not found.")
         return graph_state
 
-    @app.post("/claims/{claim_id}/review", response_model=ClaimStatus)
+    @app.post("/claims/{claim_id}/review", response_model=ClaimStatus, dependencies=guarded)
     async def review(claim_id: str, body: ReviewInput) -> ClaimStatus:
         current = service.status(claim_id)
         if current is None:
