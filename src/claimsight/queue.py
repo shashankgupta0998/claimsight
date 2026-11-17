@@ -117,6 +117,7 @@ def worker(s: Settings | None = None, service=None, **kwargs):
         on_startup=startup,
         ctx=ctx,
         max_jobs=s.queue_concurrency,
+        poll_delay=s.queue_poll_s,
         job_timeout=s.queue_job_timeout_s,
         keep_result=s.queue_keep_result_s,
         **kwargs,

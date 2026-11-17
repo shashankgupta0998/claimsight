@@ -28,7 +28,10 @@ class Settings(BaseSettings):
     queue: Literal["off", "redis"] = "off"
     queue_max_tries: int = 3
     queue_retry_delay_s: float = 5.0
-    queue_concurrency: int = 4
+    # Jobs one worker runs at once, and how often an idle worker checks Redis. arq's default
+    # check is every 0.5 s, which capped each worker at a few claims a second (load test).
+    queue_concurrency: int = 16
+    queue_poll_s: float = 0.05
     queue_job_timeout_s: int = 300
     queue_keep_result_s: int = 86_400
     # Policy retrieval. First stage: keyword (BM25 / tsvector), dense, or hybrid (RRF of both).

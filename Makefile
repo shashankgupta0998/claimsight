@@ -1,4 +1,4 @@
-.PHONY: install test test-pg workerlint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
+.PHONY: install test test-pg worker loadtest loadtest-matrix lint data eval gate baseline variants retrieval coverage record record-coverage routing injection trace-eval dashboards photo-check record-photo-check duplicates record-duplicates pages detector train-detector ingest api up down
 
 install:
 	uv sync --group dev
@@ -83,6 +83,15 @@ ingest:  # load the policy corpus into Postgres + pgvector
 
 api:
 	uv run uvicorn claimsight.api.main:app --reload
+
+HOST ?= http://localhost:8000
+USERS ?= 20
+DURATION ?= 60s
+loadtest:  # drive a running API with Locust (make api first; replay mode makes no model calls)
+	uv run --extra load locust -f loadtest/locustfile.py --headless -u $(USERS) -r $(USERS) -t $(DURATION) --host $(HOST) --only-summary
+
+loadtest-matrix:  # every scenario: inline/memory, inline/postgres, queued (set DB_URL, REDIS_URL)
+	uv run --extra load --extra pg --extra queue python loadtest/run.py --db $(DB_URL) --redis $(REDIS_URL)
 
 worker:  # run queued claims (CLAIMSIGHT_QUEUE=redis, CLAIMSIGHT_CHECKPOINTER=postgres)
 	uv run --extra pg --extra queue python -m claimsight.queue

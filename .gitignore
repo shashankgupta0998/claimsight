@@ -11,3 +11,4 @@ evals/reports/*.json
 *.pt
 *.onnx
 /models/
+evals/reports/loadtest_logs/
