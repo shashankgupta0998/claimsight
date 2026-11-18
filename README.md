@@ -791,7 +791,12 @@ split in two). `make trace-eval` sends the 257 golden claims (replay, no API cal
   others run the build against a fake Langfuse (create, rerun, prune, wait on a 429).
 
 Built on Langfuse Cloud and checked in the UI: all 15 charts draw data from the traced
-eval run. "ClaimSight: decisions" has 7 tiles, "ClaimSight: LLM cost" 8.
+eval run. "ClaimSight: decisions" has 7 tiles, "ClaimSight: LLM cost" 8. `make dashboards`
+against that project passes: every query returns data, and the numbers match the eval.
+There are 257 decisions (145 approve, 85 escalate, 27 deny), so the escalation rate is
+0.331. 19.5% of claims carry a fraud flag. There were 230 coverage reviews, all ending on
+Haiku and all covered, with no escalation coming from the review. Together they cost
+$0.0755: $0.00033 a claim on average, $0.00047 at p95.
 
 From `make trace-eval` on Langfuse Cloud:
 
